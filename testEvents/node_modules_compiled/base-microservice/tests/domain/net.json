@@ -1,0 +1,7 @@
+{
+  "channels": {
+    "test": {
+      "url": "localhost:8083"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "civil-microservices-test",
+  "version": "0.0.1",
+  "description": "",
+  "main": "start.js",
+  "scripts": {
+    "test": "node service/tests/base.testraw.js",
+    "start": "npm test && node service/start.js",
+    "watch_test": "npm install nodemon && nodemon  --ext js --exec \"clear && printf '\\e[3J' && node --inspect  service/tests/base.testraw.js     || true\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "aerospike": "^2.5.2",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "sint-bit-jesus": "",
+    "sint-bit-schema-manager": "",
+    "chalk": "^1.1.3",
+    "co": "^4.6.0",
+    "elasticsearch": "^13.0.0-rc2",
+    "sint-bit-cqrs": "",
+    "uuid": "^3.0.1"
+  }
+}

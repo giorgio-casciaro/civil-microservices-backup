@@ -1,0 +1,119 @@
+version: '3'
+
+services:
+   aerospike:
+     image: aerospike/aerospike-server
+
+     expose:
+        - "3000"
+        - "3001"
+        - "3002"
+        - "3003"
+     ports:
+        - "3000:3000"
+        - "3001:3001"
+        - "3002:3002"
+        - "3003:3003"
+     entrypoint: sh -c " /usr/bin/asd --fgdaemon --config-file /opt/aerospike/etc/aerospike.conf"
+    #  entrypoint: bash
+     volumes:
+       - ./aerospike.conf:/opt/aerospike/etc/aerospike.conf
+     networks:
+       baseNetwork:
+          ipv4_address: 172.20.0.10
+          aliases:
+           - aerospike
+
+   aerospike-tools:
+     stdin_open: true
+     tty: true
+     image: aerospike/aerospike-tools
+     networks:
+       baseNetwork:
+          aliases:
+           - aerospike-tools
+
+   aerospike-amc:
+     image: mrbar42/aerospike-amc
+     expose:
+        - "9001"
+        - "8081"
+     ports:
+        - "8081:8081"
+        - "9001:9001"
+    #  entrypoint: /opt/elasticsearch/bin/elasticsearch
+    #  volumes:
+    #    - ./aerospike.conf:/etc/aerospike/aerospike.conf
+     networks:
+       baseNetwork:
+          aliases:
+           - aerospike-amc
+
+
+   elasticsearch:
+      image: itzg/elasticsearch:latest
+      ports:
+        - "9200:9200"
+        - "9300:9300"
+      # tty : true
+    #  image: docker.elastic.co/elasticsearch/elasticsearch:5.3.1
+    #  ports:
+    #     - "9200:9200"
+    #     - "9300:9300"
+      # environment:
+      #  ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    #    transport.host: 127.0.0.1
+    #    http.host: 0.0.0.0
+    #   #  xpack.security.enabled: "false"
+    #   #  xpack.monitoring.enabled: "false"
+    #   #  xpack.graph.enabled: "false"
+    #   #  xpack.watcher.enabled: "false"
+      networks:
+       baseNetwork:
+          ipv4_address: 172.20.0.11
+          aliases:
+           - elasticsearch
+
+   test:
+     image: giorgiocasciaro/alpine-node-lua-aerospike:v1
+     #entrypoint: sh -c "ifconfig -a && node /service/service/tests/base.test"
+     entrypoint: sh -c "cd /service/ && npm start"
+     #entrypoint: sh -c "cd /service/ && npm run watch_test"
+     environment:
+       netHost: 172.20.0.12
+       elasticsearchHost: 172.20.0.11:9200
+       aerospikeHosts: 172.20.0.10:3000
+     volumes:
+        - ../sharedSchema/:/sharedSchema/
+        - ./test/service:/service/service
+        - ./test/node_modules_compiled:/service/node_modules
+        - ./test/package.json:/service/package.json
+     networks:
+       baseNetwork:
+          ipv4_address: 172.20.0.12
+          aliases:
+           - test
+
+   testEvents:
+     image: giorgiocasciaro/alpine-node-lua-aerospike:v1
+     #entrypoint: bash
+     #entrypoint: node /service/service/tests/base.test
+     entrypoint: sh -c "cd /service/ && npm run watch_test"
+     environment:
+       netHost: 172.20.0.13
+       elasticsearchHost: 172.20.0.11:9200
+       aerospikeHosts: 172.20.0.10:3000
+     volumes:
+        - ../sharedSchema/:/sharedSchema/
+        - ./testEvents/service:/service/service
+        - ./testEvents/node_modules_compiled:/service/node_modules
+        - ./testEvents/package.json:/service/package.json
+     networks:
+       baseNetwork:
+          ipv4_address: 172.20.0.13
+          aliases:
+           - testEvents
+
+networks:
+  baseNetwork:
+    driver: "bridge"

@@ -1,0 +1,28 @@
+{
+  "name": "base-microservice",
+  "version": "0.0.9",
+  "description": "Javascript microservice abstraction layer: comunication based on Jesus + Schema Manager",
+  "author": "",
+  "main": "service.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/giorgio-casciaro/base-microservice.git"
+  },
+  "scripts": {
+    "test": "node tests/base.test.js",
+    "watch_test": "nodemon  --ext js --exec \"clear && printf '\\e[3J' && tap tests/*.test.js --cov --color --reporter=spec || true\"",
+    "watch_debug": "nodemon  --ext js  --cov --exec \"clear && printf '\\e[3J' && node --inspect   tests/base.test.js || true\""
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "tap": "^10.3.1",
+    "request": "^2.81.0"
+  },
+  "dependencies": {
+    "ramda": "^0.23.0",
+    "sint-bit-jesus": "",
+    "sint-bit-schema-manager": "",
+    "uuid": "^3.0.1"
+  }
+}
