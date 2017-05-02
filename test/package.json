@@ -5,7 +5,7 @@
   "main": "start.js",
   "scripts": {
     "test": "node ./service/tests/base.testraw.js",
-    "link": "npm link sint-bit-jesus && npm link sint-bit-schema-manager && npm link sint-bit-cqrs",
+    "link_sint_modules": "npm link sint-bit-jesus && npm link sint-bit-schema-manager && npm link sint-bit-cqrs",
     "start": "npm test && node service/start.js",
     "test_remote": "node ./service/tests/remote.testraw.js",
     "watch_test_remote": "node ./service/lib/watch.js ./service/tests/remote.testraw.js ./service/tests/remote.testraw.js",
