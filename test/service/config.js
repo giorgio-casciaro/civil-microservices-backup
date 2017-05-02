@@ -1,4 +1,9 @@
+var path = require('path')
 module.exports = {
+  service: {
+    serviceName: process.env.serviceName || 'test',
+    schemaPath: path.join(__dirname, '../../sharedSchema/')
+  },
   net: {
     'channels': {
       'httpPublic': { 'url': `${process.env.netHost || '127.0.0.1'}:${process.env.netHostHttpPublicPort || '10080'}`},

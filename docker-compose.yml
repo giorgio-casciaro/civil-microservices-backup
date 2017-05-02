@@ -19,19 +19,17 @@ services:
      volumes:
        - ./aerospike.conf:/opt/aerospike/etc/aerospike.conf
      networks:
-       baseNetwork:
-          ipv4_address: 172.20.0.10
-          aliases:
-           - aerospike
+       civilmicroservices:
+          ipv4_address: 172.16.100.10
 
    aerospike-tools:
      stdin_open: true
      tty: true
      image: aerospike/aerospike-tools
      networks:
-       baseNetwork:
-          aliases:
-           - aerospike-tools
+       civilmicroservices:
+          # aliases:
+          #  - aerospike-tools
 
    aerospike-amc:
      image: mrbar42/aerospike-amc
@@ -45,9 +43,9 @@ services:
     #  volumes:
     #    - ./aerospike.conf:/etc/aerospike/aerospike.conf
      networks:
-       baseNetwork:
-          aliases:
-           - aerospike-amc
+       civilmicroservices:
+          # aliases:
+          #  - aerospike-amc
 
 
    elasticsearch:
@@ -69,51 +67,61 @@ services:
     #   #  xpack.graph.enabled: "false"
     #   #  xpack.watcher.enabled: "false"
       networks:
-       baseNetwork:
-          ipv4_address: 172.20.0.11
-          aliases:
-           - elasticsearch
+       civilmicroservices:
+          ipv4_address: 172.16.100.11
 
    test:
      image: giorgiocasciaro/alpine-node-lua-aerospike:v1
      #entrypoint: sh -c "ifconfig -a && node /service/service/tests/base.test"
      entrypoint: sh -c "cd /service/ && npm start"
      #entrypoint: sh -c "cd /service/ && npm run watch_test"
+     ports:
+       - "9229"
      environment:
-       netHost: 172.20.0.12
-       elasticsearchHost: 172.20.0.11:9200
-       aerospikeHosts: 172.20.0.10:3000
+       netHost: 172.16.100.12
+       serviceName: test
+       elasticsearchHost: 172.16.100.11:9200
+       aerospikeHosts: 172.16.100.10:3000
      volumes:
         - ../sharedSchema/:/sharedSchema/
         - ./test/service:/service/service
         - ./test/node_modules_compiled:/service/node_modules
         - ./test/package.json:/service/package.json
+        - ../jesus/:/service/node_modules/sint-bit-jesus/
+        - ../schemaManager/:/service/node_modules/sint-bit-schema-manager/
+        # - ../cqrs/:/service/node_modules/sint-bit-cqrs/
      networks:
-       baseNetwork:
-          ipv4_address: 172.20.0.12
-          aliases:
-           - test
+       civilmicroservices:
+          ipv4_address: 172.16.100.12
 
-   testEvents:
+   test-remote:
      image: giorgiocasciaro/alpine-node-lua-aerospike:v1
      #entrypoint: bash
-     #entrypoint: node /service/service/tests/base.test
-     entrypoint: sh -c "cd /service/ && npm run watch_test"
+     entrypoint: sh -c "cd /service/ && npm run watch_test_remote"
+     ports:
+       - "9229"
      environment:
-       netHost: 172.20.0.13
-       elasticsearchHost: 172.20.0.11:9200
-       aerospikeHosts: 172.20.0.10:3000
+       serviceName: testRemote
+       netHost: 172.16.100.13
+       elasticsearchHost: 172.16.100.11:9200
+       aerospikeHosts: 172.16.100.10:3000
      volumes:
         - ../sharedSchema/:/sharedSchema/
-        - ./testEvents/service:/service/service
-        - ./testEvents/node_modules_compiled:/service/node_modules
-        - ./testEvents/package.json:/service/package.json
+        - ./test/service:/service/service
+        - ./test/node_modules_compiled:/service/node_modules
+        - ./test/package.json:/service/package.json
+        - ../jesus/:/service/node_modules/sint-bit-jesus/
+        - ../schemaManager/:/service/node_modules/sint-bit-schema-manager/
+        - ../cqrs/:/service/node_modules/sint-bit-cqrs/
      networks:
-       baseNetwork:
-          ipv4_address: 172.20.0.13
-          aliases:
-           - testEvents
+       civilmicroservices:
+          ipv4_address: 172.16.100.13
 
 networks:
-  baseNetwork:
-    driver: "bridge"
+  civilmicroservices:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 172.16.100.0/24

@@ -17,25 +17,23 @@ var kvDb = require('./lib/kvDb')
 console.log(kvDb)
 var elasticsearch = require('elasticsearch')
 
-var co = require('co')
-
 // Connection URL
 // Use connect method to connect to the Server
 
-var service = co.wrap(function* getMethods (CONSOLE, netClient, CONFIG = require('./config')) {
+var service = async function getMethods (CONSOLE, netClient, CONFIG = require('./config')) {
   // var getMongo = () => toPromise(MongoClient.connect, [url], MongoClient)
 
   try {
     CONSOLE.log('CONFIG', CONFIG)
-    var kvDbClient = yield kvDb.getClient(CONFIG.aerospike)
-    yield kvDb.createIndex(kvDbClient, {
+    var kvDbClient = await kvDb.getClient(CONFIG.aerospike)
+    await kvDb.createIndex(kvDbClient, {
       ns: CONFIG.aerospike.namespace,
       set: CONFIG.aerospike.set,
       bin: '_updated',
       index: CONFIG.aerospike.set + '_idx_updated',
       datatype: Aerospike.indexDataType.NUMERIC
     })
-    yield kvDb.createIndex(kvDbClient, {
+    await kvDb.createIndex(kvDbClient, {
       ns: CONFIG.aerospike.namespace,
       set: CONFIG.aerospike.set,
       bin: '_created',
@@ -47,59 +45,59 @@ var service = co.wrap(function* getMethods (CONSOLE, netClient, CONFIG = require
     return { error: 'getMethods error' }
   }
 
-  var create = co.wrap(function* (data, meta = {directCall: true}, getStream = null) {
+  var create = async function (data, meta = {directCall: true}, getStream = null) {
     try {
       CONSOLE.log('create', data, meta)
       if (!data.id)data.id = uuid()
       data._created = data._updated = Date.now()
       var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, data.id)
-      var result = yield kvDb.put(kvDbClient, key, data, meta)
+      var result = await kvDb.put(kvDbClient, key, data, meta)
       CONSOLE.debug('create', result)
       return { id: result.key }
     } catch (error) {
       CONSOLE.error('create', error)
       return { error: 'create error' }
     }
-  })
-  var read = co.wrap(function* (data, meta = {directCall: true}, getStream = null) {
+  }
+  var read = async function (data, meta = {directCall: true}, getStream = null) {
     try {
-      var result = yield kvDb.get(kvDbClient, new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, data.id))
+      var result = await kvDb.get(kvDbClient, new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, data.id))
       CONSOLE.debug('read', result)
       return result.result
     } catch (error) {
       // CONSOLE.error('read', error)
       return { error: 'read error' }
     }
-  })
-  var update = co.wrap(function* (data, meta = {directCall: true}, getStream = null) {
+  }
+  var update = async function (data, meta = {directCall: true}, getStream = null) {
     try {
       var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, data.id)
-      var readResult = yield kvDb.get(kvDbClient, key)
+      var readResult = await kvDb.get(kvDbClient, key)
       CONSOLE.debug('readResult', readResult)
       var updatedData = Object.assign(readResult.result, data)
-      var writeResult = yield kvDb.put(kvDbClient, key, updatedData, readResult.meta)
+      var writeResult = await kvDb.put(kvDbClient, key, updatedData, readResult.meta)
       CONSOLE.debug('writeResult', writeResult)
       return { id: writeResult.key }
     } catch (error) {
       CONSOLE.error('update', error)
       return { error: 'update error' }
     }
-  })
-  var remove = co.wrap(function* (data, meta = {directCall: true}, getStream = null) {
+  }
+  var remove = async function (data, meta = {directCall: true}, getStream = null) {
     try {
       CONSOLE.debug('remove', CONFIG.aerospike.namespace, CONFIG.aerospike.set, data.id)
       var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, data.id)
-      var result = yield kvDb.remove(kvDbClient, key)
+      var result = await kvDb.remove(kvDbClient, key)
       CONSOLE.debug('remove', key)
       return { id: data.id }
     } catch (error) {
       CONSOLE.error('remove', error)
       return { error: 'remove error' }
     }
-  })
-  var queryByTimestamp = co.wrap(function* (query = {from: 0, to: 100000000000000}, meta = {directCall: true}, getStream = null) {
+  }
+  var queryByTimestamp = async function (query = {from: 0, to: 100000000000000}, meta = {directCall: true}, getStream = null) {
     try {
-      var result = yield kvDb.query(kvDbClient, CONFIG.aerospike.namespace, CONFIG.aerospike.set, (dbQuery) => {
+      var result = await kvDb.query(kvDbClient, CONFIG.aerospike.namespace, CONFIG.aerospike.set, (dbQuery) => {
         dbQuery.where(Aerospike.filter.range('_updated', query.from, query.to))
       })
       return result
@@ -107,7 +105,7 @@ var service = co.wrap(function* getMethods (CONSOLE, netClient, CONFIG = require
       CONSOLE.error('queryByTimestamp', error)
       return { error: 'remove error' }
     }
-  })
+  }
 
   // CQRS
 
@@ -116,8 +114,8 @@ var service = co.wrap(function* getMethods (CONSOLE, netClient, CONFIG = require
   var mutationsCqrsPack = require('sint-bit-cqrs/mutations')({ mutationsPath: path.join(__dirname, '/mutations') })
   // var viewsCqrsPack = require('sint-bit-cqrs/views')({snapshotsMaxMutations: CONFIG.snapshotsMaxMutations })
 
-  // const refreshViews = co.wrap(function*(args) {
-  //   var results = yield viewsCqrsPack.refreshViews(args)
+  // const refreshViews = async function(args) {
+  //   var results = await viewsCqrsPack.refreshViews(args)
   //   var views = []
   //   // results.forEach(({updatedView, newSnapshot}) => {
   //   //   if (updatedView) {
@@ -128,38 +126,38 @@ var service = co.wrap(function* getMethods (CONSOLE, netClient, CONFIG = require
   //   // })
   //   return views
   // })
-  const mutate = co.wrap(function*(args) {
+  const mutate = async function (args) {
     try {
       var mutation = mutationsCqrsPack.mutate(args)
       CONSOLE.debug('mutate', mutation)
       var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.mutationsSet, mutation.id)
-      yield kvDb.put(kvDbClient, key, mutation)
+      await kvDb.put(kvDbClient, key, mutation)
       return mutation
     } catch (error) {
       CONSOLE.error('problems during create', error)
       return {error: 'problems during mutate'}
     }
-  })
-  const getState = co.wrap(function*(objId) {
+  }
+  const getState = async function (objId) {
     try {
       var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.viewsSet, objId)
-      var state = yield kvDb.get(kvDbClient, key)
+      var state = await kvDb.get(kvDbClient, key)
       return {state, key}
     } catch (error) {
       CONSOLE.error('problems during getState', error)
       return {error: 'problems during getState'}
     }
-  })
+  }
 
-  var createCqrs = co.wrap(function* (data, meta = {directCall: true}, getStream = null) {
+  var createCqrs = async function (data, meta = {directCall: true}, getStream = null) {
     try {
       CONSOLE.debug(`createCqrs`, {data, objId: data.id, mutation: 'create', meta})
       // CONSOLE.debug(`start createResource() corrid:` + meta.corrid, {data, meta})
-      // yield authorize({action: 'write.create', entityName: 'Resource', meta, data, id})
+      // await authorize({action: 'write.create', entityName: 'Resource', meta, data, id})
 
-      data.id = data.id || uuidV4() // generate id if necessary
+      data.id = data.id || uuid() // generate id if necessary
 
-      var mutation = yield mutate({data, objId: data.id, mutation: 'create', meta})
+      var mutation = await mutate({data, objId: data.id, mutation: 'create', meta})
       CONSOLE.debug('createCqrs mutation', mutation)
       var newState = mutationsCqrsPack.applyMutations({}, [mutation])
       CONSOLE.debug('createCqrs newState', newState)
@@ -171,13 +169,13 @@ var service = co.wrap(function* getMethods (CONSOLE, netClient, CONFIG = require
       CONSOLE.warn('problems during createCqrs', error)
       return {error: 'problems during createCqrs'}
     }
-  })
+  }
 
-  var updateCqrs = co.wrap(function* (data, meta = {directCall: true}, getStream = null) {
+  var updateCqrs = async function (data, meta = {directCall: true}, getStream = null) {
     try {
       CONSOLE.debug(`start updateCqrs() corrid:` + meta.corrid, {data, meta})
-      // yield authorize({action: 'write.create', entityName: 'Resource', meta, data, id})
-      var mutation = yield mutate({data, objId: data.id, mutation: 'update', meta})
+      // await authorize({action: 'write.create', entityName: 'Resource', meta, data, id})
+      var mutation = await mutate({data, objId: data.id, mutation: 'update', meta})
       var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, data.id)
       kvDb.get(kvDbClient, key).then((state) => {
         var newState = mutationsCqrsPack.applyMutations(state, [mutation])
@@ -189,22 +187,22 @@ var service = co.wrap(function* getMethods (CONSOLE, netClient, CONFIG = require
       CONSOLE.warn('problems during updateCqrs', error)
       return {error: 'problems during updateCqrs'}
     }
-  })
+  }
 
-  var readCqrs = co.wrap(function* (data, meta = {directCall: true}, getStream = null) {
+  var readCqrs = async function (data, meta = {directCall: true}, getStream = null) {
     try {
       var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, data.id)
-      var view = yield kvDb.get(kvDbClient, key)
+      var view = await kvDb.get(kvDbClient, key)
       netClient.emit('viewReaded', { id: data.id}, meta)
       return view
     } catch (error) {
       // CONSOLE.warn('problems during readCqrs', error)
       return {error: 'problems during readCqrs'}
     }
-  })
-  var removeCqrs = co.wrap(function* (data, meta = {directCall: true}, getStream = null) {
+  }
+  var removeCqrs = async function (data, meta = {directCall: true}, getStream = null) {
     try {
-      var mutation = yield mutate({data, objId: data.id, mutation: 'delete', meta})
+      var mutation = await mutate({data, objId: data.id, mutation: 'delete', meta})
       var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, data.id)
       kvDb.remove(kvDbClient, key).then(() => {
         netClient.emit('viewRemoved', { id: data.id}, meta)
@@ -214,34 +212,34 @@ var service = co.wrap(function* getMethods (CONSOLE, netClient, CONFIG = require
       CONSOLE.warn('problems during removeCqrs', error)
       return {error: 'problems during removeCqrs'}
     }
-  })
+  }
 
   var elasticsearch = require('elasticsearch')
   var eClient = new elasticsearch.Client(Object.assign({}, CONFIG.elasticsearch))
-  // var pingResponse = yield eClient.ping({
+  // var pingResponse = await eClient.ping({
   //   requestTimeout: 10000
   // })
   // t.same(pingResponse, true, 'elasticsearch ping')
-  // var searchResponse = yield eClient.search({
+  // var searchResponse = await eClient.search({
   //   q: 'test'
   // })
   //
 
   // EMIT
-  var emit = co.wrap(function* (data, meta = {directCall: true}, getStream = null) {
+  var emit = async function (data, meta = {directCall: true}, getStream = null) {
     try {
-      return yield netClient.emit('viewCreated', data.data, data.meta)
+      return await netClient.emit('viewCreated', data.data, data.meta)
     } catch (error) {
       CONSOLE.warn('problems during emit', error)
       return {error: 'problems during emit'}
     }
-  })
+  }
   // VIEW
-  var createView = co.wrap(function* (data, meta = {directCall: true}, getStream = null) {
+  var createView = async function (data, meta = {directCall: true}, getStream = null) {
     try {
       CONSOLE.debug(`start createView() corrid:` + meta.corrid, {data, meta})
-      data.id = data.id || uuidV4() // generate id if necessary
-      var response = yield eClient.index({
+      data.id = data.id || uuid() // generate id if necessary
+      var response = await eClient.index({
         index: CONFIG.elasticsearch.index,
         type: CONFIG.elasticsearch.type,
         id: data.id,
@@ -254,12 +252,12 @@ var service = co.wrap(function* getMethods (CONSOLE, netClient, CONFIG = require
       CONSOLE.warn('problems during createView', error)
       return {error: 'problems during createView'}
     }
-  })
-  var readView = co.wrap(function* (data, meta = {directCall: true}, getStream = null) {
+  }
+  var readView = async function (data, meta = {directCall: true}, getStream = null) {
     try {
       CONSOLE.debug(`start readView() corrid:` + meta.corrid, {data, meta})
-      data.id = data.id || uuidV4() // generate id if necessary
-      var response = yield eClient.get({
+      data.id = data.id || uuid() // generate id if necessary
+      var response = await eClient.get({
         index: CONFIG.elasticsearch.index,
         type: CONFIG.elasticsearch.type,
         id: data.id
@@ -270,12 +268,12 @@ var service = co.wrap(function* getMethods (CONSOLE, netClient, CONFIG = require
       // CONSOLE.warn('problems during readView', error)
       return {error: 'problems during readView'}
     }
-  })
-  var updateView = co.wrap(function* (data, meta = {directCall: true}, getStream = null) {
+  }
+  var updateView = async function (data, meta = {directCall: true}, getStream = null) {
     try {
       CONSOLE.debug(`start updateView() corrid:` + meta.corrid, {data, meta})
-      data.id = data.id || uuidV4() // generate id if necessary
-      var response = yield eClient.update({
+      data.id = data.id || uuid() // generate id if necessary
+      var response = await eClient.update({
         index: CONFIG.elasticsearch.index,
         type: CONFIG.elasticsearch.type,
         id: data.id,
@@ -289,12 +287,12 @@ var service = co.wrap(function* getMethods (CONSOLE, netClient, CONFIG = require
       CONSOLE.warn('problems during updateView', error)
       return {error: 'problems during updateView'}
     }
-  })
-  var removeView = co.wrap(function* (data, meta = {directCall: true}, getStream = null) {
+  }
+  var removeView = async function (data, meta = {directCall: true}, getStream = null) {
     try {
       CONSOLE.debug(`start removeView() corrid:` + meta.corrid, {data, meta})
-      data.id = data.id || uuidV4() // generate id if necessary
-      var response = yield eClient.delete({
+      data.id = data.id || uuid() // generate id if necessary
+      var response = await eClient.delete({
         index: CONFIG.elasticsearch.index,
         type: CONFIG.elasticsearch.type,
         id: data.id
@@ -305,14 +303,33 @@ var service = co.wrap(function* getMethods (CONSOLE, netClient, CONFIG = require
       CONSOLE.warn('problems during removeView', error)
       return {error: 'problems during removeView'}
     }
-  })
+  }
 
   return {
     emit,
     create, read, update, remove, queryByTimestamp,
     createCqrs, readCqrs, updateCqrs, removeCqrs,
-    createView, readView, updateView, removeView
+    createView, readView, updateView, removeView,
+    testNoResponse: async function (data, meta, getStream) {
+      CONSOLE.debug('testNoResponse', {data, meta, getStream})
+    },
+    testAknowlegment: async function (data, meta, getStream) {
+      CONSOLE.debug('testAknowlegment', {data, meta, getStream})
+    },
+    testResponse: async function (data, meta, getStream) {
+      CONSOLE.debug('testResponse', {data, meta, getStream})
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+      return data
+    },
+    testStream: async function (data, meta, getStream) {
+      CONSOLE.debug('testStream', {data, meta, getStream})
+      var onClose = () => { CONSOLE.log('stream closed') }
+      var stream = getStream(onClose, 120000)
+      stream.write({testStreamConnnected: 1})
+      setTimeout(() => stream.write(data), 500)
+      setTimeout(() => stream.end(), 1000)
+    }
   }
-})
+}
 
 module.exports = service
