@@ -1,3 +1,3 @@
 module.exports = function (state, data) {
-  return Object.assign({}, state, {_deleted:true})
+  return Object.assign({}, state, {status:0})
 }

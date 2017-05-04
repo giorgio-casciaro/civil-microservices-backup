@@ -7,7 +7,7 @@
     "link_sint_modules": "npm link sint-bit-jesus && npm link sint-bit-schema-manager && npm link sint-bit-cqrs",
     "start": "npm test && node service/start.js",
     "test": "node ./service/tests/base.testraw.js",
-    "watch_test": "node ./service/lib/watch.js ./service ./service/tests/base.testraw.js"
+    "watch_test": "node ./service/lib/watch.js ./service,./service/tests ./service/tests/base.testraw.js"
   },
   "author": "",
   "license": "ISC",

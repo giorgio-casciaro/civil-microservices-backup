@@ -4,6 +4,7 @@ process.on('unhandledRejection', function (reason) {
 })
 
 var path = require('path')
+var kvDb = require('../lib/kvDb')
 
 const Aerospike = require('aerospike')
 function getKvDbClient (config) {
@@ -30,56 +31,78 @@ function getAerospikeClient (config) {
 }
 
 var startTest = async function () {
-  var SERVICE = require('../start')
+  // TEST MODIFICATIONS
+  process.env.aerospikeSet = 'users_test_set'
+  process.env.aerospikeMutationsSet = 'users_test_set'
+  process.env.aerospikeViewsSet = 'users_test_set'
+  process.env.consoleDebug = true
+
   var CONFIG = require('../config')
-  CONFIG.console.debug = true
+  var SERVICE = require('../start')
 
-  CONFIG.aerospike.set = CONFIG.aerospike.set + '_testSet'
-  CONFIG.aerospike.mutationsSet = CONFIG.aerospike.mutationsSet + '_testSet'
-  CONFIG.aerospike.viewsSet = CONFIG.aerospike.viewsSet + '_testSet'
+  // PREPARE DB
+  var kvDbClient = await kvDb.getClient(CONFIG.aerospike)
+  // await kvDb.removeSet(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.set })
+  // await kvDb.removeSet(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.mutationsSet })
+  // await kvDb.removeSet(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.viewsSet })
 
-  var aerospikeClient = await getAerospikeClient(CONFIG.aerospike)
-  aerospikeClient.truncate(CONFIG.aerospike.namespace, CONFIG.aerospike.set, (err, result) => console.log)
-  aerospikeClient.truncate(CONFIG.aerospike.namespace, CONFIG.aerospike.mutationsSet, (err, result) => console.log)
-  aerospikeClient.truncate(CONFIG.aerospike.namespace, CONFIG.aerospike.viewsSet, (err, result) => console.log)
-
-  var methods = await require('../methods')(SERVICE.CONFIG.CONSOLE, SERVICE.netClient, CONFIG)
-
-  var test = require('../lib/microTest')('test Microservice local methods and db conenctions')
+  // PREPARE DB
+  var netClient = SERVICE.netClient
+  var microRandom = Math.floor(Math.random() * 100000)
+  var microTest = require('../lib/microTest')('test Microservice local methods and db conenctions')
   await new Promise((resolve) => setTimeout(resolve, 1000))
 
-  // CREATE CQRS
-  var createResponse = await methods.create({username: 'test_user', email: 'test@test.com', id: 'test'}, {})
-  test(createResponse, { id: 'test' }, ' create 1 item')
+  var basicUser = {
+    username: `test_user_${microRandom}`,
+    email: `test${microRandom}@test${microRandom}.com`,
+    password: `t$@es${microRandom}Tt$te1st_com`,
+    confirm: `tes${microRandom}Ttt$e1st_com`
+  }
+  var basicMeta = {}
 
-    // READ CQRS
-  var readResponse = await methods.read({id: 'test'})
-  test(readResponse.username, 'test_user', ' read 1 item')
+  var wrongPasswordReq = Object.assign({}, basicUser, {
+    password: `${microRandom}`,
+    confirm: `${microRandom}`
+  })
+  var wrongPasswordResponse = await netClient.testLocalMethod('create', wrongPasswordReq, basicMeta)
+  microTest(typeof wrongPasswordResponse.error, 'string', 'wrong request: password not valid')
 
-    // UPDATE CQRS
-  await methods.update({username: 'test_user2', id: 'test'}, {})
-  var updateResponse = await methods.read({id: 'test'})
-  test(updateResponse.username, 'test_user2', ' update 1 item')
+  var createResponse = await netClient.testLocalMethod('create', basicUser, basicMeta)
+  microTest(createResponse, { success: 'User created' }, 'User Create')
 
-    // DELETE CQRS
-  await methods.remove({id: 'test'})
-  var deleteResponse = await methods.read({id: 'test'})
-  test(typeof deleteResponse.error, 'string', ' remove and istant read 1 item')
+  var wrongRecreateResponse = await netClient.testLocalMethod('create', basicUser, basicMeta)
+  microTest(typeof wrongRecreateResponse.error, 'string', 'wrong request: User exists')
 
-  // QUERY
-  await methods.create({username: 'test_user1', email: 'test@test.com', id: 'test1'})
-  await methods.create({username: 'test_user2', email: 'test@test.com', id: 'test2'})
-  await new Promise((resolve) => setTimeout(resolve, 1000))
-  var testTimestamp = Date.now()
-  await methods.create({username: 'test_user3', email: 'test@test.com', id: 'test3'})
-  await methods.create({username: 'test_user4', email: 'test@test.com', id: 'test4'})
-  await methods.create({username: 'test_user5', email: 'test@test.com', id: 'test5'})
+  var readResponse = await netClient.testLocalMethod('read', basicUser, basicMeta)
+  microTest(readResponse, basicUser, 'read', 'fields')
 
-  var queryResponse = await methods.queryByTimestamp()
-  test(queryResponse.length, 5, 'insert and query 5 items')
+  var reqUserUpdate = { username: `test_user_${microRandom}`, email: `test${microRandom}@test${microRandom}.com` }
+  var updateResponse = await netClient.testLocalMethod('update', reqUserUpdate, basicMeta)
+  microTest(updateResponse, {success: 'User updated'}, 'update email')
+  var readResponse_2 = await netClient.testLocalMethod('read', basicUser, basicMeta)
+  microTest(readResponse_2, reqUserUpdate, 'read updated email', 'fields')
 
-  var queryResponse = await methods.queryByTimestamp({from: testTimestamp, to: Date.now()})
-  test(queryResponse.length, 3, 'query by timestamp')
+  var removeResponse = await netClient.testLocalMethod('remove', { username: `test_user_${microRandom}` }, basicMeta)
+  microTest(removeResponse, {success: 'User removed'}, 'remove')
+  var readResponse_3 = await netClient.testLocalMethod('read', { username: `test_user_${microRandom}` }, basicMeta)
+  microTest(readResponse_3, {status: 0}, 'removed user - status 0 ', 'fields')
+
+  var rpcCreateUserN = (n) => netClient.testLocalMethod('create', Object.assign({}, basicUser, {username: n + '_' + basicUser.username, email: n + '_' + basicUser.email}), basicMeta)
+
+  var testTimestamp1 = Date.now()
+  await rpcCreateUserN(1)
+  await rpcCreateUserN(2)
+  await rpcCreateUserN(3)
+  var testTimestamp2 = Date.now()
+  await rpcCreateUserN(4)
+  await rpcCreateUserN(5)
+  await rpcCreateUserN(6)
+
+  var queryResponse = await netClient.testLocalMethod('queryByTimestamp', {from: testTimestamp1}, basicMeta)
+  microTest(queryResponse.length, 6, 'queryResponse insert and query 6 items from testTimestamp1')
+  var queryResponse2 = await netClient.testLocalMethod('queryByTimestamp', {from: testTimestamp2}, basicMeta)
+  microTest(queryResponse2.length, 3, 'queryResponse insert and query 3 items  from testTimestamp2')
+
 
   SERVICE.netServer.stop()
   SERVICE.schemaClient.stop()

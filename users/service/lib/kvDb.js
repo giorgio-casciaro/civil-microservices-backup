@@ -16,10 +16,12 @@ module.exports = {
       })
     })
   },
-  get (kvDbClient, key) {
+  get (kvDbClient, key, resultOnly=true) {
     return new Promise((resolve, reject) => {
       kvDbClient.get(key, (error, result, meta) => {
-        if (error) return reject(error)
+        // if (error) return reject(error)
+        if (error) return resolve(null)
+        if (resultOnly) return resolve(result)
         resolve({result, meta})
       })
     })
@@ -40,6 +42,14 @@ module.exports = {
           if (error) return reject(error)
           resolve(result)
         })
+      })
+    })
+  },
+  removeSet (kvDbClient, {ns, set}) {
+    return new Promise((resolve, reject) => {
+      kvDbClient.truncate(ns, set, (error) => {
+        if (error) return reject(error)
+        resolve(true)
       })
     })
   },

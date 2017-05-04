@@ -1,3 +1,3 @@
 module.exports=function(state,data){
-  return data;
+  return Object.assign({}, data, {status:1});
 }

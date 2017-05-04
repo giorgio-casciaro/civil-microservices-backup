@@ -5,138 +5,130 @@ process.on('unhandledRejection', (err, p) => {
   console.log(`Rejection: ${err}`)
 })
 
-const cqrs = require('sint-bit-cqrs')
 const path = require('path')
-const uuid = require('uuid/v4')
 const Aerospike = require('aerospike')
 const Key = Aerospike.Key
 var kvDb = require('./lib/kvDb')
 
 var service = async function getMethods (CONSOLE, netClient, CONFIG = require('./config')) {
   try {
-    CONSOLE.log('CONFIG', CONFIG)
+    CONSOLE.debug('CONFIG', CONFIG)
     var kvDbClient = await kvDb.getClient(CONFIG.aerospike)
-    await kvDb.createIndex(kvDbClient, {
-      ns: CONFIG.aerospike.namespace,
-      set: CONFIG.aerospike.set,
-      bin: '_updated',
-      index: CONFIG.aerospike.set + '_idx_updated',
-      datatype: Aerospike.indexDataType.NUMERIC
-    })
-    await kvDb.createIndex(kvDbClient, {
-      ns: CONFIG.aerospike.namespace,
-      set: CONFIG.aerospike.set,
-      bin: '_created',
-      index: CONFIG.aerospike.set + '_idx_created',
-      datatype: Aerospike.indexDataType.NUMERIC
-    })
+
+    var mutationsPack = require('sint-bit-cqrs/mutations')({ mutationsPath: path.join(__dirname, '/mutations') })
+    const mutate = async function (args) {
+      try {
+        var mutation = mutationsPack.mutate(args)
+        CONSOLE.debug('mutate', mutation)
+        var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.mutationsSet, mutation.id)
+        await kvDb.put(kvDbClient, key, mutation)
+        return mutation
+      } catch (error) {
+        throw new Error('problems during mutate')
+      }
+    }
+    var initViewsInited = false
+    const initViews = async function () {
+      try {
+        if (initViewsInited) return false
+        initViewsInited = true
+        await kvDb.createIndex(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.set, bin: 'updated', index: CONFIG.aerospike.set + '_updated', datatype: Aerospike.indexDataType.NUMERIC })
+        await kvDb.createIndex(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.set, bin: 'created', index: CONFIG.aerospike.set + '_created', datatype: Aerospike.indexDataType.NUMERIC })
+      } catch (error) {
+        throw new Error('problems during initViews')
+      }
+    }
+    const updateView = async function (id, mutations, isNew) {
+      try {
+        initViews()
+        var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, id)
+        var view = await getView(id, false) || {state: {}}
+        view.updated = Date.now()
+        if (!view.created)view.created = Date.now()
+        view.state = JSON.stringify(mutationsPack.applyMutations(view.state, mutations))
+        await kvDb.put(kvDbClient, key, view)
+        return view
+      } catch (error) {
+        throw new Error('problems during updateView')
+      }
+    }
+    const getView = async function (id, stateOnly = true) {
+      try {
+        var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, id)
+        var view = await kvDb.get(kvDbClient, key)
+        if (!view) return null
+        if (view.state)view.state = JSON.parse(view.state)
+        if (stateOnly) return view.state
+        return view
+      } catch (error) {
+        throw new Error('problems during getView')
+      }
+    }
+
+    var create = async function (data, meta = {directCall: true}, getStream = null) {
+      try {
+        var id = data.username
+        var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, id)
+        var currentState = await kvDb.get(kvDbClient, key)
+        if (currentState) throw new Error('User exists')
+        var mutation = await mutate({data, objId: id, mutation: 'create', meta})
+        updateView(id, [mutation], true)
+        return {success: `User created`}
+      } catch (error) {
+        return {error: JSON.stringify({'type': 'method', method: 'create', 'error': error.message})}
+      }
+    }
+
+    var read = async function (data, meta = {directCall: true}, getStream = null) {
+      try {
+        var id = data.username
+        var currentState = await getView(id)
+        return currentState
+      } catch (error) {
+        return {error: JSON.stringify({'type': 'method', method: 'read', 'error': error.message})}
+      }
+    }
+
+    var update = async function (data, meta = {directCall: true}, getStream = null) {
+      try {
+        var id = data.username
+        var mutation = await mutate({data, objId: id, mutation: 'update', meta})
+        updateView(id, [mutation])
+        return {success: `User updated`}
+      } catch (error) {
+        return {error: JSON.stringify({'type': 'method', method: 'update', 'error': error.message})}
+      }
+    }
+
+    var remove = async function (data, meta = {directCall: true}, getStream = null) {
+      try {
+        var id = data.username
+        var mutation = await mutate({data, objId: id, mutation: 'delete', meta})
+        updateView(id, [mutation])
+        return {success: `User removed`}
+      } catch (error) {
+        return {error: JSON.stringify({'type': 'method', method: 'remove', 'error': error.message})}
+      }
+    }
+
+    var queryByTimestamp = async function (query = {}, meta = {directCall: true}, getStream = null) {
+      try {
+        query = Object.assign({from: 0, to: 100000000000000}, query)
+        var result = await kvDb.query(kvDbClient, CONFIG.aerospike.namespace, CONFIG.aerospike.set, (dbQuery) => {
+          dbQuery.where(Aerospike.filter.range('updated', query.from, query.to))
+        })
+        return result
+      } catch (error) {
+        return {error: JSON.stringify({'type': 'method', method: 'queryByTimestamp', 'error': error.message})}
+      }
+    }
+
+    return {
+      create, read, update, remove, queryByTimestamp
+    }
   } catch (error) {
     CONSOLE.error('getMethods', error)
     return { error: 'getMethods error' }
-  }
-
-  var mutationsPack = require('sint-bit-cqrs/mutations')({ mutationsPath: path.join(__dirname, '/mutations') })
-  const mutate = async function (args) {
-    try {
-      var mutation = mutationsPack.mutate(args)
-      CONSOLE.debug('mutate', mutation)
-      var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.mutationsSet, mutation.id)
-      await kvDb.put(kvDbClient, key, mutation)
-      return mutation
-    } catch (error) {
-      CONSOLE.error('problems during create', error)
-      return {error: 'problems during mutate'}
-    }
-  }
-  const getState = async function (objId) {
-    try {
-      var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.viewsSet, objId)
-      var state = await kvDb.get(kvDbClient, key)
-      return {state, key}
-    } catch (error) {
-      CONSOLE.error('problems during getState', error)
-      return {error: 'problems during getState'}
-    }
-  }
-
-  var create = async function (data, meta = {directCall: true}, getStream = null) {
-    try {
-      CONSOLE.debug(`create`, {data, objId: data.id, mutation: 'create', meta})
-
-      data.id = data.id || uuid() // generate id if necessary
-
-      var mutation = await mutate({data, objId: data.id, mutation: 'create', meta})
-      CONSOLE.debug('create mutation', mutation)
-      var newState = mutationsPack.applyMutations({}, [mutation])
-      CONSOLE.debug('create newState', newState)
-      var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, data.id)
-      kvDb.put(kvDbClient, key, newState).then(() => {})
-      netClient.emit('viewCreated', newState, meta)
-      return {id: data.id}
-    } catch (error) {
-      CONSOLE.warn('problems during create', error)
-      return {error: 'problems during create'}
-    }
-  }
-
-  var update = async function (data, meta = {directCall: true}, getStream = null) {
-    try {
-      CONSOLE.debug(`start update() corrid:` + meta.corrid, {data, meta})
-      // await authorize({action: 'write.create', entityName: 'Resource', meta, data, id})
-      var mutation = await mutate({data, objId: data.id, mutation: 'update', meta})
-      var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, data.id)
-      kvDb.get(kvDbClient, key).then((state) => {
-        var newState = mutationsPack.applyMutations(state, [mutation])
-        netClient.emit('viewCreated', newState, meta)
-        kvDb.put(kvDbClient, key, newState)
-      })
-      return {id: data.id}
-    } catch (error) {
-      CONSOLE.warn('problems during update', error)
-      return {error: 'problems during update'}
-    }
-  }
-
-  var read = async function (data, meta = {directCall: true}, getStream = null) {
-    try {
-      var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, data.id)
-      var view = await kvDb.get(kvDbClient, key)
-      netClient.emit('viewReaded', { id: data.id}, meta)
-      return view
-    } catch (error) {
-      // CONSOLE.warn('problems during read', error)
-      return {error: 'problems during read'}
-    }
-  }
-
-  var remove = async function (data, meta = {directCall: true}, getStream = null) {
-    try {
-      var mutation = await mutate({data, objId: data.id, mutation: 'delete', meta})
-      var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, data.id)
-      kvDb.remove(kvDbClient, key).then(() => {
-        netClient.emit('viewRemoved', { id: data.id}, meta)
-      })
-      return { id: data.id }
-    } catch (error) {
-      CONSOLE.warn('problems during remove', error)
-      return {error: 'problems during remove'}
-    }
-  }
-
-  var queryByTimestamp = async function (query = {from: 0, to: 100000000000000}, meta = {directCall: true}, getStream = null) {
-    try {
-      var result = await kvDb.query(kvDbClient, CONFIG.aerospike.namespace, CONFIG.aerospike.set, (dbQuery) => {
-        dbQuery.where(Aerospike.filter.range('_updated', query.from, query.to))
-      })
-      return result
-    } catch (error) {
-      CONSOLE.error('queryByTimestamp', error)
-      return { error: 'remove error' }
-    }
-  }
-
-  return {
-    create, read, update, remove, queryByTimestamp
   }
 }
 

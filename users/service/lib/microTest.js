@@ -4,10 +4,11 @@ const chalk = require('chalk')
 module.exports = function getTest (name) {
   console.info(`## TEST ${name} ##`)
   var testNumber = 0
-  return function test (actual, expected, message = 'test') {
+  return function test (actual, expected, message = 'test', type = 'deepEqual') {
     testNumber++
     try {
-      assert.deepStrictEqual(actual, expected, 'View create 1 item')
+      if(type==='deepEqual')assert.deepEqual(actual, expected, 'View create 1 item')
+      else if(type==='fields')Object.keys(expected).forEach((key)=>{assert.deepEqual(actual[key], expected[key], 'View create 1 item')})
       console.info(chalk.green(`- ${testNumber} SUCCESS ${message}`))
       console.log({ test: testNumber, success: true, message: message})
     } catch (error) {
