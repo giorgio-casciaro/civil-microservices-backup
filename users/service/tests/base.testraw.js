@@ -49,45 +49,87 @@ var startTest = async function () {
   // PREPARE DB
   var netClient = SERVICE.netClient
   var microRandom = Math.floor(Math.random() * 100000)
-  var microTest = require('../lib/microTest')('test Microservice local methods and db conenctions')
+  var mainTest = require('../lib/microTest')('test Microservice local methods and db conenctions')
+  var microTest = mainTest.test
+  var finishTest = mainTest.finish
   await new Promise((resolve) => setTimeout(resolve, 1000))
 
-  var basicUser = {
-    username: `test_user_${microRandom}`,
+  var fields = {
+    publicName: `sir test_user ${microRandom}. junior`,
+    pic: `http://test.com/pic/pic.jpg`,
     email: `test${microRandom}@test${microRandom}.com`,
     password: `t$@es${microRandom}Tt$te1st_com`,
-    confirm: `tes${microRandom}Ttt$e1st_com`
+    firstName: `t$@es${microRandom}Tt$te1st_com`,
+    lastName: `t$@es${microRandom}Tt$te1st_com`
   }
+
   var basicMeta = {}
+  // var createReq = {
+  //   password: `${microRandom}`,
+  //   confirm: `${microRandom}`
+  // }
+  // var wrongPasswordReq = Object.assign({}, basicUser, {
+  //   password: `${microRandom}`,
+  //   confirm: `${microRandom}`
+  // })
+  const TYPE_OF = (actual, expected) => {
+    var filtered = {}
+    Object.keys(expected).forEach((key) => { filtered[key] = typeof actual[key] })
+    return filtered
+  }
+  const FILTER_BY_KEYS = (actual, expected) => {
+    var filtered = {}
+    Object.keys(expected).forEach((key) => { filtered[key] = actual[key] })
+    return filtered
+  }
+  const COUNT = (actual, expected) => actual.length
 
-  var wrongPasswordReq = Object.assign({}, basicUser, {
-    password: `${microRandom}`,
-    confirm: `${microRandom}`
-  })
-  var wrongPasswordResponse = await netClient.testLocalMethod('create', wrongPasswordReq, basicMeta)
-  microTest(typeof wrongPasswordResponse.error, 'string', 'wrong request: password not valid')
+  var createWrongMail = await netClient.testLocalMethod('create', { email: `${microRandom}` }, basicMeta)
+  microTest(createWrongMail, {error: 'string'}, 'wrong request: email not valid', TYPE_OF)
 
-  var createResponse = await netClient.testLocalMethod('create', basicUser, basicMeta)
-  microTest(createResponse, { success: 'User created' }, 'User Create')
+  var create = await netClient.testLocalMethod('create', { email: fields.email }, basicMeta)
+  microTest(create, { success: 'User created' }, 'User Create', FILTER_BY_KEYS)
 
-  var wrongRecreateResponse = await netClient.testLocalMethod('create', basicUser, basicMeta)
-  microTest(typeof wrongRecreateResponse.error, 'string', 'wrong request: User exists')
+  var wrongRecreate = await netClient.testLocalMethod('create', { email: fields.email }, basicMeta)
+  microTest(wrongRecreate, { error: 'User exists' }, 'wrong request: User exists', FILTER_BY_KEYS)
 
-  var readResponse = await netClient.testLocalMethod('read', basicUser, basicMeta)
-  microTest(readResponse, basicUser, 'read', 'fields')
+  var readEmailConfirmationCode = await netClient.testLocalMethod('readEmailConfirmationCode', {id: create.id}, basicMeta)
+  microTest(readEmailConfirmationCode, {emailConfirmationCode: 'string'}, 'read Email Confirmation Code', TYPE_OF)
 
-  var reqUserUpdate = { username: `test_user_${microRandom}`, email: `test${microRandom}@test${microRandom}.com` }
-  var updateResponse = await netClient.testLocalMethod('update', reqUserUpdate, basicMeta)
-  microTest(updateResponse, {success: 'User updated'}, 'update email')
-  var readResponse_2 = await netClient.testLocalMethod('read', basicUser, basicMeta)
-  microTest(readResponse_2, reqUserUpdate, 'read updated email', 'fields')
+  var confirmEmail = await netClient.testLocalMethod('confirmEmail', { id: create.id, emailConfirmationCode: readEmailConfirmationCode.emailConfirmationCode }, basicMeta)
+  microTest(confirmEmail, { success: 'Email confirmed' }, 'Email confirmed')
 
-  var removeResponse = await netClient.testLocalMethod('remove', { username: `test_user_${microRandom}` }, basicMeta)
-  microTest(removeResponse, {success: 'User removed'}, 'remove')
-  var readResponse_3 = await netClient.testLocalMethod('read', { username: `test_user_${microRandom}` }, basicMeta)
-  microTest(readResponse_3, {status: 0}, 'removed user - status 0 ', 'fields')
+  var read = await netClient.testLocalMethod('read', {id: create.id}, basicMeta)
+  microTest(read, {email: fields.email}, 'read', FILTER_BY_KEYS)
+  microTest(read, {emailConfirmationCode: 'undefined'}, 'read', TYPE_OF)
 
-  var rpcCreateUserN = (n) => netClient.testLocalMethod('create', Object.assign({}, basicUser, {username: n + '_' + basicUser.username, email: n + '_' + basicUser.email}), basicMeta)
+  var updatePublicName = await netClient.testLocalMethod('updatePublicName', {id: create.id, publicName: fields.publicName}, basicMeta)
+  microTest(updatePublicName, { success: 'string' }, 'updatePublicName', TYPE_OF)
+  var readPublicName = await netClient.testLocalMethod('read', {id: create.id}, basicMeta)
+  microTest(readPublicName, {publicName: fields.publicName}, 'readPublicName', FILTER_BY_KEYS)
+
+  var updatePic = await netClient.testLocalMethod('updatePic', {id: create.id, pic: fields.pic}, basicMeta)
+  microTest(updatePic, { success: 'string' }, 'updatePic', TYPE_OF)
+  var readPic = await netClient.testLocalMethod('read', {id: create.id}, basicMeta)
+  microTest(readPic, {pic: fields.pic}, 'readPic', FILTER_BY_KEYS)
+
+  var updatePassword = await netClient.testLocalMethod('updatePassword', {id: create.id, password: fields.password, confirmPassword: fields.password}, basicMeta)
+  microTest(updatePassword, { success: 'string' }, 'updatePassword', TYPE_OF)
+
+  var login = await netClient.testLocalMethod('login', {email: fields.email, password: fields.password}, basicMeta)
+  microTest(login, { success: 'string' }, 'login', TYPE_OF)
+
+  var updatePersonalInfo = await netClient.testLocalMethod('updatePersonalInfo', {id: create.id, firstName: fields.firstName, lastName: fields.lastName, birth: fields.birth}, basicMeta)
+  microTest(updatePersonalInfo, { success: 'string' }, 'updatePersonalInfo', TYPE_OF)
+  var readPersonalInfo = await netClient.testLocalMethod('readPersonalInfo', {id: create.id}, basicMeta)
+  microTest(readPersonalInfo, {firstName: fields.firstName}, 'readPersonalInfo', FILTER_BY_KEYS)
+
+  var remove = await netClient.testLocalMethod('remove', { id: create.id, status: 0 }, basicMeta)
+  microTest(remove, {success: 'User removed'}, 'remove')
+  var readRemove = await netClient.testLocalMethod('read', {id: create.id }, basicMeta)
+  microTest(readRemove, { status: 0 }, 'readRemove', FILTER_BY_KEYS)
+
+  var rpcCreateUserN = (n) => netClient.testLocalMethod('create', { email: n + '_' + fields.email }, basicMeta)
 
   var testTimestamp1 = Date.now()
   await rpcCreateUserN(1)
@@ -99,11 +141,11 @@ var startTest = async function () {
   await rpcCreateUserN(6)
 
   var queryResponse = await netClient.testLocalMethod('queryByTimestamp', {from: testTimestamp1}, basicMeta)
-  microTest(queryResponse.length, 6, 'queryResponse insert and query 6 items from testTimestamp1')
+  microTest(queryResponse, 6, 'queryResponse insert and query 6 items from testTimestamp1', COUNT)
   var queryResponse2 = await netClient.testLocalMethod('queryByTimestamp', {from: testTimestamp2}, basicMeta)
-  microTest(queryResponse2.length, 3, 'queryResponse insert and query 3 items  from testTimestamp2')
+  microTest(queryResponse2, 3, 'queryResponse insert and query 3 items  from testTimestamp2',COUNT)
 
-
+  finishTest()
   SERVICE.netServer.stop()
   SERVICE.schemaClient.stop()
   await new Promise((resolve) => setTimeout(resolve, 1000))

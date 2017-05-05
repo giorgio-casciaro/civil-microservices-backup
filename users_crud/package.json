@@ -15,14 +15,11 @@
     "aerospike": "^2.5.2"
   },
   "dependencies": {
-    "bcrypt": "^1.0.2",
+    "sint-bit-jesus": "",
+    "sint-bit-schema-manager": "",
     "chalk": "^1.1.3",
     "elasticsearch": "^13.0.0-rc2",
-    "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "sint-bit-cqrs": "0.0.4",
-    "sint-bit-jesus": "0.0.16",
-    "sint-bit-schema-manager": "",
+    "sint-bit-cqrs": "",
     "uuid": "^3.0.1"
   }
 }
