@@ -1,9 +1,15 @@
 # civil-microservices
 
-per i test con elsasticsearch
-sudo sysctl -w vm.max_map_count=262144
+npm start
+start a local test
+fa partire servizi di base
 
- docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }')
 
-docker volume rm $(docker volume ls -qf dangling=true)
-docker volume ls -qf dangling=true | xargs -r docker volume rm
+docker-compose up SERVICE
+./SERVICE/npm run test
+./SERVICE/npm run test_watch
+./SERVICE/npm run build_modules
+./SERVICE/npm run build
+
+
+docker-compose run users --entrypoint "sh -c \"cd /service/ && npm run watch_test\""

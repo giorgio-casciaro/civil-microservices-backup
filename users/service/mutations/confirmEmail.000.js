@@ -1,4 +1,4 @@
  module.exports = function (state, data) {
-   state.publicName = data.publicName
+   if (state.emailStatus === 0)state.emailStatus = 1
    return state
  }

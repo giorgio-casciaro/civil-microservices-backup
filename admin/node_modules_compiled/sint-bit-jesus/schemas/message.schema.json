@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "properties": {
+    "method": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object"
+    },
+    "meta": {
+      "type": "object"
+    }
+  },
+  "required": ["method"]
+}

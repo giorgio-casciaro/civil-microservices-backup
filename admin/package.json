@@ -1,0 +1,21 @@
+{
+  "name": "civil-microservices-admin",
+  "version": "0.0.1",
+  "description": "",
+  "main": "start.js",
+  "scripts": {
+    "link_sint_modules": "npm link sint-bit-jesus && npm link sint-bit-schema-manager && npm link sint-bit-cqrs",
+    "start": "npm test && node service/start.js",
+    "test": "node ./service/tests/base.testraw.js",
+    "watch_test": "node ./service/lib/watch.js ./service,./service/tests ./service/tests/base.testraw.js",
+    "build": "cd docker && sh build.sh",
+    "docker_start": "cd docker && sh start.sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "sint-bit-jesus": "",
+    "sint-bit-schema-manager": ""
+  }
+}

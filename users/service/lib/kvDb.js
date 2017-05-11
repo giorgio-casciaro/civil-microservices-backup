@@ -16,7 +16,7 @@ module.exports = {
       })
     })
   },
-  get (kvDbClient, key, resultOnly=true) {
+  get (kvDbClient, key, resultOnly = true) {
     return new Promise((resolve, reject) => {
       kvDbClient.get(key, (error, result, meta) => {
         // if (error) return reject(error)
@@ -61,7 +61,8 @@ module.exports = {
       var results = []
       stream.on('error', (error) => {
         console.error(error)
-        throw error
+        // throw error
+        reject(error)
       })
       stream.on('data', (record) => {
         results.push(record)

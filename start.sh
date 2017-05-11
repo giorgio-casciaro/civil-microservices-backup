@@ -18,6 +18,11 @@ sleep 1
 
 sudo sysctl -w vm.max_map_count=262144
 # docker run  --name elas -p 9200:9200 -p 9300:9300 itzg/elasticsearch:latest
-docker-compose up -d aerospike 
+docker-compose up -d aerospike
 docker-compose up -d elasticsearch
+docker-compose up -d admin
+docker-compose up -d users
+docker-compose up -d www
+docker-compose up smtp
+# docker-compose run users --entrypoint "sh -c \"cd /service/ && npm run watch_test\""
 # docker-compose up aerospike-amc  &

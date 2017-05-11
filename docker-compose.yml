@@ -22,6 +22,13 @@ services:
        civilmicroservices:
           ipv4_address: 172.16.100.10
 
+   smtp:
+     image: digiplant/fake-smtp
+     # ports:
+     #   - "1025:25"
+     volumes:
+       - ./email:/var/email
+
    aerospike-tools:
      stdin_open: true
      tty: true
@@ -75,8 +82,8 @@ services:
      #entrypoint: sh -c "ifconfig -a && node /service/service/tests/base.test"
      entrypoint: sh -c "cd /service/ && npm start"
      #entrypoint: sh -c "cd /service/ && npm run watch_test"
-     ports:
-       - "9229"
+    #  ports:
+    #    - "9229"
      environment:
        netHost: 172.16.100.12
        serviceName: test
@@ -98,8 +105,8 @@ services:
      image: giorgiocasciaro/alpine-node-lua-aerospike:v1
      #entrypoint: bash
      entrypoint: sh -c "cd /service/ && npm run watch_test_remote"
-     ports:
-       - "9229"
+    #  ports:
+    #    - "9229"
      environment:
        serviceName: testRemote
        netHost: 172.16.100.13
@@ -116,6 +123,71 @@ services:
      networks:
        civilmicroservices:
           ipv4_address: 172.16.100.13
+
+   www:
+     image: nginx:1.12.0-alpine
+     entrypoint: sh -c "nginx -g 'daemon off;'"
+     ports:
+       - "10080:10080"
+     volumes:
+        - ./email:/usr/share/nginx/html/email
+        - ./www/nginx.conf:/etc/nginx/nginx.conf:ro
+        - ./www/civilconnect/static:/usr/share/nginx/html/civilconnect
+        # - ./www/admin:/usr/share/nginx/html/admin
+        - ./www/admin_simple:/usr/share/nginx/html/admin_simple
+     networks:
+       civilmicroservices:
+          ipv4_address: 172.16.100.14
+
+   users:
+     image: giorgiocasciaro/alpine-node-lua-aerospike:v1
+    #  entrypoint: sh -c "cd /service/ && npm run watch_test"
+     entrypoint: sh -c "cd /service/ && npm start"
+    #  ports:
+      #  - "9229"
+     environment:
+       serviceName: users
+       smtpHost: smtp:25
+       netHost: 172.16.100.15
+       netCors: http://172.16.100.14:80,http://172.16.100.14,http://localhost:8080,http://127.0.0.1:8080
+       elasticsearchHost: 172.16.100.11:9200
+       aerospikeHosts: aerospike:3000
+     volumes:
+        - ../sharedSchema/:/sharedSchema/
+        - ./users/service:/service/service
+        - ./users/node_modules_compiled:/service/node_modules
+        - ./users/package.json:/service/package.json
+        - ../jesus/:/service/node_modules/sint-bit-jesus/
+        - ../schemaManager/:/service/node_modules/sint-bit-schema-manager/
+        - ../cqrs/:/service/node_modules/sint-bit-cqrs/
+     networks:
+       civilmicroservices:
+          ipv4_address: 172.16.100.15
+
+   admin:
+     image: giorgiocasciaro/alpine-node-lua-aerospike:v1
+    #  entrypoint: sh -c "cd /service/ && npm run watch_test_remote"
+     entrypoint: sh -c "cd /service/ && npm start"
+    #  ports:
+      #  - "10080"
+      #  - "9229"
+     environment:
+       serviceName: admin
+       netHost: 172.16.100.16
+       netCors: http://172.16.100.14:80,http://172.16.100.14,http://localhost:8080,http://127.0.0.1:8080
+       elasticsearchHost: 172.16.100.11:9200
+       aerospikeHosts: 172.16.100.10:3000
+     volumes:
+        - ../sharedSchema/:/sharedSchema/
+        - ./admin/service:/service/service
+        - ./admin/node_modules_compiled:/service/node_modules
+        - ./admin/package.json:/service/package.json
+        - ../jesus/:/service/node_modules/sint-bit-jesus/
+        - ../schemaManager/:/service/node_modules/sint-bit-schema-manager/
+        - ../cqrs/:/service/node_modules/sint-bit-cqrs/
+     networks:
+       civilmicroservices:
+          ipv4_address: 172.16.100.16
 
 networks:
   civilmicroservices:

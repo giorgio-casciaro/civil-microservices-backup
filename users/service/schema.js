@@ -1,53 +1,4 @@
-var jsFields = {
-  id: {
-    type: 'string',
-    description: 'id in format UUID v4',
-    pattern: '^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$'
-  },
-  updated: { description: 'last update nano timestamp', type: 'integer', minimum: 0 },
-  created: { description: 'creation nano timestamp', type: 'integer', minimum: 0 },
-  publicName: {
-    description: 'public name',
-    type: 'string'
-  },
-  pic: {
-    description: 'pic link on https',
-    type: 'string',
-    pattern: '(http(s?):)|([/|.|\\w|\\s])*\\.(?:jpg|gif|png)$'
-  },
-  status: {
-    description: '0 - not active, 1 - waiting , 2 - active, 3 - deregistered , 4 - blocked',
-    type: 'integer',
-    minimum: 0,
-    maximum: 5
-  },
-  email: { description: 'valid email', type: 'string', 'format': 'email' },
-  emailStatus: {
-    description: '0 - not active, 1 - waiting , 2 - confirmed',
-    type: 'integer',
-    minimum: 0,
-    maximum: 5
-  },
-  emailConfirmationCode: {
-    type: 'string',
-    description: 'emailConfirmationCode in format UUID v4',
-    pattern: '^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$'
-  },
-  salt: {
-    type: 'string',
-    description: 'salt in format UUID v4',
-    pattern: '^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$'
-  },
-  password: {
-    description: 'Minimum 6 characters at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number',
-    type: 'string',
-    pattern: '^[a-zA-Z0-9_#?!@$%^&*-]{6,30}$'
-  },
-  firstName: { type: 'string', 'minLength': 2, 'maxLength': 255 },
-  birth: { description: 'birth timestamp', type: 'integer', minimum: 0 },
-  lastName: { type: 'string', 'minLength': 2, 'maxLength': 255 }
-}
-
+var jsFields = require('./lib/JSchemaFields')
 var jsUserById = { properties: { id: jsFields.id }, required: ['id'] }
 var jsRes = { properties: {
   success: { type: 'string' },
@@ -56,17 +7,34 @@ var jsRes = { properties: {
   type: { type: 'string' },
   id: jsFields.id
 }}
-var jsRead = { properties: { id: jsFields.id, email: jsFields.email, publicName: jsFields.publicName, pic: jsFields.pic, status: jsFields.status } }
+var loginRes = { properties: {
+  success: { type: 'string' },
+  error: { type: 'string' },
+  method: { type: 'string' },
+  type: { type: 'string' },
+  token: { type: 'string' },
+  id: jsFields.id
+}}
+var jsRead = { properties: { id: jsFields.id, publicName: jsFields.publicName, pic: jsFields.pic, status: jsFields.status } }
+var jsReadPrivate = { properties: { id: jsFields.id, email: jsFields.email, emailStatus: jsFields.emailStatus, publicName: jsFields.publicName, pic: jsFields.pic, status: jsFields.status } }
 var jsQueryRes = { type: 'array', items: jsRead }
 
-module.exports = {
-  rpcOut: {
-  },
-  eventsIn: {
+var jsCanReq = { properties: { data: { type: 'object' } } }
+var jsCanRes = { properties: { success: { type: 'string' }, error: { type: 'string' } } }
 
+module.exports = {
+  rpcOut: { },
+  eventsIn: {
+    'getPermissions': {
+      method: 'getPermissions'
+    }
   },
   eventsOut: {
-
+    'getPermissions': {
+      multipleResponse: true,
+      requestSchema: jsCanReq,
+      responseSchema: jsCanRes
+    }
   },
   methods: {
     'create': {
@@ -74,6 +42,12 @@ module.exports = {
       responseType: 'response',
       requestSchema: { properties: { email: jsFields.email }, required: [ 'email' ] },
       responseSchema: jsRes
+    },
+    'getPermissions': {
+      public: false,
+      responseType: 'response',
+      requestSchema: { properties: { } },
+      responseSchema: { properties: { permissions: jsFields.permissions } }
     },
     'readEmailConfirmationCode': {
       public: false,
@@ -95,6 +69,12 @@ module.exports = {
       responseType: 'response',
       requestSchema: jsUserById,
       responseSchema: jsRead
+    },
+    'readPrivate': {
+      public: true,
+      responseType: 'response',
+      requestSchema: jsUserById,
+      responseSchema: jsReadPrivate
     },
     'updatePublicName': {
       public: true,
@@ -119,6 +99,15 @@ module.exports = {
       responseType: 'response',
       requestSchema: {
         properties: { id: jsFields.id, password: jsFields.password, confirmPassword: jsFields.password, oldPassword: jsFields.password },
+        required: [ 'id', 'password', 'confirmPassword', 'oldPassword' ]
+      },
+      responseSchema: jsRes
+    },
+    'assignPassword': {
+      public: true,
+      responseType: 'response',
+      requestSchema: {
+        properties: { id: jsFields.id, password: jsFields.password, confirmPassword: jsFields.password },
         required: [ 'id', 'password', 'confirmPassword' ]
       },
       responseSchema: jsRes
@@ -130,7 +119,7 @@ module.exports = {
         properties: { email: jsFields.email, password: jsFields.password },
         required: [ 'email', 'password' ]
       },
-      responseSchema: jsRes
+      responseSchema: loginRes
     },
     'updatePersonalInfo': {
       public: true,

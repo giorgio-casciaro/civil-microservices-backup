@@ -18,7 +18,7 @@ var consoleResume = function () {
   process.stderr.write = stderrSaved
 }
 
-module.exports = function getTest (name) {
+module.exports = function getTest (name, testVerbose) {
   var testNumber = 0
   var errors = 0
   var success = 0
@@ -34,17 +34,22 @@ module.exports = function getTest (name) {
   }
   consoleMute()
   return {
-    test: function (actual, expected, message = 'test', comparation = (a, e) => a) {
+    test: function (actual, expected, message = 'test', comparation = (a, e) => a, verbose = testVerbose) {
       if (testNumber === 0) startFunc()
       testNumber++
       consoleResume()
       try {
         if (errors < maxErrors) {
-          //if (JSONcomparation(actual, expected) !== expected) throw new Error(message)
-          assert.deepEqual(comparation(actual,expected), expected, 'deepEqual')
+          // if (JSONcomparation(actual, expected) !== expected) throw new Error(message)
+          assert.deepEqual(comparation(actual, expected), expected, 'deepEqual')
           success++
           console.info(chalk.green(`- ${testNumber} SUCCESS ${message}`))
-          console.info(chalk.grey(JSON.stringify(actual,null,4)))
+          if (verbose)console.info(chalk.grey(JSON.stringify(actual, null, 4)))
+          if (verbose > 1) {
+            console.info()
+            console.info(chalk.white.bgBlue('  CONSOLE LOGS  '))
+            console.info(chalk.grey(stdoutData.join('\n\n')))
+          }
         } else {
           if (skipped === 0) {
             console.info()
@@ -55,7 +60,7 @@ module.exports = function getTest (name) {
       } catch (error) {
         errors++
         console.info(chalk.red(`x ${testNumber} ERROR ${message}`))
-        console.info(chalk.grey(JSON.stringify(actual,null,4)))
+        console.info(chalk.grey(JSON.stringify(actual, null, 4)))
         console.info({comparation: comparation(actual, expected), expected})
         console.info()
         console.info(chalk.white.bgRed('  CONSOLE ERRORS  '))

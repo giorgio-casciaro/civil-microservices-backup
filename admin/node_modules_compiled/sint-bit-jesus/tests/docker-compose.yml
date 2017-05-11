@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+
+   net1:
+     image: node:7-alpine
+     #entrypoint: sh -c "ifconfig -a && node /service/service/tests/base.test"
+     #entrypoint: sh -c "cd /service/ && npm start"
+     entrypoint: sh -c "cd /service/ && npm run test_compose_net1"
+     ports:
+       - "9229"
+       - "5858"
+     environment:
+       NODE_ENV: development
+       netHost: net1
+     volumes:
+        - ../:/service/
+        - ./testSocket:/testSocket
+     networks:
+       app_net:
+         ipv4_address: 172.16.238.10
+
+
+   net2:
+     image: node:7-alpine
+     #entrypoint: sh -c "ifconfig -a && node /service/service/tests/base.test"
+     #entrypoint: sh -c "cd /service/ && npm start"
+     entrypoint: sh -c "cd /service/ && npm run test_compose_net2"
+     ports:
+       - "9229"
+     environment:
+       - NODE_DEBUG=true
+       - netHost=net2
+     volumes:
+        - ../:/service/
+        - ./testSocket:/testSocket
+     networks:
+       app_net:
+         ipv4_address: 172.16.238.11
+
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 172.16.238.0/24

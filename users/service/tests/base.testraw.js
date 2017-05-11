@@ -9,10 +9,14 @@ var kvDb = require('../lib/kvDb')
 const Aerospike = require('aerospike')
 function getKvDbClient (config) {
   return new Promise((resolve, reject) => {
-    Aerospike.connect(config, (error, client) => {
-      if (error) return reject(error)
-      resolve(client)
-    })
+    try {
+      Aerospike.connect(config, (error, client) => {
+        if (error) return reject(error)
+        resolve(client)
+      })
+    } catch (error) {
+      reject(error)
+    }
   })
 }
 function getAerospikeClient (config) {
@@ -31,16 +35,16 @@ function getAerospikeClient (config) {
 }
 
 var startTest = async function () {
-  // TEST MODIFICATIONS
   process.env.aerospikeSet = 'users_test_set'
   process.env.aerospikeMutationsSet = 'users_test_set'
   process.env.aerospikeViewsSet = 'users_test_set'
   process.env.consoleDebug = true
 
+  await getAerospikeClient(require('../config').aerospike)
+
   var CONFIG = require('../config')
   var SERVICE = require('../start')
 
-  // PREPARE DB
   var kvDbClient = await kvDb.getClient(CONFIG.aerospike)
   // await kvDb.removeSet(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.set })
   // await kvDb.removeSet(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.mutationsSet })
@@ -49,7 +53,7 @@ var startTest = async function () {
   // PREPARE DB
   var netClient = SERVICE.netClient
   var microRandom = Math.floor(Math.random() * 100000)
-  var mainTest = require('../lib/microTest')('test Microservice local methods and db conenctions')
+  var mainTest = require('../lib/microTest')('test Microservice local methods and db conenctions', 0)
   var microTest = mainTest.test
   var finishTest = mainTest.finish
   await new Promise((resolve) => setTimeout(resolve, 1000))
@@ -59,6 +63,7 @@ var startTest = async function () {
     pic: `http://test.com/pic/pic.jpg`,
     email: `test${microRandom}@test${microRandom}.com`,
     password: `t$@es${microRandom}Tt$te1st_com`,
+    newPassword: `new_t$@es${microRandom}Tt$te1st_com`,
     firstName: `t$@es${microRandom}Tt$te1st_com`,
     lastName: `t$@es${microRandom}Tt$te1st_com`
   }
@@ -99,9 +104,17 @@ var startTest = async function () {
   var confirmEmail = await netClient.testLocalMethod('confirmEmail', { id: create.id, emailConfirmationCode: readEmailConfirmationCode.emailConfirmationCode }, basicMeta)
   microTest(confirmEmail, { success: 'Email confirmed' }, 'Email confirmed')
 
-  var read = await netClient.testLocalMethod('read', {id: create.id}, basicMeta)
-  microTest(read, {email: fields.email}, 'read', FILTER_BY_KEYS)
-  microTest(read, {emailConfirmationCode: 'undefined'}, 'read', TYPE_OF)
+  var assignPassword = await netClient.testLocalMethod('assignPassword', {id: create.id, password: fields.password, confirmPassword: fields.password}, basicMeta)
+  microTest(assignPassword, { success: 'string' }, 'assignPassword', TYPE_OF)
+
+  var login = await netClient.testLocalMethod('login', {email: fields.email, password: fields.password}, basicMeta)
+  microTest(login, { success: 'string', token: 'string' }, 'login', TYPE_OF, 2)
+
+  basicMeta.token = login.token
+
+  var readPrivate = await netClient.testLocalMethod('readPrivate', {id: create.id}, basicMeta)
+  microTest(readPrivate, {email: fields.email}, 'readPrivate', FILTER_BY_KEYS, 2)
+  microTest(readPrivate, {emailConfirmationCode: 'undefined'}, 'readPrivate', TYPE_OF)
 
   var updatePublicName = await netClient.testLocalMethod('updatePublicName', {id: create.id, publicName: fields.publicName}, basicMeta)
   microTest(updatePublicName, { success: 'string' }, 'updatePublicName', TYPE_OF)
@@ -113,21 +126,18 @@ var startTest = async function () {
   var readPic = await netClient.testLocalMethod('read', {id: create.id}, basicMeta)
   microTest(readPic, {pic: fields.pic}, 'readPic', FILTER_BY_KEYS)
 
-  var updatePassword = await netClient.testLocalMethod('updatePassword', {id: create.id, password: fields.password, confirmPassword: fields.password}, basicMeta)
-  microTest(updatePassword, { success: 'string' }, 'updatePassword', TYPE_OF)
-
-  var login = await netClient.testLocalMethod('login', {email: fields.email, password: fields.password}, basicMeta)
-  microTest(login, { success: 'string' }, 'login', TYPE_OF)
-
   var updatePersonalInfo = await netClient.testLocalMethod('updatePersonalInfo', {id: create.id, firstName: fields.firstName, lastName: fields.lastName, birth: fields.birth}, basicMeta)
   microTest(updatePersonalInfo, { success: 'string' }, 'updatePersonalInfo', TYPE_OF)
   var readPersonalInfo = await netClient.testLocalMethod('readPersonalInfo', {id: create.id}, basicMeta)
   microTest(readPersonalInfo, {firstName: fields.firstName}, 'readPersonalInfo', FILTER_BY_KEYS)
 
+  var updatePassword = await netClient.testLocalMethod('updatePassword', {id: create.id, password: fields.newPassword, confirmPassword: fields.newPassword, oldPassword: fields.password}, basicMeta)
+  microTest(updatePassword, { success: 'string' }, 'updatePassword', TYPE_OF)
+
   var remove = await netClient.testLocalMethod('remove', { id: create.id, status: 0 }, basicMeta)
   microTest(remove, {success: 'User removed'}, 'remove')
-  var readRemove = await netClient.testLocalMethod('read', {id: create.id }, basicMeta)
-  microTest(readRemove, { status: 0 }, 'readRemove', FILTER_BY_KEYS)
+  var readRemove = await netClient.testLocalMethod('read', { id: create.id }, basicMeta)
+  microTest(readRemove, { error: 'string' }, 'readRemove', TYPE_OF)
 
   var rpcCreateUserN = (n) => netClient.testLocalMethod('create', { email: n + '_' + fields.email }, basicMeta)
 
@@ -143,7 +153,7 @@ var startTest = async function () {
   var queryResponse = await netClient.testLocalMethod('queryByTimestamp', {from: testTimestamp1}, basicMeta)
   microTest(queryResponse, 6, 'queryResponse insert and query 6 items from testTimestamp1', COUNT)
   var queryResponse2 = await netClient.testLocalMethod('queryByTimestamp', {from: testTimestamp2}, basicMeta)
-  microTest(queryResponse2, 3, 'queryResponse insert and query 3 items  from testTimestamp2',COUNT)
+  microTest(queryResponse2, 3, 'queryResponse insert and query 3 items  from testTimestamp2', COUNT)
 
   finishTest()
   SERVICE.netServer.stop()
