@@ -5,16 +5,21 @@ module.exports = {
     serviceName: process.env.serviceName || 'users',
     schemaPath: path.join(__dirname, '../../sharedSchema/')
   },
-  smtp: {
-    host: process.env.netHost || '127.0.0.1'
+  publicUrl: process.env.publicUrl || 'http://127.0.0.1:18080/',
+  mailFrom: process.env.mailFrom || 'notifications@civilconnect.it',
+  smtp: process.env.smtpConfigJson ? JSON.parse(process.env.smtpConfigJson) : {
+    host: '127.0.0.1',
+    port: 1025,
+    secure: false,
+    debug: true
   },
   net: {
     'channels': {
       'httpPublic': {
-        'url': `${process.env.netHost || '127.0.0.1'}:${process.env.netHostHttpPublicPort || '10080'}`,
+        'url': `${process.env.netHost || '127.0.0.1'}:${process.env.netHostHttpPublicPort || '18080'}`,
         'cors': process.env.netCors || process.env.netHost || '127.0.0.1'
       },
-      'http': { 'url': `${process.env.netHost || '127.0.0.1'}:${process.env.netHostHttpPort || '10081'}` }
+      'http': { 'url': `${process.env.netHost || '127.0.0.1'}:${process.env.netHostHttpPort || '18081'}` }
     }
   },
   jwt: {

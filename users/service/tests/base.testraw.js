@@ -93,7 +93,7 @@ var startTest = async function () {
   microTest(createWrongMail, {error: 'string'}, 'wrong request: email not valid', TYPE_OF)
 
   var create = await netClient.testLocalMethod('create', { email: fields.email }, basicMeta)
-  microTest(create, { success: 'User created' }, 'User Create', FILTER_BY_KEYS)
+  microTest(create, { success: 'User created' }, 'User Create', FILTER_BY_KEYS, 2)
 
   var wrongRecreate = await netClient.testLocalMethod('create', { email: fields.email }, basicMeta)
   microTest(wrongRecreate, { error: 'User exists' }, 'wrong request: User exists', FILTER_BY_KEYS)
@@ -108,12 +108,12 @@ var startTest = async function () {
   microTest(assignPassword, { success: 'string' }, 'assignPassword', TYPE_OF)
 
   var login = await netClient.testLocalMethod('login', {email: fields.email, password: fields.password}, basicMeta)
-  microTest(login, { success: 'string', token: 'string' }, 'login', TYPE_OF, 2)
+  microTest(login, { success: 'string', token: 'string' }, 'login', TYPE_OF)
 
   basicMeta.token = login.token
 
   var readPrivate = await netClient.testLocalMethod('readPrivate', {id: create.id}, basicMeta)
-  microTest(readPrivate, {email: fields.email}, 'readPrivate', FILTER_BY_KEYS, 2)
+  microTest(readPrivate, {email: fields.email}, 'readPrivate', FILTER_BY_KEYS)
   microTest(readPrivate, {emailConfirmationCode: 'undefined'}, 'readPrivate', TYPE_OF)
 
   var updatePublicName = await netClient.testLocalMethod('updatePublicName', {id: create.id, publicName: fields.publicName}, basicMeta)

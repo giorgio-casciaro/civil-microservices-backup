@@ -1,0 +1,47 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Benvenuto in CivilConnect - conferma la tua mail </title>
+  <style media="all" type="text/css">{{$styles}}</style>
+</head>
+<body>
+  <table cellspacing="0" cellpadding="0" border="0" width="100%">
+    <tr>
+      <td bgcolor="#FFFFFF" align="center">
+        <table width="650px" cellspacing="0" cellpadding="3" class="container">
+          <tr>
+            <td>Grazie per esserti iscritto, per completare l'iscrizione conferma la mail: </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF" align="center">
+        <table width="650px" cellspacing="0" cellpadding="3" class="container">
+          <tr>
+            <td>
+              email: ${email}<br>
+              emailConfirmationCode: ${emailConfirmationCode}<br>
+             userId: ${id}<br>
+             publicUrl: ${publicUrl}confirmEmail?id=${id}&emailConfirmationCode=${emailConfirmationCode}<br>
+             <a href="${publicUrl}confirmEmail?id=${id}&emailConfirmationCode=${emailConfirmationCode}">Conferma mail</a>
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF" align="center">
+        <table width="650px" cellspacing="0" cellpadding="3" class="container">
+          <tr>
+            <td>
+              www.CivilConnect.it
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>

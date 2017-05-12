@@ -50,7 +50,7 @@ module.exports = {
       responseSchema: { properties: { permissions: jsFields.permissions } }
     },
     'readEmailConfirmationCode': {
-      public: false,
+      public: (process.env.NODE_ENV === 'development'),
       responseType: 'response',
       requestSchema: jsUserById,
       responseSchema: { properties: { emailConfirmationCode: jsFields.emailConfirmationCode } }

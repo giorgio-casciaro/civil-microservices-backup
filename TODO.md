@@ -16,6 +16,12 @@
 - rendere publica cartella email con listing su nginx
 - le chiamate all'api dovrebbero essere registrate e messe in una queue (se la connessione non è disponibile vengono reinviate)
 - smtp -> testmode -> se true non invia smtp e permette getEmailCode
+- rivedere users getPermissions
+- jesus
+  - http public deve prendere get vars
+  - filtrare richieste non presenti in schema
+  - passare variabile get methods/schema a canali in ascolto
+
 ## DOCKERS
 - command al post di entrypoint
 -

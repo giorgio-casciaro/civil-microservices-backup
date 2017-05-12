@@ -13,11 +13,28 @@ const Aerospike = require('aerospike')
 const Key = Aerospike.Key
 var kvDb = require('./lib/kvDb')
 
+const nodemailer = require('nodemailer')
+const vm = require('vm')
+const fs = require('fs')
+
 var service = async function getMethods (CONSOLE, netClient, CONFIG = require('./config')) {
   try {
     CONSOLE.debug('CONFIG', CONFIG)
     var kvDbClient = await kvDb.getClient(CONFIG.aerospike)
-
+    // SMTP
+    var smtpTrans = nodemailer.createTransport(require('./config').smtp)
+    const getMailTemplate = async (template, sandbox = { title: 'title', header: 'header', body: 'body', footer: 'footer' }, ext = '.html') => {
+      var populate = (content) => vm.runInNewContext('returnVar=`' + content.replace(new RegExp('`', 'g'), '\\`') + '`', sandbox)
+      var result = await new Promise((resolve, reject) => fs.readFile(path.join(__dirname, '/emails/', template + ext), 'utf8', (err, data) => err ? reject(err) : resolve(populate(data))))
+      return result
+    }
+    const sendMail = async (template = 'userCreated', mailOptions, mailContents) => {
+      mailOptions.html = await getMailTemplate(template, mailContents, '.html')
+      mailOptions.txt = await getMailTemplate(template, mailContents, '.txt')
+      CONSOLE.log('sendMail', mailOptions)
+      return await new Promise((resolve, reject) => smtpTrans.sendMail(mailOptions, (err, data) => err ? reject(err) : resolve(data)))
+    }
+    // MUTATIONS
     var mutationsPack = require('sint-bit-cqrs/mutations')({ mutationsPath: path.join(__dirname, '/mutations') })
 
     const mutate = async function (args) {
@@ -31,6 +48,7 @@ var service = async function getMethods (CONSOLE, netClient, CONFIG = require('.
         throw new Error('problems during mutate ' + error)
       }
     }
+    // INIT
     var initStatus = false
     const init = async function () {
       try {
@@ -41,6 +59,7 @@ var service = async function getMethods (CONSOLE, netClient, CONFIG = require('.
         await kvDb.createIndex(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.set, bin: 'created', index: CONFIG.aerospike.set + '_created', datatype: Aerospike.indexDataType.NUMERIC })
       } catch (error) { throw new Error('problems during init') }
     }
+    // VIEWS
     const updateView = async function (id, mutations, isNew) {
       try {
         var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, id)
@@ -81,6 +100,7 @@ var service = async function getMethods (CONSOLE, netClient, CONFIG = require('.
       var mutation = await mutate({data: {status}, objId: id, mutation: 'updateStatus', meta})
       await updateView(id, [mutation])
     }
+    // PERMISSIONS
     const createToken = async (data, meta) => {
       var permissions = await netClient.emit('getPermissions', data, meta)
       permissions = permissions.reduce((a, b) => a.concat(b.permissions), [])
@@ -126,7 +146,7 @@ var service = async function getMethods (CONSOLE, netClient, CONFIG = require('.
           }
         })
 
-        console.log('PERMISSIONS levelPermissionsValues', levelPermissionsValues,levelPermissions)
+        console.log('PERMISSIONS levelPermissionsValues', levelPermissionsValues, levelPermissions)
         // 0(one or more) stop loop and deny permission,
         if (levelPermissionsValues.indexOf(0) !== -1) {
           havePermission = false
@@ -164,6 +184,8 @@ var service = async function getMethods (CONSOLE, netClient, CONFIG = require('.
         reqData.id = id
         reqData.emailConfirmationCode = uuid()
         var mutation = await mutate({data: reqData, objId: id, mutation: 'create', meta})
+        var sendMailResult = await sendMail('userCreated', {to: reqData.email, from: CONFIG.mailFrom, subject: 'Benvenuto in CivilConnect - conferma la mail'}, Object.assign({publicUrl: CONFIG.publicUrl}, reqData))
+        CONSOLE.log('sendMailResult', sendMailResult)
         await updateView(id, [mutation], true)
         return {success: `User created`, id}
       },

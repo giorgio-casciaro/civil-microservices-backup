@@ -23,11 +23,18 @@ services:
           ipv4_address: 172.16.100.10
 
    smtp:
-     image: digiplant/fake-smtp
-     # ports:
-     #   - "1025:25"
+     image: mailhog/mailhog
+     ports:
+       - "1025:1025"
+       - "8025:8025"
      volumes:
-       - ./email:/var/email
+       - ./email:/email
+    #  environment:
+    #    MH_STORAGE: maildir
+    #    MH_MAILDIR_PATH: /email
+     networks:
+       civilmicroservices:
+          ipv4_address: 172.16.100.09
 
    aerospike-tools:
      stdin_open: true
@@ -89,6 +96,7 @@ services:
        serviceName: test
        elasticsearchHost: 172.16.100.11:9200
        aerospikeHosts: 172.16.100.10:3000
+       NODE_ENV: development
      volumes:
         - ../sharedSchema/:/sharedSchema/
         - ./test/service:/service/service
@@ -112,6 +120,7 @@ services:
        netHost: 172.16.100.13
        elasticsearchHost: 172.16.100.11:9200
        aerospikeHosts: 172.16.100.10:3000
+       NODE_ENV: development
      volumes:
         - ../sharedSchema/:/sharedSchema/
         - ./test/service:/service/service
@@ -147,11 +156,13 @@ services:
       #  - "9229"
      environment:
        serviceName: users
-       smtpHost: smtp:25
        netHost: 172.16.100.15
+       netHostHttpPublicPort: 10080
        netCors: http://172.16.100.14:80,http://172.16.100.14,http://localhost:8080,http://127.0.0.1:8080
        elasticsearchHost: 172.16.100.11:9200
        aerospikeHosts: aerospike:3000
+       NODE_ENV: development
+       smtpConfigJson: '{ "host": "smtp", "port": 25, "secure": false }'
      volumes:
         - ../sharedSchema/:/sharedSchema/
         - ./users/service:/service/service
@@ -174,9 +185,11 @@ services:
      environment:
        serviceName: admin
        netHost: 172.16.100.16
+       netHostHttpPublicPort: 10080
        netCors: http://172.16.100.14:80,http://172.16.100.14,http://localhost:8080,http://127.0.0.1:8080
        elasticsearchHost: 172.16.100.11:9200
        aerospikeHosts: 172.16.100.10:3000
+       NODE_ENV: development
      volumes:
         - ../sharedSchema/:/sharedSchema/
         - ./admin/service:/service/service
@@ -187,7 +200,7 @@ services:
         - ../cqrs/:/service/node_modules/sint-bit-cqrs/
      networks:
        civilmicroservices:
-          ipv4_address: 172.16.100.16
+         ipv4_address: 172.16.100.16
 
 networks:
   civilmicroservices:
@@ -195,5 +208,4 @@ networks:
     ipam:
       driver: default
       config:
-      -
-        subnet: 172.16.100.0/24
+      - subnet: 172.16.100.0/24

@@ -34,7 +34,7 @@ var CONFIG = {
 }
 var netClient = jesusClient(CONFIG)
 var netServer = jesusServer(CONFIG)
-
+CONSOLE.log('CONFIG', CONFIG)
 netServer.start()
 module.exports = {
   CONFIG,
