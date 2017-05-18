@@ -5,7 +5,8 @@ module.exports = {
     serviceName: process.env.serviceName || 'users',
     schemaPath: path.join(__dirname, '../../sharedSchema/')
   },
-  publicUrl: process.env.publicUrl || 'http://127.0.0.1:18080/',
+  confirmEmailUrl: process.env.confirmEmailUrl || 'http://127.0.0.1:18080/#/confirmEmailUrl',
+  sendEmails: process.env.sendEmails || true,
   mailFrom: process.env.mailFrom || 'notifications@civilconnect.it',
   smtp: process.env.smtpConfigJson ? JSON.parse(process.env.smtpConfigJson) : {
     host: '127.0.0.1',
@@ -24,6 +25,7 @@ module.exports = {
   },
   jwt: {
     // 'passphrase': process.env.jwtPassphrase || 'CJhbGciOiJIUzI1NiJ9eyJ0eXAiOiJKV1QiL',
+    'path': path.join(__dirname, './permissions/'),
     'privateCert': process.env.jwtPrivateCert || fs.readFileSync(path.join(__dirname, './server.key')),
     'publicCert': process.env.jwtPublicCert || fs.readFileSync(path.join(__dirname, './server.cert'))
   },
@@ -33,6 +35,8 @@ module.exports = {
     set: process.env.aerospikeSet || 'test',
     mutationsSet: process.env.aerospikeMutationsSet || 'mutationsTest',
     viewsSet: process.env.aerospikeViewsSet || 'viewsTest',
-    namespace: process.env.aerospikeNamespace || 'civilconnect' },
+    namespace: process.env.aerospikeNamespace || 'civilconnect',
+    policies: { timeout: 10000 }
+  },
   console: { error: process.env.consoleError || true, debug: process.env.consoleDebug || true, log: process.env.consoleLog || true, warn: process.env.consoleWarn || true }
 }

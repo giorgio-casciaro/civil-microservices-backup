@@ -1,34 +1,36 @@
 <template>
 <section class="Account">
   <header>
-    <h3>Account</h3>
+    <h3 v-html="strTitle" :title="strDescription"></h3>
   </header>
-  <div class="profile container">
-    <div class="pic"></div>
-    <h4 class="pic">Marco De Masi</h4>
-    <p>Segui <a>5</a> mappe | Gestisci <a>2</a> mappe</p>
+  <div v-if="$store.state.users.logged">
+    <User></User>
+    <Logout @success="$store.commit('OPEN_VIEWPORT', 'main');$router.push('/')" ></Logout>
+    <a class="button" @click="$store.commit('OPEN_VIEWPORT', 'main');$router.push('/profile')">profilo</a>
+    <Notifications></Notifications>
   </div>
-  <div class="notifications container">
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Chi siamo</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Supporto</a></li>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
+  <div v-if="!$store.state.users.logged">
+    <RegisterOrLogin setShow="Login" @loginSuccess="$router.push('/dashboards/')" @registerSuccess="$router.push('/registration/ConfirmEmail/'+$store.state.users.email)"></RegisterOrLogin>
   </div>
 </section>
 </template>
 <script>
+import {translate} from '@/i18n'
+
+import RegisterOrLogin from '@/users/RegisterOrLogin'
+import User from '@/users/User'
+import Logout from '@/users/Logout'
+import Notifications from '@/users/Notifications'
+var t= function(string) { return translate( 'app', string) }
 export default {
   name: 'Account',
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+  components: { RegisterOrLogin,User,Notifications ,Logout},
+  computed: {
+    strTitle: function () { return t('Account') },
+    strDescription: function () { return t('Gestisci le tue informazioni personali') },
+  },
+  methods: {
+    t
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>

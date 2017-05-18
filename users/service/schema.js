@@ -1,28 +1,39 @@
 var jsFields = require('./lib/JSchemaFields')
 var jsUserById = { properties: { id: jsFields.id }, required: ['id'] }
-var jsRes = { properties: {
-  success: { type: 'string' },
-  error: { type: 'string' },
-  method: { type: 'string' },
-  type: { type: 'string' },
-  id: jsFields.id
-}}
+var jsRes = {
+  properties: {
+    success: { type: 'string' },
+    error: { type: 'string' },
+    data: { type: 'object' },
+    method: { type: 'string' },
+    type: { type: 'string' },
+    id: jsFields.id
+  },
+  'additionalProperties': true
+}
 var loginRes = { properties: {
   success: { type: 'string' },
   error: { type: 'string' },
   method: { type: 'string' },
   type: { type: 'string' },
   token: { type: 'string' },
-  id: jsFields.id
+  currentState: { type: 'object' }
 }}
 var jsRead = { properties: { id: jsFields.id, publicName: jsFields.publicName, pic: jsFields.pic, status: jsFields.status } }
 var jsReadPrivate = { properties: { id: jsFields.id, email: jsFields.email, emailStatus: jsFields.emailStatus, publicName: jsFields.publicName, pic: jsFields.pic, status: jsFields.status } }
 var jsQueryRes = { type: 'array', items: jsRead }
 
 var jsCanReq = { properties: { data: { type: 'object' } } }
+var toBool = (string, defaultVal = false) => {
+  if (typeof string === 'undefined') return defaultVal
+  if (typeof string === 'boolean') return string
+  if (typeof string === 'string' && string === 'true') return true
+  return false
+}
 var jsCanRes = { properties: { success: { type: 'string' }, error: { type: 'string' } } }
 
 module.exports = {
+  exportToPublicApi: toBool(process.env.exportToPublicApi, true),
   rpcOut: { },
   eventsIn: {
     'getPermissions': {
@@ -59,8 +70,8 @@ module.exports = {
       public: true,
       responseType: 'response',
       requestSchema: {
-        properties: { id: jsFields.id, emailConfirmationCode: jsFields.emailConfirmationCode },
-        required: [ 'id', 'emailConfirmationCode' ]
+        properties: { email: jsFields.email, emailConfirmationCode: jsFields.emailConfirmationCode },
+        required: [ 'email', 'emailConfirmationCode' ]
       },
       responseSchema: jsRes
     },
@@ -107,8 +118,8 @@ module.exports = {
       public: true,
       responseType: 'response',
       requestSchema: {
-        properties: { id: jsFields.id, password: jsFields.password, confirmPassword: jsFields.password },
-        required: [ 'id', 'password', 'confirmPassword' ]
+        properties: { email: jsFields.email, password: jsFields.password, confirmPassword: jsFields.password },
+        required: [ 'email', 'password', 'confirmPassword' ]
       },
       responseSchema: jsRes
     },
@@ -120,6 +131,15 @@ module.exports = {
         required: [ 'email', 'password' ]
       },
       responseSchema: loginRes
+    },
+    'logout': {
+      public: true,
+      responseType: 'response',
+      requestSchema: {
+        properties: { id: jsFields.id, email: jsFields.email },
+        required: [ 'email', 'id' ]
+      },
+      responseSchema: jsRes
     },
     'updatePersonalInfo': {
       public: true,
@@ -143,8 +163,8 @@ module.exports = {
       public: true,
       responseType: 'response',
       requestSchema: {
-        properties: { id: jsFields.id, status: jsFields.status },
-        required: [ 'id', 'status' ]
+        properties: { id: jsFields.id },
+        required: [ 'id' ]
       },
       responseSchema: jsRes
     },

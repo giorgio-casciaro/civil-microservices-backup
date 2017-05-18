@@ -32,7 +32,7 @@ module.exports = function getTest (name, testVerbose) {
     console.info(chalk.grey(`----------------------------------------------------------------`))
     console.info()
   }
-  consoleMute()
+  // consoleMute()
   return {
     test: function (actual, expected, message = 'test', comparation = (a, e) => a, verbose = testVerbose) {
       if (testNumber === 0) startFunc()

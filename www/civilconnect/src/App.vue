@@ -3,19 +3,21 @@
   <div class="main viewportView" v-bind:class="'viewport_'+$store.state.viewport">
     <header>
       <div class="left">
-        <a id="menuBtn" class="menu button" v-on:click="openCloseViewport('menu')">Menu</a>
+        <a id="menuBtn" class="menu button" v-on:click="$store.commit('OPEN_VIEWPORT', 'menu')">Menu</a>
       </div>
       <div class="center">
         <h1>Civil Connect</h1>
-        <img src="./assets/CivilStyle/Images/LogoText.png" v-on:click="openCloseViewport('main')">
+        <a href="#/"><img src="./assets/CivilStyle/Images/LogoText.png" v-on:click="$store.commit('OPEN_VIEWPORT', 'main')"></a>
       </div>
       <div class="right">
-        <a id="accountBtn" class="account button" v-on:click="openCloseViewport('map')">Map</a>
-        <a id="accountBtn" class="account button" v-on:click="openCloseViewport('account')">Account</a>
+        <a id="accountBtn" class="map button" v-on:click="$store.commit('OPEN_VIEWPORT', 'map')">Map</a>
+        <a id="accountBtn" class="account button" v-on:click="$store.commit('OPEN_VIEWPORT', 'account')">Account</a>
       </div>
     </header>
     <!-- <img src="./assets/logo.png"> -->
+    <transition name="slide-fade">
     <router-view></router-view>
+    </transition>
   </div>
   <router-view class="menu viewportView" name="menu" v-bind:class="$store.state.viewport==='menu' ? 'active' : 'notActive'"></router-view>
   <router-view class="map viewportView  hide" name="map" v-bind:class="$store.state.viewport==='map' ? 'active' : 'notActive'"></router-view>
@@ -27,15 +29,13 @@
 export default {
   name: 'app',
   methods: {
-    openCloseViewport(viewport) {
-      if (viewport === this.$store.state.viewport === 'main') return false;
-      if (viewport === this.$store.state.viewport) return this.$store.commit("APP_CLOSE_VIEWPORT", viewport)
-      this.$store.commit("APP_OPEN_VIEWPORT", viewport)
-    }
+
   }
 }
 </script>
 
+<style src="./assets/reset.css"></style>
+<style src="./assets/style.css"></style>
 <style scoped>
 /* HEADER */
 header {
@@ -101,36 +101,4 @@ header>.right {
   right: 90vw;
   left: -90vw;
 }
-</style>
-<style src="./assets/reset.css"></style>
-<style>
-
-/*TRANSITIONS*/
-a{ text-decoration: underline; cursor: pointer;}
-a.button{ position: relative;text-decoration: none;background-color: rgba(255,255,255,1); display: inline-block; border-radius: 3px; box-shadow: inset 0 0 1px rgba(0,0,0,0.5); padding: 0.3em 0.5em}
-a.button:hover{background-color: rgba(255,255,255,0.8)}
-
-/*TRANSITIONS*/
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0
-}
-
-/* Enter and leave animations can use different */
-/* durations and timing functions.              */
-.slide-fade-enter-active {
-  transition: all .3s ease;
-}
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active for <2.1.8 */ {
-  transform: translateX(10px);
-  opacity: 0;
-}
-
-
 </style>

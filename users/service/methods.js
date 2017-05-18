@@ -7,15 +7,17 @@ process.on('unhandledRejection', (err, p) => {
 
 const path = require('path')
 const uuid = require('uuid/v4')
-var jwt = require('jsonwebtoken')
 
 const Aerospike = require('aerospike')
 const Key = Aerospike.Key
-var kvDb = require('./lib/kvDb')
+const kvDb = require('./lib/kvDb')
 
 const nodemailer = require('nodemailer')
 const vm = require('vm')
 const fs = require('fs')
+
+const auth = require('./lib/auth')
+const ErrorWithData = require('./lib/ErrorWithData')
 
 var service = async function getMethods (CONSOLE, netClient, CONFIG = require('./config')) {
   try {
@@ -36,7 +38,6 @@ var service = async function getMethods (CONSOLE, netClient, CONFIG = require('.
     }
     // MUTATIONS
     var mutationsPack = require('sint-bit-cqrs/mutations')({ mutationsPath: path.join(__dirname, '/mutations') })
-
     const mutate = async function (args) {
       try {
         var mutation = mutationsPack.mutate(args)
@@ -49,17 +50,30 @@ var service = async function getMethods (CONSOLE, netClient, CONFIG = require('.
       }
     }
     // INIT
-    var initStatus = false
     const init = async function () {
       try {
-        if (initStatus) return false
-        initStatus = true
-        await kvDb.createIndex(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.set, bin: 'email', index: CONFIG.aerospike.set + '_email', datatype: Aerospike.indexDataType.STRING })
-        await kvDb.createIndex(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.set, bin: 'updated', index: CONFIG.aerospike.set + '_updated', datatype: Aerospike.indexDataType.NUMERIC })
-        await kvDb.createIndex(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.set, bin: 'created', index: CONFIG.aerospike.set + '_created', datatype: Aerospike.indexDataType.NUMERIC })
+        var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, 'dbInitStatus')
+        var dbInitStatus = await kvDb.get(kvDbClient, key)
+        if (!dbInitStatus) await kvDb.put(kvDbClient, key, {version: 0, timestamp: Date.now()})
+        CONSOLE.log('dbInitStatus', dbInitStatus)
+        if (dbInitStatus.version === 1) return true
+        if (dbInitStatus.version < 1) {
+          CONSOLE.log('dbInitStatus v1', dbInitStatus)
+          await kvDb.createIndex(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.set, bin: 'email', index: CONFIG.aerospike.set + '_email', datatype: Aerospike.indexDataType.STRING })
+          await kvDb.createIndex(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.set, bin: 'updated', index: CONFIG.aerospike.set + '_updated', datatype: Aerospike.indexDataType.NUMERIC })
+          await kvDb.createIndex(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.set, bin: 'created', index: CONFIG.aerospike.set + '_created', datatype: Aerospike.indexDataType.NUMERIC })
+        }
+        await kvDb.put(kvDbClient, key, {version: 1, timestamp: Date.now()})
       } catch (error) { throw new Error('problems during init') }
     }
     // VIEWS
+    // const updateRawView = async function (view) {
+    //   try {
+    //     var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, view.id)
+    //     await kvDb.put(kvDbClient, key, view)
+    //     return view
+    //   } catch (error) { throw new Error('problems during updateRawView ' + error) }
+    // }
     const updateView = async function (id, mutations, isNew) {
       try {
         var key = new Key(CONFIG.aerospike.namespace, CONFIG.aerospike.set, id)
@@ -100,71 +114,8 @@ var service = async function getMethods (CONSOLE, netClient, CONFIG = require('.
       var mutation = await mutate({data: {status}, objId: id, mutation: 'updateStatus', meta})
       await updateView(id, [mutation])
     }
-    // PERMISSIONS
-    const createToken = async (data, meta) => {
-      var permissions = await netClient.emit('getPermissions', data, meta)
-      permissions = permissions.reduce((a, b) => a.concat(b.permissions), [])
-      var tokenData = { permissions, exp: Math.floor(Date.now() / 1000) + (60 * 60) }
-      return await new Promise((resolve, reject) => {
-        jwt.sign(tokenData, CONFIG.jwt.privateCert, { algorithm: 'RS256' }, (err, token) => { if (err) reject(err); else resolve(token) })
-      })
-    }
-    const getToken = (token) => new Promise((resolve, reject) => {
-      jwt.verify(token, CONFIG.jwt.publicCert, (err, decoded) => { if (err) reject(err); else resolve(decoded) })
-    })
-    const userCan = async function (permission, meta) {
-      var tokenData = await getToken(meta.token)
-      var permissionsSorted = tokenData.permissions.sort((a, b) => b[0] - a[0])
-      var permissionsByLevel = Object.values(permissionsSorted.reduce((a, b) => {
-        if (!a[b[0]])a[b[0]] = []
-        a[b[0]].push(b.slice(1))
-        return a
-      }, {}))
 
-      var checkPermissionName = (permissionToCheck) => {
-        if (permissionToCheck === permission) return true
-        permissionToCheck = permissionToCheck.replace(new RegExp('([\\.\\\\\\+\\*\\?\\[\\^\\]\\$\\(\\)\\{\\}\\=\\!\\<\\>\\|\\:\\-])', 'g'), '\\$1')
-        permissionToCheck = permissionToCheck.replace(/\\\*/g, '(.*)').replace(/_/g, '.')
-        var check = RegExp('^' + permissionToCheck + '$', 'gi').test(permission)
-        return check
-      }
-      var havePermission = false
-      for (var levelPermissions of permissionsByLevel) {
-        var levelPermissionsValues = []
-        levelPermissions.forEach((sp) => {
-          var spName = sp[0]
-          if (checkPermissionName(spName)) {
-            var spValue
-            if (typeof sp[1] === 'number') {
-              spValue = sp[1]
-            } else if (typeof sp[1] === 'string') {
-              var spFunc = require('./permissions/' + sp[1])
-              var spArgs = sp[2]
-              spValue = spFunc(permission, meta, spArgs)
-            }
-            levelPermissionsValues.push(spValue)
-          }
-        })
-
-        console.log('PERMISSIONS levelPermissionsValues', levelPermissionsValues, levelPermissions)
-        // 0(one or more) stop loop and deny permission,
-        if (levelPermissionsValues.indexOf(0) !== -1) {
-          havePermission = false
-          break
-        }
-        // 2(one or more) stop loop and give permission,
-        if (levelPermissionsValues.indexOf(2) !== -1) {
-          havePermission = true
-          break
-        }
-        // 1(one or more) go to next loop
-        havePermission = true
-      }
-      console.log('PERMISSIONS havePermission', havePermission)
-      // var havePermission = (tokenData.permissions.indexOf(permission) < 0)
-      if (!havePermission) throw new Error('No permission')
-    }
-    init()
+    await init()
 
     return {
       async getPermissions (reqData, meta = {directCall: true}, getStream = null) {
@@ -184,10 +135,9 @@ var service = async function getMethods (CONSOLE, netClient, CONFIG = require('.
         reqData.id = id
         reqData.emailConfirmationCode = uuid()
         var mutation = await mutate({data: reqData, objId: id, mutation: 'create', meta})
-        var sendMailResult = await sendMail('userCreated', {to: reqData.email, from: CONFIG.mailFrom, subject: 'Benvenuto in CivilConnect - conferma la mail'}, Object.assign({publicUrl: CONFIG.publicUrl}, reqData))
-        CONSOLE.log('sendMailResult', sendMailResult)
+        await sendMail('userCreated', {to: reqData.email, from: CONFIG.mailFrom, subject: 'Benvenuto in CivilConnect - conferma la mail'}, Object.assign({CONFIG}, reqData))
         await updateView(id, [mutation], true)
-        return {success: `User created`, id}
+        return {success: `User created`, id, email: reqData.email}
       },
       async readEmailConfirmationCode (reqData, meta = {directCall: true}, getStream = null) {
         var id = reqData.id
@@ -195,17 +145,17 @@ var service = async function getMethods (CONSOLE, netClient, CONFIG = require('.
         return {emailConfirmationCode: currentState.emailConfirmationCode}
       },
       async confirmEmail (reqData, meta = {directCall: true}, getStream = null) {
-        var id = reqData.id
-        var currentState = await getView(id)
-        if (currentState.emailConfirmationCode !== reqData.emailConfirmationCode) throw new Error('emailConfirmationCode not valid')
+        var currentState = await getUserByMail(reqData.email, [0])
+        if (!currentState) throw new Error('email is confirmed or user is not registered')
+        if (currentState.emailConfirmationCode !== reqData.emailConfirmationCode) throw new Error('email confirmation code not valid')
+        var id = currentState.id
         var mutation = await mutate({ data: {}, objId: id, mutation: 'confirmEmail', meta })
         await updateView(id, [mutation])
-        if (currentState.status === 0) await updateStatus(id, 1, meta)
-        if (currentState.status === 1) await updateStatus(id, 2, meta)
-        return {success: `Email confirmed`}
+        await updateStatus(id, 1, meta)
+        return {success: `Email confirmed`, email: reqData.email}
       },
       async read (reqData, meta = {directCall: true}, getStream = null) {
-        await userCan('user.read', meta)
+        await auth.userCan('user.read', meta, CONFIG.jwt)
         var id = reqData.id
         var currentState = await getView(id, [2])
         if (!currentState) throw new Error('user not active')
@@ -213,28 +163,28 @@ var service = async function getMethods (CONSOLE, netClient, CONFIG = require('.
       },
       async readPrivate (reqData, meta = {directCall: true}, getStream = null) {
         var id = reqData.id
-        await userCan('user.private.read.' + id, meta)
+        await auth.userCan('user.private.read.' + id, meta, CONFIG.jwt)
         var currentState = await getView(id)
         if (!currentState) throw new Error('user not active')
         return currentState
       },
       async updatePublicName (reqData, meta = {directCall: true}, getStream = null) {
         var id = reqData.id
-        await userCan('user.write' + id, meta)
+        await auth.userCan('user.write' + id, meta, CONFIG.jwt)
         var mutation = await mutate({data: reqData, objId: id, mutation: 'updatePublicName', meta})
         await updateView(id, [mutation])
         return {success: `Public Name updated`}
       },
       async updatePic (reqData, meta = {directCall: true}, getStream = null) {
         var id = reqData.id
-        await userCan('user.write.' + id, meta)
+        await auth.userCan('user.write.' + id, meta, CONFIG.jwt)
         var mutation = await mutate({data: reqData, objId: id, mutation: 'updatePic', meta})
         await updateView(id, [mutation])
         return {success: `Pic updated`}
       },
       async updatePassword (reqData, meta = {directCall: true}, getStream = null) {
         var id = reqData.id
-        await userCan('user.private.write.' + id, meta)
+        await auth.userCan('user.private.write.' + id, meta, CONFIG.jwt)
         if (reqData.password !== reqData.confirmPassword) throw new Error('Confirm Password not equal')
         var currentState = await getView(id, [2])
         if (!currentState) throw new Error('user not active')
@@ -246,46 +196,56 @@ var service = async function getMethods (CONSOLE, netClient, CONFIG = require('.
         return {success: `Password updated`}
       },
       async assignPassword (reqData, meta = {directCall: true}, getStream = null) {
-        var id = reqData.id
         if (reqData.password !== reqData.confirmPassword) throw new Error('Confirm Password not equal')
-        var currentState = await getView(id, [0, 1])
-        if (!currentState) throw new Error('user not active')
+        var currentState = await getUserByMail(reqData.email, [1])
+        if (!currentState) throw new Error('email is not confirmed or user is not registered')
+        var id = currentState.id
         var data = {password: require('bcrypt').hashSync(reqData.password, 10)}
         var mutation = await mutate({data, objId: id, mutation: 'assignPassword', meta})
         await updateView(id, [mutation])
-        if (currentState.status === 0) await updateStatus(id, 1, meta)
-        if (currentState.status === 1) await updateStatus(id, 2, meta)
+        await updateStatus(id, 2, meta)
         return {success: `Password assigned`}
       },
       async login (reqData, meta = {directCall: true}, getStream = null) {
         var bcrypt = require('bcrypt')
         var currentState = await getUserByMail(reqData.email, [2])
-        if (!currentState) throw new Error('Login error')
-        if (!bcrypt.compareSync(reqData.password, currentState.password)) throw new Error('Login error')
+        if (!currentState) throw new Error('Wrong username or password')
+        if (!bcrypt.compareSync(reqData.password, currentState.password)) throw new Error('Wrong username or password')
         delete reqData.password
-        var token = await createToken({id: currentState.id}, meta)
-        return {success: `Login`, id: currentState.id, token}
+        var id = currentState.id
+        var permissions = await netClient.emit('getPermissions', {id}, meta)
+        var token = await auth.createToken(permissions, meta, CONFIG.jwt)
+        var mutation = await mutate({data: {token}, objId: id, mutation: 'login', meta})
+        updateView(id, [mutation])
+        delete currentState.password
+        return {success: `Login`, token, currentState }
+      },
+      async logout (reqData, meta = {directCall: true}, getStream = null) {
+        var id = reqData.id
+        var currentState = await getView(id, [2])
+        if (currentState.email !== reqData.email) throw new Error('Problems durig logout')
+        return {success: `Logout`, id, email: reqData.email}
       },
       async updatePersonalInfo (reqData, meta = {directCall: true}, getStream = null) {
         var id = reqData.id
-        await userCan('user.write.' + id, meta)
+        await auth.userCan('user.write.' + id, meta, CONFIG.jwt)
         var mutation = await mutate({data: reqData, objId: id, mutation: 'updatePersonalInfo', meta})
         await updateView(id, [mutation])
         return {success: `Personal Info updated`}
       },
       async readPersonalInfo (reqData, meta = {directCall: true}, getStream = null) {
         var id = reqData.id
-        await userCan('user.write.' + id, meta)
+        await auth.userCan('user.write.' + id, meta, CONFIG.jwt)
         var currentState = await getView(id)
         return currentState
       },
       async remove (reqData, meta = {directCall: true}, getStream = null) {
-        await userCan('user.write.' + reqData.id, meta)
+        await auth.userCan('user.write.' + reqData.id, meta, CONFIG.jwt)
         await updateStatus(reqData.id, 0, meta)
         return {success: `User removed`}
       },
       async queryByTimestamp (query = {}, meta = {directCall: true}, getStream = null) {
-        await userCan('user.read.query', meta)
+        await auth.userCan('user.read.query', meta, CONFIG.jwt)
         query = Object.assign({from: 0, to: 100000000000000}, query)
         var rawResults = await kvDb.query(kvDbClient, CONFIG.aerospike.namespace, CONFIG.aerospike.set, (dbQuery) => { dbQuery.where(Aerospike.filter.range('updated', query.from, query.to)) })
         var results = await Promise.all(rawResults.map((result) => getView(result.id, null, result)))

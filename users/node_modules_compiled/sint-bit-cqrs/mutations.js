@@ -49,7 +49,7 @@ module.exports = function getMutationsCqrsPackage ({serviceName = 'unknow', serv
     return {
       mutate: function mutate ({mutation, objId, data, meta}) {
         try {
-          checkRequired({objId, mutation}, PACKAGE)
+          checkRequired({meta, data, objId, mutation}, PACKAGE)
           var mutationsFunctions = getMutationsFunctions(mutationsPath)
           checkMutationFunction(mutation, mutationsFunctions)
           var lastMutationVersion = mutationsFunctions[mutation][0].mutationVersion

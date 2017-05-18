@@ -21,7 +21,7 @@ module.exports = {
     pattern: '(http(s?):)|([/|.|\\w|\\s])*\\.(?:jpg|gif|png)$'
   },
   status: {
-    description: '0 - not active, 1 - waiting , 2 - active, 3 - deregistered , 4 - blocked',
+    description: '0 - waiting confirmation, 1 - waiting password , 2 - active, 3 - not active',
     type: 'integer',
     minimum: 0,
     maximum: 5

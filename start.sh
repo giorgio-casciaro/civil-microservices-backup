@@ -20,9 +20,22 @@ sudo sysctl -w vm.max_map_count=262144
 # docker run  --name elas -p 9200:9200 -p 9300:9300 itzg/elasticsearch:latest
 docker-compose up -d aerospike
 docker-compose up -d elasticsearch
-docker-compose up -d admin
 docker-compose up -d smtp
-docker-compose up -d www
+sleep 10
+docker-compose up -d app
+docker-compose up -d users
+docker-compose up -d  www
+while true; do sleep 60; wget -q http://127.0.0.1:10080/civil-connect/app/getPublicApiSchema -O ./www/civilconnect/src/api.schema.json; done &
+xdg-open http://127.0.0.1:10080/admin/ &
+xdg-open http://127.0.0.1:10080/ &
+cd www/civilconnect
+npm run dev
+cd ../..
+
+# docker-compose up  users
+# docker-compose run www
+# docker-compose up -d app
 # docker-compose run users
-# docker-compose run users --entrypoint "sh -c \"cd /service/ && npm run watch_test\""
+# docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_test\"" users
+# docker-compose run --entrypoint "sh " www
 # docker-compose up aerospike-amc  &

@@ -39,13 +39,14 @@ var startTest = async function () {
   process.env.aerospikeMutationsSet = 'users_test_set'
   process.env.aerospikeViewsSet = 'users_test_set'
   process.env.consoleDebug = true
+  if (process.env.NODE_ENV === 'production')process.env.sendEmails = false
 
   await getAerospikeClient(require('../config').aerospike)
 
-  var CONFIG = require('../config')
   var SERVICE = require('../start')
 
-  var kvDbClient = await kvDb.getClient(CONFIG.aerospike)
+  // var CONFIG = require('../config')
+  // var kvDbClient = await kvDb.getClient(CONFIG.aerospike)
   // await kvDb.removeSet(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.set })
   // await kvDb.removeSet(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.mutationsSet })
   // await kvDb.removeSet(kvDbClient, { ns: CONFIG.aerospike.namespace, set: CONFIG.aerospike.viewsSet })
@@ -90,10 +91,10 @@ var startTest = async function () {
   const COUNT = (actual, expected) => actual.length
 
   var createWrongMail = await netClient.testLocalMethod('create', { email: `${microRandom}` }, basicMeta)
-  microTest(createWrongMail, {error: 'string'}, 'wrong request: email not valid', TYPE_OF)
+  microTest(createWrongMail, {error: 'string'}, 'wrong request: email not valid', TYPE_OF,2)
 
   var create = await netClient.testLocalMethod('create', { email: fields.email }, basicMeta)
-  microTest(create, { success: 'User created' }, 'User Create', FILTER_BY_KEYS, 2)
+  microTest(create, { success: 'User created' }, 'User Create', FILTER_BY_KEYS)
 
   var wrongRecreate = await netClient.testLocalMethod('create', { email: fields.email }, basicMeta)
   microTest(wrongRecreate, { error: 'User exists' }, 'wrong request: User exists', FILTER_BY_KEYS)
@@ -101,10 +102,10 @@ var startTest = async function () {
   var readEmailConfirmationCode = await netClient.testLocalMethod('readEmailConfirmationCode', {id: create.id}, basicMeta)
   microTest(readEmailConfirmationCode, {emailConfirmationCode: 'string'}, 'read Email Confirmation Code', TYPE_OF)
 
-  var confirmEmail = await netClient.testLocalMethod('confirmEmail', { id: create.id, emailConfirmationCode: readEmailConfirmationCode.emailConfirmationCode }, basicMeta)
-  microTest(confirmEmail, { success: 'Email confirmed' }, 'Email confirmed')
+  var confirmEmail = await netClient.testLocalMethod('confirmEmail', { email: fields.email, emailConfirmationCode: readEmailConfirmationCode.emailConfirmationCode }, basicMeta)
+  microTest(confirmEmail, { success: 'Email confirmed' }, 'Email confirmed', FILTER_BY_KEYS)
 
-  var assignPassword = await netClient.testLocalMethod('assignPassword', {id: create.id, password: fields.password, confirmPassword: fields.password}, basicMeta)
+  var assignPassword = await netClient.testLocalMethod('assignPassword', {email: fields.email, password: fields.password, confirmPassword: fields.password}, basicMeta)
   microTest(assignPassword, { success: 'string' }, 'assignPassword', TYPE_OF)
 
   var login = await netClient.testLocalMethod('login', {email: fields.email, password: fields.password}, basicMeta)

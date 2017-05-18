@@ -1,6 +1,5 @@
 var R = require('ramda')
 
-var co = require('co')
 var shorthash = require('shorthash').unique
 // var path = require('path')
 // var fs = require('fs')
@@ -14,19 +13,19 @@ module.exports = function getViewsCqrsPackage ({ serviceName = 'unknow', service
   var errorThrow = require('./utils').errorThrow(serviceName, serviceId, PACKAGE)
   // getObjMutations, applyMutations
   try {
-    checkRequired({ })
-    var updateView = co.wrap(function* ({objId, lastSnapshot = {timestamp: 0, state: {}}, loadMutations = true, addMutations = [],getObjMutations}) {
+    var updateView = async function ({objId, lastSnapshot = {timestamp: 0, state: {}}, loadMutations = true, addMutations = [], getObjMutations,applyMutations}) {
       try {
+        checkRequired({getObjMutations,applyMutations})
         // COLLECT MUTATIONS AND UPDATE VIEW
         CONSOLE.debug('updateView', {objId, lastSnapshot, loadMutations, addMutations})
         var mutations = []
-        if (loadMutations)mutations = yield getObjMutations({objId, minTimestamp: lastSnapshot.timestamp})
-        CONSOLE.debug('loaded Mutations', {mutations })
+        if (loadMutations)mutations = await getObjMutations({objId, minTimestamp: lastSnapshot.timestamp})
+        CONSOLE.debug('loaded Mutations', { mutations })
         mutations = mutations.concat(addMutations)
-        CONSOLE.debug('total Mutations', {mutations })
+        CONSOLE.debug('total Mutations', { mutations })
         mutations = R.uniqBy(R.prop('id'), mutations)
-        CONSOLE.debug('filtered Mutations', {mutations })
-        var updatedView = yield applyMutations({state: lastSnapshot.state, mutations})
+        CONSOLE.debug('filtered Mutations', { mutations })
+        var updatedView = await applyMutations({ state: lastSnapshot.state, mutations })
 
         // VIEW META DATA _view
         if (updatedView._viewBuilded) delete updatedView._viewBuilded
@@ -44,7 +43,7 @@ module.exports = function getViewsCqrsPackage ({ serviceName = 'unknow', service
         CONSOLE.error(error)
         throw new Error(PACKAGE + ` updateView`)
       }
-    })
+    }
     return {
       refreshViews: function refreshViews ({objIds, loadMutations, addMutations }) {
         CONSOLE.debug('refreshsViews', {objIds, addMutations })
