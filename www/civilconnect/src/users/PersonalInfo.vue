@@ -28,9 +28,9 @@ export default {
     return {
       form:{
         id: this.$store.state.users.id,
-        firstName: '',
-        lastName: '',
-        birth: undefined
+        firstName: this.$store.state.users.firstName||undefined,
+        lastName: this.$store.state.users.lastName||undefined,
+        birth: this.$store.state.users.birth||undefined
       },
       str:{
         firstName: t( 'Nome'),
@@ -66,8 +66,8 @@ export default {
     },
     succ (body) {
       this.waiting=false
-      this.$store.commit('users/REGISTERED', body)
-      this.success = t( 'Password Assegnata')
+      this.$store.dispatch('users/update', {mutation:'PERSONAL_INFO_UPDATED',payload:this.form})
+      this.success = t( 'Informazioni personali aggiornate')
       setTimeout(()=>this.$emit("success"),2000)
     }
   }

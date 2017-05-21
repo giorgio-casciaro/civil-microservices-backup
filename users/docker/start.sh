@@ -1,7 +1,7 @@
 #!/bin/bash
 #set -x
 MICROSERVICE_ID="civil-microservices-users";
-MICROSERVICE_DOCKER_IMAGE_NAME="giorgiocasciaro/$MICROSERVICE_ID:v1";
+MICROSERVICE_DOCKER_IMAGE_NAME="giorgiocasciaro/civil-microservices-users:v1";
 
 # cd docker
 docker build --tag $MICROSERVICE_ID -t $MICROSERVICE_DOCKER_IMAGE_NAME  -f "./Dockerfile" ..
@@ -12,4 +12,4 @@ docker rm $MICROSERVICE_ID
 echo "docker exec -i -t --user $MICROSERVICE_USER $MICROSERVICE_ID /bin/bash "
 echo "docker push $MICROSERVICE_DOCKER_IMAGE_NAME "
 
-docker run -it --net="host" --name $MICROSERVICE_ID $MICROSERVICE_DOCKER_IMAGE_NAME
+# docker run -it --net="host" --name $MICROSERVICE_ID $MICROSERVICE_DOCKER_IMAGE_NAME

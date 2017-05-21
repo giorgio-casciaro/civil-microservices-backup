@@ -1,9 +1,9 @@
 <template>
-  <div @input="update()">
+  <span @input="update()">
     <input class="day" :disabled="disabled" :placeholder="str.d" type="number" min="1" max="31" v-model="d" />/
     <input class="month" :disabled="disabled" :placeholder="str.m" type="number" min="1" max="12" v-model="m" />/
     <input class="year" :disabled="disabled" :placeholder="str.y" type="number" min="1917" max="2017" v-model="y" />
-  </div>
+  </span>
 </template>
 
 <script type="text/javascript">

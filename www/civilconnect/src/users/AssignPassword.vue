@@ -64,6 +64,8 @@ export default {
       this.$store.commit('users/REGISTERED', body)
       this.success = t( 'Password Assegnata')
       setTimeout(()=>this.$emit("success"),2000)
+      //autologin
+      this.call('users','login',this.form,(body)=>this.$store.dispatch('users/login', body),(error)=>console.log(error))
     }
   }
 }

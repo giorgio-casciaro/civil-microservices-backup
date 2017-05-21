@@ -98,7 +98,7 @@ services:
        aerospikeHosts: 172.16.100.10:3000
        NODE_ENV: development
      volumes:
-        - ../sharedSchema/:/sharedSchema/
+        - ../FS/sharedSchema/:/sharedSchema/
         - ./test/service:/service/service
         - ./test/node_modules_compiled:/service/node_modules
         - ./test/package.json:/service/package.json
@@ -122,7 +122,7 @@ services:
        aerospikeHosts: 172.16.100.10:3000
        NODE_ENV: development
      volumes:
-        - ../sharedSchema/:/sharedSchema/
+        - ../FS/sharedSchema/:/sharedSchema/
         - ./test/service:/service/service
         - ./test/node_modules_compiled:/service/node_modules
         - ./test/package.json:/service/package.json
@@ -149,12 +149,13 @@ services:
           ipv4_address: 172.16.100.14
 
    users:
-     image: giorgiocasciaro/alpine-node-lua-aerospike:v1
+     image: giorgiocasciaro/civil-microservices-users:v1
     #  entrypoint: sh -c "cd /service/ && npm run watch_test"
-     entrypoint: sh -c "cd /service/ && npm start"
+     entrypoint: sh -c "cd /service/ && npm run watch_start"
     #  ports:
       #  - "9229"
      environment:
+       uploadPath: /uploads/
        confirmEmailUrl: http://localhost:8080/#/registration/ConfirmEmail/
        serviceName: users
        netHost: 172.16.100.15
@@ -166,7 +167,8 @@ services:
        sendEmails: 'true'
        smtpConfigJson: '{ "host": "smtp", "port": 1025, "secure": false }'
      volumes:
-        - ../sharedSchema/:/sharedSchema/
+        - ../FS/sharedSchema/:/sharedSchema/
+        - ../FS/users/:/uploads/
         - ./users/service:/service/service
         - ./users/node_modules_compiled:/service/node_modules
         - ./users/package.json:/service/package.json
@@ -193,7 +195,7 @@ services:
        aerospikeHosts: 172.16.100.10:3000
        NODE_ENV: development
      volumes:
-        - ../sharedSchema/:/sharedSchema/
+        - ../FS/sharedSchema/:/sharedSchema/
         - ./app/service:/service/service
         - ./app/node_modules_compiled:/service/node_modules
         - ./app/package.json:/service/package.json

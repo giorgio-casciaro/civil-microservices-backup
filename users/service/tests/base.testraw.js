@@ -57,17 +57,24 @@ var startTest = async function () {
   var mainTest = require('../lib/microTest')('test Microservice local methods and db conenctions', 0)
   var microTest = mainTest.test
   var finishTest = mainTest.finish
+
+  var fs = require('fs')
+  fs.createReadStream(path.join(__dirname, '/test.png')).pipe(fs.createWriteStream(path.join(__dirname, '/test_send.png')))
   await new Promise((resolve) => setTimeout(resolve, 1000))
 
   var fields = {
     publicName: `sir test_user ${microRandom}. junior`,
-    pic: `http://test.com/pic/pic.jpg`,
+    pic: {
+      mimetype: 'image/png',
+      path: path.join(__dirname, '/test_send.png')
+    },
     email: `test${microRandom}@test${microRandom}.com`,
     password: `t$@es${microRandom}Tt$te1st_com`,
     newPassword: `new_t$@es${microRandom}Tt$te1st_com`,
     firstName: `t$@es${microRandom}Tt$te1st_com`,
     lastName: `t$@es${microRandom}Tt$te1st_com`
   }
+  console.log('fields', fields)
 
   var basicMeta = {}
   // var createReq = {
@@ -91,7 +98,7 @@ var startTest = async function () {
   const COUNT = (actual, expected) => actual.length
 
   var createWrongMail = await netClient.testLocalMethod('create', { email: `${microRandom}` }, basicMeta)
-  microTest(createWrongMail, {error: 'string'}, 'wrong request: email not valid', TYPE_OF,2)
+  microTest(createWrongMail, {error: 'string'}, 'wrong request: email not valid', TYPE_OF, 2)
 
   var create = await netClient.testLocalMethod('create', { email: fields.email }, basicMeta)
   microTest(create, { success: 'User created' }, 'User Create', FILTER_BY_KEYS)
@@ -124,8 +131,8 @@ var startTest = async function () {
 
   var updatePic = await netClient.testLocalMethod('updatePic', {id: create.id, pic: fields.pic}, basicMeta)
   microTest(updatePic, { success: 'string' }, 'updatePic', TYPE_OF)
-  var readPic = await netClient.testLocalMethod('read', {id: create.id}, basicMeta)
-  microTest(readPic, {pic: fields.pic}, 'readPic', FILTER_BY_KEYS)
+  var getPic = await netClient.testLocalMethod('getPic', {id: create.id}, basicMeta)
+  microTest(typeof getPic, 'string', 'getPic')
 
   var updatePersonalInfo = await netClient.testLocalMethod('updatePersonalInfo', {id: create.id, firstName: fields.firstName, lastName: fields.lastName, birth: fields.birth}, basicMeta)
   microTest(updatePersonalInfo, { success: 'string' }, 'updatePersonalInfo', TYPE_OF)

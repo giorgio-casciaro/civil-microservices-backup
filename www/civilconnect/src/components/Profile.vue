@@ -1,12 +1,12 @@
 <template>
-<div>
+<div v-if="$store.state.users.logged">
   <h3 v-html="str.title"></h3>
   <p v-html="str.description"></p>
   <PublicName></PublicName>
   <PersonalInfo></PersonalInfo>
   <ChangePassword></ChangePassword>
   <Pic></Pic>
-  <Unregister></Unregister>
+  <Unregister @success="$router.push('/')"></Unregister>
 </div>
 </template>
 
@@ -22,6 +22,9 @@ var t = function (string) { return translate('app', string) }
 export default {
   name: 'Dashboards',
   components: {PersonalInfo,PublicName,ChangePassword,Pic,Unregister},
+  created(){
+    if(!this.$store.state.users.logged)this.$router.push('/')
+  },
   data () {
     return {
       str:{

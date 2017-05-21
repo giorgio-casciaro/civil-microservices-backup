@@ -9,11 +9,10 @@
   },
   "scripts": {
     "start": "bash start.sh",
+    "dev": "cd www/civilconnect && npm run dev",
     "stop": "docker-compose down"
   },
   "license": "ISC",
-  "devDependencies": {
-  },
-  "dependencies": {
-  }
+  "devDependencies": {},
+  "dependencies": {}
 }

@@ -19,8 +19,8 @@ var loginRes = { properties: {
   token: { type: 'string' },
   currentState: { type: 'object' }
 }}
-var jsRead = { properties: { id: jsFields.id, publicName: jsFields.publicName, pic: jsFields.pic, status: jsFields.status } }
-var jsReadPrivate = { properties: { id: jsFields.id, email: jsFields.email, emailStatus: jsFields.emailStatus, publicName: jsFields.publicName, pic: jsFields.pic, status: jsFields.status } }
+var jsRead = { properties: { id: jsFields.id, publicName: jsFields.publicName, hasPic: jsFields.hasPic, status: jsFields.status } }
+var jsReadPrivate = { properties: { id: jsFields.id, email: jsFields.email, emailStatus: jsFields.emailStatus, publicName: jsFields.publicName, hasPic: jsFields.hasPic, status: jsFields.status } }
 var jsQueryRes = { type: 'array', items: jsRead }
 
 var jsCanReq = { properties: { data: { type: 'object' } } }
@@ -103,7 +103,13 @@ module.exports = {
         properties: { id: jsFields.id, pic: jsFields.pic },
         required: [ 'id', 'pic' ]
       },
-      responseSchema: jsRes
+      responseSchema: false
+    },
+    'getPic': {
+      public: true,
+      responseType: 'response',
+      requestSchema: jsUserById,
+      responseSchema: false
     },
     'updatePassword': {
       public: true,

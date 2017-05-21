@@ -4,7 +4,7 @@
       <h5 v-html="str.title"></h5>
       <p v-html="str.description"></p>
       <div class="code" v-html="code"></div>
-      <input type="number" v-model="confirm" :disabled="waiting" :class="{notValid:!validForm}" />
+      <input type="number" v-model="confirm" :disabled="waiting" :class="{notValid:(confirm&&code!==confirm)}" />
     </div>
     <input type="submit" class="save button" :disabled="waiting" :class="{error,success,waiting}" :value="str.submit">
     <div v-if="success" class="success" v-html="success"></div>
@@ -63,8 +63,8 @@ export default {
     },
     succ (body) {
       this.waiting=false
-      this.$store.commit('users/REGISTERED', body)
-      this.success = t( 'Password Assegnata')
+      this.$store.commit('users/LOGGEDOUT', body)
+      this.success = t( 'User disattivato correttamente')
       setTimeout(()=>this.$emit("success"),2000)
     }
   }

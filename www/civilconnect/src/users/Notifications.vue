@@ -7,6 +7,7 @@
       <div v-html="notification.content" ></div>
     </li>
   </ul>
+  {{$store.state.users}}
 </div>
 </template>
 
@@ -19,7 +20,7 @@ export default {
   name: 'Notifications',
   data () {
     var notifications=[];
-    for (var i = 1; i <= 10; i++) notifications.push({title:"notification title",content:"saoi opnpo ahjpiu hoig g ooihgioh"});
+    for (var i = 1; i <= 3; i++) notifications.push({title:"notification title",content:"saoi opnpo ahjpiu hoig g ooihgioh"});
     return {
       notifications
     }

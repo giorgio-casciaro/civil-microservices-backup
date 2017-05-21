@@ -22,9 +22,9 @@ store.registerModule('dashboards', dashboardsStore)
 import getRouter from './router'
 var router = getRouter(extraRoutes)
 
-import * as Cookies from 'js-cookie'
-var cookieVal = Cookies.getJSON('civil-connect-user')
-store.commit('users/FROM_STORAGE', cookieVal)
+// import * as Cookies from 'js-cookie'
+// var cookieVal = Cookies.getJSON('civil-connect-tokens')
+// store.commit('users/FROM_STORAGE', cookieVal)
 
 /* eslint-disable no-new */
 new Vue({

@@ -1,5 +1,5 @@
 <template>
-  <form class="ChangePassword" @click="active=true" @submit.prevent="waiting=true;call('users','updatePassword',form,succ,err)" @input="validation=validate('users','changePassword',form)" :class="{validForm:validation.valid,activeForm:active}">
+  <form class="ChangePassword" @click="active=true" @submit.prevent="waiting=true;call('users','updatePassword',form,succ,err)" @input="validation=validate('users','updatePassword',form)" :class="{validForm:validation.valid,activeForm:active}">
     <label class="oldPassword" :class="{notValid:validation.errors.oldPassword}"><strong>{{str.oldPassword}}</strong><input v-model="form.oldPassword" :disabled="waiting"  type="password" :placeholder="strPh.oldPassword"/></label>
     <label class="password" :class="{notValid:validation.errors.password}"><strong>{{str.password}}</strong><input v-model="form.password" :placeholder="strPh.password" :disabled="waiting"  type="password" /></label>
     <label class="confirmPassword" :class="{notValid:validation.errors.confirmPassword}"><strong>{{str.confirmPassword}}</strong><input v-model="form.confirmPassword" :disabled="waiting"  type="password" :placeholder="strPh.confirmPassword"/></label>

@@ -1,48 +1,44 @@
 # civil-microservices
 
 ## TODO
-
-- rivedere users getPermissions
-- data di nascita timestamp anche negativo
-- schema clean function after some time
 - user eliminare status -> tenere singoli status (emailConfirmed,password setted ecc.)
+- no send mail in debug
+- rivedere users getPermissions
+- prevedere reiscrizione (se user esiste e stato è zero)
+- schema clean function after some time
 - revoke token: aerospike with autoremove after token expires
 - token expires gestiti da users o ms ad hoc? (altri mcroservice chiamano user per verificare token valido)
+- token revocato durante l'eliminazione
 
+- aggiungere libvips a alpine compiler e alpine-node-lua-aerospike
+
+filesystem condiviso, ogni servizio gestisce i suoi upload
+https://hub.docker.com/r/itherz/lizardfs-master/~/dockerfile/
 - user gestiscono in autonomia l'upload della pic
 
-- servizio uplodad :
-  - carica il file nella sottodir più libera
-  - gestisce il protocollo tusd per l'upload
-  - effettua l'hash del file per evitare duplicati
-  - ridimensiona e comprime immagini
-
 - app->i18n->getTranslations("it")
-
 - app->i18n->createRawString("group","rawstring")
 - app->i18n->createCldrLink("rawstring","CldrLink")
 - app->i18n->createTranslatedString("it","rawstring","translated string")
 
 - admin autodeploy
 
-- admin diventa app
 
 ## FRONTEND
 
 - front end client: le chiamate all'api dovrebbero essere registrate e messe in una queue (se la connessione non è disponibile vengono reinviate)
 - service worker
-- vue tutte le modifiche devono passare mediante store -
-
-  ## JESUS
-
+-test maps
+## JESUS
 - jesus rivedere tests
-
   - eliminare tap->microtest e co->async
   - semplificare net test
   - usare microtest
 
 - ripulire errori di validazione
 - prevedere object per error con message per solo stringa
+- public http dovrebbe aprire solo le route consentite, l'upload dovrebbe comparire solo sulle route che ne necessitano
+- public http dovrebbe fare unn doppio check sui file (magic numbers)
 
 ## DOCKERS
 
@@ -90,24 +86,18 @@ front end app -usa lo store in lettura, scrive direttamente sullo store tramite 
 ### LISTS QUERIES uses cases
 
 - DASHBOARDS
-
   - all public dashboards
-  - most popular dashboards
-  - my dashboards
+  - most popular dashboards: secondary index numero di iscritti
+  - my dashboards: query a dashboards, dashboards contiene tabella user con iscrizioni alle dashboards
 
 - POSTS
-
-  - all public posts from all my dashboards
-  - all posts sended to me from all my dashboards
-  - all posts sended to my tags/groups from all my dashboards
   - all posts from dashboard x
-
-    - all public posts from dashboard x
-    - all posts sended to me from dashboard x
-    - all posts sended to my user's tags from dashboard x
+    - all public posts from dashboard x: indirizzo @dashboardx
+    - all posts sended to me from dashboard x : indirizzo me@dashboardx
+    - all posts sended to my user's tags from dashboard x : indirizzo #tag@dashboardx
 
 - USERS
 
-  - all users from dashboard x
-  - all users from dashboard x tag y
-  - all users tags/groups from dashboard x
+  - all users from dashboard x : alias @dashboard
+  - all users from dashboard x tag y : alias #y@dashboard
+  - all users tags/groups from dashboard x : tags e gruppi direttamente in dashboard

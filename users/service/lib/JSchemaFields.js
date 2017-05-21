@@ -16,9 +16,14 @@ module.exports = {
     items: {type: 'array'}
   },
   pic: {
-    description: 'pic link on https',
-    type: 'string',
-    pattern: '(http(s?):)|([/|.|\\w|\\s])*\\.(?:jpg|gif|png)$'
+    description: 'pic file',
+    type: 'object',
+    properties: {
+      size: { type: 'number' },
+      mimetype: { type: 'string' },
+      path: { type: 'string' }
+    },
+    retuired: ['path']
   },
   status: {
     description: '0 - waiting confirmation, 1 - waiting password , 2 - active, 3 - not active',
@@ -49,6 +54,6 @@ module.exports = {
     pattern: '^[a-zA-Z0-9_#?!@$%^&*-]{6,30}$'
   },
   firstName: { type: 'string', 'minLength': 2, 'maxLength': 255 },
-  birth: { description: 'birth timestamp', type: 'integer', minimum: 0 },
+  birth: { description: 'birth timestamp', type: 'integer' },
   lastName: { type: 'string', 'minLength': 2, 'maxLength': 255 }
 }

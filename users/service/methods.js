@@ -115,6 +115,7 @@ var service = async function getMethods (CONSOLE, netClient, CONFIG = require('.
       await updateView(id, [mutation])
     }
 
+    const getPicPath = (id, type = 'mini', format = 'jpeg') => path.join(CONFIG.uploadPath, `pic-${type}-${id}.${format}`)
     await init()
 
     return {
@@ -176,11 +177,40 @@ var service = async function getMethods (CONSOLE, netClient, CONFIG = require('.
         return {success: `Public Name updated`}
       },
       async updatePic (reqData, meta = {directCall: true}, getStream = null) {
+        var sharp = require('sharp')
+        var unlink = (file) => new Promise((resolve, reject) => fs.unlink(file, (err, data) => err ? resolve(err) : resolve(data)))
         var id = reqData.id
-        await auth.userCan('user.write.' + id, meta, CONFIG.jwt)
+        try {
+          await auth.userCan('user.write.' + id, meta, CONFIG.jwt)
+        } catch (error) {
+          await unlink(reqData.pic.path)
+          throw error
+        }
+        var picNewPathMini = getPicPath(reqData.id, 'mini')
+        var picNewPathMiniCrop = getPicPath(reqData.id, 'minicrop')
+        // var picNewPathBig = getPicPath(reqData.id, 'big', 'webp')
+        // await unlink(picNewPathMini)
+        // await unlink(picNewPathMiniCrop)
+        // await unlink(picNewPathBig)
+        var tempFile = reqData.pic.path + 'temp'
+        fs.renameSync(reqData.pic.path, tempFile)
+        var baseImg = sharp(tempFile).resize(500, 500).max()
+        await new Promise((resolve, reject) => baseImg.toFile(reqData.pic.path, (err, data) => err ? reject(err) : resolve(data)))
+        await new Promise((resolve, reject) => baseImg.resize(100, 100).crop().toFile(picNewPathMiniCrop, (err, data) => err ? reject(err) : resolve(data)))
+        await new Promise((resolve, reject) => baseImg.resize(100, 100).max().toFile(picNewPathMini, (err, data) => err ? reject(err) : resolve(data)))
+        unlink(tempFile)
         var mutation = await mutate({data: reqData, objId: id, mutation: 'updatePic', meta})
         await updateView(id, [mutation])
         return {success: `Pic updated`}
+      },
+      async getPic (reqData, meta = {directCall: true}, getStream = null) {
+        var picNewPath = getPicPath(reqData.id, 'minicrop')
+        try {
+          var pic = await new Promise((resolve, reject) => fs.readFile(picNewPath, (err, data) => err ? reject(err) : resolve(data)))
+        } catch (error) {
+          return null
+        }
+        return pic
       },
       async updatePassword (reqData, meta = {directCall: true}, getStream = null) {
         var id = reqData.id

@@ -26,8 +26,10 @@ docker-compose up -d app
 docker-compose up -d users
 docker-compose up -d  www
 while true; do sleep 60; wget -q http://127.0.0.1:10080/civil-connect/app/getPublicApiSchema -O ./www/civilconnect/src/api.schema.json; done &
+echo 'docker-compose stop users ; docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_start\"" users'
+echo 'docker-compose stop users ; docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_test\"" users'
 xdg-open http://127.0.0.1:10080/admin/ &
-xdg-open http://127.0.0.1:10080/ &
+# # xdg-open http://127.0.0.1:10080/ &
 cd www/civilconnect
 npm run dev
 cd ../..
@@ -37,5 +39,6 @@ cd ../..
 # docker-compose up -d app
 # docker-compose run users
 # docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_test\"" users
+# docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_start\"" users
 # docker-compose run --entrypoint "sh " www
 # docker-compose up aerospike-amc  &

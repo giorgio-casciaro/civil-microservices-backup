@@ -1,8 +1,8 @@
 <template>
 <div class="User" >
-  <div class="pic"><img v-if="store.pic" :src="store.pic" /><span v-else v-html="icoUnknowUser" /></div>
-  <h4 v-html="store.publicName"></h4>
-  <p v-html="store.email"></p>
+  <div class="pic"><img v-if="user.hasPic" :src="`${$store.state.apiServer}/users/getPic/id/${user.id}/${user.random}_profile.jpeg?id=${user.id}`" /><span v-else v-html="icoUnknowUser" /></div>
+  <h4 v-html="user.publicName"></h4>
+  <p v-html="user.email"></p>
 </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
   name: 'User',
   data () {
     return {
-      store: this.$store.state.users
+      user: this.$store.state.users
     }
   },
   computed: {

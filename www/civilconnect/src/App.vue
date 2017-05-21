@@ -14,8 +14,10 @@
         <a id="accountBtn" class="account button" v-on:click="$store.commit('OPEN_VIEWPORT', 'account')">Account</a>
       </div>
     </header>
+    <div id='map' style='width: 400px; height: 300px;'></div>
     <!-- <img src="./assets/logo.png"> -->
     <transition name="slide-fade">
+
     <router-view></router-view>
     </transition>
   </div>
@@ -26,14 +28,24 @@
 </template>
 
 <script >
+const mapboxgl=require("mapbox-gl")
+const style=require("./assets/mapstyle")
+
 export default {
   name: 'app',
+  mounted(){
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2ludGJpdCIsImEiOiJjajIzMnk3NDUwMDExMnlvNzc2MXk2dXNuIn0.fmB5CPQudFNP9CqssSHG9g';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style
+    });
+  },
   methods: {
 
   }
 }
 </script>
-
+<style src="./assets/mapbox-gl.css"></style>
 <style src="./assets/reset.css"></style>
 <style src="./assets/style.css"></style>
 <style scoped>

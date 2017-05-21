@@ -8,6 +8,7 @@ module.exports = {
   confirmEmailUrl: process.env.confirmEmailUrl || 'http://127.0.0.1:18080/#/confirmEmailUrl',
   sendEmails: process.env.sendEmails || true,
   mailFrom: process.env.mailFrom || 'notifications@civilconnect.it',
+  uploadPath: process.env.uploadPath || '/upload/',
   smtp: process.env.smtpConfigJson ? JSON.parse(process.env.smtpConfigJson) : {
     host: '127.0.0.1',
     port: 1025,

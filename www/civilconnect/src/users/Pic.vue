@@ -1,6 +1,7 @@
 <template>
   <form class="Pic" @click="active=true" @submit.prevent="waiting=true;call('users','updatePic',form,succ,err)" @input="validation=validate('users','updatePic',form)" :class="{validForm:validation.valid,activeForm:active}">
-    <label class="pic":class="{notValid:validation.errors.pic}"><strong>{{str.pic}}</strong><input v-model="form.pic" :placeholder="strPh.pic" :disabled="waiting" type="text" /></label>
+    <div class="pic"><img v-if="user.hasPic" :src="`${$store.state.apiServer}/users/getPic/id/${user.id}/${user.random}_profile.jpeg`" /><span v-else v-html="icoUnknowUser" /></div>
+    <InputFile :file.sync="form.pic" :disabled="waiting" />
     <input type="submit" class="save button" :disabled="waiting" :class="{error,success,waiting}" :value="str.save">
     <div v-if="success" class="success" v-html="success"></div>
     <div v-if="error" class="error" v-html="error"></div>
@@ -16,14 +17,17 @@
 import {translate} from '@/i18n'
 var t= function(string) { return translate( 'users', string) }
 import {validate,call} from '@/api'
+import InputFile from './InputFile'
 
 export default {
   name: 'Pic',
+  components:{InputFile},
   data () {
     return {
+      user:this.$store.state.users,
       form:{
         id: this.$store.state.users.id,
-        pic: ''
+        pic: undefined
       },
       str:{
         pic: t( 'Immagine'),
@@ -46,6 +50,10 @@ export default {
     validate,
     t,
     call,
+    test(){
+      return this.$store.state.users.token.split('.')[0]
+      return  parseJwt(this.$store.state.users.token)
+    },
     err (msg, extra = false) {
         this.error = this.errors= this.waiting=false
         setTimeout(()=>this.error = t( msg),1)
@@ -54,8 +62,9 @@ export default {
     },
     succ (body) {
       this.waiting=false
-      this.$store.commit('users/REGISTERED', body)
-      this.success = t( 'Password Assegnata')
+      this.$store.dispatch('users/update', {mutation:'PIC_UPDATED',payload:this.form})
+      this.$store.commit('users/CHANGE_RANDOM',Math.random())
+      this.success = t( 'Immagine Aggiornata')
       setTimeout(()=>this.$emit("success"),2000)
     }
   }

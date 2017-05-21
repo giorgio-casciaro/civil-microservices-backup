@@ -1,6 +1,5 @@
 <template>
 <section class="Registration">
-  {{$store.state.users}}
   <div v-if="step==='Register'">
     <header>
       <h3 v-html="strTitleRegister"></h3>
@@ -27,7 +26,6 @@
       <h3 v-html="strTitleComplete"></h3>
       <p v-html="strDescriptionComplete"></p>
     </header>
-    <Login @success="$router.push('/dashboards/')"></Login>
   </div>
 </section>
 </template>
@@ -58,8 +56,8 @@ export default {
     strDescriptionConfirmEmail: function () { return t('Controlla la tua mail e inserisci di seguito il codice che ti abbiamo inviato') },
     strTitleAssignPassword: function () { return t('Assegna Password') },
     strDescriptionAssignPassword: function () { return t('Scegli la tua password') },
-    strTitleComplete: function () { return t('Registrazione Completata') },
-    strDescriptionComplete: function () { return t('Effettua il login per entrare') },
+    strTitleComplete: function () { return t('Complimenti, registrazione completata con successo') },
+    strDescriptionComplete: function () { return t('Inizia ad usare a pieno l\'app') },
   },
   methods: { t,
   goToStep(step,url,email=''){

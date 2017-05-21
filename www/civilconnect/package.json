@@ -19,6 +19,7 @@
     "cldr-data": "^31.0.2",
     "globalize": "^1.2.3",
     "js-cookie": "^2.1.4",
+    "mapbox-gl": "^0.37.0",
     "moment": "^2.18.1",
     "nodemailer": "^4.0.1",
     "vue": "^2.2.6",
