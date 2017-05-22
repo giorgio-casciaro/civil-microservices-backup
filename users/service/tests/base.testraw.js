@@ -39,7 +39,8 @@ var startTest = async function () {
   process.env.aerospikeMutationsSet = 'users_test_set'
   process.env.aerospikeViewsSet = 'users_test_set'
   process.env.consoleDebug = true
-  if (process.env.NODE_ENV === 'production')process.env.sendEmails = false
+  // if (process.env.NODE_ENV === 'production')
+  process.env.sendEmails = false
 
   await getAerospikeClient(require('../config').aerospike)
 
@@ -142,7 +143,7 @@ var startTest = async function () {
   var updatePassword = await netClient.testLocalMethod('updatePassword', {id: create.id, password: fields.newPassword, confirmPassword: fields.newPassword, oldPassword: fields.password}, basicMeta)
   microTest(updatePassword, { success: 'string' }, 'updatePassword', TYPE_OF)
 
-  var remove = await netClient.testLocalMethod('remove', { id: create.id, status: 0 }, basicMeta)
+  var remove = await netClient.testLocalMethod('remove', { id: create.id}, basicMeta)
   microTest(remove, {success: 'User removed'}, 'remove')
   var readRemove = await netClient.testLocalMethod('read', { id: create.id }, basicMeta)
   microTest(readRemove, { error: 'string' }, 'readRemove', TYPE_OF)

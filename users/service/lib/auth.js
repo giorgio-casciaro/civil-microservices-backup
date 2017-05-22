@@ -1,4 +1,11 @@
 // AUTH
+// async getPermissions (reqData, meta = {directCall: true}, getStream = null) {
+//   return {permissions: [
+//     [10, 'user.*', 0|1|2] terzo argomento come number: 0 nega i permesso, 1 passa al livello successivo, 2 da il permesso senza proseguire il check
+//     [5, 'user.*', 'test2', {testParam: 34}] terzo argomento come string: si aspetta una funzione nella cartella permissions
+//   ]}
+// },
+
 var jwt = require('jsonwebtoken')
 const getTokenData = (token, jwtConfig) => new Promise((resolve, reject) => {
   jwt.verify(token, jwtConfig.publicCert, (err, decoded) => { if (err) reject(err); else resolve(decoded) })

@@ -1,15 +1,12 @@
 # civil-microservices
 
 ## TODO
-- user eliminare status -> tenere singoli status (emailConfirmed,password setted ecc.)
-- no send mail in debug
-- rivedere users getPermissions
-- prevedere reiscrizione (se user esiste e stato è zero)
 - schema clean function after some time
 - revoke token: aerospike with autoremove after token expires
 - token expires gestiti da users o ms ad hoc? (altri mcroservice chiamano user per verificare token valido)
 - token revocato durante l'eliminazione
-
+-
+- prevedere reiscrizione (se user esiste e stato è zero)
 - aggiungere libvips a alpine compiler e alpine-node-lua-aerospike
 
 filesystem condiviso, ogni servizio gestisce i suoi upload
@@ -18,7 +15,7 @@ https://hub.docker.com/r/itherz/lizardfs-master/~/dockerfile/
 
 - app->i18n->getTranslations("it")
 - app->i18n->createRawString("group","rawstring")
-- app->i18n->createCldrLink("rawstring","CldrLink")
+- app->i18n->createStringFilter("funztion","CldrLink")
 - app->i18n->createTranslatedString("it","rawstring","translated string")
 
 - admin autodeploy

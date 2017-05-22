@@ -19,8 +19,8 @@ var loginRes = { properties: {
   token: { type: 'string' },
   currentState: { type: 'object' }
 }}
-var jsRead = { properties: { id: jsFields.id, publicName: jsFields.publicName, hasPic: jsFields.hasPic, status: jsFields.status } }
-var jsReadPrivate = { properties: { id: jsFields.id, email: jsFields.email, emailStatus: jsFields.emailStatus, publicName: jsFields.publicName, hasPic: jsFields.hasPic, status: jsFields.status } }
+var jsRead = { properties: { id: jsFields.id, publicName: jsFields.publicName, hasPic: jsFields.hasPic, tags: jsFields.tags } }
+var jsReadPrivate = { properties: { id: jsFields.id, email: jsFields.email, emailStatus: jsFields.emailStatus, publicName: jsFields.publicName, hasPic: jsFields.hasPic, tags: jsFields.tags } }
 var jsQueryRes = { type: 'array', items: jsRead }
 
 var jsCanReq = { properties: { data: { type: 'object' } } }
@@ -57,7 +57,7 @@ module.exports = {
     'getPermissions': {
       public: false,
       responseType: 'response',
-      requestSchema: { properties: { } },
+      requestSchema: { properties: { id: jsFields.id } },
       responseSchema: { properties: { permissions: jsFields.permissions } }
     },
     'readEmailConfirmationCode': {

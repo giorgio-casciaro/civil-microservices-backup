@@ -25,11 +25,12 @@ module.exports = {
     },
     retuired: ['path']
   },
-  status: {
-    description: '0 - waiting confirmation, 1 - waiting password , 2 - active, 3 - not active',
-    type: 'integer',
-    minimum: 0,
-    maximum: 5
+  tags: {
+    description: 'removed, passwordAssigned, emailConfirmed',
+    type: 'array',
+    items: {
+      type: 'string'
+    }
   },
   email: { description: 'valid email', type: 'string', 'format': 'email' },
   emailStatus: {

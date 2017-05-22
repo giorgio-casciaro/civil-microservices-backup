@@ -14,6 +14,11 @@ const updateSchema = () => {
   config.net = require('./config').net
   return config
 }
+const cleanSchema = () => {
+  var config = require(path.join(__dirname, './schema'))
+  config.net = require('./config').net
+  return config
+}
 
 var schemaClient = schemaManager({updateSchema, savePath: serviceConfig.schemaPath, serviceName: serviceConfig.serviceName, intervall: 1000, defaultField: 'methods'})
 
