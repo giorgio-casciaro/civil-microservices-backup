@@ -1,0 +1,42 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: front-https
+  namespace: civil-connect
+spec:
+  template:
+    metadata:
+      labels:
+        run: front-https
+        netGroup: front
+    spec:
+      hostNetwork: true
+      containers:
+      - name: front-https
+        image: nginx:stable-alpine
+        command: ["nginx", "-g", "daemon off;", "-c", "/etc/nginx-config-dir/nginxDaemon.conf"]
+        # args: ["-c", "/etc/nginx-config-dir/nginx.conf"]
+        # ports:
+        # - containerPort: 80
+        # - containerPort: 443
+        # - containerPort: 81
+        # - containerPort: 82
+        volumeMounts:
+          - name: www
+            mountPath: /www
+            subPath: www
+          # - name: git
+          #   mountPath: /git
+          #   subPath: build
+          - name: nginx-config-dir
+            mountPath: /etc/nginx-config-dir/
+      volumes:
+      # - name: git
+      #   gitRepo:
+      #     repository: "git@https://github.com/giorgio-casciaro/WebPackDevServerBabel.git"
+      - name: www
+        persistentVolumeClaim:
+          claimName: www
+      - name: nginx-config-dir
+        configMap:
+          name: nginx-config-dir

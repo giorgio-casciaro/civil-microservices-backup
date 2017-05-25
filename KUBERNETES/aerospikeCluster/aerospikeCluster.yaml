@@ -1,0 +1,39 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: aerospike-cluster
+  namespace: civil-connect
+spec:
+  serviceName: "aerospike-cluster"
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: aerospike-cluster
+    spec:
+      containers:
+      - name: aerospike-node
+        image: giorgiocasciaro/miniaerospike:0.0.1
+        command: ["sh"]
+        args: ["-c", "asd --foreground --config-file /aerospike-config-dir/aerospike.conf"]
+        ports:
+        - containerPort: 3000
+          name: aerospike-main
+        - containerPort: 3001
+          name: aerospike-sp-1
+        - containerPort: 3002
+          name: aerospike-sp-2
+        - containerPort: 3003
+          name: aerospike-sp-3
+        volumeMounts:
+        - name: aerospike-data
+          mountPath: /opt/aerospike/data
+        - name: aerospike-config-dir
+          mountPath: /aerospike-config-dir
+      volumes:
+      - name: aerospike-data
+        hostPath:
+          path: /aerospikeNodeData
+      - name: aerospike-config-dir
+        configMap:
+          name: aerospike-config-dir

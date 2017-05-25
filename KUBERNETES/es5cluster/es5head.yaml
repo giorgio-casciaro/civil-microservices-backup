@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: es5head
+  namespace: civil-connect
+  labels:
+    app: es5head
+spec:
+  containers:
+  - name: es5head
+    image: mobz/elasticsearch-head:5-alpine
+    ports:
+    - containerPort: 9100
+      name: es5head
