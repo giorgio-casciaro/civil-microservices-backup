@@ -1,13 +1,23 @@
 # civil-microservices
 
 ## TODO
-- schema clean function after some time
+- schema su altri ms: test, app ecc.
+- rivedere app e admin
+- admin autodeploy: microservice per gestire i deploy
+  - in dev deve generare il deploy analizzando la struttura dei ms e capendo se qualcosa è cambiato
+  - ogni ms ha un hash della cartella service, se il checksum è differente ne viene creata una nuova versione
+  - reduild nuova versione service docker
+  - pull dei docker modificati
+  - invio nuovo deploy a kubernetes
+
 - revoke token: aerospike with autoremove after token expires
 - token expires gestiti da users o ms ad hoc? (altri mcroservice chiamano user per verificare token valido)
 - token revocato durante l'eliminazione
 -
 - prevedere reiscrizione (se user esiste e stato è zero)
 - aggiungere libvips a alpine compiler e alpine-node-lua-aerospike
+
+- provare ubuntu al posto di alpine su immagine finale
 
 filesystem condiviso, ogni servizio gestisce i suoi upload
 https://hub.docker.com/r/itherz/lizardfs-master/~/dockerfile/
@@ -18,7 +28,6 @@ https://hub.docker.com/r/itherz/lizardfs-master/~/dockerfile/
 - app->i18n->createStringFilter("funztion","CldrLink")
 - app->i18n->createTranslatedString("it","rawstring","translated string")
 
-- admin autodeploy
 
 
 ## FRONTEND
@@ -27,18 +36,12 @@ https://hub.docker.com/r/itherz/lizardfs-master/~/dockerfile/
 - service worker
 -test maps
 ## JESUS
-- jesus rivedere tests
-  - eliminare tap->microtest e co->async
-  - semplificare net test
-  - usare microtest
-
 - ripulire errori di validazione
 - prevedere object per error con message per solo stringa
 - public http dovrebbe aprire solo le route consentite, l'upload dovrebbe comparire solo sulle route che ne necessitano
 - public http dovrebbe fare unn doppio check sui file (magic numbers)
 
 ## DOCKERS
-
 - command al post di entrypoint
 
 ## KUBERNETES

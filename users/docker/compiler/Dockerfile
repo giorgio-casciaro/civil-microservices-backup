@@ -1,4 +1,4 @@
-FROM giorgiocasciaro/alpine-node-compiler:v1
+FROM giorgiocasciaro/alpine-node-compiler:v2
 RUN apk add --update --repository http://nl.alpinelinux.org/alpine/edge/main libwebp-dev fftw-dev  && \
   apk add --update \
   --repository http://dl-3.alpinelinux.org/alpine/edge/testing \

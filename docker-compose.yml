@@ -92,18 +92,17 @@ services:
     #  ports:
     #    - "9229"
      environment:
+       schemaHost: 'http://172.16.100.17:10000'
        netHost: 172.16.100.12
        serviceName: test
        elasticsearchHost: 172.16.100.11:9200
        aerospikeHosts: 172.16.100.10:3000
        NODE_ENV: development
      volumes:
-        - ../FS/sharedSchema/:/sharedSchema/
         - ./test/service:/service/service
         - ./test/node_modules_compiled:/service/node_modules
         - ./test/package.json:/service/package.json
         - ../jesus/:/service/node_modules/sint-bit-jesus/
-        - ../schemaManager/:/service/node_modules/sint-bit-schema-manager/
         # - ../cqrs/:/service/node_modules/sint-bit-cqrs/
      networks:
        civilmicroservices:
@@ -116,18 +115,17 @@ services:
     #  ports:
     #    - "9229"
      environment:
+       schemaHost: 'http://172.16.100.17:10000'
        serviceName: testRemote
        netHost: 172.16.100.13
        elasticsearchHost: 172.16.100.11:9200
        aerospikeHosts: 172.16.100.10:3000
        NODE_ENV: development
      volumes:
-        - ../FS/sharedSchema/:/sharedSchema/
         - ./test/service:/service/service
         - ./test/node_modules_compiled:/service/node_modules
         - ./test/package.json:/service/package.json
         - ../jesus/:/service/node_modules/sint-bit-jesus/
-        - ../schemaManager/:/service/node_modules/sint-bit-schema-manager/
         - ../cqrs/:/service/node_modules/sint-bit-cqrs/
      networks:
        civilmicroservices:
@@ -156,6 +154,7 @@ services:
       #  - "9229"
      environment:
        uploadPath: /uploads/
+       schemaHost: 'http://172.16.100.17:10000'
        confirmEmailUrl: http://localhost:8080/#/registration/ConfirmEmail/
        serviceName: users
        netHost: 172.16.100.15
@@ -167,13 +166,11 @@ services:
        sendEmails: 'true'
        smtpConfigJson: '{ "host": "smtp", "port": 1025, "secure": false }'
      volumes:
-        - ../FS/sharedSchema/:/sharedSchema/
         - ../FS/users/:/uploads/
         - ./users/service:/service/service
         - ./users/node_modules_compiled:/service/node_modules
         - ./users/package.json:/service/package.json
         - ../jesus/:/service/node_modules/sint-bit-jesus/
-        - ../schemaManager/:/service/node_modules/sint-bit-schema-manager/
         - ../cqrs/:/service/node_modules/sint-bit-cqrs/
      networks:
        civilmicroservices:
@@ -188,6 +185,7 @@ services:
       #  - "9229"
      environment:
        serviceName: app
+       schemaHost: 'http://172.16.100.17:10000'
        netHost: 172.16.100.16
        netHostHttpPublicPort: 10080
        netCors: http://172.16.100.14:80,http://172.16.100.14,http://localhost:8080,http://127.0.0.1:8080,http://localhost:10080,http://127.0.0.1:10080
@@ -195,16 +193,59 @@ services:
        aerospikeHosts: 172.16.100.10:3000
        NODE_ENV: development
      volumes:
-        - ../FS/sharedSchema/:/sharedSchema/
         - ./app/service:/service/service
         - ./app/node_modules_compiled:/service/node_modules
         - ./app/package.json:/service/package.json
         - ../jesus/:/service/node_modules/sint-bit-jesus/
-        - ../schemaManager/:/service/node_modules/sint-bit-schema-manager/
         - ../cqrs/:/service/node_modules/sint-bit-cqrs/
      networks:
        civilmicroservices:
          ipv4_address: 172.16.100.16
+
+   schema:
+     image: giorgiocasciaro/civil-microservices-schema:v1
+    #  entrypoint: sh -c "cd /service/ && npm run watch_test_remote"
+     entrypoint: sh -c "cd /service/ && npm run watch_start"
+     ports:
+       - "10000:10000"
+     environment:
+       netHost: 172.16.100.17
+       netHostPort: 10000
+       aerospikeHosts: 172.16.100.10:3000
+       NODE_ENV: development
+     volumes:
+        - ./schema/service:/service/service
+        - ./schema/node_modules_compiled:/service/node_modules
+        - ./schema/package.json:/service/package.json
+        - ../jesus/:/service/node_modules/sint-bit-jesus/
+        - ../cqrs/:/service/node_modules/sint-bit-cqrs/
+     networks:
+       civilmicroservices:
+         ipv4_address: 172.16.100.17
+
+   deploy:
+     image: giorgiocasciaro/alpine-node-lua-aerospike:v1
+     entrypoint: sh -c "cd /service/ && npm start"
+     environment:
+       serviceName: deploy
+       schemaHost: 'http://172.16.100.17:10000'
+       netHost: 172.16.100.18
+       netHostHttpPublicPort: 10080
+       netCors: http://172.16.100.14:80,http://172.16.100.14,http://localhost:8080,http://127.0.0.1:8080,http://localhost:10080,http://127.0.0.1:10080
+       elasticsearchHost: 172.16.100.11:9200
+       aerospikeHosts: 172.16.100.10:3000
+       NODE_ENV: development
+     volumes:
+        - ./deploy/service:/service/service
+        - ./:/service/service/mount
+        - ./deploy/node_modules_compiled:/service/node_modules
+        - ./deploy/package.json:/service/package.json
+        - ../jesus/:/service/node_modules/sint-bit-jesus/
+        - ../cqrs/:/service/node_modules/sint-bit-cqrs/
+     networks:
+       civilmicroservices:
+         ipv4_address: 172.16.100.18
+
 
 networks:
   civilmicroservices:

@@ -9,6 +9,8 @@ var startTest = async function () {
   var CONFIG = require('../config')
   var SERVICE = require('../start')
 
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+
   var netClient = SERVICE.netClient
   var basicMeta = {}
 
@@ -31,15 +33,10 @@ var startTest = async function () {
 
   const NC = netClient.testLocalMethod
 
+
+
   var microRandom = Math.floor(Math.random() * 100000)
-  var fields = {
-    publicName: `sir test_user ${microRandom}. junior`,
-    pic: `http://test.com/pic/pic.jpg`,
-    email: `test${microRandom}@test${microRandom}.com`,
-    password: `t$@es${microRandom}Tt$te1st_com`,
-    firstName: `t$@es${microRandom}Tt$te1st_com`,
-    lastName: `t$@es${microRandom}Tt$te1st_com`
-  }
+  var fields = {}
 
   microTest(
       await NC('getSchema', {}, basicMeta),
@@ -51,8 +48,7 @@ var startTest = async function () {
         await NC('getPublicApiSchema', {}, basicMeta),
         { publicSchema: 'object' },
         'get Public Api Schema schema',
-        TYPE_OF,
-        2
+        TYPE_OF
       )
   microTest(
     await NC('proxy', {
@@ -68,7 +64,7 @@ var startTest = async function () {
 
   finishTest()
   SERVICE.netServer.stop()
-  SERVICE.schemaClient.stop()
+  // SERVICE.schemaClient.stop()
   await new Promise((resolve) => setTimeout(resolve, 1000))
   process.exit()
 }

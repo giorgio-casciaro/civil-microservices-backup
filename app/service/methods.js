@@ -7,15 +7,15 @@ process.on('unhandledRejection', (err, p) => {
 
 const path = require('path')
 
-var service = async function getMethods (CONSOLE, netClient, CONFIG = require('./config'), schemaClient) {
+var service = async function getMethods (CONSOLE, netClient, CONFIG = require('./config'), getServiceSchema) {
   try {
     CONSOLE.debug('CONFIG', CONFIG)
     return {
       async getSchema (reqData, meta = {directCall: true}, getStream = null) {
-        return { schema: schemaClient.getSchema() }
+        return { schema: getServiceSchema('*', '*') }
       },
       async getPublicApiSchema (reqData, meta = {directCall: true}, getStream = null) {
-        var schema = schemaClient.getSchema()
+        var schema = getServiceSchema('*', '*')
         var publicSchema = {}
         for (var serviceName in schema) {
           if (schema[serviceName].exportToPublicApi) {

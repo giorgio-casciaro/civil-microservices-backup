@@ -1,7 +1,8 @@
-var express = require('express')
-var bodyParser = require('body-parser')
-var compression = require('compression')
-var helmet = require('helmet')
+const express = require('express')
+const bodyParser = require('body-parser')
+const compression = require('compression')
+const helmet = require('helmet')
+const cors = require('cors')
 const url = require('url')
 const PACKAGE = 'channel.httpPublic.server'
 const checkRequired = require('../utils').checkRequired
@@ -17,6 +18,8 @@ module.exports = function getChannelHttpPublicServerPackage ({ getConsole, metho
       var httpUrl = 'http://' + config.url.replace('http://', '').replace('//', '')
       var httpPort = url.parse(httpUrl, false, true).port
       httpApi = express()
+      var corsOrigin = config.cors ? config.cors.split(',') : false
+      httpApi.use(cors({origin: corsOrigin}))
       httpApi.use(helmet())
       httpApi.use(compression({level: 1}))
       httpApi.use(bodyParser.json()) // support json encoded bodies
@@ -25,7 +28,6 @@ module.exports = function getChannelHttpPublicServerPackage ({ getConsole, metho
         try {
           var newMeta = {}
           for (var metaK in req.headers) if (metaK.indexOf('app-meta-') + 1)newMeta[metaK.replace('app-meta-', '')] = req.headers[metaK]
-
           var methodName = req.url.replace('/', '')
           var data = req.body || req.query
           var message = {

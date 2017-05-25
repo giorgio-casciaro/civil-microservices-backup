@@ -9,13 +9,7 @@ var CONSOLE = getConsole(PACKAGE, '----', '-----')
 
 var serviceConfig = require('./config').service
 
-const updateSchema = () => {
-  var config = require(path.join(__dirname, './schema'))
-  config.net = require('./config').net
-  return config
-}
-
-var schemaClient = schemaManager({updateSchema, savePath: serviceConfig.schemaPath, serviceName: serviceConfig.serviceName, intervall: 1000, defaultField: 'methods'})
+var schemaClient = schemaManager({ savePath: serviceConfig.schemaPath, serviceName: serviceConfig.serviceName, intervall: 1000, defaultField: 'methods' })
 
 var CONFIG = {
   serviceName: serviceConfig.serviceName,

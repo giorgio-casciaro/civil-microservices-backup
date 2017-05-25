@@ -21,13 +21,18 @@ sudo sysctl -w vm.max_map_count=262144
 docker-compose up -d aerospike
 docker-compose up -d elasticsearch
 docker-compose up -d smtp
+docker-compose up -d schema
+echo 'docker-compose stop schema ; docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_start\"" schema'
+
 sleep 10
 docker-compose up -d app
+echo 'docker-compose stop app ; docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_start\"" app'
 docker-compose up -d users
+echo 'docker-compose stop deploy ; docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_start\"" deploy'
+docker-compose up -d deploy
+echo 'docker-compose stop users ; docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_start\"" users'
 docker-compose up -d  www
 while true; do sleep 60; wget -q http://127.0.0.1:10080/civil-connect/app/getPublicApiSchema -O ./www/civilconnect/src/api.schema.json; done &
-echo 'docker-compose stop users ; docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_start\"" users'
-echo 'docker-compose stop users ; docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_test\"" users'
 xdg-open http://127.0.0.1:10080/admin/ &
 # # xdg-open http://127.0.0.1:10080/ &
 cd www/civilconnect

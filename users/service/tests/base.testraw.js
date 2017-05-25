@@ -143,7 +143,7 @@ var startTest = async function () {
   var updatePassword = await netClient.testLocalMethod('updatePassword', {id: create.id, password: fields.newPassword, confirmPassword: fields.newPassword, oldPassword: fields.password}, basicMeta)
   microTest(updatePassword, { success: 'string' }, 'updatePassword', TYPE_OF)
 
-  var remove = await netClient.testLocalMethod('remove', { id: create.id}, basicMeta)
+  var remove = await netClient.testLocalMethod('remove', { id: create.id }, basicMeta)
   microTest(remove, {success: 'User removed'}, 'remove')
   var readRemove = await netClient.testLocalMethod('read', { id: create.id }, basicMeta)
   microTest(readRemove, { error: 'string' }, 'readRemove', TYPE_OF)
@@ -166,7 +166,7 @@ var startTest = async function () {
 
   finishTest()
   SERVICE.netServer.stop()
-  SERVICE.schemaClient.stop()
+  // SERVICE.schemaClient.stop()
   await new Promise((resolve) => setTimeout(resolve, 1000))
   process.exit()
 }
