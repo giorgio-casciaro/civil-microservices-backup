@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aerospike-config-dir
+  namespace: civil-connect
+data:
+  test.conf: |
+    # Aerospike database configuration file.

@@ -2,13 +2,6 @@
 
 ## TODO
 - schema su altri ms: test, app ecc.
-- rivedere app e admin
-- admin autodeploy: microservice per gestire i deploy
-  - in dev deve generare il deploy analizzando la struttura dei ms e capendo se qualcosa è cambiato
-  - ogni ms ha un hash della cartella service, se il checksum è differente ne viene creata una nuova versione
-  - reduild nuova versione service docker
-  - pull dei docker modificati
-  - invio nuovo deploy a kubernetes
 
 - revoke token: aerospike with autoremove after token expires
 - token expires gestiti da users o ms ad hoc? (altri mcroservice chiamano user per verificare token valido)

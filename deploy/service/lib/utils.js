@@ -1,4 +1,4 @@
-const R = require('ramda')
+
 const fs = require('fs')
 const path = require('path')
 const PACKAGE = 'jesus'

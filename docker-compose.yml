@@ -223,28 +223,24 @@ services:
        civilmicroservices:
          ipv4_address: 172.16.100.17
 
-   deploy:
-     image: giorgiocasciaro/alpine-node-lua-aerospike:v1
-     entrypoint: sh -c "cd /service/ && npm start"
-     environment:
-       serviceName: deploy
-       schemaHost: 'http://172.16.100.17:10000'
-       netHost: 172.16.100.18
-       netHostHttpPublicPort: 10080
-       netCors: http://172.16.100.14:80,http://172.16.100.14,http://localhost:8080,http://127.0.0.1:8080,http://localhost:10080,http://127.0.0.1:10080
-       elasticsearchHost: 172.16.100.11:9200
-       aerospikeHosts: 172.16.100.10:3000
-       NODE_ENV: development
-     volumes:
-        - ./deploy/service:/service/service
-        - ./:/service/service/mount
-        - ./deploy/node_modules_compiled:/service/node_modules
-        - ./deploy/package.json:/service/package.json
-        - ../jesus/:/service/node_modules/sint-bit-jesus/
-        - ../cqrs/:/service/node_modules/sint-bit-cqrs/
-     networks:
-       civilmicroservices:
-         ipv4_address: 172.16.100.18
+  #  deploy:
+  #    image: giorgiocasciaro/alpine-node-lua-aerospike:v1
+  #    entrypoint: sh -c "cd /service/ && npm start"
+  #    environment:
+  #      mountPath: deploy
+  #      httpHost: 172.16.100.18
+  #      httpPort: 12000
+  #      NODE_ENV: development
+  #    volumes:
+  #       - ./deploy/service:/service/service
+  #       - ./:/service/service/mount
+  #       - ./deploy/node_modules_compiled:/service/node_modules
+  #       - ./deploy/package.json:/service/package.json
+  #       - ../jesus/:/service/node_modules/sint-bit-jesus/
+  #       - ../cqrs/:/service/node_modules/sint-bit-cqrs/
+  #    networks:
+  #      civilmicroservices:
+  #        ipv4_address: 172.16.100.18
 
 
 networks:

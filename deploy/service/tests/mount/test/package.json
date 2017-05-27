@@ -10,9 +10,9 @@
     "test": "node ./service/tests/base.testraw.js",
     "watch_test": "node ./service/lib/watch.js ./service,./service/tests/base.testraw.js ./service/tests/base.testraw.js",
     "watch_start": "node ./service/lib/watch.js ./service,./service/tests/base.testraw.js ./service/start.js",
-    "compile_modules": "npm install && cd docker && sh compile_modules.sh",
-    "build": "npm install && cd docker && sh build.sh",
-    "docker_start": "cd docker && sh start.sh"
+    "docker_compile": "npm install && cd docker && sh compile.sh",
+    "docker_build": "npm install && cd docker && sh build.sh",
+    "docker_push": "cd docker && sh push.sh"
   },
   "author": "",
   "license": "ISC",
