@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+   aerospike1:
+     image: giorgiocasciaro/miniaerospike:0.0.1
+    #  entrypoint: /opt/elasticsearch/bin/elasticsearch
+     volumes:
+       - ./aerospike.conf:/etc/aerospike/aerospike.conf
+      #  - ./data/aerospike1:/opt/aerospike/data
+      #  - ./logs/aerospike1:/var/log/aerospike
+     networks:
+       baseNetwork:
+          aliases:
+           - aerospike1
+    #  ports:
+    #    - 3000:3000
+    #    - 3001:3001
+    #    - 3002:3002
+    #    - 3003:3003
+
+   aerospike2:
+     image: giorgiocasciaro/miniaerospike:0.0.1
+    #  entrypoint: /opt/elasticsearch/bin/elasticsearch
+     volumes:
+       - ./aerospike.conf:/etc/aerospike/aerospike.conf
+      #  - ./data/aerospike2:/opt/aerospike/data
+      #  - ./logs/aerospike2:/var/log/aerospike
+     networks:
+       baseNetwork:
+          aliases:
+           - aerospike2
+    #  ports:
+    #    - 3000:3000
+    #    - 3001:3001
+    #    - 3002:3002
+    #    - 3003:3003
+
+   aerospike3:
+     image: giorgiocasciaro/miniaerospike:0.0.1
+    #  entrypoint: /opt/elasticsearch/bin/elasticsearch
+     volumes:
+       - ./aerospike.conf:/etc/aerospike/aerospike.conf
+      #  - ./data/aerospike3:/opt/aerospike/data
+      #  - ./logs/aerospike3:/var/log/aerospike
+     networks:
+       baseNetwork:
+          aliases:
+           - aerospike3
+    #  ports:
+    #    - 3000:3000
+    #    - 3001:3001
+    #    - 3002:3002
+    #    - 3003:3003
+
+networks:
+  baseNetwork:

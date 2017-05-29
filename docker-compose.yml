@@ -85,7 +85,7 @@ services:
           ipv4_address: 172.16.100.11
 
    test:
-     image: giorgiocasciaro/alpine-node-lua-aerospike:v1
+     image: giorgiocasciaro/alpine-node-lua-aerospike:v2
      #entrypoint: sh -c "ifconfig -a && node /service/service/tests/base.test"
      entrypoint: sh -c "cd /service/ && npm start"
      #entrypoint: sh -c "cd /service/ && npm run watch_test"
@@ -109,7 +109,7 @@ services:
           ipv4_address: 172.16.100.12
 
    test-remote:
-     image: giorgiocasciaro/alpine-node-lua-aerospike:v1
+     image: giorgiocasciaro/alpine-node-lua-aerospike:v2
      #entrypoint: bash
      entrypoint: sh -c "cd /service/ && npm run watch_test_remote"
     #  ports:
@@ -177,7 +177,7 @@ services:
           ipv4_address: 172.16.100.15
 
    app:
-     image: giorgiocasciaro/alpine-node-lua-aerospike:v1
+     image: giorgiocasciaro/alpine-node-lua-aerospike:v2
     #  entrypoint: sh -c "cd /service/ && npm run watch_test_remote"
      entrypoint: sh -c "cd /service/ && npm start"
     #  ports:
@@ -224,7 +224,7 @@ services:
          ipv4_address: 172.16.100.17
 
   #  deploy:
-  #    image: giorgiocasciaro/alpine-node-lua-aerospike:v1
+  #    image: giorgiocasciaro/alpine-node-lua-aerospike:v2
   #    entrypoint: sh -c "cd /service/ && npm start"
   #    environment:
   #      mountPath: deploy

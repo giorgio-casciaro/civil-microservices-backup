@@ -1,15 +1,15 @@
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
-  name: aerospike-cluster
+  name: aerospike
   namespace: civil-connect
 spec:
-  serviceName: "aerospike-cluster"
+  serviceName: "aerospike"
   replicas: 3
   template:
     metadata:
       labels:
-        app: aerospike-cluster
+        app: aerospike
     spec:
       containers:
       - name: aerospike-node
@@ -36,4 +36,4 @@ spec:
           path: /aerospikeNodeData
       - name: aerospike-config-dir
         configMap:
-          name: aerospike-config-dir
+          name: aerospike

@@ -14,7 +14,7 @@ var server = {}
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(express.static(path.join(__dirname,'/public')))
+app.use(express.static(path.join(__dirname, '/public')))
 const CONFIG = require('./config')
 
 const yaml = require('js-yaml')
@@ -28,7 +28,7 @@ const isFile = file => fs.existsSync(file) && fs.lstatSync(file).isFile()
 const isDirectory = file => fs.existsSync(file) && fs.lstatSync(file).isDirectory()
 const getDirectories = (srcpath) => fs.readdirSync(srcpath).filter(file => fs.lstatSync(path.join(srcpath, file)).isDirectory())
 const getFiles = (srcpath) => fs.readdirSync(srcpath).filter(file => isFile(path.join(srcpath, file)))
-const getHash = srv => hashFiles.sync({'files': srvPath(srv) + '/service/**'})
+const getHash = srv => hashFiles.sync({'files': [srvPath(srv) + '/service/**', srvPath(srv) + '/kubernetes/**']})
 
 function getServiceInfo (service) {
   var hash = getHash(service)
@@ -46,7 +46,7 @@ async function getServicesInfo () {
   .map(getServiceInfo)
 }
 const updServiceData = (srv, info) => {
-  info.hash = hashFiles.sync({'files': srvPath(srv) + '/service/**'})
+  info.hash = getHash(srv)
   info.version = parseInt(info.version || 0) + 1
   fs.writeFileSync(srvPathFile(srv, '/service.hash'), info.hash, 'utf-8')
   fs.writeFileSync(srvPathFile(srv, '/service.version'), info.version, 'utf-8')
@@ -54,11 +54,21 @@ const updServiceData = (srv, info) => {
 const getServiceData = (srv) => {
   return {
     name: fs.readFileSync(srvPathFile(srv, '/service.name'), 'utf-8'),
-    hash: isFile(srvPathFile(srv, '/service.hash')) ? fs.readFileSync(srvPathFile(srv, '/service.hash'), 'utf-8') : '',
-    version: isFile(srvPathFile(srv, '/service.version')) ? fs.readFileSync(srvPathFile(srv, '/service.version'), 'utf-8') : 0,
-    image: isFile(srvPathFile(srv, '/service.image')) ? fs.readFileSync(srvPathFile(srv, '/service.image'), 'utf-8') : ''
+    hash: isFile(srvPathFile(srv, '/service.hash')) ? fs.readFileSync(srvPathFile(srv, '/service.hash'), 'utf-8').trim() : '',
+    version: isFile(srvPathFile(srv, '/service.version')) ? fs.readFileSync(srvPathFile(srv, '/service.version'), 'utf-8').trim() : 0,
+    image: isFile(srvPathFile(srv, '/service.image')) ? fs.readFileSync(srvPathFile(srv, '/service.image'), 'utf-8').trim() : false
   }
 }
+const updateYaml = (srv, file, image, version) => {
+  if (image && isFile(srvPathFile(srv, file))) {
+    var kubeYaml = yaml.safeLoad(fs.readFileSync(srvPathFile(srv, file), 'utf8'))
+    kubeYaml.spec.template.spec.containers[0].image = `${image}:version-${version}`
+    fs.writeFileSync(srvPathFile(srv, file), yaml.safeDump(kubeYaml), 'utf8')
+    return true
+  }
+  return false
+}
+
 function build (srv) {
   var out = {}
   try {
@@ -66,7 +76,7 @@ function build (srv) {
     console.log(`Installing ${serviceInfo.saved.name}`, serviceInfo)
     if (isFile(srvPathFile(srv, 'package.json'))) {
       try {
-        out.install = exec('npm install', {cwd: serviceInfo.path, encoding: 'utf-8', timeout: 1000 * 60 * 60})
+        out.install = exec('npm install --production', {cwd: serviceInfo.path, encoding: 'utf-8', timeout: 1000 * 60 * 60})
       } catch (error) {
         console.log(error)
         out.installError = error
@@ -103,18 +113,9 @@ function build (srv) {
     }
     console.log(`Kubernetes update`)
     out.kubernetes = {}
-    if (isFile(srvPathFile(srv, '/kubernetes/deployment.yaml'))) {
-      out.kubernetes.deployment = true
-      var deployment = yaml.safeLoad(fs.readFileSync(srvPathFile(srv, '/kubernetes/deployment.yaml'), 'utf8'))
-      deployment.spec.template.spec.containers[0].image = `${serviceInfo.saved.image.trim()}:version-${serviceInfo.saved.version.trim()}`
-      fs.writeFileSync(srvPathFile(srv, '/kubernetes/deployment.yaml'), yaml.safeDump(deployment), 'utf8')
-    }
-    if (isFile(srvPathFile(srv, '/kubernetes/statefulSet.yaml'))) {
-      out.kubernetes.statefulSet = true
-      var statefulSet = yaml.safeLoad(fs.readFileSync(srvPathFile(srv, '/kubernetes/statefulSet.yaml'), 'utf8'))
-      statefulSet.spec.template.spec.containers[0].image = `${serviceInfo.saved.image.trim()}:version-${serviceInfo.saved.version.trim()}`
-      fs.writeFileSync(srvPathFile(srv, '/kubernetes/statefulSet.yaml'), yaml.safeDump(statefulSet), 'utf8')
-    }
+    out.kubernetes.deployment = updateYaml(srv, '/kubernetes/deployment.yaml', serviceInfo.saved.image, serviceInfo.saved.version)
+    out.kubernetes.statefulSet = updateYaml(srv, '/kubernetes/statefulSet.yaml', serviceInfo.saved.image, serviceInfo.saved.version)
+
     console.log('serviceInfo.saved', serviceInfo.saved)
     updServiceData(srv, serviceInfo.saved)
   } catch (error) {

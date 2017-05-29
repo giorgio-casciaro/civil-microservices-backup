@@ -15,15 +15,6 @@ module.exports = {
     secure: false,
     debug: true
   },
-  // net: {
-  //   'channels': {
-  //     'httpPublic': {
-  //       'url': `${process.env.netHost || '127.0.0.1'}:${process.env.netHostHttpPublicPort || '18080'}`,
-  //       'cors': process.env.netCors || process.env.netHost || '127.0.0.1'
-  //     },
-  //     'http': { 'url': `${process.env.netHost || '127.0.0.1'}:${process.env.netHostHttpPort || '18081'}` }
-  //   }
-  // },
   jwt: {
     // 'passphrase': process.env.jwtPassphrase || 'CJhbGciOiJIUzI1NiJ9eyJ0eXAiOiJKV1QiL',
     'path': path.join(__dirname, './permissions/'),

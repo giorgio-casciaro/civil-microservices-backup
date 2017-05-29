@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: civil-microservices-users
+  namespace: civil-connect
+spec:
+  ports:
+  - port: 18080
+    name: jesusPublicHttp
+  - port: 18081
+    name: jesusPrivateHttp
+  - port: 18082
+    name: jesusPrivateZeromq
+  clusterIP: None
+  selector:
+    app: civil-microservices-users

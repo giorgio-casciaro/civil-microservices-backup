@@ -41,7 +41,7 @@ var startTest = async function () {
   microTest(JSON.parse(getUpdatedKubernetesYaml), {deployment: 'string'}, 'getUpdatedKubernetesYaml: only deployment or statefulSet yaml', TYPE_OF)
 
   var getAllKubernetesYaml = await request.get(`http://${config.httpHost}:${config.httpPort}/getAllKubernetesYaml?service=test`)
-  microTest(JSON.parse(getAllKubernetesYaml), {'configMap.yaml': 'string'}, 'getAllKubernetesYaml: get all kubernetes configs', TYPE_OF)
+  microTest(JSON.parse(getAllKubernetesYaml), {'deployment.yaml': 'string'}, 'getAllKubernetesYaml: get all kubernetes configs', TYPE_OF)
 
   var buildServiceForce = await request.get(`http://${config.httpHost}:${config.httpPort}/buildService?service=test&force=1`)
   microTest(JSON.parse(buildServiceForce), {build: 'object'}, 'buildService Force ', TYPE_OF)

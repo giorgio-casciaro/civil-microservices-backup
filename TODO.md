@@ -1,14 +1,29 @@
 # civil-microservices
 
 ## TODO
-- schema su altri ms: test, app ecc.
+- test deploy
+  - schema
+  - www
+- deploy:
+  - app
+  - logger
+  - mapserver
+  - www
+
+- real smtp email server
+
+- front end admin/api servito come file statico da app
+- jesus dovrebbe servire anche file statici
+- i test dovrebbero avvenire tramite chiamata rest
+
+- rivedere deploy dei vari servizi su TEST
+- test kubernetes deploy su TEST, assicurarsi che sia kubernetes 1.6
 
 - revoke token: aerospike with autoremove after token expires
 - token expires gestiti da users o ms ad hoc? (altri mcroservice chiamano user per verificare token valido)
 - token revocato durante l'eliminazione
--
+
 - prevedere reiscrizione (se user esiste e stato è zero)
-- aggiungere libvips a alpine compiler e alpine-node-lua-aerospike
 
 - provare ubuntu al posto di alpine su immagine finale
 

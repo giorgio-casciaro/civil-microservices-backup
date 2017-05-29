@@ -11,10 +11,11 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.min.css" />
 
 	<style>
-  pre:empty{display: none}
+  textarea:empty{display: none}
+	textarea{ min-height:400px; margin-left: 2em; padding: 2em}
   .notHaveUpdates{ background-color: rgba(0, 255, 128, 0.2);}
   .haveUpdates{ background-color: rgba( 255, 50, 0, 0.2);}
-  ol li{ border: 1px solid #333}
+  ol li{ border: 1px solid #ccc; padding: 1em}
   </style>
 
 
@@ -46,20 +47,28 @@
   </div>
   </div>
   `
-  const responseTemplate=(title,data,response)=>`
+  const responseTemplate=(id,title,data,response)=>`
   <li>
   <h4 >${data.service||""} <small >${title}  ${JSON.stringify(data,null,4)}</small></h4>
-  <pre >${response.deployment||JSON.stringify(response,null,4)||""}</pre>
-  <pre >${response.statefulSet||""}</pre>
+	<a class="btn btn-default copy" onclick="copy('#textarea_dep_${id}')">copy Deployment</a>
+	<a class="btn btn-default copy" onclick="copy('#textarea_stat_${id}')">copy StatefulSet</a>
+  <textarea class="form-control" id="textarea_dep_${id}">${response.deployment}</textarea>
+	<textarea class="form-control" id="textarea_stat_${id}">${response.statefulSet||""}</textarea>
+	<textarea class="form-control" id="textarea_stat_${id}">${(!response.deployment&&!response.statefulSet)?JSON.stringify(response,null,4):""}</textarea>
   </li>
   `
-  const responseMultiTemplate=(title,data,response)=>`
+  const responseMultiTemplate=(id,title,data,response)=>`
   <li>
   <h4 >${data.service||""} <small >${title}  ${JSON.stringify(data,null,4)}</small></h4>
-  <pre >${response}</pre>
+	<a class="btn btn-default copy" onclick="copy('#textarea_${id}')">copy</a>
+  <textarea id="textarea_${id}" class="form-control" >${response}</textarea>
   </li>
   `
-  var buildService=(service)=>{
+	var copy=(query)=>{
+		document.querySelector(query).select();
+		document.execCommand('copy');
+  }
+	var buildService=(service)=>{
     var force=$("#check_"+service).prop("checked")
     var data={service}
     if(force)data.force=force
@@ -71,14 +80,15 @@
   }
   var getUpdatedKubernetesYaml=(service)=>{
     $.get( "getUpdatedKubernetesYaml", {service},function( json ) {
-      $("#textareas").prepend(responseTemplate("Updated Yaml",{service},JSON.parse(json)))
+      $("#textareas").prepend(responseTemplate(ids++,"Updated Yaml",{service},JSON.parse(json)))
     });
   }
+	var ids=0
   var getAllKubernetesYaml=(service)=>{
     $.get( "getAllKubernetesYaml", {service},function( json ) {
       var data=JSON.parse(json)
       for (var i in data){
-        $("#textareas").prepend(responseMultiTemplate(i,{service},data[i]))
+        $("#textareas").prepend(responseMultiTemplate(ids++,i,{service},data[i]))
       }
 
     });

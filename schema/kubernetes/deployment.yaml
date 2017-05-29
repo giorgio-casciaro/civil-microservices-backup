@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: civil-microservices-schema
+  namespace: civil-connect
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: civil-microservices-schema
+    spec:
+      containers:
+        - name: users
+          image: 'giorgiocasciaro/civil-microservices-schema:version-1'
+          - env:
+          envFrom:
+            - configMapRef:
+                name: civil-microservices-schema

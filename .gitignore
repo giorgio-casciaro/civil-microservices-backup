@@ -1,3 +1,10 @@
+# Kubernetes secrets and configMap
+configMap*
+secret.yaml
+
+# Docker compiled modules
+node_modules_compiled
+
 
 # Logs
 logs
