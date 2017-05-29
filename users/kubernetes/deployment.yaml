@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: users
-          image: 'giorgiocasciaro/civil-microservices-users:version-1'
+          image: 'giorgiocasciaro/civil-microservices-users:version-0'
           envFrom:
             - configMapRef:
                 name: civil-microservices-users
