@@ -8,9 +8,6 @@
     "url": "https://github.com/giorgio-casciaro/civil-microservices.git"
   },
   "scripts": {
-    "start": "bash start.sh",
-    "dev": "cd www/civilconnect && npm run dev",
-    "stop": "docker-compose down"
   },
   "license": "ISC",
   "devDependencies": {},
