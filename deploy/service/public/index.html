@@ -38,16 +38,19 @@
   <li>version ${service.saved.version}</li>
   <li>image ${service.saved.image}</li>
   <li>haveUpdates ${service.haveUpdates}</li>
+  <li>node_modules ${service.node_modules}</li>
+  <li>node_modules_compiled ${service.node_modules}</li>
   </ul>
   <div>
   force build <input type="checkbox" id="check_${service.dir}" />
-  <a class="btn btn-default buildService" onclick="buildService('${service.dir}')">buildService</a>
+  <a class="btn btn-default compileService" onclick="compileService('${service.dir}')">compileService</a>
+  <a class="btn btn-default publishService" onclick="publishService('${service.dir}')">publishService</a>
   <a class="btn btn-default getUpdatedKubernetesYaml" onclick="getUpdatedKubernetesYaml('${service.dir}')">getUpdatedKubernetesYaml</a>
   <a class="btn btn-default getAllKubernetesYaml" onclick="getAllKubernetesYaml('${service.dir}')">getAllKubernetesYaml</a>
   </div>
   </div>
   `
-  const responseTemplate=(id,title,data,response)=>`
+	const responseTemplate=(id,title,data,response)=>`
   <li>
   <h4 >${data.service||""} <small >${title}  ${JSON.stringify(data,null,4)}</small></h4>
 	<a class="btn btn-default copy" onclick="copy('#textarea_dep_${id}')">copy Deployment</a>
@@ -57,6 +60,13 @@
 	<textarea class="form-control" id="textarea_stat_${id}">${(!response.deployment&&!response.statefulSet)?JSON.stringify(response,null,4):""}</textarea>
   </li>
   `
+	const rawResponseTemplate=(id,title,data,response)=>`
+	<li>
+	<h4 >${data.service||""} <small >${title}  ${JSON.stringify(data,null,4)}</small></h4>
+	<textarea class="form-control" id="textarea_stat_${id}">${JSON.stringify(response,null,4)}</textarea>
+	</li>
+	`
+
   const responseMultiTemplate=(id,title,data,response)=>`
   <li>
   <h4 >${data.service||""} <small >${title}  ${JSON.stringify(data,null,4)}</small></h4>
@@ -68,14 +78,22 @@
 		document.querySelector(query).select();
 		document.execCommand('copy');
   }
-	var buildService=(service)=>{
+	var compileService=(service)=>{
+    var data={service}
+    $.get( "compileService", data,function( json ) {
+      var response=JSON.parse(json)
+      console.log(data);
+      $("#textareas").prepend(rawResponseTemplate(ids++,"compile",data,response))
+    });
+  }
+	var publishService=(service)=>{
     var force=$("#check_"+service).prop("checked")
     var data={service}
     if(force)data.force=force
-    $.get( "buildService", data,function( json ) {
+    $.get( "publishService", data,function( json ) {
       var response=JSON.parse(json)
       console.log(data);
-      $("#textareas").prepend(responseTemplate("build",data,response))
+      $("#textareas").prepend(rawResponseTemplate(ids++,"build",data,response))
     });
   }
   var getUpdatedKubernetesYaml=(service)=>{

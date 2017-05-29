@@ -12,6 +12,6 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: 'giorgiocasciaro/civil-microservices-deploy-test:version-33'
+          image: 'giorgiocasciaro/civil-microservices-deploy-test:version-36'
           ports:
             - containerPort: 80

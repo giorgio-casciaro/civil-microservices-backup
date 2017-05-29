@@ -1,6 +1,7 @@
 # civil-microservices
 
 ## TODO
+- deploy: check npm installed, check compiled / install su singolo servizio (npm links, npm install, e docker compile )
 - test deploy
   - schema
   - www

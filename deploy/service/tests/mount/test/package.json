@@ -17,5 +17,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+  "chalk": "^1.1.3"
   }
 }

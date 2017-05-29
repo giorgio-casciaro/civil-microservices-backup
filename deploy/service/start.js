@@ -37,7 +37,9 @@ function getServiceInfo (service) {
     dir: service,
     path: srvPath(service),
     saved,
-    haveUpdates: !(saved && saved.hash === hash)
+    haveUpdates: !(saved && saved.hash === hash),
+    node_modules: isDirectory(srvPathFile(service, 'node_modules')),
+    node_modules_compiled: isDirectory(srvPathFile(service, 'node_modules_compiled'))
   }
 }
 async function getServicesInfo () {
@@ -68,54 +70,66 @@ const updateYaml = (srv, file, image, version) => {
   }
   return false
 }
-
+function install (srv) {
+  var serviceInfo = getServiceInfo(srv)
+  var out = {}
+  console.log(`Installing ${serviceInfo.saved.name}`, serviceInfo)
+  if (isFile(srvPathFile(srv, 'install.sh'))) {
+    try {
+      out.out = exec('sh install.sh', {cwd: serviceInfo.path, encoding: 'utf-8', timeout: 1000 * 60 * 60})
+    } catch (error) {
+      out.errors = error
+    }
+  }
+  return out
+}
+function compile (srv) {
+  var serviceInfo = getServiceInfo(srv)
+  console.log(`Compiling ${serviceInfo.saved.name}`, serviceInfo)
+  var out = {}
+  if (isFile(srvPathFile(srv, 'compile.sh'))) {
+    try {
+      out.out = exec('sh compile.sh', {cwd: serviceInfo.path, encoding: 'utf-8', timeout: 1000 * 60 * 60})
+    } catch (error) {
+      out.errors = error
+    }
+  }
+  return out
+}
 function build (srv) {
+  var serviceInfo = getServiceInfo(srv)
+  var out = {}
+  console.log(`Building ${serviceInfo.saved.name}`)
+  if (isFile(srvPathFile(srv, 'build.sh'))) {
+    try {
+      out.out = exec('sh build.sh', {cwd: serviceInfo.path, encoding: 'utf-8', timeout: 1000 * 60 * 60})
+    } catch (error) {
+      out.errors = error
+    }
+  }
+  return out
+}
+function push (srv) {
+  var serviceInfo = getServiceInfo(srv)
+  var out = {}
+  console.log(`Pushing ${serviceInfo.saved.name}`)
+  if (isFile(srvPathFile(srv, 'push.sh'))) {
+    try {
+      out.out = exec('sh push.sh', {cwd: serviceInfo.path, encoding: 'utf-8', timeout: 1000 * 60 * 60})
+    } catch (error) {
+      out.errors = error
+    }
+  }
+  return out
+}
+
+function updateVersion (srv) {
   var out = {}
   try {
     var serviceInfo = getServiceInfo(srv)
-    console.log(`Installing ${serviceInfo.saved.name}`, serviceInfo)
-    if (isFile(srvPathFile(srv, 'package.json'))) {
-      try {
-        out.install = exec('npm install --production', {cwd: serviceInfo.path, encoding: 'utf-8', timeout: 1000 * 60 * 60})
-      } catch (error) {
-        console.log(error)
-        out.installError = error
-        return out
-      }
-    }
-    console.log(`Compiling ${serviceInfo.saved.name}`, serviceInfo)
-    if (isFile(srvPathFile(srv, '/docker/compile.sh'))) {
-      try {
-        out.compile = exec('sh compile.sh', {cwd: serviceInfo.path + '/docker/', encoding: 'utf-8', timeout: 1000 * 60 * 60})
-      } catch (error) {
-        console.log(error)
-        out.compileError = error
-        return out
-      }
-    }
-    console.log(`Building ${serviceInfo.saved.name}`)
-    if (isFile(srvPathFile(srv, '/docker/build.sh'))) {
-      try {
-        out.build = exec('sh build.sh', {cwd: serviceInfo.path + '/docker/', encoding: 'utf-8', timeout: 1000 * 60 * 60})
-      } catch (error) {
-        out.buildError = error
-        return out
-      }
-    }
-    console.log(`Pushing ${serviceInfo.saved.name}`)
-    if (isFile(srvPathFile(srv, '/docker/push.sh'))) {
-      try {
-        out.push = exec('sh push.sh', {cwd: serviceInfo.path + '/docker/', encoding: 'utf-8', timeout: 1000 * 60 * 60})
-      } catch (error) {
-        out.pushError = error
-        return out
-      }
-    }
     console.log(`Kubernetes update`)
-    out.kubernetes = {}
-    out.kubernetes.deployment = updateYaml(srv, '/kubernetes/deployment.yaml', serviceInfo.saved.image, serviceInfo.saved.version)
-    out.kubernetes.statefulSet = updateYaml(srv, '/kubernetes/statefulSet.yaml', serviceInfo.saved.image, serviceInfo.saved.version)
-
+    out.deployment = updateYaml(srv, '/kubernetes/deployment.yaml', serviceInfo.saved.image, serviceInfo.saved.version)
+    out.statefulSet = updateYaml(srv, '/kubernetes/statefulSet.yaml', serviceInfo.saved.image, serviceInfo.saved.version)
     console.log('serviceInfo.saved', serviceInfo.saved)
     updServiceData(srv, serviceInfo.saved)
   } catch (error) {
@@ -132,17 +146,28 @@ app.get('/analizeDev', async function (req, res) {
     res.send(JSON.stringify(error))
   }
 })
-app.get('/buildService', async function (req, res) {
+
+app.get('/compileService', async function (req, res) {
   try {
-    var info = await getServiceInfo(req.query.service)
-    var response = {}
-    if (!info.haveUpdates && !req.query.force)response = {'success': 'service not need to build'}
-    else response = {'success': 'service builted', 'build': build(req.query.service)}
+    var response = {'success': 'service compiled', 'install': install(req.query.service), 'compile': compile(req.query.service)}
     res.send(JSON.stringify(response))
   } catch (error) {
     res.send(JSON.stringify(error))
   }
 })
+
+app.get('/publishService', async function (req, res) {
+  try {
+    var info = await getServiceInfo(req.query.service)
+    var response = {}
+    if (!info.haveUpdates && !req.query.force)response = {'success': 'service not need to publish'}
+    else response = {'success': 'service published', 'install': install(req.query.service), 'compile': compile(req.query.service), 'build': build(req.query.service), 'push': push(req.query.service), 'updateVersion': updateVersion(req.query.service)}
+    res.send(JSON.stringify(response))
+  } catch (error) {
+    res.send(JSON.stringify(error))
+  }
+})
+
 app.get('/getUpdatedKubernetesYaml', async function (req, res) {
   try {
     var response = {}
