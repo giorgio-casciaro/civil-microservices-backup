@@ -26,16 +26,18 @@ echo 'docker-compose stop schema ; docker-compose run --entrypoint "sh -c \"cd /
 
 sleep 10
 docker-compose up -d app
-echo 'docker-compose stop app ; docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_start\"" app'
+echo 'docker-compose stop app; docker-compose up app'
+echo 'docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_start\"" app'
 docker-compose up -d users
-echo 'docker-compose stop deploy ; docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_start\"" deploy'
-docker-compose up -d deploy
-echo 'docker-compose stop users ; docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_start\"" users'
+echo 'docker-compose stop users; docker-compose up users'
+echo 'docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_start\"" users'
+# docker-compose up -d deploy
+#echo 'docker-compose stop deploy ; docker-compose run --entrypoint "sh -c \"cd /service/ && npm run watch_start\"" deploy'
 docker-compose up -d  www
-while true; do sleep 60; wget -q http://127.0.0.1:10080/civil-connect/app/getPublicApiSchema -O ./www/civilconnect/src/api.schema.json; done &
-xdg-open http://127.0.0.1:10080/admin/ &
+# while true; do sleep 60; wget -q http://127.0.0.1:10080/api/app/getPublicApiSchema -O ./www/webpack/src/api.schema.json; done &
+xdg-open http://127.0.0.1:10080/static/app/ &
 # # xdg-open http://127.0.0.1:10080/ &
-cd www/civilconnect
+cd www/webpack
 npm run dev
 cd ../..
 

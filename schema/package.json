@@ -14,9 +14,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "aerospike": "^2.5.2"
   },
   "dependencies": {
+    "aerospike": "^2.5.2",
     "body-parser": "^1.17.2",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.4",

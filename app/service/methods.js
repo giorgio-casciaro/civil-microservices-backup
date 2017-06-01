@@ -31,6 +31,11 @@ var service = async function getMethods (CONSOLE, netClient, CONFIG = require('.
       },
       async proxy (reqData, meta = {directCall: true}, getStream = null) {
         return await netClient.rpcCall({to: reqData.service, method: reqData.method, data: reqData.data, meta: reqData.meta})
+      },
+      async static (reqData, meta = {directCall: true}, getStream = null) {
+        var file = await new Promise((resolve, reject) => fs.readFile(reqData.file, (err, data) => err ? reject(err) : resolve(data)))
+
+        return await netClient.rpcCall({to: reqData.service, method: reqData.method, data: reqData.data, meta: reqData.meta})
       }
     }
   } catch (error) {

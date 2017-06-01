@@ -1,3 +1,3 @@
 #!/bin/bash
 #set -x
-docker run -v "$PWD/":"/service"  giorgiocasciaro/alpine-node-compiler:v2
+docker run -v "$PWD/":"/service"  giorgiocasciaro/ubuntu-node-compiler:v1

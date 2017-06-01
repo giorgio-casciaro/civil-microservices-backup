@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    apiServer: 'http://127.0.0.1:10080/civil-connect',
+    apiServer: 'http://127.0.0.1:10080/api',
     viewport: 'main',
     errors: []
   },

@@ -87,7 +87,7 @@ services:
    test:
      image: giorgiocasciaro/alpine-node-lua-aerospike:v2
      #entrypoint: sh -c "ifconfig -a && node /service/service/tests/base.test"
-     entrypoint: sh -c "cd /service/ && npm start"
+     entrypoint: sh -c "cd /service/ && npm run watch_start"
      #entrypoint: sh -c "cd /service/ && npm run watch_test"
     #  ports:
     #    - "9229"
@@ -102,8 +102,8 @@ services:
         - ./test/service:/service/service
         - ./test/node_modules_compiled:/service/node_modules
         - ./test/package.json:/service/package.json
-        - ../jesus/:/service/node_modules/sint-bit-jesus/
-        # - ../cqrs/:/service/node_modules/sint-bit-cqrs/
+        - ./NPM/jesus/:/service/node_modules/sint-bit-jesus/
+        # - ./NPM/cqrs/:/service/node_modules/sint-bit-cqrs/
      networks:
        civilmicroservices:
           ipv4_address: 172.16.100.12
@@ -125,8 +125,8 @@ services:
         - ./test/service:/service/service
         - ./test/node_modules_compiled:/service/node_modules
         - ./test/package.json:/service/package.json
-        - ../jesus/:/service/node_modules/sint-bit-jesus/
-        - ../cqrs/:/service/node_modules/sint-bit-cqrs/
+        - ./NPM/jesus/:/service/node_modules/sint-bit-jesus/
+        - ./NPM/cqrs/:/service/node_modules/sint-bit-cqrs/
      networks:
        civilmicroservices:
           ipv4_address: 172.16.100.13
@@ -137,17 +137,17 @@ services:
      ports:
        - "10080:10080"
      volumes:
-        - ./email:/usr/share/nginx/html/email
+        # - ./email:/usr/share/nginx/html/email
         - ./www/nginx.conf:/etc/nginx/nginx.conf:ro
-        - ./www/civilconnect/dist:/usr/share/nginx/html
+        - ./www/service:/usr/share/nginx/html
         # - ./www/app:/usr/share/nginx/html/app
-        - ./www/admin:/usr/share/nginx/html/admin
+        # - ./www/admin:/usr/share/nginx/html/admin
      networks:
        civilmicroservices:
           ipv4_address: 172.16.100.14
 
    users:
-     image: giorgiocasciaro/civil-microservices-users:v1
+     image: giorgiocasciaro/ubuntu-node:v1
     #  entrypoint: sh -c "cd /service/ && npm run watch_test"
      entrypoint: sh -c "cd /service/ && npm run watch_start"
     #  ports:
@@ -170,16 +170,16 @@ services:
         - ./users/service:/service/service
         - ./users/node_modules_compiled:/service/node_modules
         - ./users/package.json:/service/package.json
-        - ../jesus/:/service/node_modules/sint-bit-jesus/
-        - ../cqrs/:/service/node_modules/sint-bit-cqrs/
+        - ./NPM/jesus/:/service/node_modules/sint-bit-jesus/
+        - ./NPM/cqrs/:/service/node_modules/sint-bit-cqrs/
      networks:
        civilmicroservices:
           ipv4_address: 172.16.100.15
 
    app:
-     image: giorgiocasciaro/alpine-node-lua-aerospike:v2
+     image: giorgiocasciaro/ubuntu-node:v1
     #  entrypoint: sh -c "cd /service/ && npm run watch_test_remote"
-     entrypoint: sh -c "cd /service/ && npm start"
+     entrypoint: sh -c "cd /service/ && npm run watch_start"
     #  ports:
       #  - "10080"
       #  - "9229"
@@ -196,14 +196,14 @@ services:
         - ./app/service:/service/service
         - ./app/node_modules_compiled:/service/node_modules
         - ./app/package.json:/service/package.json
-        - ../jesus/:/service/node_modules/sint-bit-jesus/
-        - ../cqrs/:/service/node_modules/sint-bit-cqrs/
+        - ./NPM/jesus/:/service/node_modules/sint-bit-jesus/
+        - ./NPM/cqrs/:/service/node_modules/sint-bit-cqrs/
      networks:
        civilmicroservices:
          ipv4_address: 172.16.100.16
 
    schema:
-     image: giorgiocasciaro/civil-microservices-schema:v1
+     image: giorgiocasciaro/ubuntu-node:v1
     #  entrypoint: sh -c "cd /service/ && npm run watch_test_remote"
      entrypoint: sh -c "cd /service/ && npm run watch_start"
      ports:
@@ -217,8 +217,8 @@ services:
         - ./schema/service:/service/service
         - ./schema/node_modules_compiled:/service/node_modules
         - ./schema/package.json:/service/package.json
-        - ../jesus/:/service/node_modules/sint-bit-jesus/
-        - ../cqrs/:/service/node_modules/sint-bit-cqrs/
+        - ./NPM/jesus/:/service/node_modules/sint-bit-jesus/
+        - ./NPM/cqrs/:/service/node_modules/sint-bit-cqrs/
      networks:
        civilmicroservices:
          ipv4_address: 172.16.100.17
@@ -236,8 +236,8 @@ services:
   #       - ./:/service/service/mount
   #       - ./deploy/node_modules_compiled:/service/node_modules
   #       - ./deploy/package.json:/service/package.json
-  #       - ../jesus/:/service/node_modules/sint-bit-jesus/
-  #       - ../cqrs/:/service/node_modules/sint-bit-cqrs/
+  #       - ./NPM/jesus/:/service/node_modules/sint-bit-jesus/
+  #       - ./NPM/cqrs/:/service/node_modules/sint-bit-cqrs/
   #    networks:
   #      civilmicroservices:
   #        ipv4_address: 172.16.100.18

@@ -1,4 +1,4 @@
-FROM giorgiocasciaro/alpine-node-lua-aerospike:v2
+FROM giorgiocasciaro/ubuntu-node:v1
 COPY . /service
 RUN rm -r /service/node_modules
 RUN ls /service

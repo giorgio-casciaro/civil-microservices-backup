@@ -1,24 +1,23 @@
 # civil-microservices
 
 ## TODO
-- deploy: check npm installed, check compiled / install su singolo servizio (npm links, npm install, e docker compile )
-- test deploy
+- test loc
+- test TEST deploy
   - schema
   - www
-- deploy:
-  - app
-  - logger
-  - mapserver
-  - www
 
-- real smtp email server
+da testare su kubernetes
+check envvariable in kubernetes (se solo UPPERCASE)
+smtp email server
+logger
+  - test settaggio attuale su kubernetes (settings in elasticsearch)
+  - labels logMe a containers
 
-- front end admin/api servito come file statico da app
-- jesus dovrebbe servire anche file statici
+
+
+- jesus public http dovrebbe aprire solo le route utili e gesire l'upolad dei file con parametri ad hoc per ogni metodo
+
 - i test dovrebbero avvenire tramite chiamata rest
-
-- rivedere deploy dei vari servizi su TEST
-- test kubernetes deploy su TEST, assicurarsi che sia kubernetes 1.6
 
 - revoke token: aerospike with autoremove after token expires
 - token expires gestiti da users o ms ad hoc? (altri mcroservice chiamano user per verificare token valido)
@@ -26,11 +25,6 @@
 
 - prevedere reiscrizione (se user esiste e stato è zero)
 
-- provare ubuntu al posto di alpine su immagine finale
-
-filesystem condiviso, ogni servizio gestisce i suoi upload
-https://hub.docker.com/r/itherz/lizardfs-master/~/dockerfile/
-- user gestiscono in autonomia l'upload della pic
 
 - app->i18n->getTranslations("it")
 - app->i18n->createRawString("group","rawstring")

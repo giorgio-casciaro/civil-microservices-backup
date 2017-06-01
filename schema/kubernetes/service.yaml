@@ -5,11 +5,11 @@ metadata:
   namespace: civil-connect
 spec:
   ports:
-  - port: 18080
+  - port: 10080
     name: jesusPublicHttp
-  - port: 18081
+  - port: 10081
     name: jesusPrivateHttp
-  - port: 18082
+  - port: 10082
     name: jesusPrivateZeromq
   clusterIP: None
   selector:

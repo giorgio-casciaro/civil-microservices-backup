@@ -23,6 +23,14 @@ var DI = {
 }
 var netClient = jesusClient(DI)
 var netServer = jesusServer(DI)
+
+// STATIC FILES
+var express = require('express')
+var app = express()
+app.use(express.static(path.join(__dirname, '/static')))
+app.listen(CONFIG.staticFilesHttpPort, function () {
+  CONSOLE.log('Static files http server started');
+});
 // CONSOLE.log('DI', DI)
 netServer.start()
 module.exports = {
