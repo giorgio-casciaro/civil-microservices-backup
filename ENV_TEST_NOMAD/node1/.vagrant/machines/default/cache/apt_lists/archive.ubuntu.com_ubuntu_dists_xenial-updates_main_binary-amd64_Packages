@@ -34120,19 +34120,20 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: pkg-lxc <pkg-lxc-devel@lists.alioth.debian.org>
 Architecture: amd64
 Source: lxcfs
-Version: 2.0.6-0ubuntu1~16.04.1
+Version: 2.0.7-0ubuntu1~16.04.1
 Depends: libc6 (>= 2.14), libpam0g (>= 0.99.7.1), libpam-runtime (>= 1.0.1-6), systemd | cgroup-lite | cgroupfs-mount
 Conflicts: libpam-cgm
-Filename: pool/main/l/lxcfs/libpam-cgfs_2.0.6-0ubuntu1~16.04.1_amd64.deb
-Size: 15058
-MD5sum: 260d3b563706b67508f3d9c26e153f6a
-SHA1: 11ef569f92b4976602544ed691567a1214aa39ad
-SHA256: 121347a009cdec22d7eeb067249571daf00f1ec2f6080c151938577a17c87543
+Filename: pool/main/l/lxcfs/libpam-cgfs_2.0.7-0ubuntu1~16.04.1_amd64.deb
+Size: 15230
+MD5sum: 47fee1a63005f017bdb4d46b17e082cb
+SHA1: 999e05dfa3df023d066095d618bf08ef232bba33
+SHA256: 7d9bc9dd7d66c4c2d9f317ab36a4b398479ff6f8b318f73023b724f55653ea63
 Description: PAM module for managing cgroups for LXC
 Homepage: https://linuxcontainers.org
 Description-md5: e709f3eddd48d5ce8595be4d003fd4f5
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
+Phased-Update-Percentage: 60
 Supported: 5y
 
 Package: libpam-sss
@@ -40435,94 +40436,98 @@ Supported: 5y
 Package: libssl-dev
 Priority: optional
 Section: libdevel
-Installed-Size: 7028
+Installed-Size: 7027
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian OpenSSL Team <pkg-openssl-devel@lists.alioth.debian.org>
 Architecture: amd64
 Source: openssl
-Version: 1.0.2g-1ubuntu4.6
-Depends: libssl1.0.0 (= 1.0.2g-1ubuntu4.6), zlib1g-dev
+Version: 1.0.2g-1ubuntu4.8
+Depends: libssl1.0.0 (= 1.0.2g-1ubuntu4.8), zlib1g-dev
 Recommends: libssl-doc
-Filename: pool/main/o/openssl/libssl-dev_1.0.2g-1ubuntu4.6_amd64.deb
-Size: 1344052
-MD5sum: 66311a6c6671d8731e6cff05f26f99f4
-SHA1: 3666032de3ebce46a975cefa91918d3896be647d
-SHA256: e4ad54c12aaf88d65c04eaccf1e07baf81ab3d14acf7e118137e8b1e10bdd06b
+Filename: pool/main/o/openssl/libssl-dev_1.0.2g-1ubuntu4.8_amd64.deb
+Size: 1344552
+MD5sum: c79e408d057406f1b01806408e058da6
+SHA1: ac3ac9cbd98e2c348c29a316e4a9b333f527b78d
+SHA256: 3c8240b83b7ac50818f4a02d9b4fb3e8fd8d888128b6fdb6c08f64bf5592e182
 Description: Secure Sockets Layer toolkit - development files
 Multi-Arch: same
 Description-md5: 27044468897c45b271f879c7c6e135fe
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
+Phased-Update-Percentage: 40
 Supported: 5y
 Task: ubuntu-sdk-libs-dev
 
 Package: libssl-doc
 Priority: optional
 Section: doc
-Installed-Size: 2840
+Installed-Size: 2841
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian OpenSSL Team <pkg-openssl-devel@lists.alioth.debian.org>
 Architecture: all
 Source: openssl
-Version: 1.0.2g-1ubuntu4.6
+Version: 1.0.2g-1ubuntu4.8
 Replaces: libssl-dev (<< 1.0.0)
 Breaks: libssl-dev (<< 1.0.0)
-Filename: pool/main/o/openssl/libssl-doc_1.0.2g-1ubuntu4.6_all.deb
-Size: 1079164
-MD5sum: 85ffca209e47e1e7f713b286fa1a69d0
-SHA1: 411c0f83e380f3ca29b0b1b42e5f98873430ea62
-SHA256: 390e120f3692d9316efd9e4de7af2a01eeca9b877497c0aece2496b50ba3e8ad
+Filename: pool/main/o/openssl/libssl-doc_1.0.2g-1ubuntu4.8_all.deb
+Size: 1077796
+MD5sum: 59383ca047885127ba49074a617b1b8e
+SHA1: af9690a5b0d1a8d537244a1c86f32ee831472b56
+SHA256: 0354a02c216e1873a38a20cec2889c4d20006b2a958d9d23a4475f4d567122e7
 Description: Secure Sockets Layer toolkit - development documentation
 Description-md5: 863c8f0d45ab34415ebc295c04753c98
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
+Phased-Update-Percentage: 40
 Supported: 5y
 Task: ubuntu-sdk-libs-dev
 
 Package: libssl1.0.0
 Priority: important
 Section: libs
-Installed-Size: 3401
+Installed-Size: 3402
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian OpenSSL Team <pkg-openssl-devel@lists.alioth.debian.org>
 Architecture: amd64
 Source: openssl
-Version: 1.0.2g-1ubuntu4.6
+Version: 1.0.2g-1ubuntu4.8
 Depends: libc6 (>= 2.14), debconf (>= 0.5) | debconf-2.0
-Filename: pool/main/o/openssl/libssl1.0.0_1.0.2g-1ubuntu4.6_amd64.deb
-Size: 1082034
-MD5sum: f8945cdd1af9424ff60d4ec4e0df2fe0
-SHA1: 03afa5c4ecdc7f0aadcaa5795e551ac5e626f100
-SHA256: b858321c5858533399320fc2d849962c25288fe17f545dc4fb3ce99630cea5fe
+Filename: pool/main/o/openssl/libssl1.0.0_1.0.2g-1ubuntu4.8_amd64.deb
+Size: 1081318
+MD5sum: 33ac6330d54a3aa8fcfea0018d98322b
+SHA1: 37951a23ceb38a68bf4f2bf9b0b0219998c1b327
+SHA256: a303d01d091fc5232350849e87888f3c9f21d5cce910204043340c5f01fcfbf4
 Description: Secure Sockets Layer toolkit - shared libraries
 Multi-Arch: same
 Description-md5: 88547c6206c7fbc4fcc7d09ce100d210
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
+Phased-Update-Percentage: 40
 Supported: 5y
 Task: minimal, ubuntu-sdk-libs
 
 Package: libssl1.0.0-dbg
 Priority: extra
 Section: debug
-Installed-Size: 3352
+Installed-Size: 3353
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian OpenSSL Team <pkg-openssl-devel@lists.alioth.debian.org>
 Architecture: amd64
 Source: openssl
-Version: 1.0.2g-1ubuntu4.6
-Depends: libssl1.0.0 (= 1.0.2g-1ubuntu4.6)
-Filename: pool/main/o/openssl/libssl1.0.0-dbg_1.0.2g-1ubuntu4.6_amd64.deb
-Size: 2759026
-MD5sum: e08199e10d21cd64ac4ae6ba4510f44b
-SHA1: cd7887941a63b9f093d2719e46f3183dc568dd80
-SHA256: a7242cf1eacd087ed7f84170ae6cae0a1bcac6530708c99cd758d93ffa21015c
+Version: 1.0.2g-1ubuntu4.8
+Depends: libssl1.0.0 (= 1.0.2g-1ubuntu4.8)
+Filename: pool/main/o/openssl/libssl1.0.0-dbg_1.0.2g-1ubuntu4.8_amd64.deb
+Size: 2758024
+MD5sum: 0e9e079e89daaf85f0e8a8fc38a492e6
+SHA1: af77e2922c9f9a17ddd998e5d2a1f9a51520a1e3
+SHA256: aa694fa3f20d60a6642c798d4fec6b076a8226872d1cbb34c5be6fc23ff1c9eb
 Description: Secure Sockets Layer toolkit - debug information
 Multi-Arch: same
-Build-Ids: 288d3ea103dacafe57b3bd9a29dc0699192fffe2 498b72dc1982e1e6029e91926f79775dff017096 4b89b1812aca7af5afd8d643f9156cb4abe902e5 4fd6d798c03d0ecc11d79c912da34fcd511b2dc4 5595eaadd64722405362a48ff888ec196160feb6 7f514146540382f59ad705ba8c913a75204c6858 8d5f466487d1fd9c2a35f040cec6d9dbeb29a62a 94e99ce38e5688cdea6b3216321bb9ec70bd542d 9dd648b17420d495fb85ebf42a5033d45fab4431 c99f45c952debdb1b9e7090b63b765074de2ad42 d0901e53dcf7f4b35f9f6940a2279b30f2f39c40 e44970560b85b5ef523c6f828e6bd1321f598159 e6d4d2e4a048992cd5501e5985094e6cec6c5d4f e94f5af1bb0672338f8f50b5c755cf49428b6e9a
+Build-Ids: 0d0c832023bc076d97281e0e50618e41ce670c37 1db92bef242e7147142e36fd01dad4c33b5a218d 277c16156a84948163a3793de1e0fbc102308e04 2da08a7e5bf610030dd33b70db951399626b7496 4fa761f9bd924ed0334837e4a379fd4a03165320 594c7c33c2b69d900025f82f609ddf28be9935db 5a5e6ffe1ae4856259de5ce0c318da25fe4f70f3 675f454ad6fd0b6ca2e41127c7b98079da37f7b6 7bc57e8f9075324fa7d58b77c2e546f6ecd94d1b a4163206ce137950b2626860909d6b130f879958 c34c80de705af3ee16c4a7a919b68f06d938399b ceaaa4a9ba228c61fef003d9598d96573f06b50e d6964b7c921afe4c10f84e8900beaba118f94860 ed4e2b174102c09295d48229735b5c945e6fca14
 Description-md5: b44e703aa71494076bf676aad96d1f64
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
+Phased-Update-Percentage: 40
 Supported: 5y
 
 Package: libsss-idmap-dev
@@ -64739,18 +64744,19 @@ Installed-Size: 131
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: pkg-lxc <pkg-lxc-devel@lists.alioth.debian.org>
 Architecture: amd64
-Version: 2.0.6-0ubuntu1~16.04.1
+Version: 2.0.7-0ubuntu1~16.04.1
 Depends: libc6 (>= 2.17), libfuse2 (>= 2.6), init-system-helpers (>= 1.18~), lsb-base (>= 4.1+Debian11ubuntu7)
-Filename: pool/main/l/lxcfs/lxcfs_2.0.6-0ubuntu1~16.04.1_amd64.deb
-Size: 38874
-MD5sum: 68d80739bf8f2cf6449c4afa50a615b4
-SHA1: d8bb6c13b1e92526d893b3b43a41ba352bcdb8cf
-SHA256: c22b6b745dfaf9f82cc46c20e04ed2816af3e5bda5e86510b03db73af28cd75b
+Filename: pool/main/l/lxcfs/lxcfs_2.0.7-0ubuntu1~16.04.1_amd64.deb
+Size: 39136
+MD5sum: 66db6f1cdea13205095a519a2e62f444
+SHA1: 333363baf5ce34deb76e787ec7637cd9f2bcbcb6
+SHA256: d8423b7df0de820a3a4d893ac19fce3a61e9885db88db5050fefdfae87dc9150
 Description: FUSE based filesystem for LXC
 Homepage: https://linuxcontainers.org
 Description-md5: f3cabfc6ca3d3433720d9d811af950bd
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
+Phased-Update-Percentage: 60
 Supported: 5y
 Task: cloud-image, server
 
@@ -66658,14 +66664,14 @@ Installed-Size: 9
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Architecture: amd64
-Version: 3.5.1.dfsg-2.1ubuntu1.2
-Depends: nagios3-cgi (= 3.5.1.dfsg-2.1ubuntu1.2), nagios3-core (= 3.5.1.dfsg-2.1ubuntu1.2)
+Version: 3.5.1.dfsg-2.1ubuntu1.3
+Depends: nagios3-cgi (= 3.5.1.dfsg-2.1ubuntu1.3), nagios3-core (= 3.5.1.dfsg-2.1ubuntu1.3)
 Suggests: nagios-nrpe-plugin
-Filename: pool/main/n/nagios3/nagios3_3.5.1.dfsg-2.1ubuntu1.2_amd64.deb
+Filename: pool/main/n/nagios3/nagios3_3.5.1.dfsg-2.1ubuntu1.3_amd64.deb
 Size: 1542
-MD5sum: 7f1d369114fc781da10f51ae551de846
-SHA1: ced63e938da54012e62e1590132627a517c17e9e
-SHA256: 1f50e5aab962f0bace005e27f2b1ed025a850602148f8c21968e3ce673cb7af9
+MD5sum: 8e533c3dc17db571c6ef20a005ec5c8e
+SHA1: 29600c244176911c83bdbeae712b7e3b8f875a07
+SHA256: eaceb1dfd7fe4babab8d56f09a14ed00f502f60065e0b21ee65f09e61234811d
 Description: host/service/network monitoring and management system
 Homepage: http://www.nagios.org/
 Description-md5: 78bdbf6266ea3d4a5a2582c32c587c82
@@ -66681,16 +66687,16 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Architecture: amd64
 Source: nagios3
-Version: 3.5.1.dfsg-2.1ubuntu1.2
+Version: 3.5.1.dfsg-2.1ubuntu1.3
 Replaces: nagios3 (<< 3.2.0), nagios3-common (<< 3.2.0), nagios3-doc (<< 3.2.0)
-Depends: adduser, apache2-utils, coreutils (>= 4.5.3), libapache2-mod-php | php | php-cgi, libjs-jquery, nagios3-common (= 3.5.1.dfsg-2.1ubuntu1.2), ucf (>= 0.28), debconf (>= 0.5) | debconf-2.0, libc6 (>= 2.14), libgd3 (>= 2.1.0~alpha~)
+Depends: adduser, apache2-utils, coreutils (>= 4.5.3), libapache2-mod-php | php | php-cgi, libjs-jquery, nagios3-common (= 3.5.1.dfsg-2.1ubuntu1.3), ucf (>= 0.28), debconf (>= 0.5) | debconf-2.0, libc6 (>= 2.14), libgd3 (>= 2.1.0~alpha~)
 Recommends: apache2 | httpd, nagios-images (>> 0.1)
 Breaks: nagios3 (<< 3.2.0), nagios3-common (<< 3.2.0), nagios3-doc (<< 3.2.0)
-Filename: pool/main/n/nagios3/nagios3-cgi_3.5.1.dfsg-2.1ubuntu1.2_amd64.deb
-Size: 787866
-MD5sum: 4bf6b91ddca6d2010c0a89ee777acf01
-SHA1: 055f45839393fedeb4c7d186dad21a2c62492271
-SHA256: a36ba52baab3db034bb911de695ea20c7705cdc8f866e8af7807d153fb6077b7
+Filename: pool/main/n/nagios3/nagios3-cgi_3.5.1.dfsg-2.1ubuntu1.3_amd64.deb
+Size: 788246
+MD5sum: 890d84939ad950640bd15fa58a2de055
+SHA1: 2578c1c6a2196258c2cce1c446897f46f12afa5b
+SHA256: 054880dd13641bdac15d1e5aaf444c220736712c6a56989e0e6a3f41b86e45b5
 Description: cgi files for nagios3
 Homepage: http://www.nagios.org/
 Description-md5: 005f01277f183ec1f2e424a027ce79bc
@@ -66701,19 +66707,19 @@ Supported: 5y
 Package: nagios3-common
 Priority: optional
 Section: net
-Installed-Size: 201
+Installed-Size: 202
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Architecture: all
 Source: nagios3
-Version: 3.5.1.dfsg-2.1ubuntu1.2
+Version: 3.5.1.dfsg-2.1ubuntu1.3
 Depends: adduser, bsd-mailx | mailx, coreutils (>= 4.5.3), lsb-base (>= 3.0-6), nagios-plugins-basic, ucf (>= 0.28), libjs-jquery
 Recommends: nagios-plugins
-Filename: pool/main/n/nagios3/nagios3-common_3.5.1.dfsg-2.1ubuntu1.2_all.deb
-Size: 53836
-MD5sum: fc8344e04caf558c6bf80e623546ee94
-SHA1: 063ce2412ced0276a8785d2237d2cccf05a9a396
-SHA256: 636b4285849fb9a9cdd17dc731f411c607e43a766813272e961dcb972641bd5f
+Filename: pool/main/n/nagios3/nagios3-common_3.5.1.dfsg-2.1ubuntu1.3_all.deb
+Size: 53808
+MD5sum: d4fd4647387f3dde1c0128155043535e
+SHA1: 8da268cc335062ace6935131f4159cced7892f56
+SHA256: fcaae707d4e14fd0db978f47389febac51f3d26899c3759be380ae220473e3a4
 Description: support files for nagios3
 Homepage: http://www.nagios.org/
 Description-md5: 9d8e7c7f672f17ee67cfb4190f2bbfe5
@@ -66729,15 +66735,15 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Architecture: amd64
 Source: nagios3
-Version: 3.5.1.dfsg-2.1ubuntu1.2
+Version: 3.5.1.dfsg-2.1ubuntu1.3
 Replaces: nagios3
-Depends: nagios3-common (= 3.5.1.dfsg-2.1ubuntu1.2), perl, libc6 (>= 2.15), libperl5.22 (>= 5.22.1)
+Depends: nagios3-common (= 3.5.1.dfsg-2.1ubuntu1.3), perl, libc6 (>= 2.15), libperl5.22 (>= 5.22.1)
 Suggests: nagios-nrpe-plugin
-Filename: pool/main/n/nagios3/nagios3-core_3.5.1.dfsg-2.1ubuntu1.2_amd64.deb
-Size: 234826
-MD5sum: 4ae7f7029e64444218674bec7abbce14
-SHA1: de2c88dd00653f81775489839585533f0408adc5
-SHA256: 64d50195fe98dc5badd93a23602c02fa73727b5aa5e29d25512f702f04d182e5
+Filename: pool/main/n/nagios3/nagios3-core_3.5.1.dfsg-2.1ubuntu1.3_amd64.deb
+Size: 234940
+MD5sum: 1eac2d6740ead5e3e56d86f4ca60c789
+SHA1: 03e163001d8c94a694e1073e7c4bdc2eb375b87d
+SHA256: 1f53874ac3ba6ee2aa77090be86c8372e8852f8792a1e4a1fa2876d93d4a7b33
 Description: host/service/network monitoring and management system core files
 Homepage: http://www.nagios.org/
 Description-md5: 4c01313c0dc2acc89022e41118dc0d44
@@ -66753,14 +66759,14 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Architecture: amd64
 Source: nagios3
-Version: 3.5.1.dfsg-2.1ubuntu1.2
-Depends: nagios3-core (= 3.5.1.dfsg-2.1ubuntu1.2), libc6 (>= 2.3.4), libperl5.22 (>= 5.22.1)
+Version: 3.5.1.dfsg-2.1ubuntu1.3
+Depends: nagios3-core (= 3.5.1.dfsg-2.1ubuntu1.3), libc6 (>= 2.3.4), libperl5.22 (>= 5.22.1)
 Conflicts: icinga-dbg (<= 1.0.1-2)
-Filename: pool/main/n/nagios3/nagios3-dbg_3.5.1.dfsg-2.1ubuntu1.2_amd64.deb
-Size: 1703352
-MD5sum: 48506db8196e5134bf081c65838ac496
-SHA1: 292b474677f0f2d65a32c878d0b33eefe1ccf0b4
-SHA256: d9638a200a88acdf52df32557153f07dfa9fcc244a7a67a35a9630b83f80640e
+Filename: pool/main/n/nagios3/nagios3-dbg_3.5.1.dfsg-2.1ubuntu1.3_amd64.deb
+Size: 1693332
+MD5sum: ad8a40e445e70c0ebf9929e8850f4cf9
+SHA1: 1e16737fb4eb857d54e7ce5bfba37432249fb503
+SHA256: a1e2ee35b29401bb36c2e74c1f3f68820971bc7a3d19b7006685e270c903ef6f
 Description: debugging symbols and debug stuff for nagios3
 Homepage: http://www.nagios.org/
 Description-md5: 14ccd1c8a83c1a5c423dfd791e8c3a64
@@ -66776,12 +66782,12 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Architecture: all
 Source: nagios3
-Version: 3.5.1.dfsg-2.1ubuntu1.2
-Filename: pool/main/n/nagios3/nagios3-doc_3.5.1.dfsg-2.1ubuntu1.2_all.deb
-Size: 4746
-MD5sum: db0eaf8bd35f5d1be62e0d17b3398c18
-SHA1: fe01a80c81bf0505ca5713c86644cd3b86e0749b
-SHA256: cb2b1ea5e15b99fa129987c3050361e90ecbae171d710bc0c13f9fcdd3401b20
+Version: 3.5.1.dfsg-2.1ubuntu1.3
+Filename: pool/main/n/nagios3/nagios3-doc_3.5.1.dfsg-2.1ubuntu1.3_all.deb
+Size: 4782
+MD5sum: bb9a53abf92eeff08167d5644923a153
+SHA1: d5aede5f7282ba3837edd3014d6a35dfefcb2f29
+SHA256: f386426e4383fdc7663491491e07f865c8f1252af7af15d47fc6037ae027691b
 Description: documentation for nagios3
 Homepage: http://www.nagios.org/
 Description-md5: 81c0e42a9b16a6bc9e4472d6604edf05
@@ -68355,18 +68361,19 @@ Installed-Size: 934
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian OpenSSL Team <pkg-openssl-devel@lists.alioth.debian.org>
 Architecture: amd64
-Version: 1.0.2g-1ubuntu4.6
+Version: 1.0.2g-1ubuntu4.8
 Depends: libc6 (>= 2.15), libssl1.0.0 (>= 1.0.2g)
 Suggests: ca-certificates
-Filename: pool/main/o/openssl/openssl_1.0.2g-1ubuntu4.6_amd64.deb
-Size: 491668
-MD5sum: 5a10ca1cfbd6ebad80264e2c2106c752
-SHA1: 9ffe8c4291c09fd996a3afafdf85df8f5d9520ed
-SHA256: 18f4d36f3e624be6ecfab385cd2e2fe4e5d7abc8030505dcacfa3ab243253cd1
+Filename: pool/main/o/openssl/openssl_1.0.2g-1ubuntu4.8_amd64.deb
+Size: 491720
+MD5sum: ea3ad9b613c675a31cf9e8111987c88d
+SHA1: 7eccd5cea88d4a117a12c6093608c9e1ef97dd19
+SHA256: 3a1d993937d7fc05f65408e2e120e8c834d9600473005a6d43c1b67cadbd3fbd
 Description: Secure Sockets Layer toolkit - cryptographic utility
 Description-md5: 9b6de2bb6e1d9016aeb0f00bcf6617bd
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
+Phased-Update-Percentage: 40
 Supported: 5y
 Task: standard, ubuntu-core, ubuntu-core, mythbuntu-frontend, mythbuntu-backend-slave, mythbuntu-backend-master, ubuntu-touch-core, ubuntu-touch, ubuntu-sdk-libs-tools, ubuntu-sdk
 
@@ -79071,23 +79078,24 @@ Task: cloud-image, server
 Package: walinuxagent
 Priority: extra
 Section: python
-Installed-Size: 806
+Installed-Size: 840
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Microsoft Corporation <walinuxagent@microsoft.com>
 Architecture: amd64
-Version: 2.2.9-0ubuntu1~16.04.1
+Version: 2.2.12-0ubuntu1~16.04.1
 Depends: cloud-init (>= 0.7.3~bzr826-0ubuntu2), isc-dhcp-client, openssh-server (>= 1:5.9p1), openssl (>= 1.0), passwd (>= 4.1.4.2), util-linux (>= 2.0), init-system-helpers (>= 1.18~), lsb-base (>= 4.1+Debian11ubuntu7), python3:any (>= 3.3.2-2~)
 Recommends: linux-image-extra-virtual
-Filename: pool/main/w/walinuxagent/walinuxagent_2.2.9-0ubuntu1~16.04.1_amd64.deb
-Size: 130112
-MD5sum: f93ad6e14efc19c64de1787d134e473f
-SHA1: 61188b999487474b2fa145c1cda570c181c7d5eb
-SHA256: 870600e5258f3d32a9237d91d1887f845aac7bbc4c990c02f36e6b6e29e24b94
+Filename: pool/main/w/walinuxagent/walinuxagent_2.2.12-0ubuntu1~16.04.1_amd64.deb
+Size: 135326
+MD5sum: 6194e16df34f22a64cdc6b0af223d32d
+SHA1: aedb97e84c620689c2d62752e78784a7d6621358
+SHA256: af3d8560a8e7e2dad78870dc750b8e210eca5fbd70033d69ce26df31d735049c
 Description: Windows Azure Linux Agent
 Homepage: http://go.microsoft.com/fwlink/?LinkId=250998
 Description-md5: 6c6e08b89d2f59e8bdc1b7bf37e6f34c
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
+Phased-Update-Percentage: 60
 Supported: 5y
 
 Package: webapp-container

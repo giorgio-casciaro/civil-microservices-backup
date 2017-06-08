@@ -16916,7 +16916,7 @@ Checksums-Sha256:
 
 Package: lxcfs
 Binary: lxcfs, libpam-cgfs
-Version: 2.0.6-0ubuntu1~16.04.1
+Version: 2.0.7-0ubuntu1~16.04.1
 Priority: optional
 Section: admin
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
@@ -16927,9 +16927,9 @@ Standards-Version: 3.9.8
 Format: 3.0 (quilt)
 Directory: pool/main/l/lxcfs
 Files:
- 3352292f8b9bc579f2f18e9c369eda15 2250 lxcfs_2.0.6-0ubuntu1~16.04.1.dsc
- ac11d6f3440696c23dfd01c568d44183 419768 lxcfs_2.0.6.orig.tar.gz
- 9661a2a046149739be79a4fe360c8395 63472 lxcfs_2.0.6-0ubuntu1~16.04.1.debian.tar.xz
+ 8cff5c890e7e417e61c3a340d1d45952 2250 lxcfs_2.0.7-0ubuntu1~16.04.1.dsc
+ 0def560322fe66b6138409810b5c975a 419312 lxcfs_2.0.7.orig.tar.gz
+ 85cb62e9e9dfbbbeaf4255d2b6d85f43 63736 lxcfs_2.0.7-0ubuntu1~16.04.1.debian.tar.xz
 Uploaders: Adnan Hodzic <adnan@hodzic.org>, Evgeni Golov <evgeni@debian.org>
 Homepage: https://linuxcontainers.org
 Vcs-Browser: https://anonscm.debian.org/cgit/pkg-lxc/lxcfs.git
@@ -16940,13 +16940,13 @@ Package-List:
  libpam-cgfs deb admin optional arch=linux-any
  lxcfs deb admin optional arch=linux-any
 Checksums-Sha1:
- 7c768a593a0e3d7f50d7ae2fafa23084adb21009 2250 lxcfs_2.0.6-0ubuntu1~16.04.1.dsc
- 85661a39b02852623ef812b98313e4a267d7ba5c 419768 lxcfs_2.0.6.orig.tar.gz
- bd9829050fddf02fabb4b6d6d6494ab33d1820e8 63472 lxcfs_2.0.6-0ubuntu1~16.04.1.debian.tar.xz
+ 68d92d03ee2d347b9ee641d73ba254d2d27ae52c 2250 lxcfs_2.0.7-0ubuntu1~16.04.1.dsc
+ ffa00573503a98b103fb90bde0913bbc96379c7e 419312 lxcfs_2.0.7.orig.tar.gz
+ d5835b5db65903c33984fcd085a9942f14ad8019 63736 lxcfs_2.0.7-0ubuntu1~16.04.1.debian.tar.xz
 Checksums-Sha256:
- 5bb3021dfd11b9b01ad003e5ed1273d29838fc5357f9ea93a6a896ef5de5c443 2250 lxcfs_2.0.6-0ubuntu1~16.04.1.dsc
- bb266d5de0c633188e8b2c4d62944df169371fb2e39655b3efe943acae27c9da 419768 lxcfs_2.0.6.orig.tar.gz
- 402e191989071c03ae9adfc7d995c519182037532e8f8a9811b698f4b8014cff 63472 lxcfs_2.0.6-0ubuntu1~16.04.1.debian.tar.xz
+ 41c47a5144c232ea993037d002d285ba1ed0eaf2e95c49717293f059ab500d72 2250 lxcfs_2.0.7-0ubuntu1~16.04.1.dsc
+ 8c15abf36eaf244ac6906460de0fe8e818c6b96d59b7e5401066fa419b76b649 419312 lxcfs_2.0.7.orig.tar.gz
+ b800f3b39fdfa808eddadfc2de145e49ef5f2c63f995fd110000eabefed176c3 63736 lxcfs_2.0.7-0ubuntu1~16.04.1.debian.tar.xz
 
 Package: lxd
 Binary: lxd-client, lxd, lxc2, lxd-tools, golang-github-lxc-lxd-dev
@@ -17564,7 +17564,7 @@ Checksums-Sha256:
 
 Package: nagios3
 Binary: nagios3-common, nagios3-cgi, nagios3, nagios3-core, nagios3-doc, nagios3-dbg
-Version: 3.5.1.dfsg-2.1ubuntu1.2
+Version: 3.5.1.dfsg-2.1ubuntu1.3
 Priority: optional
 Section: net
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
@@ -17575,9 +17575,9 @@ Standards-Version: 3.9.5
 Format: 3.0 (quilt)
 Directory: pool/main/n/nagios3
 Files:
- ca6da259dd626376c09a75d8383b079e 2508 nagios3_3.5.1.dfsg-2.1ubuntu1.2.dsc
+ 852dce9a559044f65f6cb07e2b9b1c85 2508 nagios3_3.5.1.dfsg-2.1ubuntu1.3.dsc
  0ef4eb603ad991ac9bb6686d83e3cbb9 1729143 nagios3_3.5.1.dfsg.orig.tar.gz
- 80c81aa86d07a07a4948f50248586eec 75868 nagios3_3.5.1.dfsg-2.1ubuntu1.2.debian.tar.xz
+ 1ab6d08841ce6b1eb8d6cf15247a712e 76320 nagios3_3.5.1.dfsg-2.1ubuntu1.3.debian.tar.xz
 Uploaders: sean finney <seanius@debian.org>, Alexander Wirt <formorer@debian.org>, Jan Wagner <waja@cyconet.org>
 Homepage: http://www.nagios.org/
 Vcs-Browser: http://git.debian.org/?p=pkg-nagios/pkg-nagios3.git
@@ -17591,13 +17591,13 @@ Package-List:
  nagios3-dbg deb debug extra arch=any
  nagios3-doc deb doc optional arch=all
 Checksums-Sha1:
- 16a8aa19c38b04577a0a3c6dc166d56bb95fb30e 2508 nagios3_3.5.1.dfsg-2.1ubuntu1.2.dsc
+ 154fa8d601ca5be1af97611dc3409affb25bf61b 2508 nagios3_3.5.1.dfsg-2.1ubuntu1.3.dsc
  7edc71aee5a5073438c65a3023b78f2142ef577a 1729143 nagios3_3.5.1.dfsg.orig.tar.gz
- 37ade1c13e7e13ece4bfba7163e80823817a7754 75868 nagios3_3.5.1.dfsg-2.1ubuntu1.2.debian.tar.xz
+ 8f4b827e7b93264fde796e84abfa5324fa0598ea 76320 nagios3_3.5.1.dfsg-2.1ubuntu1.3.debian.tar.xz
 Checksums-Sha256:
- 273835189a191f72f16d600f5fe925bc42808ab1a3ff45aac8ecc24f52308e2e 2508 nagios3_3.5.1.dfsg-2.1ubuntu1.2.dsc
+ 51fe0ef40dc88e48920e220b3d0d7e93d6ab17b57b4a0f2758c5f5a94265468f 2508 nagios3_3.5.1.dfsg-2.1ubuntu1.3.dsc
  ec27cb8b2047071cca4be22fcec6edb7a7fb0ac131173d978cb3103ce6a1062a 1729143 nagios3_3.5.1.dfsg.orig.tar.gz
- 19102cff95a36abde5ef8d6793ad429f18dfd1befd73e8e9143bb000fe7939f4 75868 nagios3_3.5.1.dfsg-2.1ubuntu1.2.debian.tar.xz
+ 624477749d008546f31b4a3c19342b020fc50c52d0877c7f94f3eda361becb04 76320 nagios3_3.5.1.dfsg-2.1ubuntu1.3.debian.tar.xz
 
 Package: nano
 Binary: nano, nano-tiny, nano-udeb
@@ -18497,7 +18497,7 @@ Checksums-Sha256:
 
 Package: openssl
 Binary: openssl, libssl1.0.0, libcrypto1.0.0-udeb, libssl1.0.0-udeb, libssl-dev, libssl-doc, libssl1.0.0-dbg
-Version: 1.0.2g-1ubuntu4.6
+Version: 1.0.2g-1ubuntu4.8
 Priority: important
 Section: utils
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
@@ -18508,9 +18508,9 @@ Standards-Version: 3.9.5
 Format: 3.0 (quilt)
 Directory: pool/main/o/openssl
 Files:
- 4a548c638dce99400f90e20b28485eda 2435 openssl_1.0.2g-1ubuntu4.6.dsc
+ 6c1a6c45fd3f4c0a1ae8e32081d0458a 2417 openssl_1.0.2g-1ubuntu4.8.dsc
  f3c710c045cdee5fd114feb69feba7aa 5266102 openssl_1.0.2g.orig.tar.gz
- ad6d6dd760a5cacf675178f413955b13 109604 openssl_1.0.2g-1ubuntu4.6.debian.tar.xz
+ e05f3604bef6429d38c712a3e817fda4 110888 openssl_1.0.2g-1ubuntu4.8.debian.tar.xz
 Uploaders: Christoph Martin <christoph.martin@uni-mainz.de>, Kurt Roeckx <kurt@roeckx.be>
 Package-List:
  libcrypto1.0.0-udeb udeb debian-installer optional arch=any
@@ -18521,13 +18521,13 @@ Package-List:
  libssl1.0.0-udeb udeb debian-installer optional arch=any
  openssl deb utils optional arch=any
 Checksums-Sha1:
- 3318d1ec25a3cb5e0a4fe9863ce4ad9df95d97e9 2435 openssl_1.0.2g-1ubuntu4.6.dsc
+ dc55122d64d4225ee31766cace4bdc575a302845 2417 openssl_1.0.2g-1ubuntu4.8.dsc
  36af23887402a5ea4ebef91df8e61654906f58f2 5266102 openssl_1.0.2g.orig.tar.gz
- 8e49ea158ba85bd3c4589fb86409ce80b56d7937 109604 openssl_1.0.2g-1ubuntu4.6.debian.tar.xz
+ 03360f7ecae1888b710888ce7898dbb918d22146 110888 openssl_1.0.2g-1ubuntu4.8.debian.tar.xz
 Checksums-Sha256:
- dbe9f7b006f6d07bd26424e7473c25116e7deb04e809c4eb38415450070ba205 2435 openssl_1.0.2g-1ubuntu4.6.dsc
+ 0e9c70b6024afc9e8efd065cd174f382f91d615aca0180f0050a4e5a0bccee99 2417 openssl_1.0.2g-1ubuntu4.8.dsc
  b784b1b3907ce39abf4098702dade6365522a253ad1552e267a9a0e89594aa33 5266102 openssl_1.0.2g.orig.tar.gz
- 748caddf106c740849909c87406b8b2a675c5746dc8db3c192000042ad314bfd 109604 openssl_1.0.2g-1ubuntu4.6.debian.tar.xz
+ fcce13675596c269c3b9094fcf62b817e71b95681c22b38c9bb38b254e7b8818 110888 openssl_1.0.2g-1ubuntu4.8.debian.tar.xz
 Debian-Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-openssl/openssl
 Debian-Vcs-Svn: svn://anonscm.debian.org/pkg-openssl/openssl/
 
@@ -22550,7 +22550,7 @@ Checksums-Sha256:
 
 Package: walinuxagent
 Binary: walinuxagent
-Version: 2.2.9-0ubuntu1~16.04.1
+Version: 2.2.12-0ubuntu1~16.04.1
 Priority: extra
 Section: python
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
@@ -22561,20 +22561,20 @@ Standards-Version: 3.9.8
 Format: 3.0 (quilt)
 Directory: pool/main/w/walinuxagent
 Files:
- 101352eb2fcf6ee7a25143c930dfefeb 1629 walinuxagent_2.2.9-0ubuntu1~16.04.1.dsc
- 99fb5c408ff5534aa90943b06fa76b07 638585 walinuxagent_2.2.9.orig.tar.gz
- 285344431976390183c67c810bd729fc 9948 walinuxagent_2.2.9-0ubuntu1~16.04.1.debian.tar.xz
+ c247de39ac8d2fe894f20cd9a7c4774d 1636 walinuxagent_2.2.12-0ubuntu1~16.04.1.dsc
+ 5c0272279f3fa0a472d0392f665a6905 687830 walinuxagent_2.2.12.orig.tar.gz
+ cff444bd8bf293439dc7138cd23b8299 9968 walinuxagent_2.2.12-0ubuntu1~16.04.1.debian.tar.xz
 Homepage: http://go.microsoft.com/fwlink/?LinkId=250998
 Package-List:
  walinuxagent deb python extra arch=amd64
 Checksums-Sha1:
- 10d6774bb94bef83c7035987e50d8cc0ce099267 1629 walinuxagent_2.2.9-0ubuntu1~16.04.1.dsc
- e7c981e5402773d3111c671a4f49ec82100c7ca1 638585 walinuxagent_2.2.9.orig.tar.gz
- 8a34d71b98e17455a0b4ccec2966d35e753d212c 9948 walinuxagent_2.2.9-0ubuntu1~16.04.1.debian.tar.xz
+ f5752e4930757c7b0408400b67c884042a5b0bbf 1636 walinuxagent_2.2.12-0ubuntu1~16.04.1.dsc
+ 7b488893d8912638a79f79825e267f0dc06328f7 687830 walinuxagent_2.2.12.orig.tar.gz
+ 87e2dd880f26252cb033cb5660283490c87beef5 9968 walinuxagent_2.2.12-0ubuntu1~16.04.1.debian.tar.xz
 Checksums-Sha256:
- 94c26d98912dac80b4586c729812327fd665a4338ad3c64cba785d9841e97113 1629 walinuxagent_2.2.9-0ubuntu1~16.04.1.dsc
- 256b67f8d361c8815c74bad78ac47dee897c18dbba20fcfc9e7a30e01817af6f 638585 walinuxagent_2.2.9.orig.tar.gz
- 4a02bf6dea9ffd55839b1ebadcfe87992d39ea0a581bc48d751d8a3d059d976b 9948 walinuxagent_2.2.9-0ubuntu1~16.04.1.debian.tar.xz
+ 079e49023884432fa259bcc3bcfc53185f3e641de79887fbca8d9bc8668bb627 1636 walinuxagent_2.2.12-0ubuntu1~16.04.1.dsc
+ 6f5aae0dcb3ad953c2b086a2c397295d8e990cf2a50773099e949905bd143f56 687830 walinuxagent_2.2.12.orig.tar.gz
+ ae3cb82ff7c7fd836ee739bd3012cfc20f67d3f5b6a372af08a59156c62db4fd 9968 walinuxagent_2.2.12-0ubuntu1~16.04.1.debian.tar.xz
 
 Package: webbrowser-app
 Binary: webbrowser-app, webapp-container, qml-module-ubuntu-ui-extras-browser, qtdeclarative5-ubuntu-ui-extras-browser-plugin, qml-module-ubuntu-web, qtdeclarative5-ubuntu-web-plugin, qml-module-ubuntu-web-doc, qtdeclarative5-ubuntu-web-plugin-doc, webbrowser-app-autopilot, webapp-container-autopilot

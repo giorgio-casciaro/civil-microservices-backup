@@ -3859,7 +3859,7 @@ Checksums-Sha256:
 
 Package: nagios3
 Binary: nagios3-common, nagios3-cgi, nagios3, nagios3-core, nagios3-doc, nagios3-dbg
-Version: 3.5.1.dfsg-2.1ubuntu1.1
+Version: 3.5.1.dfsg-2.1ubuntu1.3
 Priority: optional
 Section: net
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
@@ -3870,9 +3870,9 @@ Standards-Version: 3.9.5
 Format: 3.0 (quilt)
 Directory: pool/main/n/nagios3
 Files:
- 63e0e05a192e72314ac8f0a5fd8e538f 2508 nagios3_3.5.1.dfsg-2.1ubuntu1.1.dsc
+ 852dce9a559044f65f6cb07e2b9b1c85 2508 nagios3_3.5.1.dfsg-2.1ubuntu1.3.dsc
  0ef4eb603ad991ac9bb6686d83e3cbb9 1729143 nagios3_3.5.1.dfsg.orig.tar.gz
- 0e59ce380d8c1e8c5e91c43045588ab7 75504 nagios3_3.5.1.dfsg-2.1ubuntu1.1.debian.tar.xz
+ 1ab6d08841ce6b1eb8d6cf15247a712e 76320 nagios3_3.5.1.dfsg-2.1ubuntu1.3.debian.tar.xz
 Uploaders: sean finney <seanius@debian.org>, Alexander Wirt <formorer@debian.org>, Jan Wagner <waja@cyconet.org>
 Homepage: http://www.nagios.org/
 Vcs-Browser: http://git.debian.org/?p=pkg-nagios/pkg-nagios3.git
@@ -3886,13 +3886,13 @@ Package-List:
  nagios3-dbg deb debug extra arch=any
  nagios3-doc deb doc optional arch=all
 Checksums-Sha1:
- 2219e748fd2515c98766507f56243d8ea1aca254 2508 nagios3_3.5.1.dfsg-2.1ubuntu1.1.dsc
+ 154fa8d601ca5be1af97611dc3409affb25bf61b 2508 nagios3_3.5.1.dfsg-2.1ubuntu1.3.dsc
  7edc71aee5a5073438c65a3023b78f2142ef577a 1729143 nagios3_3.5.1.dfsg.orig.tar.gz
- 0284d17b7e3b2167f1fc9ba26ef60da9ff56ccac 75504 nagios3_3.5.1.dfsg-2.1ubuntu1.1.debian.tar.xz
+ 8f4b827e7b93264fde796e84abfa5324fa0598ea 76320 nagios3_3.5.1.dfsg-2.1ubuntu1.3.debian.tar.xz
 Checksums-Sha256:
- dc85ccfb84c82868387a34732acd6cc7af398d0292f556c60add2af43afa8ede 2508 nagios3_3.5.1.dfsg-2.1ubuntu1.1.dsc
+ 51fe0ef40dc88e48920e220b3d0d7e93d6ab17b57b4a0f2758c5f5a94265468f 2508 nagios3_3.5.1.dfsg-2.1ubuntu1.3.dsc
  ec27cb8b2047071cca4be22fcec6edb7a7fb0ac131173d978cb3103ce6a1062a 1729143 nagios3_3.5.1.dfsg.orig.tar.gz
- afacdf3fc0b50d0c89ec526e7ca2903c3142194d5cf17272c882789ee918a7ad 75504 nagios3_3.5.1.dfsg-2.1ubuntu1.1.debian.tar.xz
+ 624477749d008546f31b4a3c19342b020fc50c52d0877c7f94f3eda361becb04 76320 nagios3_3.5.1.dfsg-2.1ubuntu1.3.debian.tar.xz
 
 Package: nettle
 Binary: libnettle6, libhogweed4, nettle-dev, nettle-bin, nettle-dbg

@@ -36901,14 +36901,14 @@ Installed-Size: 9
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Architecture: amd64
-Version: 3.5.1.dfsg-2.1ubuntu1.1
-Depends: nagios3-cgi (= 3.5.1.dfsg-2.1ubuntu1.1), nagios3-core (= 3.5.1.dfsg-2.1ubuntu1.1)
+Version: 3.5.1.dfsg-2.1ubuntu1.3
+Depends: nagios3-cgi (= 3.5.1.dfsg-2.1ubuntu1.3), nagios3-core (= 3.5.1.dfsg-2.1ubuntu1.3)
 Suggests: nagios-nrpe-plugin
-Filename: pool/main/n/nagios3/nagios3_3.5.1.dfsg-2.1ubuntu1.1_amd64.deb
-Size: 1540
-MD5sum: 4b8208c23ee14c62330061f222309df3
-SHA1: de6f782ce1e79d785bc64133b27a8cf7f1544729
-SHA256: b2fd33e14b1f8a27448bc025a2fd54ce964d47556adf15c6d17f3058cecb7e1f
+Filename: pool/main/n/nagios3/nagios3_3.5.1.dfsg-2.1ubuntu1.3_amd64.deb
+Size: 1542
+MD5sum: 8e533c3dc17db571c6ef20a005ec5c8e
+SHA1: 29600c244176911c83bdbeae712b7e3b8f875a07
+SHA256: eaceb1dfd7fe4babab8d56f09a14ed00f502f60065e0b21ee65f09e61234811d
 Description: host/service/network monitoring and management system
 Homepage: http://www.nagios.org/
 Description-md5: 78bdbf6266ea3d4a5a2582c32c587c82
@@ -36924,16 +36924,16 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Architecture: amd64
 Source: nagios3
-Version: 3.5.1.dfsg-2.1ubuntu1.1
+Version: 3.5.1.dfsg-2.1ubuntu1.3
 Replaces: nagios3 (<< 3.2.0), nagios3-common (<< 3.2.0), nagios3-doc (<< 3.2.0)
-Depends: adduser, apache2-utils, coreutils (>= 4.5.3), libapache2-mod-php | php | php-cgi, libjs-jquery, nagios3-common (= 3.5.1.dfsg-2.1ubuntu1.1), ucf (>= 0.28), debconf (>= 0.5) | debconf-2.0, libc6 (>= 2.14), libgd3 (>= 2.1.0~alpha~)
+Depends: adduser, apache2-utils, coreutils (>= 4.5.3), libapache2-mod-php | php | php-cgi, libjs-jquery, nagios3-common (= 3.5.1.dfsg-2.1ubuntu1.3), ucf (>= 0.28), debconf (>= 0.5) | debconf-2.0, libc6 (>= 2.14), libgd3 (>= 2.1.0~alpha~)
 Recommends: apache2 | httpd, nagios-images (>> 0.1)
 Breaks: nagios3 (<< 3.2.0), nagios3-common (<< 3.2.0), nagios3-doc (<< 3.2.0)
-Filename: pool/main/n/nagios3/nagios3-cgi_3.5.1.dfsg-2.1ubuntu1.1_amd64.deb
-Size: 787062
-MD5sum: f2709764da7dcb7867dc4585dc749424
-SHA1: bf22788f530db6493eb0fffa18a88c9b1b546ecb
-SHA256: cbe0c5b34adc99e42fc75f23dedfb59f3a9423758368b95bc75867a6619e1cd1
+Filename: pool/main/n/nagios3/nagios3-cgi_3.5.1.dfsg-2.1ubuntu1.3_amd64.deb
+Size: 788246
+MD5sum: 890d84939ad950640bd15fa58a2de055
+SHA1: 2578c1c6a2196258c2cce1c446897f46f12afa5b
+SHA256: 054880dd13641bdac15d1e5aaf444c220736712c6a56989e0e6a3f41b86e45b5
 Description: cgi files for nagios3
 Homepage: http://www.nagios.org/
 Description-md5: 005f01277f183ec1f2e424a027ce79bc
@@ -36944,19 +36944,19 @@ Supported: 5y
 Package: nagios3-common
 Priority: optional
 Section: net
-Installed-Size: 201
+Installed-Size: 202
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Architecture: all
 Source: nagios3
-Version: 3.5.1.dfsg-2.1ubuntu1.1
+Version: 3.5.1.dfsg-2.1ubuntu1.3
 Depends: adduser, bsd-mailx | mailx, coreutils (>= 4.5.3), lsb-base (>= 3.0-6), nagios-plugins-basic, ucf (>= 0.28), libjs-jquery
 Recommends: nagios-plugins
-Filename: pool/main/n/nagios3/nagios3-common_3.5.1.dfsg-2.1ubuntu1.1_all.deb
-Size: 53586
-MD5sum: 949baa2d77212b0499794f05125d9a87
-SHA1: eea36a1b0ab69d6037526890eac268590b3f3fc1
-SHA256: aab3af2f7f528c0503a8b009a173f7412b21a7f517eaedd96a96a15fddb70927
+Filename: pool/main/n/nagios3/nagios3-common_3.5.1.dfsg-2.1ubuntu1.3_all.deb
+Size: 53808
+MD5sum: d4fd4647387f3dde1c0128155043535e
+SHA1: 8da268cc335062ace6935131f4159cced7892f56
+SHA256: fcaae707d4e14fd0db978f47389febac51f3d26899c3759be380ae220473e3a4
 Description: support files for nagios3
 Homepage: http://www.nagios.org/
 Description-md5: 9d8e7c7f672f17ee67cfb4190f2bbfe5
@@ -36972,15 +36972,15 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Architecture: amd64
 Source: nagios3
-Version: 3.5.1.dfsg-2.1ubuntu1.1
+Version: 3.5.1.dfsg-2.1ubuntu1.3
 Replaces: nagios3
-Depends: nagios3-common (= 3.5.1.dfsg-2.1ubuntu1.1), perl, libc6 (>= 2.15), libperl5.22 (>= 5.22.1)
+Depends: nagios3-common (= 3.5.1.dfsg-2.1ubuntu1.3), perl, libc6 (>= 2.15), libperl5.22 (>= 5.22.1)
 Suggests: nagios-nrpe-plugin
-Filename: pool/main/n/nagios3/nagios3-core_3.5.1.dfsg-2.1ubuntu1.1_amd64.deb
-Size: 234904
-MD5sum: e5761bccdb62b1a71ed49177f6277209
-SHA1: e7bc06505d760fd3ce51dec5e03e3a51566e9a5c
-SHA256: 252df768701051e050fb9dbd64c4178fe827264d31e15c09a3723334bc1fa8ef
+Filename: pool/main/n/nagios3/nagios3-core_3.5.1.dfsg-2.1ubuntu1.3_amd64.deb
+Size: 234940
+MD5sum: 1eac2d6740ead5e3e56d86f4ca60c789
+SHA1: 03e163001d8c94a694e1073e7c4bdc2eb375b87d
+SHA256: 1f53874ac3ba6ee2aa77090be86c8372e8852f8792a1e4a1fa2876d93d4a7b33
 Description: host/service/network monitoring and management system core files
 Homepage: http://www.nagios.org/
 Description-md5: 4c01313c0dc2acc89022e41118dc0d44
@@ -36996,14 +36996,14 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Architecture: amd64
 Source: nagios3
-Version: 3.5.1.dfsg-2.1ubuntu1.1
-Depends: nagios3-core (= 3.5.1.dfsg-2.1ubuntu1.1), libc6 (>= 2.3.4), libperl5.22 (>= 5.22.1)
+Version: 3.5.1.dfsg-2.1ubuntu1.3
+Depends: nagios3-core (= 3.5.1.dfsg-2.1ubuntu1.3), libc6 (>= 2.3.4), libperl5.22 (>= 5.22.1)
 Conflicts: icinga-dbg (<= 1.0.1-2)
-Filename: pool/main/n/nagios3/nagios3-dbg_3.5.1.dfsg-2.1ubuntu1.1_amd64.deb
-Size: 1699940
-MD5sum: 4d2bb8bf538d0a98bd8a3e0ba7848e00
-SHA1: 2e471341bd950a0d1ae7eded79ccecef95da313f
-SHA256: 2ee7fac59a2722fd1cf51312c4e24aaf1d91c3fa31a1bf6dd65167dacc96561c
+Filename: pool/main/n/nagios3/nagios3-dbg_3.5.1.dfsg-2.1ubuntu1.3_amd64.deb
+Size: 1693332
+MD5sum: ad8a40e445e70c0ebf9929e8850f4cf9
+SHA1: 1e16737fb4eb857d54e7ce5bfba37432249fb503
+SHA256: a1e2ee35b29401bb36c2e74c1f3f68820971bc7a3d19b7006685e270c903ef6f
 Description: debugging symbols and debug stuff for nagios3
 Homepage: http://www.nagios.org/
 Description-md5: 14ccd1c8a83c1a5c423dfd791e8c3a64
@@ -37019,12 +37019,12 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>
 Architecture: all
 Source: nagios3
-Version: 3.5.1.dfsg-2.1ubuntu1.1
-Filename: pool/main/n/nagios3/nagios3-doc_3.5.1.dfsg-2.1ubuntu1.1_all.deb
-Size: 4652
-MD5sum: a4c3dc6c560b7111076cd1260703560c
-SHA1: d4d76e957d6a5ccea1b030c897c684c500faaec5
-SHA256: 87342c1fc540675182e261d5a84607f91f3f5407d5668b1f40c4400e7d1eb857
+Version: 3.5.1.dfsg-2.1ubuntu1.3
+Filename: pool/main/n/nagios3/nagios3-doc_3.5.1.dfsg-2.1ubuntu1.3_all.deb
+Size: 4782
+MD5sum: bb9a53abf92eeff08167d5644923a153
+SHA1: d5aede5f7282ba3837edd3014d6a35dfefcb2f29
+SHA256: f386426e4383fdc7663491491e07f865c8f1252af7af15d47fc6037ae027691b
 Description: documentation for nagios3
 Homepage: http://www.nagios.org/
 Description-md5: 81c0e42a9b16a6bc9e4472d6604edf05
