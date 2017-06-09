@@ -1,4 +1,5 @@
 export NODE_IP=192.168.1.202
+export INTERNAL_IP=0.0.0.0
 export SERVERS="[\"192.168.1.201\", \"192.168.1.202\",\"192.168.1.203\"]"
 
 # ENV VARS
@@ -7,6 +8,7 @@ CONSUL_HTTP_ADDR=http://$NODE_IP:8500
 NOMAD_ADDR=http://$NODE_IP:4646
 NODE_IP=$NODE_IP
 SERVERS=$SERVERS
+INTERNAL_IP=$INTERNAL_IP
 EOF
 export CONSUL_HTTP_ADDR=http://$NODE_IP:8500
 export NOMAD_ADDR=http://$NODE_IP:4646
@@ -41,7 +43,7 @@ sudo chmod a+w /var/consul
 sudo cat <<EOF >  /etc/consul.d/consul.json
 {
 "bind_addr": "$NODE_IP",
-"client_addr": "$NODE_IP",
+"client_addr": "$INTERNAL_IP",
 "data_dir": "/var/consul",
 "log_level": "DEBUG",
 "server": true,
@@ -111,9 +113,7 @@ sudo cat <<EOF >  /etc/nomad.d/nomad.hcl
       docker.privileged.enabled = true
     }
   }
-  consul {
-    address = "$NODE_IP:8500"
-  }
+
 EOF
 
 sudo cat <<EOF >  /etc/systemd/system/nomad.service
@@ -144,4 +144,6 @@ sudo systemctl start nomad
 
 # sudo docker run -e NOMAD_ENABLE=1 -e NOMAD_ADDR=http://$NODE_IP:4646 -e CONSUL_ENABLE=1 -e CONSUL_ADDR=$NODE_IP:8500 -e CONSUL_ACL_TOKEN=viIWiDibfrFw68JS2gR5zA== -e LOG_LEVEL=DEBUG -p 8000:3000 jippi/hashi-ui
 
-# nomad run /vagrant/nginx.nomad
+# sleep 30;
+# sudo nomad run /vagrant/nginx.nomad
+# sudo nomad run /vagrant/hashi-ui.nomad

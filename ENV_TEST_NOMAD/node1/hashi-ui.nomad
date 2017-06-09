@@ -47,7 +47,7 @@ job "hashi-ui" {
       size = 300
     }
 
-    task "hash-ui" {
+    task "hashi-ui" {
       driver = "docker"
 
       config {
@@ -85,8 +85,8 @@ job "hashi-ui" {
       }
 
       service {
-        name = "hash-ui-service"
-        tags = ["global", "hash-ui"]
+        name = "hashi-ui-service"
+        tags = ["global", "hashi-ui"]
         port = "http"
         check {
           name     = "alive"
