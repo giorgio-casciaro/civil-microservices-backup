@@ -1,3 +1,6 @@
+.vagrant
+*.zip
+
 # Kubernetes secrets and configMap
 configMap*
 secret.yaml
