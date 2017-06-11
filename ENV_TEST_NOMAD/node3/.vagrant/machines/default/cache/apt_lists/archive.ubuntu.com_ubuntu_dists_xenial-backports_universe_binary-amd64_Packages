@@ -111,15 +111,15 @@ Installed-Size: 49
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
 Architecture: all
-Version: 141-2~ubuntu16.04.1
-Depends: cockpit-bridge (>= 138.x), cockpit-dashboard (>= 141-2~ubuntu16.04.1), cockpit-dashboard (<< 141-2~ubuntu16.04.1.1~), cockpit-ws (>= 141-2~ubuntu16.04.1), cockpit-ws (<< 141-2~ubuntu16.04.1.1~), cockpit-system (= 141-2~ubuntu16.04.1)
-Recommends: cockpit-storaged (= 141-2~ubuntu16.04.1), cockpit-networkmanager (= 141-2~ubuntu16.04.1)
-Suggests: cockpit-doc (= 141-2~ubuntu16.04.1), cockpit-pcp (>= 141-2~ubuntu16.04.1), cockpit-docker (= 141-2~ubuntu16.04.1), xdg-utils
-Filename: pool/universe/c/cockpit/cockpit_141-2~ubuntu16.04.1_all.deb
-Size: 13780
-MD5sum: 8e252a23172e88148efc27885c29aae0
-SHA1: 8f956cee7f608ccb396f9a1852d07a99eb1200f9
-SHA256: e727b9c19ec4c7e6e8f67e48c5f9cb2d4c7161a04749eb1ebf592c673968c105
+Version: 142-1~ubuntu16.04.1
+Depends: cockpit-bridge (>= 138.x), cockpit-dashboard (>= 142-1~ubuntu16.04.1), cockpit-dashboard (<< 142-1~ubuntu16.04.1.1~), cockpit-ws (>= 142-1~ubuntu16.04.1), cockpit-ws (<< 142-1~ubuntu16.04.1.1~), cockpit-system (= 142-1~ubuntu16.04.1)
+Recommends: cockpit-storaged (= 142-1~ubuntu16.04.1), cockpit-networkmanager (= 142-1~ubuntu16.04.1)
+Suggests: cockpit-doc (= 142-1~ubuntu16.04.1), cockpit-pcp (>= 142-1~ubuntu16.04.1), cockpit-docker (= 142-1~ubuntu16.04.1), xdg-utils
+Filename: pool/universe/c/cockpit/cockpit_142-1~ubuntu16.04.1_all.deb
+Size: 14186
+MD5sum: 837c24583a78aabfb507643e1a3dd541
+SHA1: 9537df06a2971a9ac0a811e862e41ebae33d4ab1
+SHA256: 1fa4ca696759c0fe6ec2b38b914f8a56216e5f9f91e199e019b86e92953faec5
 Description: User interface for Linux servers
 Homepage: http://cockpit-project.org/
 Description-md5: 5eb1d21349be18ee9bad20c445921f54
@@ -129,18 +129,18 @@ Origin: Ubuntu
 Package: cockpit-bridge
 Priority: optional
 Section: universe/admin
-Installed-Size: 749
+Installed-Size: 748
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
 Architecture: amd64
 Source: cockpit
-Version: 141-2~ubuntu16.04.1
+Version: 142-1~ubuntu16.04.1
 Depends: libc6 (>= 2.15), libglib2.0-0 (>= 2.35.9), libjson-glib-1.0-0 (>= 0.16.0), libpolkit-agent-1-0 (>= 0.105), libpolkit-gobject-1-0 (>= 0.104), libsystemd0, glib-networking
-Filename: pool/universe/c/cockpit/cockpit-bridge_141-2~ubuntu16.04.1_amd64.deb
-Size: 416864
-MD5sum: 8d96dc212c1e6701b5e43981692d515d
-SHA1: cf6e09b8ad67e6c292b600ccdaffe33586175a62
-SHA256: 6bd25df20a63ae7bbcf509ac44e146b458a111de4e7d5f00ddb46ed3f7070964
+Filename: pool/universe/c/cockpit/cockpit-bridge_142-1~ubuntu16.04.1_amd64.deb
+Size: 416588
+MD5sum: 93d8919e6c79ba1ad7fbdc3fe53ad81b
+SHA1: bcd28530a493511ff46c136aae3fce6ed6990108
+SHA256: dcc4a2638095f6f6160a53b62ff9f10cb2eb21cd68f03069cccb50d74f07c7ca
 Description: Cockpit bridge server-side component
 Homepage: http://cockpit-project.org/
 Description-md5: 34419f40043aa83e9a0fb5968fe56ce7
@@ -150,20 +150,20 @@ Origin: Ubuntu
 Package: cockpit-dashboard
 Priority: optional
 Section: universe/admin
-Installed-Size: 252
+Installed-Size: 277
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
 Architecture: amd64
 Source: cockpit
-Version: 141-2~ubuntu16.04.1
+Version: 142-1~ubuntu16.04.1
 Replaces: cockpit-system (<< 128), cockpit-ws (<< 128)
 Provides: cockpit-ssh
-Depends: libc6 (>= 2.15), libglib2.0-0 (>= 2.35.9), libjson-glib-1.0-0 (>= 0.12.0), libssh-4 (>= 0.6.1), libsystemd0, cockpit-ws (= 141-2~ubuntu16.04.1)
-Filename: pool/universe/c/cockpit/cockpit-dashboard_141-2~ubuntu16.04.1_amd64.deb
-Size: 136854
-MD5sum: d1c0b3894d64cb1532f0ddab9cb86a6a
-SHA1: e227736e17ecf00490293547e23f293f43aa2a91
-SHA256: 2df3f8208826f78824d0af31593857403dfea5a07bd408d418dc87e891808fd5
+Depends: libc6 (>= 2.15), libglib2.0-0 (>= 2.35.9), libjson-glib-1.0-0 (>= 0.12.0), libssh-4 (>= 0.6.1), libsystemd0, cockpit-ws (= 142-1~ubuntu16.04.1)
+Filename: pool/universe/c/cockpit/cockpit-dashboard_142-1~ubuntu16.04.1_amd64.deb
+Size: 153682
+MD5sum: e4beee5411dbc2c67df6c0c12f30c4a8
+SHA1: 82342cb91d463adde2270b00023904f049ead293
+SHA256: 05ec2066fd7eb29202693af9d0c513edf0703132fecc148e8b0c5d959df732a9
 Description: Cockpit SSH remoting and dashboard
 Homepage: http://cockpit-project.org/
 Description-md5: 42cecdb1098892e7184dfa7f7545bef6
@@ -173,17 +173,17 @@ Origin: Ubuntu
 Package: cockpit-doc
 Priority: optional
 Section: universe/doc
-Installed-Size: 663
+Installed-Size: 664
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
 Architecture: all
 Source: cockpit
-Version: 141-2~ubuntu16.04.1
-Filename: pool/universe/c/cockpit/cockpit-doc_141-2~ubuntu16.04.1_all.deb
-Size: 299894
-MD5sum: b924d35a8a5c46d3e7a675987036223b
-SHA1: d0f773be5efc4665438c20c0a512adb697e51cf6
-SHA256: 907d7252c510c9bd9814eb436e0852aa465002ab79f34c7f8d262b343e5d1a2c
+Version: 142-1~ubuntu16.04.1
+Filename: pool/universe/c/cockpit/cockpit-doc_142-1~ubuntu16.04.1_all.deb
+Size: 300338
+MD5sum: efb1c57dbc0846aeef7e89ddeab2dc7c
+SHA1: 4af131aa4e77ae775875aa569ba6ee79ee15a065
+SHA256: bc3e1c7c37d92932f2d448f91b7cc4a8f4a979b28ef22347bcc4e5ca1c01ded4
 Description: Cockpit deployment and developer guide
 Homepage: http://cockpit-project.org/
 Description-md5: 917dc8f7798407683627da6ebb139a47
@@ -193,19 +193,19 @@ Origin: Ubuntu
 Package: cockpit-docker
 Priority: optional
 Section: universe/admin
-Installed-Size: 257
+Installed-Size: 276
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
 Architecture: all
 Source: cockpit
-Version: 141-2~ubuntu16.04.1
+Version: 142-1~ubuntu16.04.1
 Depends: python3, cockpit-bridge (>= 138.x)
 Recommends: docker.io (>= 1.3.0) | docker-engine (>= 1.3.0) | docker-ce (>= 1.3.0)
-Filename: pool/universe/c/cockpit/cockpit-docker_141-2~ubuntu16.04.1_all.deb
-Size: 233804
-MD5sum: 13c2c9473f20e322bf7cbf3c47b54697
-SHA1: 52966989146dd3a9650664cf12e35562a86b04dd
-SHA256: 4c23d0e16de2b5570434c0bb5f4b02fe07c0535f02d6b3f2bc0d851009489bed
+Filename: pool/universe/c/cockpit/cockpit-docker_142-1~ubuntu16.04.1_all.deb
+Size: 252112
+MD5sum: 824b73eccd261c526140a5309c7d4608
+SHA1: 6ded535e8384fd611c77f070dd13dc3b390ea642
+SHA256: 82f3883c75c6fd81fc9eab783abd7948d99fb81f5aebc27e115d29a555e9efc1
 Description: Cockpit user interface for Docker containers
 Homepage: http://cockpit-project.org/
 Description-md5: c02e70ed63df0326f1a1b12deeb24144
@@ -215,18 +215,18 @@ Origin: Ubuntu
 Package: cockpit-machines
 Priority: optional
 Section: universe/admin
-Installed-Size: 192
+Installed-Size: 215
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
 Architecture: all
 Source: cockpit
-Version: 141-2~ubuntu16.04.1
+Version: 142-1~ubuntu16.04.1
 Depends: libvirt-daemon-system
-Filename: pool/universe/c/cockpit/cockpit-machines_141-2~ubuntu16.04.1_all.deb
-Size: 169260
-MD5sum: 911c8c55c5f57f3afc9157efd8a31f6c
-SHA1: a8a3fc73f6b103cc7fd7d5f3ede2c120af1538f8
-SHA256: 2a9ce5064dc28a099cdd76d969804c32e5728d315cee9ee1c4e97718cdeb4ef3
+Filename: pool/universe/c/cockpit/cockpit-machines_142-1~ubuntu16.04.1_all.deb
+Size: 188746
+MD5sum: f080dee97f6a0b19b805093b9d76e9e1
+SHA1: bbf0d2786c6e8da77a737249a17fcdd9865482d6
+SHA256: 9b6c19b98395401479a801dda3d46bed049d94928add4e3c415120360b068185
 Description: Cockpit user interface for virtual machines
 Homepage: http://cockpit-project.org/
 Description-md5: b27107809dfd190004a4d86226feb384
@@ -236,18 +236,18 @@ Origin: Ubuntu
 Package: cockpit-networkmanager
 Priority: optional
 Section: universe/admin
-Installed-Size: 122
+Installed-Size: 141
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
 Architecture: all
 Source: cockpit
-Version: 141-2~ubuntu16.04.1
+Version: 142-1~ubuntu16.04.1
 Depends: cockpit-bridge (>= 138.x), network-manager
-Filename: pool/universe/c/cockpit/cockpit-networkmanager_141-2~ubuntu16.04.1_all.deb
-Size: 100976
-MD5sum: 464639376219d1891f24ea237dd1893d
-SHA1: a21e49b0411305bdd31f04d9d21257ce7713e80b
-SHA256: ce964b84f7e785d45109930cccbc82de820564e4c0756a6264f0896f50496646
+Filename: pool/universe/c/cockpit/cockpit-networkmanager_142-1~ubuntu16.04.1_all.deb
+Size: 116028
+MD5sum: 945f3239c1cdaf51a92f586b71787f56
+SHA1: 63ebc17c119c5323522247e86e64674f387034b6
+SHA256: 2e9627c5175bc04d10012a3b1f96a586e4e8ee45c15266eb5f52da2b0bc6951e
 Description: Cockpit user interface for networking
 Homepage: http://cockpit-project.org/
 Description-md5: 3ec1a60ecda81a24c8267c56cf7a9a3f
@@ -257,18 +257,18 @@ Origin: Ubuntu
 Package: cockpit-storaged
 Priority: optional
 Section: universe/admin
-Installed-Size: 171
+Installed-Size: 203
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
 Architecture: all
 Source: cockpit
-Version: 141-2~ubuntu16.04.1
+Version: 142-1~ubuntu16.04.1
 Depends: udisks2 | storaged, cockpit-bridge (>= 138.x)
-Filename: pool/universe/c/cockpit/cockpit-storaged_141-2~ubuntu16.04.1_all.deb
-Size: 145840
-MD5sum: 4e45216ddd2619806f297f166a9c2831
-SHA1: eab2e3c2996706237ca98df9ab1a327f2e299201
-SHA256: 8b2fb9e6defac0b9de2c8adf65e229de4f2747c321f070d328f1e34cc51efcff
+Filename: pool/universe/c/cockpit/cockpit-storaged_142-1~ubuntu16.04.1_all.deb
+Size: 176896
+MD5sum: 96bf1baa7414eb5ea7c83e766f80008c
+SHA1: 0ee730146f4bc0f8ecdd9ce1078d9b434b0297a8
+SHA256: e19b98a27a0762b5b9705bce79a56800eea7f5b97e356329943ae0cd86c80ba8
 Description: Cockpit user interface for storage
 Homepage: http://cockpit-project.org/
 Description-md5: f6107ca2b49a2b554a0abcd9b73419c5
@@ -278,21 +278,21 @@ Origin: Ubuntu
 Package: cockpit-system
 Priority: optional
 Section: universe/admin
-Installed-Size: 607
+Installed-Size: 683
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
 Architecture: all
 Source: cockpit
-Version: 141-2~ubuntu16.04.1
+Version: 142-1~ubuntu16.04.1
 Replaces: cockpit-shell
 Provides: cockpit-realmd, cockpit-shell, cockpit-systemd, cockpit-tuned, cockpit-users
 Depends: cockpit-bridge (>= 138.x), libpwquality-tools, openssl
 Conflicts: cockpit-shell
-Filename: pool/universe/c/cockpit/cockpit-system_141-2~ubuntu16.04.1_all.deb
-Size: 512330
-MD5sum: 18844b7e31923085e1e1d4ec63df8360
-SHA1: 8608e340a4a978c6a934751e4c0c5df92d293e6c
-SHA256: 156d5799acd703ce887b28b5bd7cbb2df94ecec955ed19e45110faf2d3c8624c
+Filename: pool/universe/c/cockpit/cockpit-system_142-1~ubuntu16.04.1_all.deb
+Size: 573798
+MD5sum: aa63fe96a487e637c864b6f92bdeaf09
+SHA1: 80b20b53c49e8fc38fc3480a04c9915c6d1c9c9e
+SHA256: a1653097fe09df10336c15ed2c3eb7d6b6140272163fe92b48ebf29bda190d1d
 Description: Cockpit admin interface for a system
 Homepage: http://cockpit-project.org/
 Description-md5: 305239ce7fcb5c6043156a1e54c69f73
@@ -302,21 +302,21 @@ Origin: Ubuntu
 Package: cockpit-tests
 Priority: optional
 Section: universe/admin
-Installed-Size: 276
+Installed-Size: 286
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
 Architecture: amd64
 Source: cockpit
-Version: 141-2~ubuntu16.04.1
+Version: 142-1~ubuntu16.04.1
 Replaces: cockpit-test-assets
 Provides: cockpit-test-assets
-Depends: libc6 (>= 2.4), libpam0g (>= 0.99.7.1), cockpit-system (>= 141-2~ubuntu16.04.1), openssh-client
+Depends: libc6 (>= 2.4), libpam0g (>= 0.99.7.1), cockpit-system (>= 142-1~ubuntu16.04.1), openssh-client
 Conflicts: cockpit-test-assets
-Filename: pool/universe/c/cockpit/cockpit-tests_141-2~ubuntu16.04.1_amd64.deb
-Size: 225736
-MD5sum: 72eec3e0bedb0b6cdeab604cbddecafd
-SHA1: d51c8fa3f372f806216c60914837a2b1781a22b3
-SHA256: b9c8c94b72e943237c990041bfff465c49e363fb3a7ed6e439b008bfa23fc7c0
+Filename: pool/universe/c/cockpit/cockpit-tests_142-1~ubuntu16.04.1_amd64.deb
+Size: 232262
+MD5sum: c13dbeccaa38acb152fb766ef8dc4709
+SHA1: 6459bf03ea2c24a383b839c49671970d113d3aa7
+SHA256: 6eaaecdf85611fda8b3c684e27da23e07fa664d8f4f5ae0a8f3a9ac374e57185
 Description: Tests for Cockpit
 Homepage: http://cockpit-project.org/
 Description-md5: 0b4ed46aa862cd96d493b081c605101e
@@ -326,18 +326,18 @@ Origin: Ubuntu
 Package: cockpit-ws
 Priority: optional
 Section: universe/admin
-Installed-Size: 857
+Installed-Size: 893
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
 Architecture: amd64
 Source: cockpit
-Version: 141-2~ubuntu16.04.1
+Version: 142-1~ubuntu16.04.1
 Depends: init-system-helpers (>= 1.18~), libc6 (>= 2.15), libglib2.0-0 (>= 2.33.14), libgssapi-krb5-2 (>= 1.11+dfsg), libjson-glib-1.0-0 (>= 0.16.0), libkrb5-3 (>= 1.10+dfsg~alpha1), libpam0g (>= 0.99.7.1), libsystemd0, glib-networking, adduser
-Filename: pool/universe/c/cockpit/cockpit-ws_141-2~ubuntu16.04.1_amd64.deb
-Size: 373760
-MD5sum: 5301241e91c0d9e1b2fe8437f197f4f8
-SHA1: f2f1462b407959b8de25b54ea26b0e3d3de5a64f
-SHA256: 1533b54534063ba39fb14b3197c33a48be787fb0addef4baab592b42ea9ff84a
+Filename: pool/universe/c/cockpit/cockpit-ws_142-1~ubuntu16.04.1_amd64.deb
+Size: 375350
+MD5sum: 8a74c7b28330edbe1cc608121d3be5e5
+SHA1: ee56d19e5be86ab0ad8d6bd023fd59d6633c0348
+SHA256: 2ed7ebb54dc5a8cdb54e2dfd1325386150cd5c71ffd2ffdccfe24e83deda5a6a
 Description: Cockpit Web Service
 Homepage: http://cockpit-project.org/
 Description-md5: 2e29c9c1deb6c6ed9c90530647c8f651

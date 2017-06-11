@@ -3,6 +3,7 @@ export INTERNAL_IP=0.0.0.0
 export SERVERS="[\"192.168.1.201\", \"192.168.1.202\",\"192.168.1.203\"]"
 
 # ENV VARS
+
 sudo cat <<EOF >  /etc/environment
 CONSUL_HTTP_ADDR=http://$NODE_IP:8500
 NOMAD_ADDR=http://$NODE_IP:4646
@@ -39,7 +40,7 @@ sudo mkdir -p /etc/consul.d
 sudo mkdir -p /var/consul
 sudo chmod a+w /etc/consul.d
 sudo chmod a+w /var/consul
-
+#cat /etc/consul.d/consul.json
 sudo cat <<EOF >  /etc/consul.d/consul.json
 {
 "bind_addr": "$NODE_IP",
@@ -49,6 +50,9 @@ sudo cat <<EOF >  /etc/consul.d/consul.json
 "server": true,
 "ui": true,
 "bootstrap_expect": 3,
+"ports":{
+  "dns":53
+},
 "encrypt": "viIWiDibfrFw68JS2gR5zA==",
 "rejoin_after_leave": true,
 "retry_join": $SERVERS
@@ -73,6 +77,8 @@ EOF
 sudo systemctl enable consul.service
 sudo systemctl stop consul
 sudo systemctl start consul
+
+
 
 # NOMAD
 if [ ! -f "/vagrant/nomad.zip" ]; then curl -sSL https://releases.hashicorp.com/nomad/0.5.6/nomad_0.5.6_linux_amd64.zip -o /vagrant/nomad.zip ; fi

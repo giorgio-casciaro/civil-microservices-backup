@@ -34133,7 +34133,6 @@ Homepage: https://linuxcontainers.org
 Description-md5: e709f3eddd48d5ce8595be4d003fd4f5
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
-Phased-Update-Percentage: 80
 Supported: 5y
 
 Package: libpam-sss
@@ -40454,7 +40453,6 @@ Multi-Arch: same
 Description-md5: 27044468897c45b271f879c7c6e135fe
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
-Phased-Update-Percentage: 60
 Supported: 5y
 Task: ubuntu-sdk-libs-dev
 
@@ -40478,7 +40476,6 @@ Description: Secure Sockets Layer toolkit - development documentation
 Description-md5: 863c8f0d45ab34415ebc295c04753c98
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
-Phased-Update-Percentage: 60
 Supported: 5y
 Task: ubuntu-sdk-libs-dev
 
@@ -40502,7 +40499,6 @@ Multi-Arch: same
 Description-md5: 88547c6206c7fbc4fcc7d09ce100d210
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
-Phased-Update-Percentage: 60
 Supported: 5y
 Task: minimal, ubuntu-sdk-libs
 
@@ -40527,7 +40523,6 @@ Build-Ids: 0d0c832023bc076d97281e0e50618e41ce670c37 1db92bef242e7147142e36fd01da
 Description-md5: b44e703aa71494076bf676aad96d1f64
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
-Phased-Update-Percentage: 60
 Supported: 5y
 
 Package: libsss-idmap-dev
@@ -64756,7 +64751,6 @@ Homepage: https://linuxcontainers.org
 Description-md5: f3cabfc6ca3d3433720d9d811af950bd
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
-Phased-Update-Percentage: 80
 Supported: 5y
 Task: cloud-image, server
 
@@ -68373,7 +68367,6 @@ Description: Secure Sockets Layer toolkit - cryptographic utility
 Description-md5: 9b6de2bb6e1d9016aeb0f00bcf6617bd
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
-Phased-Update-Percentage: 60
 Supported: 5y
 Task: standard, ubuntu-core, ubuntu-core, mythbuntu-frontend, mythbuntu-backend-slave, mythbuntu-backend-master, ubuntu-touch-core, ubuntu-touch, ubuntu-sdk-libs-tools, ubuntu-sdk
 
@@ -79095,7 +79088,6 @@ Homepage: http://go.microsoft.com/fwlink/?LinkId=250998
 Description-md5: 6c6e08b89d2f59e8bdc1b7bf37e6f34c
 Bugs: https://bugs.launchpad.net/ubuntu/+filebug
 Origin: Ubuntu
-Phased-Update-Percentage: 80
 Supported: 5y
 
 Package: webapp-container

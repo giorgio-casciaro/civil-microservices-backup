@@ -29,42 +29,73 @@ job "nginx" {
     task "nginx" {
       driver = "docker"
 
-      #artifact {
-      #  source = "http://192.168.1.201:8500/v1/kv/nginx?raw"
-      #  destination = "/config/nginx.conf"
-      #}
 
       config {
         image = "nginx:latest"
         command = "nginx"
-        args = [ "-g", "daemon off;", "-c", "/config/nginx.conf"]
+        args = [ "-g", "daemon off;", "-c", "/nginx.conf"]
         network_mode = "host"
         interactive = true
+        volumes = ["nginx.conf:/nginx.conf" ]
+        dns_servers = ["127.0.0.1:8600"]
       }
 
+      // artifact {
+      //   source = "http://192.168.1.201:8500/v1/kv/nginx?raw"
+      //   destination = "/config/nginx.conf"
+      // }
+
       template {
+        change_mode = "signal"
+        change_signal ="SIGHUP"
         data = <<EOH
-        events {
-            worker_connections  1024;
-        }
-
+        events { worker_connections 1024; }
         http {
-          client_max_body_size 500M;
-          include       /etc/nginx/mime.types;
-          default_type  application/octet-stream;
-          server {
-              listen 80 ;
+          {{range services}} {{$name := .Name}} {{$service := service .Name}}
+          upstream {{$name}} {
+            zone upstream-{{$name}} 64k;
+            {{range $service}}server {{.Address}}:{{.Port}} max_fails=3 fail_timeout=60 weight=1;
+            {{else}}server 127.0.0.1:65535; # force a 502{{end}}
+          } {{end}}
 
-              location / {
-                  root /usr/share/nginx/html;
-              }
+          server {
+            listen 80;
+
+            location / {
+              root /usr/share/nginx/html/;
+              index index.html;
+            }
+
+            location /stub_status {
+              stub_status;
+            }
+
+          {{range services}} {{$name := .Name}}
+            location /{{$name}} {
+              proxy_pass http://{{$name}};
+            }
+          {{end}}
 
           }
+
+          server {
+            listen 81 ;
+            location /ws/ {
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+              proxy_pass http://hashi-ui-service/ws/;
+            }
+            location / {
+              proxy_pass http://hashi-ui-service;
+            }
+          }
+
         }
 
         EOH
 
-        destination = "/config/nginx.conf"
+        destination = "nginx.conf"
       }
 
       env {

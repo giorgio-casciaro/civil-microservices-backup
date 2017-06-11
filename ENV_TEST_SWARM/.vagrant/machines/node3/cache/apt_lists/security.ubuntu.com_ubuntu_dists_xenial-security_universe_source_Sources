@@ -1,0 +1,2072 @@
+Package: ark
+Binary: ark, ark-dbg
+Version: 4:15.12.3-0ubuntu1.1
+Priority: optional
+Section: universe/kde
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Build-Depends: cmake (>= 2.8.12~), debhelper (>= 9), extra-cmake-modules (>= 1.7.0~), kdoctools-dev (>= 5.6.0~), kio-dev (>= 5.6.0~), libarchive-dev (>= 3.0.0~), libbz2-dev, libkf5archive-dev (>= 5.6.0~), libkf5config-dev (>= 5.6.0~), libkf5crash-dev (>= 5.6.0~), libkf5dbusaddons-dev (>= 5.6.0~), libkf5i18n-dev (>= 5.6.0~), libkf5iconthemes-dev (>= 5.6.0~), libkf5khtml-dev (>= 5.6.0~), libkf5pty-dev (>= 5.6.0~), libkf5service-dev (>= 5.6.0~), libkf5widgetsaddons-dev (>= 5.6.0~), liblzma-dev, libqjson-dev, pkg-kde-tools (>= 0.15.15ubuntu1~), qtbase5-dev (>= 5.4.0~), zlib1g-dev
+Architecture: any
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/a/ark
+Files:
+ 0a59e69af3f590cb7c5fccebc5435265 2776 ark_15.12.3-0ubuntu1.1.dsc
+ edbcd431486191302a6a506b7c9ab0e6 253632 ark_15.12.3.orig.tar.xz
+ b6d0104534fc905c11d85c9f44820102 7844 ark_15.12.3-0ubuntu1.1.debian.tar.xz
+Uploaders: Fathi Boudra <fabo@debian.org>, Sune Vuorela <sune@debian.org>, Modestas Vainius <modax@debian.org>, George Kiagiadakis <kiagiadakis.george@gmail.com>, Eshat Cakar <info@eshat.de>, Maximiliano Curia <maxy@debian.org>
+Homepage: http://www.kde.org/
+Vcs-Browser: http://anonscm.debian.org/cgit/pkg-kde/applications/ark.git
+Vcs-Git: git://anonscm.debian.org/pkg-kde/applications/ark.git
+Testsuite: autopkgtest
+Package-List:
+ ark deb utils optional arch=any
+ ark-dbg deb debug extra arch=any
+Checksums-Sha1:
+ d455ec87aa77b9f7b6dc674e4dd1e79984d468da 2776 ark_15.12.3-0ubuntu1.1.dsc
+ b12612999d1c3bfdc433412f88a94703e5061271 253632 ark_15.12.3.orig.tar.xz
+ 46436cd7f2d9ed6ad7c16b6fe7144cf49193cddd 7844 ark_15.12.3-0ubuntu1.1.debian.tar.xz
+Checksums-Sha256:
+ d9e1a118f7f52207dc6e1c0cb518b728674c604f3cf3eebaa79a0c7907b7ec9a 2776 ark_15.12.3-0ubuntu1.1.dsc
+ eecf4372f7bbd2a88dcc478bd70b6aedc6c7bc522e7413d84be1fd33e125f48e 253632 ark_15.12.3.orig.tar.xz
+ 7f2ee5551fe6ad9e7fed20f2dbccdc03f63cef87e871347e5c5f0d77e1c35e94 7844 ark_15.12.3-0ubuntu1.1.debian.tar.xz
+
+Package: atheme-services
+Binary: atheme-services
+Version: 6.0.11-2+deb8u1build0.16.04.1
+Priority: optional
+Section: universe/misc
+Maintainer: Mike Mestnik <cheako+apt_repo@mikemestnik.net>
+Build-Depends: dpkg-dev (>= 1.16.0), debhelper (>= 9), autotools-dev, dh-autoreconf, libssl-dev, gettext, libmowgli-dev (>= 0.7), pkg-config
+Architecture: any
+Standards-Version: 3.9.5
+Format: 3.0 (quilt)
+Directory: pool/universe/a/atheme-services
+Files:
+ dfc0b5537923093cb79f13ec0c9ed2c8 2198 atheme-services_6.0.11-2+deb8u1build0.16.04.1.dsc
+ 4ceab5e1ba3289c3a9e004146d29b991 859123 atheme-services_6.0.11.orig.tar.bz2
+ cfeb1bee60920e1e4174d12a5cb0901f 9376 atheme-services_6.0.11-2+deb8u1build0.16.04.1.debian.tar.xz
+Uploaders: Antoine Beaupré <anarcat@debian.org>, Micah Anderson <micah@debian.org>
+Homepage: http://atheme.net/atheme.html
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/atheme-services.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/atheme-services.git
+Package-List:
+ atheme-services deb net optional arch=any
+Checksums-Sha1:
+ 84a6aef72a9557c6f802dbedfdbbf790ee588eec 2198 atheme-services_6.0.11-2+deb8u1build0.16.04.1.dsc
+ e6cb8156583c9daa4619cfee5e5e1cd8a38b7b2d 859123 atheme-services_6.0.11.orig.tar.bz2
+ 640571af3f3e119410815c6057e427aaf59bee31 9376 atheme-services_6.0.11-2+deb8u1build0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ c963728a25c7292a1578fbb0c1ca3c2e68526a6f7113b97c40717cb63a79ae92 2198 atheme-services_6.0.11-2+deb8u1build0.16.04.1.dsc
+ 762bc717d4710d135f8654025c34c4fc431a6a8cf7345e994fbe800fa78a9f74 859123 atheme-services_6.0.11.orig.tar.bz2
+ 107fbe2343acdc1db0f1c17fcb5fe160898af6359aea20be53b9838ffd496f9c 9376 atheme-services_6.0.11-2+deb8u1build0.16.04.1.debian.tar.xz
+
+Package: audiofile
+Binary: audiofile-tools, libaudiofile-dev, libaudiofile1, libaudiofile-dbg
+Version: 0.3.6-2ubuntu0.16.04.1
+Priority: optional
+Section: universe/libs
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 9), dh-autoreconf, libasound2-dev, libflac-dev, pkg-config
+Architecture: any
+Standards-Version: 3.9.4
+Format: 3.0 (quilt)
+Directory: pool/universe/a/audiofile
+Files:
+ 70c5e14ba3aac09a836e655dc5c2f117 2327 audiofile_0.3.6-2ubuntu0.16.04.1.dsc
+ 2731d79bec0acef3d30d2fc86b0b72fd 811733 audiofile_0.3.6.orig.tar.gz
+ a4dec9254f073c3210fdcd96ac9d7e17 15396 audiofile_0.3.6-2ubuntu0.16.04.1.debian.tar.xz
+Uploaders:  Alessio Treglia <alessio@debian.org>
+Homepage: http://audiofile.68k.org/
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-multimedia/audiofile.git
+Vcs-Git: git://anonscm.debian.org/pkg-multimedia/audiofile.git
+Package-List:
+ audiofile-tools deb utils optional arch=any
+ libaudiofile-dbg deb debug extra arch=any
+ libaudiofile-dev deb libdevel optional arch=any
+ libaudiofile1 deb libs optional arch=any
+Checksums-Sha1:
+ 76ea5a2f902b5c35670c813ceecea173f7180bae 2327 audiofile_0.3.6-2ubuntu0.16.04.1.dsc
+ 3aba3ef724b1b5f88cfc20ab9f8ce098e6c35a0e 811733 audiofile_0.3.6.orig.tar.gz
+ c9e7c7c65e6e4883137ff3b0b507589a6056d9a1 15396 audiofile_0.3.6-2ubuntu0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ 0fe3137edb7eb0d96a668f087937eb1203aa8665036655f612469fc200806d4c 2327 audiofile_0.3.6-2ubuntu0.16.04.1.dsc
+ cdc60df19ab08bfe55344395739bb08f50fc15c92da3962fac334d3bff116965 811733 audiofile_0.3.6.orig.tar.gz
+ 2b9c6549719069b3cfaf23ecf5874478ee557b55cafebd6de4f9c8dac0f9259e 15396 audiofile_0.3.6-2ubuntu0.16.04.1.debian.tar.xz
+
+Package: cacti
+Binary: cacti
+Version: 0.8.8f+ds1-4ubuntu4.16.04.2
+Priority: extra
+Section: universe/web
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Cacti Maintainer <pkg-cacti-maint@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 9), po-debconf
+Architecture: all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/c/cacti
+Files:
+ 747bd7641d5cfdfd382fbfd8909b2263 1722 cacti_0.8.8f+ds1-4ubuntu4.16.04.2.dsc
+ d5f9bf3cc66ced903b5aaac954173f1c 2243361 cacti_0.8.8f+ds1.orig.tar.gz
+ 9481e3cc990d1f11b0825f42d7ab606f 50552 cacti_0.8.8f+ds1-4ubuntu4.16.04.2.debian.tar.xz
+Uploaders: Mahyuddin Susanto <udienz@ubuntu.com>, Paul Gevers <elbrus@debian.org>
+Homepage: http://www.cacti.net/
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-cacti/cacti.git
+Vcs-Git: git://anonscm.debian.org/pkg-cacti/cacti.git
+Package-List:
+ cacti deb web extra arch=all
+Checksums-Sha1:
+ 1cce8f63c66f2a05d1d3edf45cd1a30cd4a489f2 1722 cacti_0.8.8f+ds1-4ubuntu4.16.04.2.dsc
+ 0e2b4a39daf4d81e658710a160d6bb34263d9dac 2243361 cacti_0.8.8f+ds1.orig.tar.gz
+ 59af86dd4da086b51b68c7fec31baecacab3999b 50552 cacti_0.8.8f+ds1-4ubuntu4.16.04.2.debian.tar.xz
+Checksums-Sha256:
+ 3943d758365b2446baeb232255038560e6777306d9586d9003378231492a2881 1722 cacti_0.8.8f+ds1-4ubuntu4.16.04.2.dsc
+ a4645050d4d49173e221dcbeba481416fa1ea1fc0d6b6f0b13d3762fcb602b0e 2243361 cacti_0.8.8f+ds1.orig.tar.gz
+ 21914f246a79fb258d1175381365a269143071898e07d5a9f0d92ff539a97cbf 50552 cacti_0.8.8f+ds1-4ubuntu4.16.04.2.debian.tar.xz
+
+Package: cgiemail
+Binary: cgiemail
+Version: 1.6-37+deb7u1build0.16.04.1
+Priority: optional
+Section: universe/web
+Maintainer: Anibal Monsalve Salazar <anibal@debian.org>
+Build-Depends: debhelper (>= 7), perl
+Architecture: any
+Standards-Version: 3.9.2
+Format: 3.0 (quilt)
+Directory: pool/universe/c/cgiemail
+Files:
+ 879542dda62b0958908271471625f165 1786 cgiemail_1.6-37+deb7u1build0.16.04.1.dsc
+ 45ffe878e5ba54344f62c00f2e1efff6 33948 cgiemail_1.6.orig.tar.bz2
+ 41180956c7bdbc7bab9fd75450ed933b 29173 cgiemail_1.6-37+deb7u1build0.16.04.1.debian.tar.bz2
+Homepage: http://web.mit.edu/wwwdev/cgiemail/
+Package-List:
+ cgiemail deb web optional arch=any
+Checksums-Sha1:
+ 49e1eb3c27f3328191ede72042a8a51b5aab4d39 1786 cgiemail_1.6-37+deb7u1build0.16.04.1.dsc
+ f44cd83a3de9f3e8828a7c0552b3bde8d2b863cb 33948 cgiemail_1.6.orig.tar.bz2
+ 26fba0a60a1a95447d8e69ac378508c4774adde0 29173 cgiemail_1.6-37+deb7u1build0.16.04.1.debian.tar.bz2
+Checksums-Sha256:
+ a4af4431ffadd530edeb55ee8e9adc22ef1dc90ab01e0382decf953adaed4c95 1786 cgiemail_1.6-37+deb7u1build0.16.04.1.dsc
+ 63e317b13faa660d8f11680f4fb65f4958c695f79944efffe9dc7b58d846b5d5 33948 cgiemail_1.6.orig.tar.bz2
+ 11b674008096feceb031daa65a80ac0b2ac2b4705535b3e6e0eb1196055da9d4 29173 cgiemail_1.6-37+deb7u1build0.16.04.1.debian.tar.bz2
+
+Package: chromium-browser
+Binary: chromium-browser, chromium-browser-l10n, chromium-codecs-ffmpeg, chromium-codecs-ffmpeg-extra, chromium-chromedriver
+Version: 58.0.3029.110-0ubuntu0.16.04.1281
+Priority: optional
+Section: universe/web
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Build-Depends: debhelper (>= 9), dh-buildinfo, ninja-build (>= 1.3), pkg-config, lsb-release, quilt, python, bison, gcc-4.8, g++-4.8, gperf, libpulse-dev, libcups2-dev | libcupsys2-dev, libasound2-dev, libnss3-dev, mesa-common-dev, libgles2-mesa-dev [armel armhf], libpci-dev, libxtst-dev, libxss-dev, libgtk-3-dev, libgtk2.0-dev, libglib2.0-dev, libgnome-keyring-dev, libudev-dev, libgconf2-dev, libdrm-dev, libcap-dev, libgcrypt-dev, libkrb5-dev, libxkbcommon-dev, libpam0g-dev, libffi-dev, chrpath, yasm
+Architecture: i386 amd64 armhf arm64 all
+Standards-Version: 3.9.8
+Format: 3.0 (quilt)
+Directory: pool/universe/c/chromium-browser
+Files:
+ f6d90c8d554352812b095cc5ee322582 2722 chromium-browser_58.0.3029.110-0ubuntu0.16.04.1281.dsc
+ aca4aeff806e1230912aa9c9df6b7be7 518167664 chromium-browser_58.0.3029.110.orig.tar.xz
+ bcac91ec4321a8eea3a4eede59d5bb11 522360 chromium-browser_58.0.3029.110-0ubuntu0.16.04.1281.debian.tar.xz
+Homepage: https://chromium.googlesource.com/chromium/src/
+Vcs-Bzr: https://code.launchpad.net/~chromium-team/chromium-browser/yakkety-working
+Testsuite: autopkgtest
+Testsuite-Triggers: bash, dbus-x11, imagemagick, libsikuli-script-java, metacity, python3-httplib2, python3-minimal, unity-chromium-extension, x11-apps, xvfb
+Package-List:
+ chromium-browser deb web optional arch=i386,amd64,armhf,arm64
+ chromium-browser-l10n deb web optional arch=all
+ chromium-chromedriver deb web optional arch=i386,amd64,armhf,arm64
+ chromium-codecs-ffmpeg deb web optional arch=i386,amd64,armhf,arm64
+ chromium-codecs-ffmpeg-extra deb web optional arch=i386,amd64,armhf,arm64
+Checksums-Sha1:
+ 84c605451e52cc29c87507f0e40886a47c2481f6 2722 chromium-browser_58.0.3029.110-0ubuntu0.16.04.1281.dsc
+ c7b093fb65d55b9da1254c7ceb8b1674a59d8973 518167664 chromium-browser_58.0.3029.110.orig.tar.xz
+ 7a8e3b2f80de7424505c8ee2451339fe5996e34f 522360 chromium-browser_58.0.3029.110-0ubuntu0.16.04.1281.debian.tar.xz
+Checksums-Sha256:
+ 11c03b11db70e822965636f38a253efbbe2246ebb05dbd4258bb66827a012ae2 2722 chromium-browser_58.0.3029.110-0ubuntu0.16.04.1281.dsc
+ f24cef3dd2acf9dd5ccdeeca47fea42d1c1ddff32b7375dc9e0cd35a4e8d78ff 518167664 chromium-browser_58.0.3029.110.orig.tar.xz
+ 08045082142ed69702749b965fbdc5181346bf9e1d2df6fe9cb33b293cb5bee8 522360 chromium-browser_58.0.3029.110-0ubuntu0.16.04.1281.debian.tar.xz
+
+Package: dwarfutils
+Binary: dwarfdump, libdwarf-dev
+Version: 20120410-2+deb7u2build0.16.04.1
+Priority: optional
+Section: universe/libs
+Maintainer: Fabian Wolff <fabi.wolff@arcor.de>
+Build-Depends: debhelper (>> 9), quilt (>= 0.47), libelf-dev, binutils-dev
+Architecture: any
+Standards-Version: 3.9.3.1
+Format: 3.0 (quilt)
+Directory: pool/universe/d/dwarfutils
+Files:
+ f2bb95e3e716fda52a5a13137bb9346b 1880 dwarfutils_20120410-2+deb7u2build0.16.04.1.dsc
+ 77c8b351f11738bc9fa50474a69d5b36 1465839 dwarfutils_20120410.orig.tar.gz
+ 1d5c95114785b90bbc7f9b76b59e5e44 13388 dwarfutils_20120410-2+deb7u2build0.16.04.1.debian.tar.xz
+Package-List:
+ dwarfdump deb utils optional arch=any
+ libdwarf-dev deb libdevel optional arch=any
+Checksums-Sha1:
+ 1f73b95bd1f4d8d8b064e699ec40f95e57ea6f33 1880 dwarfutils_20120410-2+deb7u2build0.16.04.1.dsc
+ d634ef7aee475ef118dc40f5d684290ff54cda8a 1465839 dwarfutils_20120410.orig.tar.gz
+ 9ce64989b141e1dfaf33e82f891987cdb5dc664e 13388 dwarfutils_20120410-2+deb7u2build0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ 966fdc22c6ff8b557b9bc1528d51453495997395caf7ac04eaa0cea299d28793 1880 dwarfutils_20120410-2+deb7u2build0.16.04.1.dsc
+ ad148f07f0937689e6c8265beca09c74c92fad039900967eb9340a4c46a10b6c 1465839 dwarfutils_20120410.orig.tar.gz
+ 501162e446fedf84522db05e784c30742ed5b3b749b1c0d843303e02f732a0fa 13388 dwarfutils_20120410-2+deb7u2build0.16.04.1.debian.tar.xz
+
+Package: enigmail
+Binary: enigmail
+Version: 2:1.9.7-1~ubuntu0.16.04.1
+Priority: optional
+Section: universe/mail
+Maintainer: Debian Mozilla Extension Maintainers <pkg-mozext-maintainers@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 9), dh-autoreconf, mozilla-devscripts, perl, python, zip
+Architecture: all
+Standards-Version: 3.9.8
+Format: 3.0 (quilt)
+Directory: pool/universe/e/enigmail
+Files:
+ a4c4e00b465cec0067ad2cfe6a6aee4a 1791 enigmail_1.9.7-1~ubuntu0.16.04.1.dsc
+ ab3e098846fa10f684ed78a2ffa4df89 1745184 enigmail_1.9.7.orig.tar.gz
+ 4456364174e63fdfbd9ac5aa1bb3a739 28100 enigmail_1.9.7-1~ubuntu0.16.04.1.debian.tar.xz
+Uploaders: Alexander Sack <asac@debian.org>, Willi Mann <willi@debian.org>, Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Homepage: https://www.enigmail.net/
+Vcs-Browser: https://anonscm.debian.org/git/pkg-mozext/enigmail.git/
+Vcs-Git: https://anonscm.debian.org/git/pkg-mozext/enigmail.git
+Package-List:
+ enigmail deb mail optional arch=all
+Checksums-Sha1:
+ 4d2326b341df738c7ef569879f21df8f73ecc37d 1791 enigmail_1.9.7-1~ubuntu0.16.04.1.dsc
+ 9ea146efb441958b1d74c88b973f95ceb6ccb54b 1745184 enigmail_1.9.7.orig.tar.gz
+ 4b77cb0cc9a306a707b41f38826a469ca4fea67b 28100 enigmail_1.9.7-1~ubuntu0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ 767fad65139445ed75e0c06682911aaef540ee2f52818b1e0ac5ff2d6cf28918 1791 enigmail_1.9.7-1~ubuntu0.16.04.1.dsc
+ 176adbafee2f84ef6cd1cdbf53131a2a6a23d0cb26550357617c24a8ae5bd934 1745184 enigmail_1.9.7.orig.tar.gz
+ b918e374c958a368342c1b9a1768dfb0ae35f77198e9045217c778053d52a752 28100 enigmail_1.9.7-1~ubuntu0.16.04.1.debian.tar.xz
+
+Package: epiphany-browser
+Binary: epiphany-browser, epiphany-browser-data
+Version: 3.18.11-0ubuntu1
+Priority: optional
+Section: universe/gnome
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 9), cdbs (>= 0.4.90), dh-autoreconf, gnome-pkg-tools (>= 0.10), pkg-config, libglib2.0-dev (>= 2.38), libgtk-3-dev (>= 3.13.0), libxml2-dev (>= 2.6.12), libxslt1-dev (>= 1.1.7), libgnome-keyring-dev (>= 2.26.0), libsoup-gnome2.4-dev (>= 2.48.0), libgnome-desktop-3-dev (>= 3.10), libgcr-3-dev (>= 3.5.5), libavahi-gobject-dev (>= 0.6.22), libavahi-client-dev (>= 0.6.22), libsqlite3-dev, libnss3-dev, libnotify-dev (>= 0.5.1), libxml-parser-perl, libwebkit2gtk-4.0-dev (>= 2.13.2), libsecret-1-dev (>= 0.14), libwnck-3-dev, gnome-common (>= 3.6), lsb-release, gobject-introspection (>= 0.9.12-4~), libgirepository1.0-dev (>= 0.10.7-1~), iso-codes (>= 0.35), intltool (>= 0.50.0), x11proto-core-dev, gtk-doc-tools (>= 1.0), gsettings-desktop-schemas-dev (>= 0.0.1), yelp-tools, appstream-util
+Build-Depends-Indep: libglib2.0-doc, libgtk-3-doc
+Architecture: any all
+Standards-Version: 3.9.7
+Format: 3.0 (quilt)
+Directory: pool/universe/e/epiphany-browser
+Files:
+ 72362b4d4521c4791322151f4600cd1a 3098 epiphany-browser_3.18.11-0ubuntu1.dsc
+ 64bd7aa2ca4068c8dd1bd185fc73a750 2234600 epiphany-browser_3.18.11.orig.tar.xz
+ eb3f3894cd5ac295d3e60ad05769b1e6 29584 epiphany-browser_3.18.11-0ubuntu1.debian.tar.xz
+Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Homepage: https://wiki.gnome.org/Apps/Web
+Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/epiphany-browser/
+Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/epiphany-browser/
+Package-List:
+ epiphany-browser deb gnome optional arch=any
+ epiphany-browser-data deb gnome optional arch=all
+Checksums-Sha1:
+ a4b9f88e2328e01608d224edf450e8d94b831d90 3098 epiphany-browser_3.18.11-0ubuntu1.dsc
+ 01a5ebbafc4bba8db62987be179deb1cd07c4040 2234600 epiphany-browser_3.18.11.orig.tar.xz
+ d054d7b72f4cd2f4310fce34f3c088077eaeff1c 29584 epiphany-browser_3.18.11-0ubuntu1.debian.tar.xz
+Checksums-Sha256:
+ 2e478348afe54d950bc37f5d51c3b0c7f4d8b0448e321b0d5d79eb82196c7ff9 3098 epiphany-browser_3.18.11-0ubuntu1.dsc
+ 81c4219cb68e45af7729c78faa557d93a6b9520f289aef24b6d67e3a96dfcc82 2234600 epiphany-browser_3.18.11.orig.tar.xz
+ 7d43ca37b8550b4dce3fc1aaba22ab86b28f23c86409d44bdc1111c027832f0a 29584 epiphany-browser_3.18.11-0ubuntu1.debian.tar.xz
+
+Package: extplorer
+Binary: extplorer
+Version: 2.1.0b6+dfsg.3-4+deb7u4ubuntu0.16.04.1
+Priority: optional
+Section: universe/web
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Thomas Goirand <zigo@debian.org>
+Build-Depends: debhelper (>= 8)
+Architecture: all
+Standards-Version: 3.9.3
+Format: 3.0 (quilt)
+Directory: pool/universe/e/extplorer
+Files:
+ 39e79ca5e5054d818f288e8392c5012f 2054 extplorer_2.1.0b6+dfsg.3-4+deb7u4ubuntu0.16.04.1.dsc
+ 44d5dce06700b2c99499e57c0525106e 333069 extplorer_2.1.0b6+dfsg.3.orig.tar.gz
+ 2e6bb367db9ed27ae03551d1fad6f646 14980 extplorer_2.1.0b6+dfsg.3-4+deb7u4ubuntu0.16.04.1.debian.tar.xz
+Homepage: http://extplorer.sourceforge.net/
+Vcs-Browser: http://git.debian.org/?p=users/zigo/extplorer.git
+Vcs-Git: http://git.debian.org/git/users/zigo/extplorer.git
+Package-List:
+ extplorer deb web optional arch=all
+Checksums-Sha1:
+ 1c7de19291d190846ee6ef95de5b2222c86bd3b8 2054 extplorer_2.1.0b6+dfsg.3-4+deb7u4ubuntu0.16.04.1.dsc
+ be7ea3a1af9ab4949d5083d30b78dd53aab74952 333069 extplorer_2.1.0b6+dfsg.3.orig.tar.gz
+ c5687bda0c894332d9b0466631ffacab24759d57 14980 extplorer_2.1.0b6+dfsg.3-4+deb7u4ubuntu0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ f258d563899f010ac7d87b05b2d5a84c109d5b293667f7947732841463b6b2b3 2054 extplorer_2.1.0b6+dfsg.3-4+deb7u4ubuntu0.16.04.1.dsc
+ 466040f5755f9f27247b1bded0d764ed5b0ff6007d3de08413059d53341969fb 333069 extplorer_2.1.0b6+dfsg.3.orig.tar.gz
+ 726946aaea705526d814d9e7e7f5eac86c00c5a09c84feb82cd7471764859917 14980 extplorer_2.1.0b6+dfsg.3-4+deb7u4ubuntu0.16.04.1.debian.tar.xz
+
+Package: ffmpeg
+Binary: ffmpeg, ffmpeg-dbg, ffmpeg-doc, libavcodec-ffmpeg56, libavcodec-ffmpeg-extra56, libavcodec-extra, libavcodec-dev, libavdevice-ffmpeg56, libavdevice-dev, libavfilter-ffmpeg5, libavfilter-dev, libavformat-ffmpeg56, libavformat-dev, libavresample-ffmpeg2, libavresample-dev, libavutil-ffmpeg54, libavutil-dev, libpostproc-ffmpeg53, libpostproc-dev, libswresample-ffmpeg1, libswresample-dev, libswscale-ffmpeg3, libswscale-dev, libav-tools
+Version: 7:2.8.11-0ubuntu0.16.04.1
+Priority: optional
+Section: universe/misc
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 9.20141010), dpkg-dev (>= 1.17.14), flite1-dev, frei0r-plugins-dev <!stage1>, ladspa-sdk, libass-dev, libbluray-dev, libbs2b-dev, libbz2-dev, libcaca-dev, libcdio-paranoia-dev, libcrystalhd-dev [amd64 i386], libdc1394-22-dev [linux-any], libfontconfig1-dev, libfreetype6-dev, libfribidi-dev, libgl1-mesa-dev, libgme-dev, libgnutls28-dev | libgnutls-dev, libgsm1-dev, libiec61883-dev [linux-any], libavc1394-dev [linux-any], libjack-jackd2-dev, liblzma-dev, libmodplug-dev, libmp3lame-dev, libopenal-dev, libopencore-amrnb-dev, libopencore-amrwb-dev, libopencv-dev [!sh4 !sparc64] <!stage1>, libopenjpeg-dev, libopus-dev, libpulse-dev, librtmp-dev, libschroedinger-dev, libsctp-dev [linux-any], libsdl-dev, libshine-dev (>= 3.0.0), libsnappy-dev, libsoxr-dev, libspeex-dev, libssh-gcrypt-dev, libtheora-dev, libtwolame-dev, libva-dev [!hurd-any], libvdpau-dev, libvo-aacenc-dev, libvo-amrwbenc-dev, libvorbis-dev, libvpx-dev, libwavpack-dev, libwebp-dev, libx264-dev [!sparc64] <!stage1>, libx265-dev, libxext-dev, libxvidcore-dev, libxvmc-dev, libzmq3-dev [!hurd-any], libzvbi-dev, pkg-config, texinfo, yasm
+Build-Depends-Indep: cleancss, doxygen, node-less
+Architecture: any all
+Standards-Version: 3.9.7
+Format: 3.0 (quilt)
+Directory: pool/universe/f/ffmpeg
+Files:
+ f5d9294361b92a04c804c18a311ca2b5 4531 ffmpeg_2.8.11-0ubuntu0.16.04.1.dsc
+ b8c6953c65d0c9ef120a878064282c75 7214980 ffmpeg_2.8.11.orig.tar.xz
+ 8079ba6cee3e99272cfdc2dbf57df26f 43952 ffmpeg_2.8.11-0ubuntu0.16.04.1.debian.tar.xz
+Uploaders: Andreas Cadhalpun <Andreas.Cadhalpun@googlemail.com>, Alexander Strasser <eclipse7@gmx.net>, Reinhard Tartler <siretart@tauware.de>, Balint Reczey <balint@balintreczey.hu>
+Homepage: https://ffmpeg.org/
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-multimedia/ffmpeg.git
+Vcs-Git: https://anonscm.debian.org/git/pkg-multimedia/ffmpeg.git
+Testsuite: autopkgtest
+Package-List:
+ ffmpeg deb video optional arch=any
+ ffmpeg-dbg deb debug extra arch=any
+ ffmpeg-doc deb doc optional arch=all
+ libav-tools deb oldlibs extra arch=all
+ libavcodec-dev deb libdevel optional arch=any
+ libavcodec-extra deb metapackages extra arch=all
+ libavcodec-ffmpeg-extra56 deb libs extra arch=any
+ libavcodec-ffmpeg56 deb libs optional arch=any
+ libavdevice-dev deb libdevel optional arch=any
+ libavdevice-ffmpeg56 deb libs optional arch=any
+ libavfilter-dev deb libdevel optional arch=any
+ libavfilter-ffmpeg5 deb libs optional arch=any
+ libavformat-dev deb libdevel optional arch=any
+ libavformat-ffmpeg56 deb libs optional arch=any
+ libavresample-dev deb libdevel optional arch=any
+ libavresample-ffmpeg2 deb libs optional arch=any
+ libavutil-dev deb libdevel optional arch=any
+ libavutil-ffmpeg54 deb libs optional arch=any
+ libpostproc-dev deb libdevel optional arch=any
+ libpostproc-ffmpeg53 deb libs optional arch=any
+ libswresample-dev deb libdevel optional arch=any
+ libswresample-ffmpeg1 deb libs optional arch=any
+ libswscale-dev deb libdevel optional arch=any
+ libswscale-ffmpeg3 deb libs optional arch=any
+Checksums-Sha1:
+ 19f38d4295b94768abeb7908a79b790b326d5ab2 4531 ffmpeg_2.8.11-0ubuntu0.16.04.1.dsc
+ c008b4ee94fc29527fa270ef957a7a5f400910c5 7214980 ffmpeg_2.8.11.orig.tar.xz
+ 15f5078236a1dc258de5693f2a72cd099c0bf0f0 43952 ffmpeg_2.8.11-0ubuntu0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ 6b6152b95427ab1e2e7fb0015df71f0e565f5feb215f7b060fbe130ef2961890 4531 ffmpeg_2.8.11-0ubuntu0.16.04.1.dsc
+ 38aa3aec93c480b34d33f3648aff9278581d151488b521995c084258613e1fe6 7214980 ffmpeg_2.8.11.orig.tar.xz
+ 50a7fc2738e3605eff714d63e6a8c0bc2bad290d02c39f1eb967f7af451918b9 43952 ffmpeg_2.8.11-0ubuntu0.16.04.1.debian.tar.xz
+
+Package: firejail
+Binary: firejail
+Version: 0.9.38-1ubuntu0.1
+Priority: optional
+Section: universe/misc
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Build-Depends: debhelper (>= 9), autotools-dev
+Architecture: linux-any
+Standards-Version: 3.9.7
+Format: 3.0 (quilt)
+Directory: pool/universe/f/firejail
+Files:
+ ae72002265b73206bb1a8d15d8d132f5 1786 firejail_0.9.38-1ubuntu0.1.dsc
+ 7907c3499b2180304f2a58a9e3e88016 157543 firejail_0.9.38.orig.tar.bz2
+ 187297c7a3b56467a1ee246170a73b18 5684 firejail_0.9.38-1ubuntu0.1.debian.tar.xz
+Homepage: https://firejail.wordpress.com
+Package-List:
+ firejail deb utils optional arch=linux-any
+Checksums-Sha1:
+ efab17c36cf347e4e75f873704bd382130142621 1786 firejail_0.9.38-1ubuntu0.1.dsc
+ 02ef2c024dc182523437de89dcd9053e52e08d90 157543 firejail_0.9.38.orig.tar.bz2
+ 6d5f657d66581b5b7b81d0beec2c6b502d4c21f1 5684 firejail_0.9.38-1ubuntu0.1.debian.tar.xz
+Checksums-Sha256:
+ 3e2238d43042b907b0ba432ae70232bad1dc2b083b8a5c1e7b9b2e8d7137054c 1786 firejail_0.9.38-1ubuntu0.1.dsc
+ b61b15c03a30b92f5ffddc458b6488eedd1cf87ffe22d77d423e5a254efd16bb 157543 firejail_0.9.38.orig.tar.bz2
+ 4a1faa6443ff1d7cf0b9f486377d17ff13c85e861df2d3f70d870fbd80d182f8 5684 firejail_0.9.38-1ubuntu0.1.debian.tar.xz
+
+Package: game-music-emu
+Binary: libgme0, libgme-dev
+Version: 0.6.0-3ubuntu0.16.04.1
+Priority: optional
+Section: universe/sound
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Sebastian Dröge <slomo@debian.org>
+Build-Depends: debhelper (>= 9), cmake (>= 2.6.0), zlib1g-dev
+Architecture: any
+Standards-Version: 3.8.4
+Format: 3.0 (quilt)
+Directory: pool/universe/g/game-music-emu
+Files:
+ afa62642e7dfffe5a3af6b46a5f82335 1979 game-music-emu_0.6.0-3ubuntu0.16.04.1.dsc
+ b98fafb737bc889dc65e7a8b94bd1bf5 170202 game-music-emu_0.6.0.orig.tar.bz2
+ d8758936578006308300aacdd95967c9 5592 game-music-emu_0.6.0-3ubuntu0.16.04.1.debian.tar.xz
+Homepage: https://bitbucket.org/mpyne/game-music-emu/wiki/Home
+Package-List:
+ libgme-dev deb libdevel optional arch=any
+ libgme0 deb libs optional arch=any
+Checksums-Sha1:
+ e0602e600eacb16abea84fb344441f0370c6b3fe 1979 game-music-emu_0.6.0-3ubuntu0.16.04.1.dsc
+ 53f9af30dc1c8110135207c9ca35c1fa6716ddcf 170202 game-music-emu_0.6.0.orig.tar.bz2
+ dde9ddc76d629d4e847ed05b77e4e5ae4bec0ccb 5592 game-music-emu_0.6.0-3ubuntu0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ 60b0d55f1a9252a86e6350e8c99741282ded1aa50d850f40ef08784cab69f08f 1979 game-music-emu_0.6.0-3ubuntu0.16.04.1.dsc
+ 506e81d0c61e1a26d503fbf5351503e0b31f9fbb374cb1f09979758b46a24987 170202 game-music-emu_0.6.0.orig.tar.bz2
+ a4d7a4f5d9df23098abc4c1fe82696ed8f93d893c50bb8fc14a4de84e705810d 5592 game-music-emu_0.6.0-3ubuntu0.16.04.1.debian.tar.xz
+
+Package: gimp
+Binary: libgimp2.0, gimp, gimp-data, libgimp2.0-dev, libgimp2.0-doc, gimp-dbg
+Version: 2.8.16-1ubuntu1.1
+Priority: optional
+Section: universe/graphics
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Ari Pollak <ari@debian.org>
+Build-Depends: debhelper (>= 8), cdbs (>= 0.4.97), autotools-dev, dh-autoreconf, gettext, gnome-pkg-tools, gtk-doc-tools (>= 1.0), intltool (>= 0.40.1), iso-codes, libaa1-dev, libart-2.0-dev, libasound2-dev (>= 1.0.0) [linux-any], libatk1.0-dev (>= 2.2.0), libbabl-dev (>= 0.1.10), libbz2-dev, libcairo2-dev (>= 1.10.2), libcurl4-gnutls-dev (>= 7.15.1), libdbus-glib-1-dev (>= 0.70), libexif-dev (>= 0.6.15), libfreetype6-dev (>= 2.2), libfontconfig1-dev (>= 2.2.0), libglib2.0-dev (>= 2.30.2), libglib2.0-doc, libgegl-dev (>= 0.3.0), libgtk2.0-dev (>= 2.24.10), libgtk2.0-doc, libgdk-pixbuf2.0-dev (>= 2.24.1), libgdk-pixbuf2.0-doc, libgs-dev, libgudev-1.0-dev (>= 167) [linux-any], libice-dev, libjasper-dev, libjpeg-dev, liblcms2-dev (>= 2.2), libmng-dev, libpango1.0-dev (>= 1.29.4), libpng-dev, libpoppler-glib-dev (>= 0.12.4), librsvg2-dev (>= 2.14.0), libsm-dev, libtiff-dev, libwmf-dev (>= 0.2.8), libx11-dev, libxcursor-dev, libxmu-dev, libxpm-dev, libxt-dev, zlib1g-dev, patchutils, python-dev (>= 2.6.6-3), python-gtk2-dev (>= 2.10.4), xsltproc
+Architecture: any all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/g/gimp
+Files:
+ 29fe189a7055b2292c8486c03142c43f 3243 gimp_2.8.16-1ubuntu1.1.dsc
+ 30e0a1b7c18b0e3415f4ac54567252ac 20847212 gimp_2.8.16.orig.tar.bz2
+ b3cc897a68806fb912248a344163a8fd 43268 gimp_2.8.16-1ubuntu1.1.debian.tar.xz
+Uploaders: Jordi Mallach <jordi@debian.org>
+Homepage: http://www.gimp.org/
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/gimp.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/gimp.git
+Package-List:
+ gimp deb graphics optional arch=any
+ gimp-data deb graphics optional arch=all
+ gimp-dbg deb debug extra arch=any
+ libgimp2.0 deb libs optional arch=any
+ libgimp2.0-dev deb libdevel optional arch=any
+ libgimp2.0-doc deb doc optional arch=all
+Checksums-Sha1:
+ 2374a423daf3dca4fa275b24e2ddf24d10cd2352 3243 gimp_2.8.16-1ubuntu1.1.dsc
+ ca5d9ce7d8eae92cd5f1780153649bc6a544961a 20847212 gimp_2.8.16.orig.tar.bz2
+ 26b6a07511038e6ecab27f1fd04e85c9985235fa 43268 gimp_2.8.16-1ubuntu1.1.debian.tar.xz
+Checksums-Sha256:
+ 89d6ceaa39643ee2d1a2fc7df7c1a213b89720994baad593f3411b5b49487b72 3243 gimp_2.8.16-1ubuntu1.1.dsc
+ 95e3857bd0b5162cf8d1eda8c78b741eef968c3e3ac6c1195aaac2a4e2574fb7 20847212 gimp_2.8.16.orig.tar.bz2
+ f7742cfd20928c9e8770c563945ed4c9d520145caf407c33e00538d3ba51d0b8 43268 gimp_2.8.16-1ubuntu1.1.debian.tar.xz
+
+Package: gst-plugins-bad1.0
+Binary: gstreamer1.0-plugins-bad-doc, gstreamer1.0-hybris, gstreamer1.0-plugins-bad, gstreamer1.0-plugins-bad-videoparsers, gstreamer1.0-plugins-bad-faad, gstreamer1.0-plugins-bad-dbg, libgstreamer-plugins-bad1.0-0, libgstreamer-plugins-bad1.0-dev, gir1.2-gst-plugins-bad-1.0
+Version: 1.8.2-1ubuntu0.2
+Priority: extra
+Section: universe/libs
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Maintainers of GStreamer packages <pkg-gstreamer-maintainers@lists.alioth.debian.org>
+Build-Depends: autoconf (>= 2.69), automake (>= 1.14), autopoint (>= 0.17), autotools-dev, cdbs (>= 0.4.93), debhelper (>= 9), dh-autoreconf, dpkg-dev (>= 1.15.1), flite-dev, gir1.2-freedesktop, gir1.2-glib-2.0, gir1.2-gst-plugins-base-1.0, gir1.2-gstreamer-1.0, gobject-introspection (>= 0.9.12-4~), libasound2-dev (>= 0.9.1) [linux-any], libcdaudio-dev [linux-any], libdc1394-22-dev (>= 2.0.0) [linux-any], libgudev-1.0-dev (>= 143) [linux-any], libusb-1.0-0-dev [linux-any], libbluetooth-dev (>= 5) [linux-any], libsbc-dev (>= 1.1) [linux-any], libwayland-dev (>= 1.0) [linux-any], libgstreamer1.0-dev (>= 1.8.0), gstreamer1.0-doc, gstreamer1.0-plugins-base (>= 1.8.0), gstreamer1.0-plugins-base-doc, gtk-doc-tools (>= 1.12), ladspa-sdk, libass-dev (>= 0.10.4), libbs2b-dev, libbz2-dev, libcairo2-dev, libchromaprint-dev, libcurl4-gnutls-dev (>= 7.35.0), libdca-dev, libde265-dev, libdirectfb-dev (>= 0.9.25), libdrm-dev [!hurd-any], libdvdnav-dev (>= 4.1.2) [!hurd-any], libegl1-mesa-dev, libexempi-dev, libexif-dev (>= 0.6.16), libfaad-dev (>= 2.7), libfluidsynth-dev (>= 1.0), libgirepository1.0-dev (>= 0.9.12-4~), libgl1-mesa-dev [!armhf], libgles2-mesa-dev, libglib2.0-dev (>= 2.40), libglu1-mesa-dev [!armhf], libgme-dev, libgnutls28-dev (>= 2.11.3), libgsm1-dev, libgstreamer-plugins-base1.0-dev (>= 1.8.0), libgstreamer-plugins-good1.0-dev (>= 1.8.0), libgtk-3-dev (>= 3.15.0), libiptcdata0-dev (>= 1.0.2), libkate-dev (>= 0.1.7), libmedia-dev (>= 0.1.0+git20131207+e452e83-0ubuntu3) [i386 armhf], libmimic-dev (>= 1.0), libmirclient-dev [i386 armhf], libmjpegtools-dev, libmms-dev (>= 0.4), libmodplug-dev, libmpcdec-dev, libofa0-dev (>= 0.9.3), libopenal-dev (>= 1:1.14), libopencv-dev (>= 2.3.0), libopenexr-dev, libopenjpeg-dev, libopus-dev (>= 0.9.4), liborc-0.4-dev (>= 1:0.4.17), libplatform-api1-dev [i386 armhf], libpng-dev, librsvg2-dev (>= 2.36.2), librtmp-dev, libschroedinger-dev (>= 1.0.7), libsndfile1-dev (>= 1.0.16), libsoundtouch-dev (>= 1.5.0), libspandsp-dev, libsrtp0-dev, libssl-dev, libtool (>= 2.2.6), libvo-aacenc-dev, libvo-amrwbenc-dev, libwebp-dev (>= 0.2.1), libwildmidi-dev (>= 0.2.3), libx11-dev, libx265-dev, libxml2-dev (>= 2.8), libxvidcore-dev, libzbar-dev (>= 0.9), libzvbi-dev, nettle-dev, pkg-config (>= 0.11.0)
+Architecture: any all
+Standards-Version: 3.9.3
+Format: 3.0 (quilt)
+Directory: pool/universe/g/gst-plugins-bad1.0
+Files:
+ f94e32ce7d1de9aec6e3b431bd4d192e 5383 gst-plugins-bad1.0_1.8.2-1ubuntu0.2.dsc
+ 83abc2e70684e7b195f18ca2992ef6e8 4455536 gst-plugins-bad1.0_1.8.2.orig.tar.xz
+ 78de825f8f1b5f534989f35db05120ef 82264 gst-plugins-bad1.0_1.8.2-1ubuntu0.2.debian.tar.xz
+Uploaders: Sebastian Dröge <slomo@debian.org>, Sjoerd Simons <sjoerd@debian.org>
+Homepage: http://gstreamer.freedesktop.org/modules/gst-plugins-bad.html
+Vcs-Browser: https://code.launchpad.net/~ubuntu-desktop/ubuntu/+source/gst-plugins-bad1.0/+git/gst-plugins-bad1.0
+Vcs-Git: git://git.launchpad.net/~ubuntu-desktop/ubuntu/+source/gst-plugins-bad1.0
+Package-List:
+ gir1.2-gst-plugins-bad-1.0 deb introspection extra arch=any
+ gstreamer1.0-hybris deb libs extra arch=i386,armhf
+ gstreamer1.0-plugins-bad deb libs extra arch=any
+ gstreamer1.0-plugins-bad-dbg deb debug extra arch=any
+ gstreamer1.0-plugins-bad-doc deb doc extra arch=all
+ gstreamer1.0-plugins-bad-faad deb libs extra arch=any
+ gstreamer1.0-plugins-bad-videoparsers deb libs extra arch=any
+ libgstreamer-plugins-bad1.0-0 deb libs extra arch=any
+ libgstreamer-plugins-bad1.0-dev deb libdevel extra arch=any
+Checksums-Sha1:
+ 129208a633d2affcf66a41c8bae3edaf9869589a 5383 gst-plugins-bad1.0_1.8.2-1ubuntu0.2.dsc
+ 2700e85446e0f713cd1800b15fa11898df94775a 4455536 gst-plugins-bad1.0_1.8.2.orig.tar.xz
+ e3d6bef11eceb79069419436e98fc0dda026837c 82264 gst-plugins-bad1.0_1.8.2-1ubuntu0.2.debian.tar.xz
+Checksums-Sha256:
+ faff01207b67488db6441a8679efba7f657d49de22f637477ca8552507bdc609 5383 gst-plugins-bad1.0_1.8.2-1ubuntu0.2.dsc
+ d7995317530c8773ec088f94d9320909d41da61996b801ebacce9a56af493f97 4455536 gst-plugins-bad1.0_1.8.2.orig.tar.xz
+ 5bc7864a31931ba12761040a05fefdef508a6bb3dfb2b3b9b75270e6a2f9308d 82264 gst-plugins-bad1.0_1.8.2-1ubuntu0.2.debian.tar.xz
+Debian-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-gstreamer/gst-plugins-bad1.0.git;a=summary
+Debian-Vcs-Git: git://anonscm.debian.org/pkg-gstreamer/gst-plugins-bad1.0.git
+
+Package: gst-plugins-base0.10
+Binary: gstreamer0.10-plugins-base-apps, gstreamer0.10-plugins-base-doc, libgstreamer-plugins-base0.10-0, libgstreamer-plugins-base0.10-dev, gstreamer0.10-alsa, gstreamer0.10-gnomevfs, gstreamer0.10-plugins-base, gstreamer0.10-plugins-base-dbg, gstreamer0.10-x, gir1.2-gst-plugins-base-0.10
+Version: 0.10.36-2ubuntu0.1
+Priority: optional
+Section: universe/libs
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Maintainers of GStreamer packages <pkg-gstreamer-maintainers@lists.alioth.debian.org>
+Build-Depends: libgstreamer0.10-dev (>= 0.10.36), libasound2-dev (>= 0.9.0) [linux-any], libgudev-1.0-dev (>= 143) [linux-any], autotools-dev, dh-autoreconf, automake (>= 1.10), autoconf (>= 2.60), libtool (>= 2.0), autopoint (>= 0.17), cdbs (>= 0.4.93~), debhelper (>= 8.1.3~), gnome-pkg-tools (>= 0.7), pkg-config (>= 0.11.0), libxv-dev (>= 6.8.2.dfsg.1-3), libxt-dev (>= 6.8.2.dfsg.1-3), libvorbis-dev (>= 1.0.0-2), libcdparanoia-dev (>= 3.10.2) [!hurd-i386], libgnomevfs2-dev (>= 1:2.20.0-2), liborc-0.4-dev (>= 1:0.4.11), libpango1.0-dev (>= 1.16.0), libtheora-dev (>= 1.1), libglib2.0-dev (>= 2.24), libxml2-dev (>= 2.4.23), zlib1g-dev (>= 1:1.1.4), libvisual-0.4-dev (>= 0.4.0), gstreamer-tools (>= 0.10.30), dpkg-dev (>= 1.15.1), iso-codes, libgtk-3-dev, libglib2.0-doc, gstreamer0.10-doc, libgirepository1.0-dev (>= 0.9.12-4~), gobject-introspection (>= 0.9.12-4~), gir1.2-glib-2.0, gir1.2-freedesktop, gir1.2-gstreamer-0.10
+Build-Depends-Indep: gtk-doc-tools
+Architecture: any all
+Standards-Version: 3.8.4
+Format: 3.0 (quilt)
+Directory: pool/universe/g/gst-plugins-base0.10
+Files:
+ ec8eb7a894610e6610d460ff5ded68a5 3862 gst-plugins-base0.10_0.10.36-2ubuntu0.1.dsc
+ 776c73883e567f67b9c4a2847d8d041a 3036143 gst-plugins-base0.10_0.10.36.orig.tar.bz2
+ eb83b491c162f6f87c2a0f9cd25d8a60 37580 gst-plugins-base0.10_0.10.36-2ubuntu0.1.debian.tar.xz
+Uploaders: Loic Minier <lool@dooz.org>, Sebastien Bacher <seb128@debian.org>, Sebastian Dröge <slomo@debian.org>, Sjoerd Simons <sjoerd@debian.org>
+Homepage: http://gstreamer.freedesktop.org
+Package-List:
+ gir1.2-gst-plugins-base-0.10 deb introspection optional arch=any
+ gstreamer0.10-alsa deb libs optional arch=linux-any
+ gstreamer0.10-gnomevfs deb libs optional arch=any
+ gstreamer0.10-plugins-base deb libs optional arch=any
+ gstreamer0.10-plugins-base-apps deb utils optional arch=any
+ gstreamer0.10-plugins-base-dbg deb debug extra arch=any
+ gstreamer0.10-plugins-base-doc deb doc optional arch=all
+ gstreamer0.10-x deb libs optional arch=any
+ libgstreamer-plugins-base0.10-0 deb libs optional arch=any
+ libgstreamer-plugins-base0.10-dev deb libdevel optional arch=any
+Checksums-Sha1:
+ acd6e4cbc1d9813c6bf87b8c80083af6adc21ec4 3862 gst-plugins-base0.10_0.10.36-2ubuntu0.1.dsc
+ e675401b62a6bf2e5ea966e833afd005a585e978 3036143 gst-plugins-base0.10_0.10.36.orig.tar.bz2
+ 6c7fb3ded806934927947446bf5682f379c0bd2b 37580 gst-plugins-base0.10_0.10.36-2ubuntu0.1.debian.tar.xz
+Checksums-Sha256:
+ b2a533e6d2588c0e0d9a5a3bcd13569aafd100d9f53626966e81528d2177c9b6 3862 gst-plugins-base0.10_0.10.36-2ubuntu0.1.dsc
+ 2cd3b0fa8e9b595db8f514ef7c2bdbcd639a0d63d154c00f8c9b609321f49976 3036143 gst-plugins-base0.10_0.10.36.orig.tar.bz2
+ 302f7a6a7733929401ddcdde24cf920308de9f091b229a7bb81f199c13f2c912 37580 gst-plugins-base0.10_0.10.36-2ubuntu0.1.debian.tar.xz
+
+Package: gst-plugins-good0.10
+Binary: gstreamer0.10-plugins-good-doc, gstreamer0.10-pulseaudio, gstreamer0.10-gconf, gstreamer0.10-plugins-good, gstreamer0.10-plugins-good-dbg
+Version: 0.10.31-3+nmu4ubuntu2.16.04.3
+Priority: optional
+Section: universe/libs
+Maintainer: Ubuntu Desktop Team <ubuntu-desktop@lists.ubuntu.com>
+Original-Maintainer: Maintainers of GStreamer packages <pkg-gstreamer-maintainers@lists.alioth.debian.org>
+Build-Depends: libgstreamer0.10-dev (>= 0.10.36), libraw1394-dev (>= 2.0.0) [linux-any], libiec61883-dev (>= 1.0.0) [linux-any], libavc1394-dev [linux-any], libv4l-dev [linux-any], libgudev-1.0-dev (>= 143) [linux-any], libgstreamer-plugins-base0.10-dev (>= 0.10.36), autotools-dev, dh-autoreconf, automake (>= 1.10), autoconf (>= 2.60), libtool (>= 2.0), autopoint (>= 0.17), cdbs (>= 0.4.93), debhelper (>= 8.1.3), dpkg-dev (>= 1.15.1), pkg-config (>= 0.11.0), gtk-doc-tools, gconf2, libglib2.0-dev (>= 2.24), liborc-0.4-dev (>= 1:0.4.11), libcairo2-dev (>= 1.10.0), libcaca-dev, libspeex-dev (>= 1.1.6), libpng-dev, libshout3-dev, libjpeg-dev, libaa1-dev (>= 1.4p5), libflac-dev (>= 1.1.4), libdv4-dev | libdv-dev, libgconf2-dev, libxdamage-dev, libxext-dev, libxfixes-dev, libxv-dev, libxml2-dev, libgtk2.0-dev (>= 2.8), libtag1-dev (>= 1.5), libwavpack-dev (>= 4.20), gstreamer-tools (>= 0.10.30), gstreamer0.10-plugins-base (>= 0.10.36), libsoup-gnome2.4-dev (>= 2.26), libpulse-dev (>= 1.0), libbz2-dev, gstreamer0.10-doc, gstreamer0.10-plugins-base-doc, libjack-dev (>= 1:0.99.10)
+Architecture: any all
+Standards-Version: 3.8.4
+Format: 3.0 (quilt)
+Directory: pool/universe/g/gst-plugins-good0.10
+Files:
+ 4329ce45710e83bac1b2f05a97723982 3498 gst-plugins-good0.10_0.10.31-3+nmu4ubuntu2.16.04.3.dsc
+ c6aa1ef921d485a28d0703b791963fc9 4987465 gst-plugins-good0.10_0.10.31.orig.tar.gz
+ 69a31a23318a886fe0eae15b61708560 175104 gst-plugins-good0.10_0.10.31-3+nmu4ubuntu2.16.04.3.debian.tar.xz
+Uploaders: Loic Minier <lool@dooz.org>, Sebastian Dröge <slomo@debian.org>, Sjoerd Simons <sjoerd@debian.org>
+Package-List:
+ gstreamer0.10-gconf deb sound optional arch=any
+ gstreamer0.10-plugins-good deb libs optional arch=any
+ gstreamer0.10-plugins-good-dbg deb debug extra arch=any
+ gstreamer0.10-plugins-good-doc deb doc optional arch=all
+ gstreamer0.10-pulseaudio deb sound optional arch=any
+Checksums-Sha1:
+ 07b97c0e2eb97ce35b620104b47c5d3c0d429912 3498 gst-plugins-good0.10_0.10.31-3+nmu4ubuntu2.16.04.3.dsc
+ 01d0461eabe73849f20c29d3508bf500971a45d3 4987465 gst-plugins-good0.10_0.10.31.orig.tar.gz
+ 63c83394b331d96745d3d796a3cd5e75e738782b 175104 gst-plugins-good0.10_0.10.31-3+nmu4ubuntu2.16.04.3.debian.tar.xz
+Checksums-Sha256:
+ 89ef12798dd9e0c8f138d5e3974f79fda06008ab2753769d93aa4eee511a53b7 3498 gst-plugins-good0.10_0.10.31-3+nmu4ubuntu2.16.04.3.dsc
+ bc05c88c5a491bb5695d2ea64eeed83cfad6facc5f3e838ea382ee42bf32741c 4987465 gst-plugins-good0.10_0.10.31.orig.tar.gz
+ 9f5c9bf0f09407ead0a87006d4b5667843f3ad6b702d524e8e0594c9d01c7595 175104 gst-plugins-good0.10_0.10.31-3+nmu4ubuntu2.16.04.3.debian.tar.xz
+
+Package: gtk-doc
+Binary: gtk-doc-tools
+Version: 1.25-1ubuntu1.1
+Priority: optional
+Section: universe/devel
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Build-Depends: cdbs, debhelper (>= 9), gnome-pkg-tools (>= 0.10), dh-autoreconf
+Build-Depends-Indep: jade (>= 1.2.1-35), docbook-dsssl, xsltproc (>= 1.1.15), libxml2-utils, docbook-xml (>= 4.3), docbook-xsl, libglib2.0-dev (>= 2.6.0), pkg-config (>= 0.19.0), perl (>= 5.18), python (>= 2.3), yelp-tools, bc, dblatex
+Build-Conflicts-Indep: openjade, openjade1.3
+Architecture: all
+Standards-Version: 3.9.7
+Format: 3.0 (quilt)
+Directory: pool/universe/g/gtk-doc
+Files:
+ 4228f57d87381292c88132d3470f844e 2403 gtk-doc_1.25-1ubuntu1.1.dsc
+ 0dc6570953112a464a409fb99258ccbc 673184 gtk-doc_1.25.orig.tar.xz
+ be77c4dc9bfa8bbc28e081607ea814a2 14488 gtk-doc_1.25-1ubuntu1.1.debian.tar.xz
+Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Homepage: http://www.gtk.org/gtk-doc/
+Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/gtk-doc
+Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/gtk-doc
+Package-List:
+ gtk-doc-tools deb gnome optional arch=all
+Checksums-Sha1:
+ a01020c05e6839d2bec394b25853026bd78f1c5d 2403 gtk-doc_1.25-1ubuntu1.1.dsc
+ bd93ff19403805b4faddcd86b58a6f338ce1fd6d 673184 gtk-doc_1.25.orig.tar.xz
+ 8055d6a593aaabcf568806c63c35e9c5bc6678f4 14488 gtk-doc_1.25-1ubuntu1.1.debian.tar.xz
+Checksums-Sha256:
+ 635317b110f471604fc9a2c3626c38db9b232f2b35583c2eae96d00674512095 2403 gtk-doc_1.25-1ubuntu1.1.dsc
+ 1ea46ed400e6501f975acaafea31479cea8f32f911dca4dff036f59e6464fd42 673184 gtk-doc_1.25.orig.tar.xz
+ 8c80e3e46af86fd74f0cb5231a6f68f6024d8ad7bbe270c5f358366afeab6708 14488 gtk-doc_1.25-1ubuntu1.1.debian.tar.xz
+
+Package: gtk-vnc
+Binary: libgvnc-1.0-0, libgvnc-1.0-0-dbg, libgvnc-1.0-dev, libgtk-vnc-1.0-0, libgtk-vnc-1.0-0-dbg, libgtk-vnc-1.0-dev, libgtk-vnc-2.0-0, libgtk-vnc-2.0-0-dbg, libgtk-vnc-2.0-dev, gir1.2-gtk-vnc-2.0, python-gtk-vnc, gvncviewer
+Version: 0.5.3-1.3ubuntu2.1
+Priority: optional
+Section: universe/gnome
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian Libvirt Maintainers <pkg-libvirt-maintainers@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 7.0.50~), python-dev, libgnutls28-dev, libgcrypt20-dev, libcairo2-dev, autotools-dev, dh-autoreconf, libffi-dev, libsasl2-dev, intltool, libtext-csv-perl, libgtk2.0-dev, python-gtk2-dev (>= 2.0), libgtk-3-dev, libgirepository1.0-dev, gobject-introspection, libtool, libtool-bin, valac (>= 0.20), libpulse-dev
+Build-Conflicts: libffi4-dev, valac-0.12
+Architecture: any
+Standards-Version: 3.9.5
+Format: 3.0 (quilt)
+Directory: pool/universe/g/gtk-vnc
+Files:
+ 91a8873f090568fffcfdb587376e09a0 3094 gtk-vnc_0.5.3-1.3ubuntu2.1.dsc
+ 1dccd918a4d633020e4afaf6c9352cde 408336 gtk-vnc_0.5.3.orig.tar.xz
+ 12eb3be4f67c18072e6727175c44195a 13076 gtk-vnc_0.5.3-1.3ubuntu2.1.debian.tar.xz
+Uploaders: Guido Günther <agx@sigxcpu.org>, Laurent Léonard <laurent@open-minds.org>
+Vcs-Browser: http://git.debian.org/?p=pkg-libvirt/gtk-vnc.git
+Vcs-Git: git://git.debian.org/git/pkg-libvirt/gtk-vnc.git
+Package-List:
+ gir1.2-gtk-vnc-2.0 deb introspection optional arch=any
+ gvncviewer deb x11 optional arch=any
+ libgtk-vnc-1.0-0 deb libs optional arch=any
+ libgtk-vnc-1.0-0-dbg deb debug extra arch=any
+ libgtk-vnc-1.0-dev deb libdevel optional arch=any
+ libgtk-vnc-2.0-0 deb libs optional arch=any
+ libgtk-vnc-2.0-0-dbg deb debug extra arch=any
+ libgtk-vnc-2.0-dev deb libdevel optional arch=any
+ libgvnc-1.0-0 deb libs optional arch=any
+ libgvnc-1.0-0-dbg deb debug extra arch=any
+ libgvnc-1.0-dev deb libdevel optional arch=any
+ python-gtk-vnc deb python optional arch=any
+Checksums-Sha1:
+ dd123a1d1e09d74d559b18a6fe0ae73ff47d2331 3094 gtk-vnc_0.5.3-1.3ubuntu2.1.dsc
+ 37545223e944d7083d5ae5b945431d8d14eddd47 408336 gtk-vnc_0.5.3.orig.tar.xz
+ fcdd929cab53d2973bc0befd458a3304a5d27709 13076 gtk-vnc_0.5.3-1.3ubuntu2.1.debian.tar.xz
+Checksums-Sha256:
+ ce50d26b96b58db174d3229544e152f4f9ccaad9fb711fe7490bbbd27b6137fa 3094 gtk-vnc_0.5.3-1.3ubuntu2.1.dsc
+ d490a6c8f40e550d43aef0043ce3bec498ec220d5eb3dc5cdcff8fd561149caf 408336 gtk-vnc_0.5.3.orig.tar.xz
+ 5264793f0e1d2b049362aea13cfc226ec9f48da7164810a8417247be33b3cdaf 13076 gtk-vnc_0.5.3-1.3ubuntu2.1.debian.tar.xz
+
+Package: iio-sensor-proxy
+Binary: iio-sensor-proxy
+Version: 1.1-1ubuntu1
+Priority: optional
+Section: universe/misc
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Ritesh Raj Sarraf <rrs@debian.org>
+Build-Depends: debhelper (>= 9.20120312), libgudev-1.0-dev, udev, gnome-common (>= 3.14), gtk-doc-tools (>= 1.0)
+Architecture: linux-any
+Standards-Version: 3.9.3
+Format: 3.0 (quilt)
+Directory: pool/universe/i/iio-sensor-proxy
+Files:
+ 86d3124938742519a4c75a7704e31b9d 2114 iio-sensor-proxy_1.1-1ubuntu1.dsc
+ 05025f2f3ad235d50e5725cd1189f718 31378 iio-sensor-proxy_1.1.orig.tar.gz
+ 2970ee98842968ca96dab3a012ea341c 4024 iio-sensor-proxy_1.1-1ubuntu1.debian.tar.xz
+Homepage: https://github.com/hadess/iio-sensor-proxy
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/iio-sensor-proxy.git;a=summary
+Vcs-Git: git://anonscm.debian.org/collab-maint/iio-sensor-proxy
+Package-List:
+ iio-sensor-proxy deb utils optional arch=linux-any
+Checksums-Sha1:
+ eec057d1afc253baed5ffaf93e587f3739771778 2114 iio-sensor-proxy_1.1-1ubuntu1.dsc
+ d9a1ceaa318069e2b815ae2d86290461f070ea9d 31378 iio-sensor-proxy_1.1.orig.tar.gz
+ 979991dbd32b9053f97072c16adad8b9a953d38f 4024 iio-sensor-proxy_1.1-1ubuntu1.debian.tar.xz
+Checksums-Sha256:
+ da92269ee6f0507dbe3e97c52d5109d46f9708727c7f6271cda1f53fcd679abd 2114 iio-sensor-proxy_1.1-1ubuntu1.dsc
+ 5fab22886d344b051651b4429a4edf43c122f38bf28ae9b60f395ac6e988aff1 31378 iio-sensor-proxy_1.1.orig.tar.gz
+ 4848a6b8538629be9b02311da0777c5bcdcc0ba9653fa3afa7542842e6fd2830 4024 iio-sensor-proxy_1.1-1ubuntu1.debian.tar.xz
+
+Package: imlib2
+Binary: libimlib2, libimlib2-dev
+Version: 1.4.7-1ubuntu0.1
+Priority: optional
+Section: universe/libs
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Alessandro Ghedini <ghedo@debian.org>
+Build-Depends: debhelper (>= 9), dh-autoreconf, libbz2-dev, libfreetype6-dev, libgif-dev, libid3tag0-dev, libjpeg-dev, libltdl3-dev, libpng-dev, libtiff-dev, libx11-dev, libxext-dev, zlib1g-dev
+Architecture: any
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/i/imlib2
+Files:
+ f700f1109831ccf55f6b7b706e604d13 2114 imlib2_1.4.7-1ubuntu0.1.dsc
+ f5a1c06ce6e4656a04838a4db8c686b0 1027716 imlib2_1.4.7.orig.tar.gz
+ 7b520695965788ec160c6aa2a27c9b8f 12200 imlib2_1.4.7-1ubuntu0.1.debian.tar.xz
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/imlib2.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/imlib2.git
+Package-List:
+ libimlib2 deb libs optional arch=any
+ libimlib2-dev deb libdevel optional arch=any
+Checksums-Sha1:
+ 61cddf1be7aff9ddeb93694c9c1da2ffa9456d15 2114 imlib2_1.4.7-1ubuntu0.1.dsc
+ c47c4e3f62e130742b75da8fd8a21f0fae979cda 1027716 imlib2_1.4.7.orig.tar.gz
+ 154e9e5fa3e67fd35eaee63f64a9d9562cfd737c 12200 imlib2_1.4.7-1ubuntu0.1.debian.tar.xz
+Checksums-Sha256:
+ c36ac4d63e40e16fcac367855b8b086089a64c0e2275501ac00698a20840f0fa 2114 imlib2_1.4.7-1ubuntu0.1.dsc
+ 48e98337a560d8904f685447f41c43914fec1f8cd3745a9fd86cba9fd24a6563 1027716 imlib2_1.4.7.orig.tar.gz
+ 1b4fc146cbc4ed6683c1d105ee98379ddb4e049d1ec9f06c653230268f265c72 12200 imlib2_1.4.7-1ubuntu0.1.debian.tar.xz
+
+Package: juju-core-1
+Binary: juju-1.25, juju-core, juju-1-default, juju-local, juju-local-kvm
+Version: 1.25.6-0ubuntu1.16.04.2
+Priority: extra
+Section: universe/devel
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Build-Depends: debhelper (>= 9), dh-golang, distro-info, gccgo-5 [powerpc] | gccgo-go [powerpc], golang-github-bmizerany-pat-dev, golang-go (>= 2:1.2) [!powerpc], golang-go-dbus-dev, golang-go.crypto-dev, golang-go.net-dev, golang-juju-loggo-dev, lsb-release, python
+Architecture: any all
+Standards-Version: 3.9.7
+Format: 3.0 (quilt)
+Directory: pool/universe/j/juju-core-1
+Files:
+ 886b48246840246c8f95aa030debc183 1935 juju-core-1_1.25.6-0ubuntu1.16.04.2.dsc
+ cb71366b3a3d7bae43ec2f29225615e6 12009396 juju-core-1_1.25.6.orig.tar.gz
+ 30e9368cc1d46805e2a92ef93fce544f 19852 juju-core-1_1.25.6-0ubuntu1.16.04.2.debian.tar.xz
+Homepage: http://launchpad.net/juju-core
+Testsuite: autopkgtest
+Package-List:
+ juju-1-default deb devel extra arch=all
+ juju-1.25 deb devel extra arch=any
+ juju-core deb devel extra arch=all
+ juju-local deb devel extra arch=all
+ juju-local-kvm deb devel extra arch=all
+Checksums-Sha1:
+ d9a77b1b9340becadee2955ece1d0c888c248e4c 1935 juju-core-1_1.25.6-0ubuntu1.16.04.2.dsc
+ c949baacab3c67870cdf7ef82b86f40dd128d6ab 12009396 juju-core-1_1.25.6.orig.tar.gz
+ 5610aae20446f3bff0557da1a5bfaf1392d3c7fc 19852 juju-core-1_1.25.6-0ubuntu1.16.04.2.debian.tar.xz
+Checksums-Sha256:
+ c46a08e52d6f10f050afbfbd2b1b983c34de9a6ad00bbb75b742173284a80d4f 1935 juju-core-1_1.25.6-0ubuntu1.16.04.2.dsc
+ 49baa5fc208c68cecb33ed12f4f697aba2a2ea87ab9c82aaf94afc88614935ab 12009396 juju-core-1_1.25.6.orig.tar.gz
+ 590591a5dfa5a6ab3dd9c991e92d10b6ed7857ebfa47ef09c5deeb77410e3728 19852 juju-core-1_1.25.6-0ubuntu1.16.04.2.debian.tar.xz
+
+Package: kauth
+Binary: libkf5auth-dev, libkf5auth-bin-dev, libkf5auth5, libkf5auth-data, libkf5auth5-dbg
+Version: 5.18.0-0ubuntu2
+Priority: optional
+Section: universe/libs
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Build-Depends: cmake (>= 2.8.12), debhelper (>= 9), extra-cmake-modules (>= 5.18.0~), libkf5coreaddons-dev (>= 5.18.0~), libpolkit-qt5-1-dev, pkg-config, pkg-kde-tools (>= 0.15.15ubuntu1~), qtbase5-dev (>= 5.4), qttools5-dev (>= 5.4), qttools5-dev-tools (>= 5.4)
+Architecture: any all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/k/kauth
+Files:
+ c3c37b4e83024f5e07414a127a0d0201 2565 kauth_5.18.0-0ubuntu2.dsc
+ 2732f1ad8224a63fe7a89e7471b6c29c 82372 kauth_5.18.0.orig.tar.xz
+ ef78619529e5aa78d37ed24b57f49cc5 8948 kauth_5.18.0-0ubuntu2.debian.tar.xz
+Uploaders: Maximiliano Curia <maxy@debian.org>
+Homepage: https://projects.kde.org/projects/frameworks/kauth
+Vcs-Browser: https://code.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kauth
+Vcs-Git: git://git.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kauth
+Testsuite: autopkgtest
+Package-List:
+ libkf5auth-bin-dev deb libdevel optional arch=any
+ libkf5auth-data deb libs optional arch=all
+ libkf5auth-dev deb libdevel optional arch=any
+ libkf5auth5 deb libs optional arch=any
+ libkf5auth5-dbg deb debug extra arch=any
+Checksums-Sha1:
+ ee8911d990fdad75a402031c19fb656fc26a3572 2565 kauth_5.18.0-0ubuntu2.dsc
+ 74aa6a471faebf3c80c1f411422ad92e152e8925 82372 kauth_5.18.0.orig.tar.xz
+ 14ecc828361aa0bf1cb0368b504729fafaf1fe5a 8948 kauth_5.18.0-0ubuntu2.debian.tar.xz
+Checksums-Sha256:
+ da6d82175a32f33c6f5b9a983d1598a50f086eebf92edaf099604b6c9079d381 2565 kauth_5.18.0-0ubuntu2.dsc
+ 96803c911621798ea1dc4df17c93691c762e4abc8d2ae010613a0cbed8f17b92 82372 kauth_5.18.0.orig.tar.xz
+ 316fc1201027d90ec9d07b61f7708868b1e1b12996948ec330cabf837ed6f0b5 8948 kauth_5.18.0-0ubuntu2.debian.tar.xz
+
+Package: kde-cli-tools
+Binary: kde-cli-tools, kde-cli-tools-data, kde-cli-tools-dbg
+Version: 4:5.5.5-0ubuntu1.1
+Priority: extra
+Section: universe/libs
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Build-Depends: cmake (>= 2.8.12), debhelper (>= 9), extra-cmake-modules (>= 5.18.0~), kinit-dev (>= 5.18.0~), libkf5config-dev (>= 5.18.0~), libkf5i18n-dev (>= 5.18.0~), libkf5iconthemes-dev (>= 5.18.0~), libkf5kcmutils-dev (>= 5.18.0~), libkf5kdelibs4support-dev (>= 5.18.0~), libkf5su-dev (>= 5.18.0~), libkf5windowsystem-dev (>= 5.18.0~), libqt5svg5-dev (>= 5.4.0~), libqt5x11extras5-dev (>= 5.4.0~), pkg-config, pkg-kde-tools (>= 0.15.18~), qtbase5-dev (>= 5.4.0~)
+Architecture: any all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/k/kde-cli-tools
+Files:
+ cba686a1b5bca2a125517e0cd08dbd7d 2353 kde-cli-tools_5.5.5-0ubuntu1.1.dsc
+ 61eb314a8979d5ad0025fb21eb68412e 485772 kde-cli-tools_5.5.5.orig.tar.xz
+ da2ea49aa9fa94ea05c0914024eaf446 7504 kde-cli-tools_5.5.5-0ubuntu1.1.debian.tar.xz
+Uploaders: Maximiliano Curia <maxy@debian.org>
+Homepage: https://projects.kde.org/projects/kde/workspace/kde-cli-tools
+Vcs-Browser: http://anonscm.debian.org/cgit/pkg-kde/plasma/kde-cli-tools.git
+Vcs-Git: git://anonscm.debian.org/pkg-kde/plasma/kde-cli-tools.git
+Testsuite: autopkgtest
+Package-List:
+ kde-cli-tools deb utils optional arch=any
+ kde-cli-tools-data deb utils optional arch=all
+ kde-cli-tools-dbg deb debug extra arch=any
+Checksums-Sha1:
+ 197359193e83dd514ae1a2d2e1ec15acc386fe55 2353 kde-cli-tools_5.5.5-0ubuntu1.1.dsc
+ a91bd3ba5cbc0a919e465e906632e9fc184b7187 485772 kde-cli-tools_5.5.5.orig.tar.xz
+ 11d1171904bff6cbd375064ffa63ab34c34c7092 7504 kde-cli-tools_5.5.5-0ubuntu1.1.debian.tar.xz
+Checksums-Sha256:
+ 7d4d224508a2b9ea7b15e26b4a7ba24b98958ffe43b20cee6608a4460ebc91e7 2353 kde-cli-tools_5.5.5-0ubuntu1.1.dsc
+ 50d7c9e2f8423a0e26844e7a9758f4e190e0383f57d0d4bb90e1776a957d2fa6 485772 kde-cli-tools_5.5.5.orig.tar.xz
+ b2b4d2eddf934e6528b2ac807c3fdc0e346f1f015aa8d806a19ac31f197e7b16 7504 kde-cli-tools_5.5.5-0ubuntu1.1.debian.tar.xz
+
+Package: kde4libs
+Binary: libkdecore5, libkdeui5, libkpty4, libkdesu5, libkjsapi4, libkjsembed4, libkio5, libkntlm4, libsolid4, libkde3support4, libkfile4, libknewstuff2-4, libknewstuff3-4, libkparts4, libkutils4, libthreadweaver4, libkhtml5, libkimproxy4, libkmediaplayer4, libktexteditor4, libknotifyconfig4, libkdnssd4, libkrosscore4, libkrossui4, libplasma3, libkunitconversion4, libkdewebkit5, libkcmutils4, libkemoticons4, libkidletime4, libkprintutils4, libkdeclarative5, kdelibs-bin, kdelibs5-plugins, kdelibs5-data, kdoctools, kdelibs5-dev, kdelibs5-dbg
+Version: 4:4.14.16-0ubuntu3.2
+Priority: optional
+Section: universe/libs
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Build-Depends: aspell, automoc (>= 1.0~version-0.9.88), bison, cmake (>= 2.8.9~), debhelper (>= 9), docbook-xml, docbook-xsl, dpkg-dev (>= 1.15.5), flex, hspell, libacl1-dev, libaspell-dev, libattica-dev (>= 0.4.2), libavahi-common-dev, libbz2-dev, libdbusmenu-qt-dev, libdlrestrictions-dev (>= 0.14), libenchant-dev, libgif-dev, libgrantlee-dev (>= 0.1.0), libjasper-dev, libjpeg-dev, libkrb5-dev, liblzma-dev, libopenexr-dev, libpcre3-dev, libphonon-dev (>= 4:4.6.0really4.3.80), libpng-dev, libpolkit-qt-1-dev (>= 0.99.0), libqca2-dev (>= 2.0.0), libqt4-dev (>= 4:4.8.0), libqt4-opengl-dev (>= 4:4.8.0), libqtwebkit-dev, libsm-dev, libssl-dev, libstreamanalyzer-dev (>= 0.6.3), libudev-dev [linux-any], libutempter-dev, libxml2-dev, libxml2-utils, libxrender-dev, libxslt1-dev, libxss-dev, pkg-kde-tools (>= 0.14), shared-mime-info (>= 0.60), zlib1g-dev
+Build-Conflicts: libqtwebkit-dev (<< 2.2.1)
+Architecture: any all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/k/kde4libs
+Files:
+ a6440b85dbb3440f78eb0bb6123e3739 5243 kde4libs_4.14.16-0ubuntu3.2.dsc
+ 0b5d055290b5d3506f9ae2ef1ac4bef3 11633476 kde4libs_4.14.16.orig.tar.xz
+ c747982efe24a5dd4f3b1b44474a2967 288220 kde4libs_4.14.16-0ubuntu3.2.debian.tar.xz
+Uploaders: Sune Vuorela <sune@debian.org>, Fathi Boudra <fabo@debian.org>, Modestas Vainius <modax@debian.org>, George Kiagiadakis <kiagiadakis.george@gmail.com>, Lisandro Damián Nicanor Pérez Meyer <lisandro@debian.org>, Maximiliano Curia <maxy@debian.org>, Diane Trout <diane@debian.org>
+Homepage: http://www.kde.org/
+Vcs-Browser: http://anonscm.debian.org/cgit/pkg-kde/applications/kde4libs.git
+Vcs-Git: git://anonscm.debian.org/pkg-kde/applications/kde4libs.git
+Testsuite: autopkgtest
+Package-List:
+ kdelibs-bin deb libs optional arch=any
+ kdelibs5-data deb libs optional arch=all
+ kdelibs5-dbg deb debug extra arch=any
+ kdelibs5-dev deb libdevel optional arch=any
+ kdelibs5-plugins deb libs optional arch=any
+ kdoctools deb doc optional arch=any
+ libkcmutils4 deb libs optional arch=any
+ libkde3support4 deb libs optional arch=any
+ libkdeclarative5 deb libs optional arch=any
+ libkdecore5 deb libs optional arch=any
+ libkdesu5 deb libs optional arch=any
+ libkdeui5 deb libs optional arch=any
+ libkdewebkit5 deb libs optional arch=any
+ libkdnssd4 deb libs optional arch=any
+ libkemoticons4 deb libs optional arch=any
+ libkfile4 deb libs optional arch=any
+ libkhtml5 deb libs optional arch=any
+ libkidletime4 deb libs optional arch=any
+ libkimproxy4 deb libs optional arch=any
+ libkio5 deb libs optional arch=any
+ libkjsapi4 deb libs optional arch=any
+ libkjsembed4 deb libs optional arch=any
+ libkmediaplayer4 deb libs optional arch=any
+ libknewstuff2-4 deb libs optional arch=any
+ libknewstuff3-4 deb libs optional arch=any
+ libknotifyconfig4 deb libs optional arch=any
+ libkntlm4 deb libs optional arch=any
+ libkparts4 deb libs optional arch=any
+ libkprintutils4 deb libs optional arch=any
+ libkpty4 deb libs optional arch=any
+ libkrosscore4 deb libs optional arch=any
+ libkrossui4 deb libs optional arch=any
+ libktexteditor4 deb libs optional arch=any
+ libkunitconversion4 deb libs optional arch=any
+ libkutils4 deb libs optional arch=any
+ libplasma3 deb libs optional arch=any
+ libsolid4 deb libs optional arch=any
+ libthreadweaver4 deb libs optional arch=any
+Checksums-Sha1:
+ 1cb6031ae451035041a01fe804e2af8f1d62182d 5243 kde4libs_4.14.16-0ubuntu3.2.dsc
+ a3dff87f15cafa8812e1517d27dd05658dc06a23 11633476 kde4libs_4.14.16.orig.tar.xz
+ b11c3012266130e139445df1dbb939c89951f86b 288220 kde4libs_4.14.16-0ubuntu3.2.debian.tar.xz
+Checksums-Sha256:
+ df7fcc10c83702fbe54410d912eb80a0140955536b670904af3b9d3d0c1f938a 5243 kde4libs_4.14.16-0ubuntu3.2.dsc
+ 7bf6b930c49952dceb1a090c20bf567f4385a2bbc0069a4393608b2a79e6b3aa 11633476 kde4libs_4.14.16.orig.tar.xz
+ ceeaf981ab2fbde1704d56b893574ca33dce280af4e42d2dd4cd591f38ffe227 288220 kde4libs_4.14.16-0ubuntu3.2.debian.tar.xz
+
+Package: kinit
+Binary: kinit-dev, kinit, kinit-dbg
+Version: 5.18.0-0ubuntu1.1
+Priority: optional
+Section: universe/libs
+Maintainer: Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Build-Depends: cmake (>= 2.8.12), debhelper (>= 9), extra-cmake-modules (>= 5.18.0~), kdoctools-dev (>= 5.18.0~), kio-dev (>= 5.18.0~), libcap-dev [linux-any], libcap2-bin [linux-any], libkf5config-dev (>= 5.18.0~), libkf5crash-dev (>= 5.18.0~), libkf5i18n-dev (>= 5.18.0~), libkf5service-dev (>= 5.18.0~), libkf5windowsystem-dev (>= 5.18.0~), pkg-kde-tools (>= 0.15.15ubuntu1~), qtbase5-dev (>= 5.4)
+Architecture: any
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/k/kinit
+Files:
+ 8671b51db684b283d994c8bf6d4c8e15 2442 kinit_5.18.0-0ubuntu1.1.dsc
+ bbf6f2743ffc9ffba7dcb151e7b579e0 117640 kinit_5.18.0.orig.tar.xz
+ 8ecb9021c0612053b007c9d85e1fcdeb 6148 kinit_5.18.0-0ubuntu1.1.debian.tar.xz
+Uploaders: Maximiliano Curia <maxy@debian.org>
+Homepage: https://projects.kde.org/projects/frameworks/kinit
+Vcs-Browser: https://code.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kinit
+Vcs-Git: git://git.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kinit
+Package-List:
+ kinit deb libs optional arch=any
+ kinit-dbg deb debug extra arch=any
+ kinit-dev deb libdevel optional arch=any
+Checksums-Sha1:
+ 2c44bc59490fd4e1ab4bcd243cec45336f250c14 2442 kinit_5.18.0-0ubuntu1.1.dsc
+ ac954783c1906eef3225fbb5dd24eff25de90fd1 117640 kinit_5.18.0.orig.tar.xz
+ 21054f7c129796d1433b8f6218a1ad9e9573c99e 6148 kinit_5.18.0-0ubuntu1.1.debian.tar.xz
+Checksums-Sha256:
+ 77d9552cb64694477b264b3148a29597dd0dc04ad592ea704ab11945e6d969aa 2442 kinit_5.18.0-0ubuntu1.1.dsc
+ 08bc4f46cb90c164cd3e087e14c42859bf1e26057a0132c2395c6bfafca95d90 117640 kinit_5.18.0.orig.tar.xz
+ bfed5cc7d8972b175ec17358f1db223e47eaefa5e751c0c890f82f3cd45c0503 6148 kinit_5.18.0-0ubuntu1.1.debian.tar.xz
+
+Package: kio
+Binary: kio-dev, kio, libkf5kiocore5, libkf5kiofilewidgets5, libkf5kiontlm5, libkf5kiowidgets5, kio-dbg
+Version: 5.18.0-0ubuntu1.1
+Priority: optional
+Section: universe/libs
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Build-Depends: cmake (>= 2.8.12), debhelper (>= 9), extra-cmake-modules (>= 5.18.0~), kdoctools-dev (>= 5.18.0~), libacl1-dev, libkf5archive-dev (>= 5.18.0~), libkf5bookmarks-dev (>= 5.18.0~), libkf5codecs-dev (>= 5.18.0~), libkf5completion-dev (>= 5.18.0~), libkf5config-dev (>= 5.18.0~), libkf5configwidgets-dev (>= 5.18.0~), libkf5coreaddons-dev (>= 5.18.0~), libkf5dbusaddons-dev (>= 5.18.0~), libkf5i18n-dev (>= 5.18.0~), libkf5iconthemes-dev (>= 5.18.0~), libkf5itemviews-dev (>= 5.18.0~), libkf5jobwidgets-dev (>= 5.18.0~), libkf5notifications-dev (>= 5.18.0~), libkf5service-dev (>= 5.18.0~), libkf5solid-dev (>= 5.18.0~), libkf5textwidgets-dev (>= 5.18.0~), libkf5wallet-dev (>= 5.18.0~), libkf5widgetsaddons-dev (>= 5.18.0~), libkf5windowsystem-dev (>= 5.18.0~), libkf5xmlgui-dev (>= 5.18.0~), libkrb5-dev, libqt5x11extras5-dev (>= 5.4), libxml2-dev, libxslt1-dev, pkg-kde-tools (>= 0.15.15ubuntu1~), qtbase5-dev (>= 5.4), qtscript5-dev (>= 5.4), zlib1g-dev
+Architecture: any
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/k/kio
+Files:
+ 4e4f00e0523df2af548b5b5100afe5ae 3308 kio_5.18.0-0ubuntu1.1.dsc
+ 3544f70348993c7fe086854214e48aee 2877312 kio_5.18.0.orig.tar.xz
+ 5220d8d89c33f5b254df84d57a7909a2 36816 kio_5.18.0-0ubuntu1.1.debian.tar.xz
+Uploaders: Maximiliano Curia <maxy@debian.org>
+Homepage: https://projects.kde.org/projects/frameworks/kio
+Vcs-Browser: http://anonscm.debian.org/cgit/pkg-kde/frameworks/kio.git
+Vcs-Git: git://anonscm.debian.org/pkg-kde/frameworks/kio.git
+Testsuite: autopkgtest
+Package-List:
+ kio deb libs optional arch=any
+ kio-dbg deb debug extra arch=any
+ kio-dev deb libdevel optional arch=any
+ libkf5kiocore5 deb libs optional arch=any
+ libkf5kiofilewidgets5 deb libs optional arch=any
+ libkf5kiontlm5 deb libs optional arch=any
+ libkf5kiowidgets5 deb libs optional arch=any
+Checksums-Sha1:
+ 2db1c59bbf7a53116e95ae17d7ba76041edb9a94 3308 kio_5.18.0-0ubuntu1.1.dsc
+ 8dd4b9a1de0b32daac7953e4549b52d768f80fae 2877312 kio_5.18.0.orig.tar.xz
+ b69d7ce2528f64ecdf2536f0fea92cb4e733e697 36816 kio_5.18.0-0ubuntu1.1.debian.tar.xz
+Checksums-Sha256:
+ beb46615065248bc973f65ea2210216aad2de29cf254cc4614121778350fe591 3308 kio_5.18.0-0ubuntu1.1.dsc
+ da526bb9b7f02b9670cf6bea54645a89a5b32d008204a4f2253bdd5e74df0f08 2877312 kio_5.18.0.orig.tar.xz
+ 9092b9148fbc33d73184600585f377a8d1590ce09cde8108ba430c396ceec200 36816 kio_5.18.0-0ubuntu1.1.debian.tar.xz
+
+Package: kodi
+Binary: kodi, kodi-data, kodi-bin, kodi-eventclients-common, kodi-eventclients-dev, kodi-eventclients-wiiremote, kodi-eventclients-j2me, kodi-eventclients-ps3, kodi-eventclients-kodi-send, kodi-addons-dev
+Version: 15.2+dfsg1-3ubuntu1.1
+Priority: optional
+Section: universe/misc
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Build-Depends: autoconf, automake, autopoint, autotools-dev, cmake, curl, debhelper (>= 9~), default-jre, dh-autoreconf, dh-python, doxygen, fontforge, fonts-dejavu-core, fonts-droid-fallback, gawk, gperf, groovy2, inkscape, libasound2-dev | libasound-dev, libass-dev (>= 0.9.8), libavahi-client-dev, libavahi-common-dev, libavcodec-dev (>= 7:2.7.1), libavfilter-dev (>= 7:2.7.1), libavformat-dev (>= 7:2.7.1), libavresample-dev (>= 7:2.7.1), libavutil-dev (>= 7:2.7.1), libbluetooth-dev, libbluray-dev, libboost-dev, libboost-thread-dev, libbz2-dev, libcap-dev, libcdio-dev, libcec-dev (>= 3), libcec-platform-dev, libcommons-lang-java, libcrystalhd-dev [i386 amd64], libcurl4-gnutls-dev | libcurl-dev, libcwiid-dev [linux-any], libdbus-1-dev, libdvdnav-dev, libdvdread-dev, libenca-dev, libflac-dev, libfontconfig-dev, libfreetype6-dev, libfribidi-dev, libftgl-dev, libgif-dev, libgles2-mesa-dev [armel armhf] | libgl1-mesa-dev | libgl-dev, libglew-dev, libglu1-mesa-dev | libglu-dev, libhdhomerun-dev, libiso9660-dev, libjasper-dev, libjpeg-dev, libltdl-dev, liblzo2-dev, libmad0-dev, libmicrohttpd-dev, libmodplug-dev, libmp3lame-dev, libmpeg2-4-dev, libmysqlclient-dev, libnfs-dev, libogg-dev, libomxil-bellagio-dev [armel armhf mipsel mips], libpcre3-dev, libplist-dev, libpng-dev, libpostproc-dev (>= 7:2.7.1), libpulse-dev, librtmp-dev, libsamplerate-dev, libsdl2-dev, libsdl2-image-dev, libsdl2-mixer-dev, libshairport-dev, libsidplay2-dev, libsmbclient-dev, libsqlite3-dev, libssh-dev, libssl-dev, libswscale-dev (>= 7:2.7.1), libtag1-dev (>= 1.8), libtiff-dev, libtinyxml-dev (>= 2.6.2), libtool, libudev-dev, libva-dev [!armel !armhf !mipsel !mips], libvdpau-dev [!armel !armhf !mipsel !mips], libvorbis-dev, libxmu-dev, libxrandr-dev, libxslt1-dev, libxt-dev, libyajl-dev, nasm [i386], python-dev (>= 2.6.6-3~), python-imaging, swig, ttf-bitstream-vera, udev, unzip, yasm, zip, zlib1g-dev
+Architecture: any all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/k/kodi
+Files:
+ 8f1e10128b08e00ff88337cf8b4f94ea 4197 kodi_15.2+dfsg1-3ubuntu1.1.dsc
+ f240e23a106bc8e9f254c55282870185 18312188 kodi_15.2+dfsg1.orig.tar.xz
+ 8732a83add9140748cf5c02860841c1d 32512 kodi_15.2+dfsg1-3ubuntu1.1.debian.tar.xz
+Uploaders: Balint Reczey <balint@balintreczey.hu>
+Homepage: http://kodi.tv/
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-multimedia/kodi.git
+Vcs-Git: git://anonscm.debian.org/pkg-multimedia/kodi.git
+Package-List:
+ kodi deb video optional arch=any
+ kodi-addons-dev deb libdevel optional arch=any
+ kodi-bin deb video optional arch=any
+ kodi-data deb video optional arch=all
+ kodi-eventclients-common deb video optional arch=all
+ kodi-eventclients-dev deb libdevel optional arch=all
+ kodi-eventclients-j2me deb video optional arch=all
+ kodi-eventclients-kodi-send deb video optional arch=all
+ kodi-eventclients-ps3 deb video optional arch=all
+ kodi-eventclients-wiiremote deb video optional arch=any
+Checksums-Sha1:
+ cbc93ce0a18906c287f1e9a574af1bb41930b79a 4197 kodi_15.2+dfsg1-3ubuntu1.1.dsc
+ f090768659848533166aca02c4d73ce66f9b157d 18312188 kodi_15.2+dfsg1.orig.tar.xz
+ eecc34cb3119ede6aab640f90d28a8986f7a2496 32512 kodi_15.2+dfsg1-3ubuntu1.1.debian.tar.xz
+Checksums-Sha256:
+ f0621eb6ee8a4b6acce2c86a2c3bdf42c89da8b8498cbec8d327c62e63da3846 4197 kodi_15.2+dfsg1-3ubuntu1.1.dsc
+ 2732183c02f65527f928f67a5307173a574e8f00c47e74b6a2a93baa4a57df99 18312188 kodi_15.2+dfsg1.orig.tar.xz
+ deabba02ba7d9d8c43f202f8425ae3316f0bd95cdfb1bc60eabcf98089d7f269 32512 kodi_15.2+dfsg1-3ubuntu1.1.debian.tar.xz
+
+Package: ktnef
+Binary: libkf5tnef-dev, libkf5tnef5
+Version: 4:15.12.3-0ubuntu1.1
+Priority: optional
+Section: universe/libs
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Build-Depends: cmake (>= 2.8.12~), debhelper (>= 9), extra-cmake-modules (>= 5.14.0~), libkf5calendarcore-dev (>= 4:15.12.1~), libkf5calendarutils-dev (>= 4:15.12.1~), libkf5contacts-dev (>= 4:15.12.1~), libkf5kdelibs4support-dev (>= 5.14.0~), pkg-kde-tools (>> 0.15.15), qtbase5-dev (>= 5.2.0~)
+Architecture: any
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/k/ktnef
+Files:
+ 34057d550db2da537df229cc8cb96ab2 2389 ktnef_15.12.3-0ubuntu1.1.dsc
+ 1779d0c3cdd27f9867ef6f046adf0bd5 232672 ktnef_15.12.3.orig.tar.xz
+ 3644bf7821317c33726e85a473268647 5516 ktnef_15.12.3-0ubuntu1.1.debian.tar.xz
+Uploaders: Maximiliano Curia <maxy@debian.org>
+Homepage: https://projects.kde.org/projects/kde/pim/ktnef
+Vcs-Browser: http://anonscm.debian.org/cgit/pkg-kde/applications/ktnef.git
+Vcs-Git: git://anonscm.debian.org/pkg-kde/applications/ktnef.git
+Testsuite: autopkgtest
+Package-List:
+ libkf5tnef-dev deb libdevel optional arch=any
+ libkf5tnef5 deb libs optional arch=any
+Checksums-Sha1:
+ 158e28beb7024e5fd54dbff0e8aeb7e608a7238e 2389 ktnef_15.12.3-0ubuntu1.1.dsc
+ b1d806c7afb7df5f968b3d910752e5e69eb66ff0 232672 ktnef_15.12.3.orig.tar.xz
+ f01256ca2294d779a8fe6120af68e25021278763 5516 ktnef_15.12.3-0ubuntu1.1.debian.tar.xz
+Checksums-Sha256:
+ de12bf63b7cfb82b644e914ad9309370e9e4a95c8018a9e0e07d958101fbcc81 2389 ktnef_15.12.3-0ubuntu1.1.dsc
+ a8c2f49d66d5e4d827bee29e325f6d653a2cefb8aafbab41e22008cef2a87110 232672 ktnef_15.12.3.orig.tar.xz
+ ac92568aeb47565a6d7c9adf0203721e1a1e997c8d11997d1f144d6e4926a7f1 5516 ktnef_15.12.3-0ubuntu1.1.debian.tar.xz
+
+Package: libcommons-fileupload-java
+Binary: libcommons-fileupload-java, libcommons-fileupload-java-doc
+Version: 1.3.1-2ubuntu0.1
+Priority: optional
+Section: universe/libs
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Build-Depends: cdbs, debhelper (>= 9), default-jdk, maven-debian-helper
+Build-Depends-Indep: junit4, libcommons-io-java, libmaven-javadoc-plugin-java, libportlet-api-2.0-spec-java, libservlet3.0-java, maven-repo-helper
+Architecture: all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/libc/libcommons-fileupload-java
+Files:
+ bdbdcbbcb73ac17da71c85735454e2f9 2532 libcommons-fileupload-java_1.3.1-2ubuntu0.1.dsc
+ 0903f9606096d11a8ff57525fd9ee83c 133326 libcommons-fileupload-java_1.3.1.orig.tar.gz
+ 3c78eb7d239b32471e3ccd77d9bc194e 7200 libcommons-fileupload-java_1.3.1-2ubuntu0.1.debian.tar.xz
+Uploaders: Damien Raude-Morvan <drazzib@debian.org>, Emmanuel Bourg <ebourg@apache.org>
+Homepage: http://commons.apache.org/fileupload/
+Vcs-Browser: http://anonscm.debian.org/cgit/pkg-java/libcommons-fileupload-java.git
+Vcs-Git: git://anonscm.debian.org/pkg-java/libcommons-fileupload-java.git
+Package-List:
+ libcommons-fileupload-java deb java optional arch=all
+ libcommons-fileupload-java-doc deb doc optional arch=all
+Checksums-Sha1:
+ b1a2f3c89804ec02e74c8db543e3393cbda7ceb6 2532 libcommons-fileupload-java_1.3.1-2ubuntu0.1.dsc
+ 329a9cee297f859499213e6d0e3f9a0b1ff6749e 133326 libcommons-fileupload-java_1.3.1.orig.tar.gz
+ e5318aade8bd2272471f0db09c17adf88568f9f3 7200 libcommons-fileupload-java_1.3.1-2ubuntu0.1.debian.tar.xz
+Checksums-Sha256:
+ 2ac5d2dc7cac338e681028f380c1dc672c63edf5bcd59e35bf9eadb9fc8e0738 2532 libcommons-fileupload-java_1.3.1-2ubuntu0.1.dsc
+ b7a3444e615702da342292d14e447fe26fe4d9b144f3dafc525870b008a6c95a 133326 libcommons-fileupload-java_1.3.1.orig.tar.gz
+ 5dc6b5a90fd28d6b172a34690353544893d5b38db2f7f9a960ef5dabc89049cf 7200 libcommons-fileupload-java_1.3.1-2ubuntu0.1.debian.tar.xz
+
+Package: libdbd-mysql-perl
+Binary: libdbd-mysql-perl
+Version: 4.033-1ubuntu0.1
+Priority: optional
+Section: universe/perl
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 9.20120312), libdbi-perl, libmysqlclient-dev, perl, zlib1g-dev
+Architecture: any
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/libd/libdbd-mysql-perl
+Files:
+ 952561a6dd5f5610af779685def5dbb8 2328 libdbd-mysql-perl_4.033-1ubuntu0.1.dsc
+ 7bbaf2ce32e137d0e6045402c550d86c 146898 libdbd-mysql-perl_4.033.orig.tar.gz
+ de52fca023b3caed92f01d5267439e3c 10020 libdbd-mysql-perl_4.033-1ubuntu0.1.debian.tar.xz
+Uploaders: gregor herrmann <gregoa@debian.org>, Krzysztof Krzyżaniak (eloy) <eloy@debian.org>, Ansgar Burchardt <ansgar@debian.org>, Xavier Guimard <x.guimard@free.fr>
+Homepage: http://dbi.perl.org/
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-perl/packages/libdbd-mysql-perl.git
+Vcs-Git: git://anonscm.debian.org/pkg-perl/packages/libdbd-mysql-perl.git
+Testsuite: autopkgtest-pkg-perl
+Package-List:
+ libdbd-mysql-perl deb perl optional arch=any
+Checksums-Sha1:
+ 994d3248e9d621ebccecf22c5b23e4b16903ded9 2328 libdbd-mysql-perl_4.033-1ubuntu0.1.dsc
+ 4c18eaaf9c62d8b76758fae54af3a4be9a43fcfb 146898 libdbd-mysql-perl_4.033.orig.tar.gz
+ d8b22743335d3f1ba5c1a0f025be94e4d088b8fa 10020 libdbd-mysql-perl_4.033-1ubuntu0.1.debian.tar.xz
+Checksums-Sha256:
+ 547745e9120a926345044eab5eaa76156b941271e904d052155aa0c4c89e166f 2328 libdbd-mysql-perl_4.033-1ubuntu0.1.dsc
+ cc98bbcc33581fbc55b42ae681c6946b70a26f549b3c64466740dfe9a7eac91c 146898 libdbd-mysql-perl_4.033.orig.tar.gz
+ 28b4cde03b6bbc782406ed0151f3de9b4ec77d6c3cdabf83b00fa65a56a496a3 10020 libdbd-mysql-perl_4.033-1ubuntu0.1.debian.tar.xz
+
+Package: libpam-sshauth
+Binary: libpam-sshauth
+Version: 0.3.1-1ubuntu2
+Priority: extra
+Section: universe/admin
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: LTSP Debian Maintainers <pkg-ltsp-devel@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 9), libssh2-1-dev, libpam0g-dev | libpam-dev, dh-autoreconf, pkg-config, zlib1g-dev
+Architecture: any
+Standards-Version: 3.9.4
+Format: 3.0 (quilt)
+Directory: pool/universe/libp/libpam-sshauth
+Files:
+ 3df6903c2623d67193dc863aaf8846ff 2095 libpam-sshauth_0.3.1-1ubuntu2.dsc
+ 162addf99abfe16ea1f60d7a9efdef5a 22548 libpam-sshauth_0.3.1.orig.tar.gz
+ e0b51a0e2623d5be0221f616d1c2d4c7 3488 libpam-sshauth_0.3.1-1ubuntu2.debian.tar.xz
+Uploaders: Vagrant Cascadian <vagrant@debian.org>
+Vcs-Browser: https://bazaar.launchpad.net/~ltsp-upstream/ltsp/libpam-sshauth/files
+Vcs-Bzr: lp:~ltsp-upstream/ltsp/libpam-sshauth
+Package-List:
+ libpam-sshauth deb admin extra arch=any
+Checksums-Sha1:
+ d570c088ff83d3ed3b041293879c1fad38bcb33f 2095 libpam-sshauth_0.3.1-1ubuntu2.dsc
+ b87b22e997891331686824c639b34b44c9a34704 22548 libpam-sshauth_0.3.1.orig.tar.gz
+ 99dfd6e40c985f1e680b3bf363cd06af7050b7f6 3488 libpam-sshauth_0.3.1-1ubuntu2.debian.tar.xz
+Checksums-Sha256:
+ 99bc385aa3c42fb9696e35259567b4382a8c3e874b2485d373b1399d2a3ce97d 2095 libpam-sshauth_0.3.1-1ubuntu2.dsc
+ 0537042c65bb5bdf3f4e25536c678f2057869ca3a8aabe4f0dc871b378d3f123 22548 libpam-sshauth_0.3.1.orig.tar.gz
+ adac913a3c3410b9cb4ae57e657f48ca2330a179c063ec2b55cda6a36cfe412d 3488 libpam-sshauth_0.3.1-1ubuntu2.debian.tar.xz
+
+Package: libquicktime
+Binary: libquicktime2, libquicktime-dev, libquicktime-doc, quicktime-utils, quicktime-x11utils
+Version: 2:1.2.4-7+deb8u1build0.16.04.1
+Priority: optional
+Section: universe/devel
+Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Build-Depends: autopoint, autotools-dev, cdbs (>= 0.4.93~), debhelper (>= 8.1.3~), dh-autoreconf, doxygen, libasound2-dev [linux-any], libavc1394-dev [linux-any], libavcodec-dev (>= 6:10~), libdv4-dev, libfaad-dev, libgl1-mesa-dev | libgl-dev, libgtk2.0-dev (>= 2.24), libjpeg-dev, libmp3lame-dev, libpng-dev, libpopt-dev, libraw1394-dev [linux-any], libschroedinger-dev, libsdl1.2-dev, libswscale-dev (>= 6:10~), libvorbis-dev, libx264-dev, libxaw7-dev, libxv-dev
+Architecture: any all
+Standards-Version: 3.9.5
+Format: 3.0 (quilt)
+Directory: pool/universe/libq/libquicktime
+Files:
+ 3b980077b1023cd7c8953db4cfe22337 2790 libquicktime_1.2.4-7+deb8u1build0.16.04.1.dsc
+ 81cfcebad9b7ee7e7cfbefc861d6d61b 1028626 libquicktime_1.2.4.orig.tar.gz
+ d2263d9c3c7c5915d1aa43f37cbe691d 18376 libquicktime_1.2.4-7+deb8u1build0.16.04.1.debian.tar.xz
+Uploaders:  Reinhard Tartler <siretart@tauware.de>, Loic Minier <lool@dooz.org>
+Homepage: http://libquicktime.sourceforge.net/
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-multimedia/libquicktime.git
+Vcs-Git: git://anonscm.debian.org/pkg-multimedia/libquicktime.git
+Package-List:
+ libquicktime-dev deb libdevel optional arch=any
+ libquicktime-doc deb doc optional arch=all
+ libquicktime2 deb libs optional arch=any
+ quicktime-utils deb utils extra arch=any
+ quicktime-x11utils deb utils extra arch=any
+Checksums-Sha1:
+ f86ff062cc1a4a7576ea9d876eb310ccbfd76f1e 2790 libquicktime_1.2.4-7+deb8u1build0.16.04.1.dsc
+ 7008b2dc27b9b40965bd2df42d39ff4cb8b6305e 1028626 libquicktime_1.2.4.orig.tar.gz
+ f90446df3cba4d8e9c28b247060511f778dbf5d8 18376 libquicktime_1.2.4-7+deb8u1build0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ 9dd67c1dfdb5186ba6d910bf798923a56fd97a311ca2fc7dfc8fdb7340705dd2 2790 libquicktime_1.2.4-7+deb8u1build0.16.04.1.dsc
+ 1c53359c33b31347b4d7b00d3611463fe5e942cae3ec0fefe0d2fd413fd47368 1028626 libquicktime_1.2.4.orig.tar.gz
+ 65586a357db1c16390f9906732fb0868f63065b29f5c3e6b97f12fb2cd5ae146 18376 libquicktime_1.2.4-7+deb8u1build0.16.04.1.debian.tar.xz
+
+Package: libssh2
+Binary: libssh2-1, libssh2-1-dev, libssh2-1-dbg
+Version: 1.5.0-2ubuntu0.1
+Priority: optional
+Section: universe/libs
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Mikhail Gusarov <dottedmag@debian.org>
+Build-Depends: debhelper (>= 9), dh-autoreconf, libgcrypt20-dev, zlib1g-dev, chrpath
+Architecture: any
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/libs/libssh2
+Files:
+ adb4ff02481aae1bfd0e49dda340ac5c 1613 libssh2_1.5.0-2ubuntu0.1.dsc
+ e7fa3f5c6bd2d67a9b360ff726bbc6ba 728222 libssh2_1.5.0.orig.tar.gz
+ 15068b0d02defa4038a2a5cd678d7dc7 7124 libssh2_1.5.0-2ubuntu0.1.debian.tar.xz
+Homepage: http://libssh2.org/
+Package-List:
+ libssh2-1 deb libs optional arch=any
+ libssh2-1-dbg deb debug extra arch=any
+ libssh2-1-dev deb libdevel optional arch=any
+Checksums-Sha1:
+ c835c1e0142ffcf10d689500bce4bc6c3f2dad5f 1613 libssh2_1.5.0-2ubuntu0.1.dsc
+ d9a97a04aef8bcf835b22a7a2e8e869782baa3aa 728222 libssh2_1.5.0.orig.tar.gz
+ 3764460570bdfaea857da4f11ac371595da9f478 7124 libssh2_1.5.0-2ubuntu0.1.debian.tar.xz
+Checksums-Sha256:
+ 070a45307295fe0c0715a86b827d72cbf4898375e351c131eb2237214de8a6d1 1613 libssh2_1.5.0-2ubuntu0.1.dsc
+ 83196badd6868f5b926bdac8017a6f90fb8a90b16652d3bf02df0330d573d0fc 728222 libssh2_1.5.0.orig.tar.gz
+ 344a25d43835be3c5513b689fe40d078a6a5bf8e0abdfa1b6a3d6f78e9d2e34c 7124 libssh2_1.5.0-2ubuntu0.1.debian.tar.xz
+
+Package: linux-gke
+Binary: linux-gke-headers-4.4.0-1014, linux-gke-tools-4.4.0-1014, linux-gke-cloud-tools-4.4.0-1014, linux-image-4.4.0-1014-gke, linux-image-extra-4.4.0-1014-gke, linux-headers-4.4.0-1014-gke, linux-image-4.4.0-1014-gke-dbgsym, linux-tools-4.4.0-1014-gke, linux-cloud-tools-4.4.0-1014-gke, linux-udebs-gke
+Version: 4.4.0-1014.14
+Priority: optional
+Section: universe/devel
+Maintainer: Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>
+Build-Depends: debhelper (>= 5), dh-systemd, cpio, kernel-wedge, kmod <!stage1>, makedumpfile [amd64 i386] <!stage1>, libelf-dev <!stage1>, libnewt-dev <!stage1>, libiberty-dev <!stage1>, rsync <!stage1>, libdw-dev <!stage1>, libpci-dev <!stage1>, pkg-config <!stage1>, flex <!stage1>, bison <!stage1>, libunwind8-dev [amd64 arm64 armhf i386 powerpc ppc64el] <!stage1>, binutils-dev <!stage1>, liblzma-dev <!stage1>, openssl <!stage1>, libssl-dev <!stage1>, libaudit-dev <!stage1>, bc <!stage1>, python-dev <!stage1>, gawk <!stage1>, device-tree-compiler [powerpc] <!stage1>, u-boot-tools [powerpc] <!stage1>, libc6-dev-ppc64 [powerpc] <!stage1>, libudev-dev <!stage1>, autoconf <!stage1>, automake <!stage1>, libtool <!stage1>, uuid-dev <!stage1>
+Build-Depends-Indep: xmlto <!stage1>, docbook-utils <!stage1>, ghostscript <!stage1>, transfig <!stage1>, bzip2 <!stage1>, sharutils <!stage1>, asciidoc <!stage1>
+Architecture: all amd64
+Standards-Version: 3.9.4.0
+Format: 1.0
+Directory: pool/universe/l/linux-gke
+Files:
+ 89553875afeb5224a9d1fe46be19dd48 3374 linux-gke_4.4.0-1014.14.dsc
+ 2070b49688e8d7ee7ff4c33590afc698 132860730 linux-gke_4.4.0.orig.tar.gz
+ 3993b33198a9d961d6d52afe583f0067 13045715 linux-gke_4.4.0-1014.14.diff.gz
+Vcs-Git: git://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/xenial gke
+Testsuite: autopkgtest
+Package-List:
+ linux-cloud-tools-4.4.0-1014-gke deb devel optional arch=amd64 profile=!stage1
+ linux-gke-cloud-tools-4.4.0-1014 deb devel optional arch=amd64 profile=!stage1
+ linux-gke-headers-4.4.0-1014 deb devel optional arch=all profile=!stage1
+ linux-gke-tools-4.4.0-1014 deb devel optional arch=amd64 profile=!stage1
+ linux-headers-4.4.0-1014-gke deb devel optional arch=amd64 profile=!stage1
+ linux-image-4.4.0-1014-gke deb kernel optional arch=amd64 profile=!stage1
+ linux-image-4.4.0-1014-gke-dbgsym deb devel optional arch=amd64 profile=!stage1
+ linux-image-extra-4.4.0-1014-gke deb kernel optional arch=amd64 profile=!stage1
+ linux-tools-4.4.0-1014-gke deb devel optional arch=amd64 profile=!stage1
+ linux-udebs-gke udeb debian-installer optional arch=amd64 profile=!stage1
+Checksums-Sha1:
+ 1aaa7d4092d51cd059f4139490b55a15e9711ed5 3374 linux-gke_4.4.0-1014.14.dsc
+ 180ab617036593212274177eff3a67f437c1b5ea 132860730 linux-gke_4.4.0.orig.tar.gz
+ af5e1434f0f85295c52d328e3a14483f143dd567 13045715 linux-gke_4.4.0-1014.14.diff.gz
+Checksums-Sha256:
+ 1f4ba1b8bf53565ead69d9af1729a7fc8a8554e14202eb183bede50904791ac5 3374 linux-gke_4.4.0-1014.14.dsc
+ 730e75919b5d30a9bc934ccb300eaedfdf44994ca9ee1d07a46901c46c221357 132860730 linux-gke_4.4.0.orig.tar.gz
+ 7749d23573d1552f10ecc4beddeb056125ed8ade8e104d2c8fc0f26343339f96 13045715 linux-gke_4.4.0-1014.14.diff.gz
+
+Package: linux-meta-gke
+Binary: linux-headers-gke, linux-image-gke, linux-gke, linux-tools-gke
+Version: 4.4.0.1014.16
+Priority: optional
+Section: universe/devel
+Maintainer: Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>
+Build-Depends: dpkg (>= 1.13.19), debhelper (>= 5), gawk
+Architecture: amd64
+Standards-Version: 3.6.1
+Format: 1.0
+Directory: pool/universe/l/linux-meta-gke
+Files:
+ 85216e5866fff7d99a475e6ffc2273ae 1430 linux-meta-gke_4.4.0.1014.16.dsc
+ 69475a25fabbdbff42530778ed6df0e6 5618 linux-meta-gke_4.4.0.1014.16.tar.gz
+Vcs-Git: git://kernel.ubuntu.com/ubuntu/ubuntu-xenial-meta.git gke
+Package-List:
+ linux-gke deb metapackages optional arch=amd64
+ linux-headers-gke deb metapackages optional arch=amd64
+ linux-image-gke deb metapackages optional arch=amd64
+ linux-tools-gke deb metapackages optional arch=amd64
+Checksums-Sha1:
+ 3a67e792e0481eb526c2188b72075b74e4a840a2 1430 linux-meta-gke_4.4.0.1014.16.dsc
+ f26cc1457d87e756c221f327ad8882f99d929807 5618 linux-meta-gke_4.4.0.1014.16.tar.gz
+Checksums-Sha256:
+ e4522f7c7505fd45a0d36121186a97afd306f13cda5ba5b092e0ec56e5c2c1d9 1430 linux-meta-gke_4.4.0.1014.16.dsc
+ 115b474986d8ef19701e3883248b0e16aba630f7dbb1fc8193c08b8f17f19e28 5618 linux-meta-gke_4.4.0.1014.16.tar.gz
+
+Package: linux-meta-raspi2
+Binary: linux-headers-raspi2, linux-image-raspi2, linux-raspi2, linux-tools-raspi2
+Version: 4.4.0.1057.58
+Priority: optional
+Section: universe/devel
+Maintainer: Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>
+Build-Depends: dpkg (>= 1.13.19), debhelper (>= 5), gawk
+Architecture: armhf
+Standards-Version: 3.6.1
+Format: 1.0
+Directory: pool/universe/l/linux-meta-raspi2
+Files:
+ d741db65145f3c4fb4a304aba6060af1 1469 linux-meta-raspi2_4.4.0.1057.58.dsc
+ 6a5918f59dbbca29c601a6b1f3be4e57 7255 linux-meta-raspi2_4.4.0.1057.58.tar.gz
+Vcs-Git: git://kernel.ubuntu.com/ubuntu/ubuntu-xenial-meta.git raspi2
+Package-List:
+ linux-headers-raspi2 deb metapackages optional arch=armhf
+ linux-image-raspi2 deb metapackages optional arch=armhf
+ linux-raspi2 deb metapackages optional arch=armhf
+ linux-tools-raspi2 deb metapackages optional arch=armhf
+Checksums-Sha1:
+ 9fe63378fbbe33909ed28ad4a02b957a04f1f3b9 1469 linux-meta-raspi2_4.4.0.1057.58.dsc
+ 24b396f4172e92f0f03ffb362f527f85e12048d6 7255 linux-meta-raspi2_4.4.0.1057.58.tar.gz
+Checksums-Sha256:
+ 69b4f5cfd741f3177fc37d7e8dda5e96d505ae0b109fdb196e680321a3977745 1469 linux-meta-raspi2_4.4.0.1057.58.dsc
+ 933ebb36ad6fe2efb33219fcca6908fe1efe6035a7bfd3c17d22c12a097fc625 7255 linux-meta-raspi2_4.4.0.1057.58.tar.gz
+
+Package: linux-meta-snapdragon
+Binary: linux-headers-snapdragon, linux-image-snapdragon, linux-snapdragon, linux-tools-snapdragon
+Version: 4.4.0.1059.52
+Priority: optional
+Section: universe/devel
+Maintainer: Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>
+Build-Depends: dpkg (>= 1.13.19), debhelper (>= 5), gawk
+Architecture: arm64
+Standards-Version: 3.6.1
+Format: 1.0
+Directory: pool/universe/l/linux-meta-snapdragon
+Files:
+ 0e5fcc9126c7b9ba4012f2c9d5c3fd7e 1521 linux-meta-snapdragon_4.4.0.1059.52.dsc
+ 7ed528404079dd1671f8d714b7cbe7ef 6760 linux-meta-snapdragon_4.4.0.1059.52.tar.gz
+Vcs-Git: git://kernel.ubuntu.com/ubuntu/ubuntu-xenial-meta.git snapdragon
+Package-List:
+ linux-headers-snapdragon deb metapackages optional arch=arm64
+ linux-image-snapdragon deb metapackages optional arch=arm64
+ linux-snapdragon deb metapackages optional arch=arm64
+ linux-tools-snapdragon deb metapackages optional arch=arm64
+Checksums-Sha1:
+ ca8cbe06abb90817c94e560c79f927919ded7839 1521 linux-meta-snapdragon_4.4.0.1059.52.dsc
+ 0a3d469d1535c736e1f343887db36cab22645a51 6760 linux-meta-snapdragon_4.4.0.1059.52.tar.gz
+Checksums-Sha256:
+ 2eaa36e7c6059a7101c8d4b76353efffe856b3a5fb862f5255a80a2c8fb97b8e 1521 linux-meta-snapdragon_4.4.0.1059.52.dsc
+ 61fc1962c2076359b880947ebabdf02d2fe9184d0b3aeac9efa08cf33f3771dc 6760 linux-meta-snapdragon_4.4.0.1059.52.tar.gz
+
+Package: linux-raspi2
+Binary: linux-raspi2-headers-4.4.0-1057, linux-raspi2-tools-4.4.0-1057, linux-image-4.4.0-1057-raspi2, linux-headers-4.4.0-1057-raspi2, linux-image-4.4.0-1057-raspi2-dbgsym, linux-tools-4.4.0-1057-raspi2
+Version: 4.4.0-1057.64
+Priority: optional
+Section: universe/devel
+Maintainer: Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>
+Build-Depends: debhelper (>= 5), dh-systemd, cpio, kernel-wedge (>= 2.24ubuntu1), kmod <!stage1>, makedumpfile [amd64 i386] <!stage1>, libelf-dev <!stage1>, libnewt-dev <!stage1>, libiberty-dev <!stage1>, rsync <!stage1>, libdw-dev <!stage1>, libpci-dev <!stage1>, dpkg (>= 1.16.0~ubuntu4) <!stage1>, pkg-config <!stage1>, flex <!stage1>, bison <!stage1>, libunwind8-dev <!stage1>, openssl <!stage1>, libssl-dev <!stage1>, libaudit-dev <!stage1>, bc <!stage1>, python-dev <!stage1>, gawk <!stage1>, device-tree-compiler [powerpc] <!stage1>, u-boot-tools [powerpc] <!stage1>, libc6-dev-ppc64 [powerpc] <!stage1>, libudev-dev <!stage1>, autoconf <!stage1>, automake <!stage1>, libtool <!stage1>, uuid-dev <!stage1>
+Build-Depends-Indep: xmlto <!stage1>, docbook-utils <!stage1>, ghostscript <!stage1>, transfig <!stage1>, bzip2 <!stage1>, sharutils <!stage1>, asciidoc <!stage1>
+Architecture: armhf
+Standards-Version: 3.9.4.0
+Format: 1.0
+Directory: pool/universe/l/linux-raspi2
+Files:
+ e5b64ecd0dac565dd0e0d0e854bde904 2939 linux-raspi2_4.4.0-1057.64.dsc
+ 2070b49688e8d7ee7ff4c33590afc698 132860730 linux-raspi2_4.4.0.orig.tar.gz
+ fb00f4dc713a3584eb274cda47f746aa 14164798 linux-raspi2_4.4.0-1057.64.diff.gz
+Vcs-Git: git://kernel.ubuntu.com/ubuntu/ubuntu-xenial.git raspi2
+Testsuite: autopkgtest
+Package-List:
+ linux-headers-4.4.0-1057-raspi2 deb devel optional arch=armhf profile=!stage1
+ linux-image-4.4.0-1057-raspi2 deb kernel optional arch=armhf profile=!stage1
+ linux-image-4.4.0-1057-raspi2-dbgsym deb devel optional arch=armhf profile=!stage1
+ linux-raspi2-headers-4.4.0-1057 deb devel optional arch=armhf profile=!stage1
+ linux-raspi2-tools-4.4.0-1057 deb devel optional arch=armhf profile=!stage1
+ linux-tools-4.4.0-1057-raspi2 deb devel optional arch=armhf profile=!stage1
+Checksums-Sha1:
+ ec8f4993d2b135a285480b579f8ac132e3ba0b13 2939 linux-raspi2_4.4.0-1057.64.dsc
+ 180ab617036593212274177eff3a67f437c1b5ea 132860730 linux-raspi2_4.4.0.orig.tar.gz
+ 846973be4bf5b2cf6af29ec54219cb2a0baeb283 14164798 linux-raspi2_4.4.0-1057.64.diff.gz
+Checksums-Sha256:
+ 7be4f38a0154b9d5c035a5e8dac73f65aae0417569d30c6ffc2a8051ecb83a42 2939 linux-raspi2_4.4.0-1057.64.dsc
+ 730e75919b5d30a9bc934ccb300eaedfdf44994ca9ee1d07a46901c46c221357 132860730 linux-raspi2_4.4.0.orig.tar.gz
+ 3d78cd26918a5aed95ecd6f3963b42b6ab4fffe194274f32bac0fce0bc147443 14164798 linux-raspi2_4.4.0-1057.64.diff.gz
+
+Package: linux-snapdragon
+Binary: linux-snapdragon-headers-4.4.0-1059, linux-snapdragon-tools-4.4.0-1059, linux-image-4.4.0-1059-snapdragon, linux-headers-4.4.0-1059-snapdragon, linux-image-4.4.0-1059-snapdragon-dbgsym, linux-tools-4.4.0-1059-snapdragon
+Version: 4.4.0-1059.63
+Priority: optional
+Section: universe/devel
+Maintainer: Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>
+Build-Depends: debhelper (>= 5), dh-systemd, cpio, kernel-wedge (>= 2.24ubuntu1), kmod <!stage1>, makedumpfile [amd64 i386] <!stage1>, libelf-dev <!stage1>, libnewt-dev <!stage1>, libiberty-dev <!stage1>, rsync <!stage1>, libdw-dev <!stage1>, libpci-dev <!stage1>, dpkg (>= 1.16.0~ubuntu4) <!stage1>, pkg-config <!stage1>, flex <!stage1>, bison <!stage1>, libunwind8-dev <!stage1>, openssl <!stage1>, libssl-dev <!stage1>, libaudit-dev <!stage1>, bc <!stage1>, python-dev <!stage1>, gawk <!stage1>, device-tree-compiler [powerpc] <!stage1>, u-boot-tools [powerpc] <!stage1>, libc6-dev-ppc64 [powerpc] <!stage1>, libudev-dev <!stage1>, autoconf <!stage1>, automake <!stage1>, libtool <!stage1>, uuid-dev <!stage1>
+Build-Depends-Indep: xmlto <!stage1>, docbook-utils <!stage1>, ghostscript <!stage1>, transfig <!stage1>, bzip2 <!stage1>, sharutils <!stage1>, asciidoc <!stage1>
+Architecture: arm64
+Standards-Version: 3.9.4.0
+Format: 1.0
+Directory: pool/universe/l/linux-snapdragon
+Files:
+ b7b4fc280b4f41a76f26d49decee7df2 3031 linux-snapdragon_4.4.0-1059.63.dsc
+ 2070b49688e8d7ee7ff4c33590afc698 132860730 linux-snapdragon_4.4.0.orig.tar.gz
+ 46dfdfd1fba579fe5536edbe204daabd 13913684 linux-snapdragon_4.4.0-1059.63.diff.gz
+Vcs-Git: git://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/xenial
+Testsuite: autopkgtest
+Package-List:
+ linux-headers-4.4.0-1059-snapdragon deb devel optional arch=arm64 profile=!stage1
+ linux-image-4.4.0-1059-snapdragon deb kernel optional arch=arm64 profile=!stage1
+ linux-image-4.4.0-1059-snapdragon-dbgsym deb devel optional arch=arm64 profile=!stage1
+ linux-snapdragon-headers-4.4.0-1059 deb devel optional arch=arm64 profile=!stage1
+ linux-snapdragon-tools-4.4.0-1059 deb devel optional arch=arm64 profile=!stage1
+ linux-tools-4.4.0-1059-snapdragon deb devel optional arch=arm64 profile=!stage1
+Checksums-Sha1:
+ b12f8e923c59311f49cd67ea382e44861934076a 3031 linux-snapdragon_4.4.0-1059.63.dsc
+ 180ab617036593212274177eff3a67f437c1b5ea 132860730 linux-snapdragon_4.4.0.orig.tar.gz
+ 8747bc6779a4883888d25e70d1782c3300dd681f 13913684 linux-snapdragon_4.4.0-1059.63.diff.gz
+Checksums-Sha256:
+ ee24fe79b03af890a6a0155a072502adda7dc92f9789df18228916d64c371441 3031 linux-snapdragon_4.4.0-1059.63.dsc
+ 730e75919b5d30a9bc934ccb300eaedfdf44994ca9ee1d07a46901c46c221357 132860730 linux-snapdragon_4.4.0.orig.tar.gz
+ 64ca7a8ef73a078b5387e53061c52b985829fd321a0652a7e54e79ee2efd2be6 13913684 linux-snapdragon_4.4.0-1059.63.diff.gz
+
+Package: mapserver
+Binary: libmapserver2, libmapserver-dbg, libmapserver-dev, cgi-mapserver, mapserver-bin, mapserver-doc, libmapscript-perl, python-mapscript, ruby-mapscript, libmapscript-java
+Version: 7.0.0-9ubuntu3.1
+Priority: optional
+Section: universe/devel
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 9), dpkg-dev (>= 1.16.1.1), cmake (>= 2.8.12.1-1.2), chrpath, default-jdk, ant, libcairo2-dev, libcurl4-gnutls-dev | libcurl-ssl-dev, libfcgi-dev, libfreetype6-dev (>= 2.0.9), libfribidi-dev, libgdal-dev (>= 1.10.1-0~), libgeos-dev (>= 3.3.1-1~), libgif-dev, libharfbuzz-dev, libjpeg-dev, libperl-dev, libpng-dev, libpq-dev, libproj-dev, librsvg2-dev, libxml2-dev, libxslt1-dev, zlib1g-dev (>= 1.1.4), pkg-config, pkg-kde-tools, python-all (>= 2.6.6-3~), python-all-dev (>= 2.6.6-3~), ruby, ruby-all-dev, gem2deb, swig, docbook2x, docbook-xsl, docbook-xml, xsltproc
+Build-Conflicts: libcurl3-openssl-dev
+Architecture: any all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/m/mapserver
+Files:
+ d3f886403b8c8f6c621d9c66d28f2b66 3295 mapserver_7.0.0-9ubuntu3.1.dsc
+ 791b907b0122df618cc0325d99ac7dde 2627534 mapserver_7.0.0.orig.tar.gz
+ 36568b9e5dbabd2c74b6b842757bf507 52044 mapserver_7.0.0-9ubuntu3.1.debian.tar.xz
+Uploaders: Francesco Paolo Lovergine <frankie@debian.org>, Alan Boudreault <aboudreault@mapgears.com>, Bas Couwenberg <sebastic@debian.org>
+Homepage: http://www.mapserver.org
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-grass/mapserver.git
+Vcs-Git: https://anonscm.debian.org/git/pkg-grass/mapserver.git
+Package-List:
+ cgi-mapserver deb web optional arch=any
+ libmapscript-java deb java optional arch=any
+ libmapscript-perl deb perl optional arch=any
+ libmapserver-dbg deb debug extra arch=any
+ libmapserver-dev deb libdevel optional arch=any
+ libmapserver2 deb libs optional arch=any
+ mapserver-bin deb misc optional arch=any
+ mapserver-doc deb doc optional arch=all
+ python-mapscript deb python optional arch=any
+ ruby-mapscript deb ruby optional arch=any
+Checksums-Sha1:
+ 283f52f49e678995491e343079af6419121dbdf1 3295 mapserver_7.0.0-9ubuntu3.1.dsc
+ d88110d6159ded120092da49e7927a93f678090f 2627534 mapserver_7.0.0.orig.tar.gz
+ 39dc93ff05a971799783874bf76307bb6cd4ee1d 52044 mapserver_7.0.0-9ubuntu3.1.debian.tar.xz
+Checksums-Sha256:
+ 5f043740c8c70f5a725acc8aef55fbbe42eed3a0294d062ece6c2d86df9431d9 3295 mapserver_7.0.0-9ubuntu3.1.dsc
+ b31226e7612fc6d5fcafe0d00dc98ccfdf4e904ce55432702b329412186f6b86 2627534 mapserver_7.0.0.orig.tar.gz
+ a23c930bf77d598845fc816f03a0b9613d4e756a94b5e6ae72c9dc9549e1a0d2 52044 mapserver_7.0.0-9ubuntu3.1.debian.tar.xz
+Ruby-Versions: all
+
+Package: mariadb-10.0
+Binary: libmariadbd18, libmariadbd-dev, mariadb-common, mariadb-client-core-10.0, mariadb-client-10.0, mariadb-server-core-10.0, mariadb-test, mariadb-test-data, mariadb-server-10.0, mariadb-server, mariadb-client, mariadb-plugin-connect, mariadb-plugin-oqgraph, mariadb-plugin-tokudb, mariadb-plugin-mroonga, mariadb-plugin-spider
+Version: 10.0.29-0ubuntu0.16.04.1
+Priority: optional
+Section: universe/misc
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debian.org>
+Build-Depends: bison, chrpath, cmake, debhelper (>= 9), dh-apparmor, gdb, libaio-dev [linux-any], libboost-dev, libjemalloc-dev [linux-any], libjudy-dev, libncurses5-dev (>= 5.0-6~), libpam0g-dev, libpcre3-dev (>= 2:8.35-3.2~), libreadline-gplv2-dev, libxml2-dev, lsb-release, perl, po-debconf, psmisc, unixodbc-dev, zlib1g-dev (>= 1:1.1.3-5~)
+Architecture: any all
+Standards-Version: 3.9.7
+Format: 3.0 (quilt)
+Directory: pool/universe/m/mariadb-10.0
+Files:
+ 7edc892f159563f65801b2b10aab0127 3531 mariadb-10.0_10.0.29-0ubuntu0.16.04.1.dsc
+ 008bda69b41155f6d6767c2d0a476255 63385696 mariadb-10.0_10.0.29.orig.tar.gz
+ fe2e61885876a636a8cf92e6f9dbd78f 186120 mariadb-10.0_10.0.29-0ubuntu0.16.04.1.debian.tar.xz
+Uploaders: Otto Kekäläinen <otto@debian.org>, Arnaud Fontaine <arnau@debian.org>
+Homepage: http://mariadb.org/
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-mysql/mariadb-10.0.git/
+Vcs-Git: git://anonscm.debian.org/pkg-mysql/mariadb-10.0.git
+Package-List:
+ libmariadbd-dev deb libdevel optional arch=any
+ libmariadbd18 deb libs optional arch=any
+ mariadb-client deb database optional arch=all
+ mariadb-client-10.0 deb database optional arch=any
+ mariadb-client-core-10.0 deb database optional arch=any
+ mariadb-common deb database optional arch=all
+ mariadb-plugin-connect deb database optional arch=any
+ mariadb-plugin-mroonga deb database optional arch=any
+ mariadb-plugin-oqgraph deb database optional arch=any
+ mariadb-plugin-spider deb database optional arch=any
+ mariadb-plugin-tokudb deb database optional arch=any
+ mariadb-server deb database optional arch=all
+ mariadb-server-10.0 deb database optional arch=any
+ mariadb-server-core-10.0 deb database optional arch=any
+ mariadb-test deb database optional arch=any
+ mariadb-test-data deb database optional arch=all
+Checksums-Sha1:
+ 51e2112feca0f83ac79feab739b1322ec49e8aae 3531 mariadb-10.0_10.0.29-0ubuntu0.16.04.1.dsc
+ e8a070efde96a15ec687f310edbcc37e464120cc 63385696 mariadb-10.0_10.0.29.orig.tar.gz
+ 6d11f0447d8fdae66c9a7e4040fee5b199541207 186120 mariadb-10.0_10.0.29-0ubuntu0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ b028ecbe074babcca52faf6f6dc37e036daed3af42e51a0b0e6a86b906ed930e 3531 mariadb-10.0_10.0.29-0ubuntu0.16.04.1.dsc
+ f5f8da646f7df4b1fb21adb8d2b15e6dfbe1964ceb8cea53207d580a464350f4 63385696 mariadb-10.0_10.0.29.orig.tar.gz
+ 7394d5fe9f1e0cbec51f9e9e85e3fd53791925a120fb0d793790549dcffb57f3 186120 mariadb-10.0_10.0.29-0ubuntu0.16.04.1.debian.tar.xz
+
+Package: mbedtls
+Binary: libmbedtls-dev, libmbedcrypto0, libmbedtls10, libmbedx509-0, libmbedtls-doc
+Version: 2.2.1-2ubuntu0.1
+Priority: optional
+Section: universe/misc
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: James Cowgill <james410@cowgill.org.uk>
+Build-Depends: cmake, debhelper (>= 9)
+Build-Depends-Indep: doxygen, graphviz
+Architecture: any all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/m/mbedtls
+Files:
+ c21055904a48e62bdf79eae3be253744 1906 mbedtls_2.2.1-2ubuntu0.1.dsc
+ 77751c0e370ed2ab01934e4c5e1d380f 1863674 mbedtls_2.2.1.orig.tar.gz
+ 96e17a01b28f4cde65ee7780265221b5 11032 mbedtls_2.2.1-2ubuntu0.1.debian.tar.xz
+Homepage: https://tls.mbed.org/
+Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/mbedtls.git
+Vcs-Git: https://anonscm.debian.org/git/collab-maint/mbedtls.git
+Testsuite: autopkgtest
+Package-List:
+ libmbedcrypto0 deb libs optional arch=any
+ libmbedtls-dev deb libdevel optional arch=any
+ libmbedtls-doc deb doc optional arch=all
+ libmbedtls10 deb libs optional arch=any
+ libmbedx509-0 deb libs optional arch=any
+Checksums-Sha1:
+ b84cc05b70766e148399177010a32865550222bd 1906 mbedtls_2.2.1-2ubuntu0.1.dsc
+ d2ff60fad7191dbb5b81ff6c22769964e5a7d53d 1863674 mbedtls_2.2.1.orig.tar.gz
+ 51ee4769fabc534f5406699008191f8a4e71c18b 11032 mbedtls_2.2.1-2ubuntu0.1.debian.tar.xz
+Checksums-Sha256:
+ 241b826be09a65e8b152f5143c2a5113183cae2dbef423afd9f9521b8fd1403f 1906 mbedtls_2.2.1-2ubuntu0.1.dsc
+ 6ddd5ca2e7dfb43d2fd750400856246fc1c98344dabf01b1594eb2f9880ef7ce 1863674 mbedtls_2.2.1.orig.tar.gz
+ a55413fed7197f113002f98eb88bd812a14612128aa09052cb304d6acbba5aa4 11032 mbedtls_2.2.1-2ubuntu0.1.debian.tar.xz
+
+Package: mosquitto
+Binary: mosquitto, mosquitto-dev, libmosquitto1, libmosquitto-dev, libmosquittopp1, libmosquittopp-dev, mosquitto-clients, mosquitto-dbg, libmosquitto1-dbg, libmosquittopp1-dbg
+Version: 1.4.8-1ubuntu0.16.04.1
+Priority: optional
+Section: universe/net
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Roger A. Light <roger@atchoo.org>
+Build-Depends: debhelper (>= 9), libc-ares-dev, libssl-dev (>= 1.0.0), libwebsockets-dev (>= 1.2), libwrap0-dev, python-all (>= 2.6.6-3~), uthash-dev, uuid-dev
+Architecture: any all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/m/mosquitto
+Files:
+ 8d59bc0bc1134ffc9aea2b52c0c1b3cd 2319 mosquitto_1.4.8-1ubuntu0.16.04.1.dsc
+ d859cd474ffa61a6197bdabe007b9027 326120 mosquitto_1.4.8.orig.tar.gz
+ b3e81343a871fca179814db9436f64da 25868 mosquitto_1.4.8-1ubuntu0.16.04.1.debian.tar.xz
+Homepage: http://mosquitto.org/
+Vcs-Browser: http://git.eclipse.org/c/mosquitto/org.eclipse.mosquitto.git
+Vcs-Git: https://git.eclipse.org/r/mosquitto/org.eclipse.mosquitto
+Package-List:
+ libmosquitto-dev deb libdevel optional arch=any
+ libmosquitto1 deb libs optional arch=any
+ libmosquitto1-dbg deb debug extra arch=any
+ libmosquittopp-dev deb libdevel optional arch=any
+ libmosquittopp1 deb libs optional arch=any
+ libmosquittopp1-dbg deb debug extra arch=any
+ mosquitto deb net optional arch=any
+ mosquitto-clients deb net optional arch=any
+ mosquitto-dbg deb debug extra arch=any
+ mosquitto-dev deb devel optional arch=all
+Checksums-Sha1:
+ 0f3b95fbe3303339451f7335b536e14e21e58398 2319 mosquitto_1.4.8-1ubuntu0.16.04.1.dsc
+ e8a0c512649275daadce125dc3a5e58a988319fc 326120 mosquitto_1.4.8.orig.tar.gz
+ 88dd8462fdee62ec6939f0f99f1f592a3e66d840 25868 mosquitto_1.4.8-1ubuntu0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ de53e9014d9f057d4a2d3f5b0504e82b7a302efde601cae59babdffbc9a56350 2319 mosquitto_1.4.8-1ubuntu0.16.04.1.dsc
+ d96eb5610e57cc3e273f4527d3f54358ab7711459941a9e64bc4d0a85c2acfda 326120 mosquitto_1.4.8.orig.tar.gz
+ 074df39ebad4cc050be92627620555439bf44f1bfbbf2de502e829f42355004f 25868 mosquitto_1.4.8-1ubuntu0.16.04.1.debian.tar.xz
+
+Package: munin
+Binary: munin-node, munin-plugins-core, munin-plugins-extra, munin-plugins-java, munin, munin-common, munin-async, munin-doc
+Version: 2.0.25-2ubuntu0.16.04.3
+Priority: optional
+Section: universe/net
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Munin Debian Maintainers <packaging@munin-monitoring.org>
+Build-Depends: debhelper (>= 8), dh-systemd (>= 1.4), libmodule-build-perl
+Build-Depends-Indep: default-jdk, html2text, htmldoc, perl
+Architecture: all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/m/munin
+Files:
+ 6da619f767b160b87e20157cbb53a639 2577 munin_2.0.25-2ubuntu0.16.04.3.dsc
+ b418a667ce42665557329a7ac3bd1b93 1337586 munin_2.0.25.orig.tar.gz
+ 4e44f8ba39afd2845354a4cff75bd12f 63048 munin_2.0.25-2ubuntu0.16.04.3.debian.tar.xz
+Uploaders: Holger Levsen <holger@debian.org>, Stig Sandbeck Mathisen <ssm@debian.org>
+Homepage: http://munin-monitoring.org
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/munin.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/munin.git
+Testsuite: autopkgtest
+Package-List:
+ munin deb net optional arch=all
+ munin-async deb net optional arch=all
+ munin-common deb net optional arch=all
+ munin-doc deb doc optional arch=all
+ munin-node deb net optional arch=all
+ munin-plugins-core deb net optional arch=all
+ munin-plugins-extra deb net optional arch=all
+ munin-plugins-java deb net optional arch=all
+Checksums-Sha1:
+ e2dcf03bca6986662c1038eedcc2d716b7601097 2577 munin_2.0.25-2ubuntu0.16.04.3.dsc
+ 0f912632fd756fcb619b1910d9d720fc845da085 1337586 munin_2.0.25.orig.tar.gz
+ 938156cdd25eb1d56bf994d1b51dc35395fa624c 63048 munin_2.0.25-2ubuntu0.16.04.3.debian.tar.xz
+Checksums-Sha256:
+ f2740cb62ea36ebd90b1533949bf161a4d3ce8b1127e4352f23a788bf8fcfd40 2577 munin_2.0.25-2ubuntu0.16.04.3.dsc
+ 6832bc5839d03639e4309178d9370697fc8a80a83d9b6653953f40161e949694 1337586 munin_2.0.25.orig.tar.gz
+ 33ec2d8f338bc1cbfbc04a1ea7de78bb986069978be7fa715d29d7bb0ac71c23 63048 munin_2.0.25-2ubuntu0.16.04.3.debian.tar.xz
+
+Package: openjpeg2
+Binary: libopenjp2-7-dev, libopenjp2-7, libopenjpip7, libopenjp3d7, libopenjp2-7-dbg, libopenjpip-dec-server, libopenjpip-viewer, libopenjpip-server, libopenjp3d-tools, libopenjp2-tools
+Version: 2.1.0-2.1ubuntu0.1
+Priority: extra
+Section: universe/misc
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PhotoTools Maintainers <pkg-phototools-devel@lists.alioth.debian.org>
+Build-Depends: cmake (>= 2.8.2), debhelper (>= 9), default-jdk, dh-apache2, help2man, javahelper (>= 0.37~), libcurl4-gnutls-dev | libcurl-ssl-dev, libfcgi-dev, liblcms2-dev | liblcms1-dev, libpng-dev, libtiff-dev, libxerces2-java, zlib1g-dev
+Architecture: any all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/o/openjpeg2
+Files:
+ cc6b77092e1796e5d7885cef89bd67ef 2858 openjpeg2_2.1.0-2.1ubuntu0.1.dsc
+ f6419fcc233df84f9a81eb36633c6db6 1789675 openjpeg2_2.1.0.orig.tar.gz
+ d8cb277704e8b0f4149a95cfef3c7719 19676 openjpeg2_2.1.0-2.1ubuntu0.1.debian.tar.xz
+Uploaders: Mathieu Malaterre <malat@debian.org>
+Homepage: http://www.openjpeg.org
+Vcs-Browser: http://anonscm.debian.org/viewvc/collab-maint/deb-maint/openjpeg2/trunk/
+Vcs-Svn: svn://anonscm.debian.org/collab-maint/deb-maint/openjpeg2/trunk
+Package-List:
+ libopenjp2-7 deb libs extra arch=any
+ libopenjp2-7-dbg deb debug extra arch=any
+ libopenjp2-7-dev deb libdevel extra arch=any
+ libopenjp2-tools deb graphics extra arch=any
+ libopenjp3d-tools deb graphics extra arch=any
+ libopenjp3d7 deb libs extra arch=any
+ libopenjpip-dec-server deb graphics extra arch=any
+ libopenjpip-server deb graphics extra arch=any
+ libopenjpip-viewer deb graphics extra arch=all
+ libopenjpip7 deb libs extra arch=any
+Checksums-Sha1:
+ c9c3fea3245011abc9ab2547a8aa9979fb406d5b 2858 openjpeg2_2.1.0-2.1ubuntu0.1.dsc
+ c2a255f6b51ca96dc85cd6e85c89d300018cb1cb 1789675 openjpeg2_2.1.0.orig.tar.gz
+ 16b5ca979bfec099a70fdfbd4e81f4b9cfd9575c 19676 openjpeg2_2.1.0-2.1ubuntu0.1.debian.tar.xz
+Checksums-Sha256:
+ 4f16ee5880e25219c23cf680231416888b298b9a6bac9839d1dfe56c8bf4c10d 2858 openjpeg2_2.1.0-2.1ubuntu0.1.dsc
+ 1232bb814fd88d8ed314c94f0bfebb03de8559583a33abbe8c64ef3fc0a8ff03 1789675 openjpeg2_2.1.0.orig.tar.gz
+ 24b4d1da847727e017fa96e2314081f271e3c523794972f1f18053938f4d3544 19676 openjpeg2_2.1.0-2.1ubuntu0.1.debian.tar.xz
+
+Package: picocom
+Binary: picocom
+Version: 1.7-2build0.16.04.1
+Priority: optional
+Section: universe/comm
+Maintainer: Matt Palmer <mpalmer@debian.org>
+Build-Depends: debhelper (>= 8.0.0)
+Architecture: any
+Standards-Version: 3.9.3
+Format: 3.0 (quilt)
+Directory: pool/universe/p/picocom
+Files:
+ ea8f306aea7662297b6b91d82799304d 1907 picocom_1.7-2build0.16.04.1.dsc
+ 8eaba1d31407e8408674d6e57af447ef 42857 picocom_1.7.orig.tar.gz
+ 52c0a5f2ee07537ec9a891cc13baeb90 6656 picocom_1.7-2build0.16.04.1.debian.tar.xz
+Uploaders: W. Martin Borgert <debacle@debian.org>
+Homepage: http://code.google.com/p/picocom/
+Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/picocom.git
+Vcs-Git: https://anonscm.debian.org/git/collab-maint/picocom.git
+Package-List:
+ picocom deb comm optional arch=any
+Checksums-Sha1:
+ 8d28471188f37bb0dc03564e9773ba7b8a65a5a0 1907 picocom_1.7-2build0.16.04.1.dsc
+ bde6e36af71db845913f9d61f28dee1b485218fa 42857 picocom_1.7.orig.tar.gz
+ f25c8891b90df460e6a35d5131a2757bb1b7d064 6656 picocom_1.7-2build0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ 6191dd1312bf5af2122ea08c9ab0073721d3a87e7f3c4d51040db4d52d84af3e 1907 picocom_1.7-2build0.16.04.1.dsc
+ d0f31c8f7a215a76922d30c81a52b9a2348c89e02a84935517002b3bc2c1129e 42857 picocom_1.7.orig.tar.gz
+ 4689fad3c9876c800e89ddd930a72ae846a51914393665bc80bab2b697217eed 6656 picocom_1.7-2build0.16.04.1.debian.tar.xz
+
+Package: pidgin
+Binary: libpurple0, pidgin, pidgin-data, pidgin-dev, pidgin-dbg, finch, finch-dev, libpurple-dev, libpurple-bin
+Version: 1:2.10.12-0ubuntu5.2
+Priority: optional
+Section: universe/net
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Ari Pollak <ari@debian.org>
+Build-Depends: cdbs (>= 0.4.53), debhelper (>= 7), intltool, libtool, dpkg-dev (>= 1.16.0), hardening-wrapper, libgtk2.0-dev (>= 2.10.0), libxss-dev, libmeanwhile-dev, libnss3-dev (>= 3.11.7), tcl-dev, tk-dev, libgstreamer1.0-dev, libgtkspell-dev, libltdl3-dev, libperl-dev, libstartup-notification0-dev, libzephyr-dev, libxml2-dev, libdbus-glib-1-dev, dbus, python3, libavahi-client-dev, libavahi-glib-dev, libxml-parser-perl, libncursesw5-dev, libsasl2-dev, xsltproc, doxygen, libfarstream-0.2-dev, libgstreamer-plugins-base1.0-dev, network-manager-dev (>= 0.9.0) [linux-any], libsqlite3-dev (>= 3.3), libidn11-dev, ca-certificates, dh-autoreconf, libmessaging-menu-dev, libunity-dev
+Architecture: any all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/p/pidgin
+Files:
+ 3f88bc7c11a620afc15ea2763ce705fd 2981 pidgin_2.10.12-0ubuntu5.2.dsc
+ 14e0f5cfb2ed065e4dc80391a806ac76 9837598 pidgin_2.10.12.orig.tar.bz2
+ 63a329242366fd2a61fef5320843d2de 86320 pidgin_2.10.12-0ubuntu5.2.debian.tar.xz
+Homepage: http://www.pidgin.im
+Vcs-Browser: http://git.debian.org/?p=collab-maint/pidgin.git
+Vcs-Git: git://git.debian.org/git/collab-maint/pidgin.git
+Package-List:
+ finch deb net optional arch=any
+ finch-dev deb devel optional arch=all
+ libpurple-bin deb net optional arch=all
+ libpurple-dev deb libdevel optional arch=any
+ libpurple0 deb net optional arch=any
+ pidgin deb net optional arch=any
+ pidgin-data deb net optional arch=all
+ pidgin-dbg deb debug extra arch=any
+ pidgin-dev deb devel optional arch=all
+Checksums-Sha1:
+ f4b41dc21541d5e78d761c006c18fc8eb9fe4cf6 2981 pidgin_2.10.12-0ubuntu5.2.dsc
+ 4550a447f35b869554c2d7d7bc1c7d84a01ce238 9837598 pidgin_2.10.12.orig.tar.bz2
+ db0c3731d0e00a75fb4096df50b874e593ce0a20 86320 pidgin_2.10.12-0ubuntu5.2.debian.tar.xz
+Checksums-Sha256:
+ 061507199a9b017e93b472f4cb254c7f977007d748ab3c23a81c8b1d08a7a307 2981 pidgin_2.10.12-0ubuntu5.2.dsc
+ 2c7523f0fefe89749c03b2b738ab9f7bd186da435be4762f1487eee31e77ffdd 9837598 pidgin_2.10.12.orig.tar.bz2
+ dfd8dfb4a66ccaf13dade2bb853fcb11e418e37b209e9dc31ca741b2aaf3b4b6 86320 pidgin_2.10.12-0ubuntu5.2.debian.tar.xz
+
+Package: pinba-engine-mysql
+Binary: pinba-engine-mysql, pinba-engine-mysql-5.7
+Version: 1.1.0-1ubuntu1.5
+Priority: extra
+Section: universe/misc
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Vincent Bernat <bernat@debian.org>
+Build-Depends: debhelper (>= 7.0.50~), dpkg-dev (>= 1.16.1~), dh-autoreconf, libjudy-dev, libevent-dev, libjemalloc-dev, libmysqlclient-dev, mysql-source-5.7, chrpath
+Architecture: any all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/p/pinba-engine-mysql
+Files:
+ 148664241d2f0617b2fa6b7ebb8f896e 2252 pinba-engine-mysql_1.1.0-1ubuntu1.5.dsc
+ 2f406e3d499ae58309a64d3135cdee13 428601 pinba-engine-mysql_1.1.0.orig.tar.gz
+ 95b97421672a0029c204516c5829d325 6032 pinba-engine-mysql_1.1.0-1ubuntu1.5.debian.tar.xz
+Homepage: http://pinba.org/
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/pinba-engine-mysql.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/pinba-engine-mysql.git
+Package-List:
+ pinba-engine-mysql deb database extra arch=all
+ pinba-engine-mysql-5.7 deb database extra arch=any
+Checksums-Sha1:
+ 8b4204ed53f8027c06d1770798aa52a2dad679ed 2252 pinba-engine-mysql_1.1.0-1ubuntu1.5.dsc
+ d0e20e6b1e15c5cbe90a84116c0bd7929c62a5e9 428601 pinba-engine-mysql_1.1.0.orig.tar.gz
+ b3d8738bf0b4460dcb4f71d987bfaf49d5eeaaac 6032 pinba-engine-mysql_1.1.0-1ubuntu1.5.debian.tar.xz
+Checksums-Sha256:
+ 4f85d9613a2f41216e2b7240a6eac2dbe88e21a45998b6d2c034ea5cbeb2cd64 2252 pinba-engine-mysql_1.1.0-1ubuntu1.5.dsc
+ b47e3c192e4746c150a5907944f95cebd952fa42dd888f1684c1f6ca6664ab47 428601 pinba-engine-mysql_1.1.0.orig.tar.gz
+ 05969cab9461545a594be2c6034441efe2b72251b2f81c83a5499db5aa37faa4 6032 pinba-engine-mysql_1.1.0-1ubuntu1.5.debian.tar.xz
+
+Package: python-bottle
+Binary: python-bottle, python3-bottle, python-bottle-doc
+Version: 0.12.7-1+deb8u1build0.16.04.1
+Priority: optional
+Section: universe/python
+Maintainer: David Paleino <dapal@debian.org>
+Build-Depends: debhelper (>= 9~)
+Build-Depends-Indep: python-all (>= 2.6.6-3~), python3-all, python-doc, dh-python, python-sphinx, python-cherrypy, python-eventlet, python-flup, python-gevent, python-jinja2, python-mako, python-paste, python-simpletal, python-tornado, python-tox, python-twisted, python-werkzeug, gunicorn
+Architecture: all
+Standards-Version: 3.9.5
+Format: 3.0 (quilt)
+Directory: pool/universe/p/python-bottle
+Files:
+ 1fdd83b14b275719368d6ed0a80a18bd 2432 python-bottle_0.12.7-1+deb8u1build0.16.04.1.dsc
+ bb2a4883adf4c5cd3dbd33a20b57480a 286656 python-bottle_0.12.7.orig.tar.gz
+ ac4a6baddaa83f7c3a4f5748644d7281 7628 python-bottle_0.12.7-1+deb8u1build0.16.04.1.debian.tar.xz
+Uploaders: Federico Ceratto <federico.ceratto@gmail.com>
+Homepage: http://bottlepy.org
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/python-bottle.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/python-bottle.git
+Package-List:
+ python-bottle deb python optional arch=all
+ python-bottle-doc deb doc optional arch=all
+ python3-bottle deb python optional arch=all
+Checksums-Sha1:
+ 395439dd550d639d4b2ec5beea0353d76f0b6fa8 2432 python-bottle_0.12.7-1+deb8u1build0.16.04.1.dsc
+ 8df12c518b8978dfe803eb2f448ff68e3f6160ac 286656 python-bottle_0.12.7.orig.tar.gz
+ d3d3a5e616fafbd1b61f27492eacd8519de8faab 7628 python-bottle_0.12.7-1+deb8u1build0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ 96a20760648ba097e0b03992f4413dcfa372bd869d9d00ac2d19571d68b975ce 2432 python-bottle_0.12.7-1+deb8u1build0.16.04.1.dsc
+ 4a16aaa6601e27f91f2d35d73929c7093fc475a31be63ea94a082c56ca8ebc76 286656 python-bottle_0.12.7.orig.tar.gz
+ 252bb3f439e444020f3b8dbc38efaa0b1264abd00a99b2c91dd3d572d7f01c3c 7628 python-bottle_0.12.7-1+deb8u1build0.16.04.1.debian.tar.xz
+
+Package: squirrelmail
+Binary: squirrelmail
+Version: 2:1.4.23~svn20120406-2+deb8u1ubuntu0.16.04.1
+Priority: optional
+Section: universe/web
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Jeroen van Wolffelaar <jeroen@wolffelaar.nl>
+Build-Depends: debhelper (>= 7)
+Architecture: all
+Standards-Version: 3.9.3
+Format: 3.0 (quilt)
+Directory: pool/universe/s/squirrelmail
+Files:
+ 138705647c7fa64a283f74cabbd13bb1 2156 squirrelmail_1.4.23~svn20120406-2+deb8u1ubuntu0.16.04.1.dsc
+ 19446dea9c11a4130ac34f6004d64e0f 662295 squirrelmail_1.4.23~svn20120406.orig.tar.gz
+ 13e880aeab3817d3aa6c4653460eb3e0 36348 squirrelmail_1.4.23~svn20120406-2+deb8u1ubuntu0.16.04.1.debian.tar.xz
+Uploaders: Thijs Kinkhorst <thijs@debian.org>
+Homepage: http://www.squirrelmail.org/
+Vcs-Browser: http://svn.wolffelaar.nl/wsvn/squirrelmail/trunk
+Vcs-Svn: http://svn.wolffelaar.nl/squirrelmail/trunk
+Package-List:
+ squirrelmail deb web optional arch=all
+Checksums-Sha1:
+ 67a3c1c139015dc74351d0ab31b7a2f41d100111 2156 squirrelmail_1.4.23~svn20120406-2+deb8u1ubuntu0.16.04.1.dsc
+ f895e7977300dd404babc616fa0f6c572a49e197 662295 squirrelmail_1.4.23~svn20120406.orig.tar.gz
+ bc5523c9868cf48dda476d6e3a7122ac7ebc65c4 36348 squirrelmail_1.4.23~svn20120406-2+deb8u1ubuntu0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ 5bfee6fe47d595cf89f18a38155d1e1906ba02a2c435a3ec34fa7de447de937b 2156 squirrelmail_1.4.23~svn20120406-2+deb8u1ubuntu0.16.04.1.dsc
+ d28afee95f2341d80bcb74911972b7cd8f5d22c7dc3cbe983cf2002e81aa1337 662295 squirrelmail_1.4.23~svn20120406.orig.tar.gz
+ 6fc00ce581f40443b09f58456be742f258da2891d8c37c675ffc9b5d2bb6b002 36348 squirrelmail_1.4.23~svn20120406-2+deb8u1ubuntu0.16.04.1.debian.tar.xz
+
+Package: svgsalamander
+Binary: libsvgsalamander-java, libsvgsalamander-java-doc
+Version: 0~svn95-1+deb8u1build0.16.04.1
+Priority: extra
+Section: universe/java
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 7.0.50~), javahelper (>= 0.32~), maven-repo-helper
+Build-Depends-Indep: default-jdk, default-jdk-doc, ant, ant-optional, ant-doc, javacc
+Architecture: all
+Standards-Version: 3.9.2
+Format: 3.0 (quilt)
+Directory: pool/universe/s/svgsalamander
+Files:
+ e735f5bd7b165cb17bc570a0b1baee00 2285 svgsalamander_0~svn95-1+deb8u1build0.16.04.1.dsc
+ ea543cb5a9a9d23d35cd9707bef518ab 989743 svgsalamander_0~svn95.orig.tar.gz
+ b3628d8f11210800fe09ebf5d9de6730 6428 svgsalamander_0~svn95-1+deb8u1build0.16.04.1.debian.tar.xz
+Uploaders: Nicolas Dandrimont <nicolas.dandrimont@crans.org>
+Homepage: http://svgsalamander.java.net/
+Vcs-Browser: http://git.debian.org/?p=pkg-java/svgsalamander.git;a=summary
+Vcs-Git: git://git.debian.org/pkg-java/svgsalamander.git
+Package-List:
+ libsvgsalamander-java deb java extra arch=all
+ libsvgsalamander-java-doc deb doc extra arch=all
+Checksums-Sha1:
+ e4d838a44227ac9a17de78b8ab27030e5bdc57b8 2285 svgsalamander_0~svn95-1+deb8u1build0.16.04.1.dsc
+ 67e9342d85b65d607c48e5ad389141d68ea096b2 989743 svgsalamander_0~svn95.orig.tar.gz
+ 4bdc7137c12320d36c404261d509d6d65cee3fba 6428 svgsalamander_0~svn95-1+deb8u1build0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ e8567b699aa6da0cf82c4d976ea1effe8b0503e559ca2af2260c44148030afe5 2285 svgsalamander_0~svn95-1+deb8u1build0.16.04.1.dsc
+ 97a6b7dd30322ed6938680a9c5746e658d17e02f6bafe1b3a4e2f48f0d2402bd 989743 svgsalamander_0~svn95.orig.tar.gz
+ f90202bf699c15204b6fba1102a8036a2ffe4c11cca224afe458aca8a96be72f 6428 svgsalamander_0~svn95-1+deb8u1build0.16.04.1.debian.tar.xz
+
+Package: terminology
+Binary: terminology, terminology-data
+Version: 0.7.0-1+deb8u1build0.16.04.1
+Priority: optional
+Section: universe/misc
+Maintainer: Anthony F McInerney <afm404@gmail.com>
+Build-Depends: debhelper (>= 9), dh-autoreconf, libecore-dev (>= 1.8.6), libedje-dev (>= 1.8.6), libeet-dev (>= 1.8.6), libeeze-dev (>= 1.8.6), libefreet-dev (>= 1.8.6), libeina-dev (>= 1.8.6), libeio-dev (>= 1.8.6), libembryo-dev (>= 1.8.6), libemotion-dev (>= 1.8.6), libethumb-dev (>= 1.8.6), libevas-dev (>= 1.8.6), libelementary-dev (>= 1.8.5), liblz4-dev
+Architecture: any all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/t/terminology
+Files:
+ 5579eb77001e4591661bb6abb6761363 2334 terminology_0.7.0-1+deb8u1build0.16.04.1.dsc
+ e68d889f343886e11a8e4f4337486452 3624201 terminology_0.7.0.orig.tar.gz
+ 1d0a84664c42d24e890bb7923c786617 10896 terminology_0.7.0-1+deb8u1build0.16.04.1.debian.tar.xz
+Homepage: http://enlightenment.org/p.php?p=about/terminology
+Vcs-Browser: http://github.com/bofh80/debian-terminology
+Vcs-Git: http://github.com/bofh80/debian-terminology
+Package-List:
+ terminology deb x11 optional arch=any
+ terminology-data deb x11 optional arch=all
+Checksums-Sha1:
+ 22b98eda7449aabcbe9be2ee17d282841b1d5204 2334 terminology_0.7.0-1+deb8u1build0.16.04.1.dsc
+ ed695dc07b54149145779fe958a5c00cf17f4051 3624201 terminology_0.7.0.orig.tar.gz
+ 4aa6a26869005cdcf35f1b245afb346e0369a124 10896 terminology_0.7.0-1+deb8u1build0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ db7be0e26bddae8a59d84f7a85532ce171b4047be1cf22a790d284a4df6fc777 2334 terminology_0.7.0-1+deb8u1build0.16.04.1.dsc
+ 453f49911b090fffc1e5fe695022bd1c51325dde83b8cd3cca22899c604344f4 3624201 terminology_0.7.0.orig.tar.gz
+ 99813ccf1ad4b97ad1bdce3c5df58f30fdb6a13fb81ea6cc51ddd1669e99600e 10896 terminology_0.7.0-1+deb8u1build0.16.04.1.debian.tar.xz
+
+Package: tnef
+Binary: tnef
+Version: 1.4.9-1+deb8u2build0.16.04.1
+Priority: optional
+Section: universe/text
+Maintainer: Kevin Coyner <kcoyner@debian.org>
+Build-Depends: debhelper (>= 8), autotools-dev, quilt
+Architecture: any
+Standards-Version: 3.9.3
+Format: 3.0 (quilt)
+Directory: pool/universe/t/tnef
+Files:
+ 0130f61a4e20b19bbd4997905fe8fbe4 1767 tnef_1.4.9-1+deb8u2build0.16.04.1.dsc
+ 83a3a8fe0c15c9bbe2a8dae74c46b761 3952575 tnef_1.4.9.orig.tar.gz
+ 55a9e9b114adab9b667706fbd4f62898 6908 tnef_1.4.9-1+deb8u2build0.16.04.1.debian.tar.xz
+Homepage: http://sourceforge.net/projects/tnef
+Package-List:
+ tnef deb text optional arch=any
+Checksums-Sha1:
+ d60ca054795d12775e6d93282931ad7d0dc153fe 1767 tnef_1.4.9-1+deb8u2build0.16.04.1.dsc
+ d42ccbe3d41e797fb4133f2e01120680101e8782 3952575 tnef_1.4.9.orig.tar.gz
+ f20796994a3f0380e0053a2de9bb77cab31bc5e5 6908 tnef_1.4.9-1+deb8u2build0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ 8f5f32864aed3ee53ff1125119fa44b7e075f25b64e483e3a0d835a686402454 1767 tnef_1.4.9-1+deb8u2build0.16.04.1.dsc
+ c4d64ec48f79681a11ee45b38c6b2177ce2d0a8c8f99733e90d462bd27eee6af 3952575 tnef_1.4.9.orig.tar.gz
+ 5a5b12f20d3dc2cbbdbe4a8ed313b8f3a29a4f423c5e4f8a6539cd87e329de02 6908 tnef_1.4.9-1+deb8u2build0.16.04.1.debian.tar.xz
+
+Package: tomcat7
+Binary: tomcat7-common, tomcat7, tomcat7-user, libtomcat7-java, libservlet3.0-java, libservlet3.0-java-doc, tomcat7-admin, tomcat7-examples, tomcat7-docs
+Version: 7.0.68-1ubuntu0.1
+Priority: optional
+Section: universe/java
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Build-Depends: default-jdk, ant-optional, debhelper (>= 9), po-debconf, libhamcrest-java (>= 1.3)
+Build-Depends-Indep: maven-repo-helper, libcglib3-java, libeasymock-java (>= 3.0), libecj-java (>= 3.10.1~), libobjenesis-java, javahelper, junit4, libjstl1.1-java, libjakarta-taglibs-standard-java, lsb-release
+Architecture: all
+Standards-Version: 3.9.7
+Format: 3.0 (quilt)
+Directory: pool/universe/t/tomcat7
+Files:
+ 1a7b258578c5925cc492e4f228d82594 2924 tomcat7_7.0.68-1ubuntu0.1.dsc
+ 9cc7edd7e764b1c6a1ce23ec1591ca20 3012636 tomcat7_7.0.68.orig.tar.xz
+ 71c17aebc1e52548c5df3bc9547d4a63 67404 tomcat7_7.0.68-1ubuntu0.1.debian.tar.xz
+Uploaders: James Page <james.page@ubuntu.com>, Miguel Landaeta <nomadium@debian.org>, tony mancill <tmancill@debian.org>, Jakub Adam <jakub.adam@ktknet.cz>, Emmanuel Bourg <ebourg@apache.org>
+Homepage: http://tomcat.apache.org
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-java/tomcat7.git
+Vcs-Git: https://anonscm.debian.org/git/pkg-java/tomcat7.git
+Package-List:
+ libservlet3.0-java deb java optional arch=all
+ libservlet3.0-java-doc deb doc optional arch=all
+ libtomcat7-java deb java optional arch=all
+ tomcat7 deb java optional arch=all
+ tomcat7-admin deb java optional arch=all
+ tomcat7-common deb java optional arch=all
+ tomcat7-docs deb doc optional arch=all
+ tomcat7-examples deb java optional arch=all
+ tomcat7-user deb java optional arch=all
+Checksums-Sha1:
+ cdd914c21e0f066d9758d9e97cd988ed7fea6860 2924 tomcat7_7.0.68-1ubuntu0.1.dsc
+ 0396422ba30ac092c4cc12073ca4d78c8ab668ab 3012636 tomcat7_7.0.68.orig.tar.xz
+ 99a54d94be7a1dd0421be334ee546e7e146424f5 67404 tomcat7_7.0.68-1ubuntu0.1.debian.tar.xz
+Checksums-Sha256:
+ f563a65fcf82459d60c4c747a855675945f8f67bc76415930bac7ef29b39f1b0 2924 tomcat7_7.0.68-1ubuntu0.1.dsc
+ 5dc22e819aae75c87155ae73c71c3b0131ed8d37fd7c16649807b23ba69b860e 3012636 tomcat7_7.0.68.orig.tar.xz
+ 8ba8a1d21f424a6eb7909ff2b67d810c18ffe1523d3f5de4c2cdea2793a7c977 67404 tomcat7_7.0.68-1ubuntu0.1.debian.tar.xz
+
+Package: unadf
+Binary: unadf
+Version: 0.7.11a-3+deb7u1~build0.16.04.1
+Priority: optional
+Section: universe/utils
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Build-Depends: debhelper (>= 8)
+Architecture: any
+Standards-Version: 3.9.3
+Format: 3.0 (quilt)
+Directory: pool/universe/u/unadf
+Files:
+ 48d1cc7c23adcef92aac841fc819d78f 1783 unadf_0.7.11a-3+deb7u1~build0.16.04.1.dsc
+ 63c21eeb61e1473d8dd214e0b39cb819 209458 unadf_0.7.11a.orig.tar.gz
+ 8dddf6b62b547d10a53f2518eed4173a 19052 unadf_0.7.11a-3+deb7u1~build0.16.04.1.debian.tar.xz
+Homepage: http://lclevy.free.fr/adflib/unadf.html
+Package-List:
+ unadf deb utils optional arch=any
+Checksums-Sha1:
+ 2042543162af86f92159fbb2db154716f86bfa3b 1783 unadf_0.7.11a-3+deb7u1~build0.16.04.1.dsc
+ 63c05f97302ff67f5d7ff2d9e33f9a66196f9578 209458 unadf_0.7.11a.orig.tar.gz
+ d96ce867b94d5033338d619b449d971ca09d322d 19052 unadf_0.7.11a-3+deb7u1~build0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ d150f75179193194b271b0cc3cabfbb6fa55f9852db9dd896539b6f0174bcd8f 1783 unadf_0.7.11a-3+deb7u1~build0.16.04.1.dsc
+ fa9e0e34b1b0f4f4287905a3d485e3bba498451af98d6c12be87ab3a2b436471 209458 unadf_0.7.11a.orig.tar.gz
+ 48dde62e60e95d0c2b82ba90c45decfeeff70e8dadd766038303b637a45c8e30 19052 unadf_0.7.11a-3+deb7u1~build0.16.04.1.debian.tar.xz
+
+Package: viewvc
+Binary: viewvc, viewvc-query
+Version: 1.1.22-1+deb8u1build0.16.04.1
+Priority: optional
+Section: universe/devel
+Maintainer: David Martínez Moreno <ender@debian.org>
+Build-Depends: debhelper (>= 9), quilt
+Build-Depends-Indep: python, python-subversion, dh-python
+Architecture: all
+Standards-Version: 3.9.5
+Format: 3.0 (quilt)
+Directory: pool/universe/v/viewvc
+Files:
+ 8bea3e234a10cfbc3cf0d6fbd6ab3cdb 2023 viewvc_1.1.22-1+deb8u1build0.16.04.1.dsc
+ 6d0a4dcf572958463ca66e0fcc2764c9 616830 viewvc_1.1.22.orig.tar.gz
+ 24115f2a1e479d7e9ac74e0affd604ac 19660 viewvc_1.1.22-1+deb8u1build0.16.04.1.debian.tar.xz
+Homepage: http://www.viewvc.org/
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/viewvc.git;a=summary
+Vcs-Git: git://anonscm.debian.org/collab-maint/viewvc.git
+Package-List:
+ viewvc deb vcs optional arch=all
+ viewvc-query deb vcs optional arch=all
+Checksums-Sha1:
+ 162a439f9f3ce94013672c7a21df0290641546dd 2023 viewvc_1.1.22-1+deb8u1build0.16.04.1.dsc
+ e169b2cf9ae4674f9b4d446e92234e0f7075ded6 616830 viewvc_1.1.22.orig.tar.gz
+ 1d2fa214bdc48d3681e35118f520102654c177f3 19660 viewvc_1.1.22-1+deb8u1build0.16.04.1.debian.tar.xz
+Checksums-Sha256:
+ e23a9dbccb7ee2fb6c9672d9d1003da4f2a53355c9c44333ba50ad759526dcf2 2023 viewvc_1.1.22-1+deb8u1build0.16.04.1.dsc
+ e41fde0088b3f4bad5cbe29cc0cfebf30c8dbe888bc1e818910d7a47174b59fa 616830 viewvc_1.1.22.orig.tar.gz
+ 29318365086bddd8ec5d91182b6e784a8e984858e01136bca18b31525b7f7100 19660 viewvc_1.1.22-1+deb8u1build0.16.04.1.debian.tar.xz
+
+Package: w3m
+Binary: w3m, w3m-img
+Version: 0.5.3-26ubuntu0.1
+Priority: optional
+Section: universe/text
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Tatsuya Kinoshita <tats@debian.org>
+Build-Depends: libgc-dev, libncurses5-dev, libgpmg1-dev [linux-any], zlib1g-dev, libssl-dev, debhelper (>= 7), gawk | awk, libimlib2-dev, pkg-config, autotools-dev (>= 20100122)
+Architecture: any
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/universe/w/w3m
+Files:
+ 4227cf3d6d441631cf1155a4daf04e0a 2143 w3m_0.5.3-26ubuntu0.1.dsc
+ 1b845a983a50b8dec0169ac48479eacc 2202328 w3m_0.5.3.orig.tar.gz
+ ce0f84ca7423e83a6310ac38be083c8b 139164 w3m_0.5.3-26ubuntu0.1.debian.tar.xz
+Uploaders: HIGUCHI Daisuke (VDR dai) <dai@debian.org>
+Homepage: http://sourceforge.net/projects/w3m/
+Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/w3m.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/w3m.git
+Package-List:
+ w3m deb web optional arch=any
+ w3m-img deb web optional arch=any
+Checksums-Sha1:
+ 669fa6d51c43d323dcb9d527c53c5ab1da97e684 2143 w3m_0.5.3-26ubuntu0.1.dsc
+ 444b6c8cf7094ee95f8e9de96b37f814b9d83237 2202328 w3m_0.5.3.orig.tar.gz
+ 1c59c6363876d31bbf965823694d9e2a7a13830d 139164 w3m_0.5.3-26ubuntu0.1.debian.tar.xz
+Checksums-Sha256:
+ 1b3ca688ecb28a30c85e3072b67ea14b286a1eeef45556b95e4ee5fcfdf533d7 2143 w3m_0.5.3-26ubuntu0.1.dsc
+ e994d263f2fd2c22febfbe45103526e00145a7674a0fda79c822b97c2770a9e3 2202328 w3m_0.5.3.orig.tar.gz
+ 841b1eefd4f1c2d72af48d32963e49c2cd84e1e8f58a1e1901f6835eb5171e67 139164 w3m_0.5.3-26ubuntu0.1.debian.tar.xz
+
+Package: weechat
+Binary: weechat, weechat-curses, weechat-core, weechat-plugins, weechat-doc, weechat-dev, weechat-dbg
+Version: 1.4-2ubuntu0.1
+Priority: optional
+Section: universe/net
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Emmanuel Bouthenot <kolter@debian.org>
+Build-Depends: asciidoc (>= 8.5), source-highlight, xsltproc, docbook-xsl, docbook-xml, debhelper (>= 9), dh-exec, cmake, pkg-config, libncursesw5-dev, gem2deb, libperl-dev, python-dev, libaspell-dev, liblua5.1-0-dev, tcl8.6-dev, guile-2.0-dev, libv8-dev [amd64 armel armhf hurd-i386 i386 kfreebsd-amd64 kfreebsd-i386 mips mipsel], libcurl4-gnutls-dev, libgcrypt20-dev, libgnutls28-dev, zlib1g-dev
+Architecture: any all
+Standards-Version: 3.9.7
+Format: 3.0 (quilt)
+Directory: pool/universe/w/weechat
+Files:
+ 2f8514076e20fcf0166300186d8a58aa 2270 weechat_1.4-2ubuntu0.1.dsc
+ 24e23908fc6fb4b55b86ead2c03aa8b3 2464362 weechat_1.4.orig.tar.bz2
+ 3bfe9f2e3bb79f3e1c7b1899d66e0478 15896 weechat_1.4-2ubuntu0.1.debian.tar.xz
+Homepage: https://weechat.org/
+Vcs-Browser: https://anonscm.debian.org/git/users/kolter/weechat.git
+Vcs-Git: https://anonscm.debian.org/git/users/kolter/weechat.git
+Package-List:
+ weechat deb net optional arch=all
+ weechat-core deb net optional arch=any
+ weechat-curses deb net optional arch=any
+ weechat-dbg deb debug extra arch=any
+ weechat-dev deb devel optional arch=all
+ weechat-doc deb doc optional arch=all
+ weechat-plugins deb net optional arch=any
+Checksums-Sha1:
+ 9d99610adfb1d689c582c36ff6a6e084e18264d1 2270 weechat_1.4-2ubuntu0.1.dsc
+ 1245d1bf1cbcb37bfa586299850e37f1a23aee98 2464362 weechat_1.4.orig.tar.bz2
+ 2cd72d6354568c33ffd2839ff55daa932786d31f 15896 weechat_1.4-2ubuntu0.1.debian.tar.xz
+Checksums-Sha256:
+ e1b7ed1d5c4cd1540570cd6c09522307dd741a22a78d58ce7916fb753fa0427b 2270 weechat_1.4-2ubuntu0.1.dsc
+ e06d9949ccececdd9692c95c41304c2f7fe9ec47b5eedd0d0a8529f6a3c1ddd4 2464362 weechat_1.4.orig.tar.bz2
+ a9d8a2ef599556a9d6fe6ac572ea04b0e046b56afa7c1b297bb4b1c42b513bf5 15896 weechat_1.4-2ubuntu0.1.debian.tar.xz
+
+Package: wireshark
+Binary: wireshark-common, wireshark, wireshark-qt, wireshark-gtk, tshark, wireshark-dev, wireshark-doc, libwireshark8, libwsutil7, libwsutil-dev, libwscodecs1, libwireshark-data, libwireshark-dev, libwiretap6, libwiretap-dev
+Version: 2.2.6+g32dac6a-2ubuntu0.16.04
+Priority: optional
+Section: universe/net
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Balint Reczey <balint@balintreczey.hu>
+Build-Depends: libgtk-3-dev, qtbase5-dev, qtbase5-dev-tools, qttools5-dev, qttools5-dev-tools, qtmultimedia5-dev, libqt5svg5-dev, libpcap0.8-dev, flex, libz-dev, debhelper (>= 9), po-debconf, libtool, python (>= 2.6.6-3~), python-ply, libc-ares-dev, xsltproc, dh-python, docbook-xsl (>= 1.64.1.0-0), docbook-xml, libxml2-utils, libpcre3-dev, libcap2-dev [linux-any] | libcap-dev (>= 2.17) [linux-any], lsb-release, bison, libgnutls28-dev (>= 3.2.14-1~), libgcrypt-dev, portaudio19-dev, libkrb5-dev, liblua5.2-dev, libsmi2-dev, libgeoip-dev, dpkg-dev (>= 1.16.1~), imagemagick, xdg-utils, libnl-genl-3-dev [linux-any], libnl-route-3-dev [linux-any], asciidoc, cmake (>= 2.8.8), w3m, libsbc-dev, libnghttp2-dev, libssh-gcrypt-dev
+Build-Conflicts: libsnmp-dev, libsnmp4.2-dev
+Architecture: any all
+Standards-Version: 3.9.8
+Format: 3.0 (quilt)
+Directory: pool/universe/w/wireshark
+Files:
+ 74bc819d0d854bcd9e857e739f67f71e 3623 wireshark_2.2.6+g32dac6a-2ubuntu0.16.04.dsc
+ 956a3be59dd9f55d3d99ba958954b4fa 27224688 wireshark_2.2.6+g32dac6a.orig.tar.xz
+ 2c9deb62222316655ddb853e97adc050 64852 wireshark_2.2.6+g32dac6a-2ubuntu0.16.04.debian.tar.xz
+Homepage: http://www.wireshark.org/
+Vcs-Browser: http://anonscm.debian.org/viewvc/collab-maint/ext-maint/wireshark/trunk/
+Vcs-Svn: svn://anonscm.debian.org/collab-maint/ext-maint/wireshark/trunk
+Testsuite: autopkgtest
+Package-List:
+ libwireshark-data deb libs optional arch=all
+ libwireshark-dev deb libdevel optional arch=any
+ libwireshark8 deb libs optional arch=any
+ libwiretap-dev deb libdevel optional arch=any
+ libwiretap6 deb libs optional arch=any
+ libwscodecs1 deb libs optional arch=any
+ libwsutil-dev deb libdevel optional arch=any
+ libwsutil7 deb libs optional arch=any
+ tshark deb net optional arch=any
+ wireshark deb net optional arch=any
+ wireshark-common deb net optional arch=any
+ wireshark-dev deb devel optional arch=any
+ wireshark-doc deb doc extra arch=all
+ wireshark-gtk deb net optional arch=any
+ wireshark-qt deb net optional arch=any
+Checksums-Sha1:
+ 83b61d86447c395199f55ffa76330e18fafaf9fa 3623 wireshark_2.2.6+g32dac6a-2ubuntu0.16.04.dsc
+ e4b19ba98cb5f402bf18031e9e8f44cef2a7895f 27224688 wireshark_2.2.6+g32dac6a.orig.tar.xz
+ 174aece2144b69f252312e842d4a7dc496d7cf6a 64852 wireshark_2.2.6+g32dac6a-2ubuntu0.16.04.debian.tar.xz
+Checksums-Sha256:
+ 1325fe1c4d1f6c1437a7b4a9d55b39e8010d95f424f2031b3e361a6cf58ea73d 3623 wireshark_2.2.6+g32dac6a-2ubuntu0.16.04.dsc
+ abc662f07da7505c4a36fd5d682329096a0cdf1d11125f66baa39a7e3a23d0e8 27224688 wireshark_2.2.6+g32dac6a.orig.tar.xz
+ 8c513042339e9a20dd63498fab6720f0e3d96ef3212d58d579e20b7978ee83c5 64852 wireshark_2.2.6+g32dac6a-2ubuntu0.16.04.debian.tar.xz
+

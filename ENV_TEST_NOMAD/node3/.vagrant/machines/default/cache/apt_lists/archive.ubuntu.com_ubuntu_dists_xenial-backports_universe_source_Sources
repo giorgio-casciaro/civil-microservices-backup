@@ -30,7 +30,7 @@ Checksums-Sha256:
 
 Package: cockpit
 Binary: cockpit, cockpit-bridge, cockpit-dashboard, cockpit-doc, cockpit-docker, cockpit-machines, cockpit-networkmanager, cockpit-pcp, cockpit-storaged, cockpit-system, cockpit-tests, cockpit-ws
-Version: 141-2~ubuntu16.04.1
+Version: 142-1~ubuntu16.04.1
 Priority: optional
 Section: universe/admin
 Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
@@ -40,9 +40,9 @@ Standards-Version: 3.9.8
 Format: 3.0 (quilt)
 Directory: pool/universe/c/cockpit
 Files:
- c9eed1ca5437a928734a8160d6c8fa07 3112 cockpit_141-2~ubuntu16.04.1.dsc
- 46f55b5469af1dc0b4d93e26afe69f0f 13089320 cockpit_141.orig.tar.xz
- 299ced9f527deda1004ce21e68c18d6d 10000 cockpit_141-2~ubuntu16.04.1.debian.tar.xz
+ 25a356a138326e49d2c24e5f23254597 3109 cockpit_142-1~ubuntu16.04.1.dsc
+ 475d45abaa7944d4e09529423cb77acb 10038268 cockpit_142.orig.tar.xz
+ 6447020a2c8b86aa6c1665d34e861658 9904 cockpit_142-1~ubuntu16.04.1.debian.tar.xz
 Uploaders: Michael Biebl <biebl@debian.org>, Martin Pitt <mpitt@debian.org>,
 Homepage: http://cockpit-project.org/
 Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/cockpit.git
@@ -63,13 +63,13 @@ Package-List:
  cockpit-tests deb admin optional arch=any
  cockpit-ws deb admin optional arch=any
 Checksums-Sha1:
- c5556da4b36a60cd3861ae9262f1f436cd45ca39 3112 cockpit_141-2~ubuntu16.04.1.dsc
- 6a7f49e99e9612bb8da5cf8aaf44913c5caa6978 13089320 cockpit_141.orig.tar.xz
- d8a8f322ee6330c8bffe070d442c4adee0afce26 10000 cockpit_141-2~ubuntu16.04.1.debian.tar.xz
+ 2f54378f50381d2669cc3f6302983ad483cd492e 3109 cockpit_142-1~ubuntu16.04.1.dsc
+ 2be1d5a44180ca76d8ca62a9ca4d71c954203291 10038268 cockpit_142.orig.tar.xz
+ 3538824320b356a09b51c720fb1a7ff29850816c 9904 cockpit_142-1~ubuntu16.04.1.debian.tar.xz
 Checksums-Sha256:
- 576681ad0fdcf644269a3deb51aef748aa3ea7bec1af53827c554cc9c8dd9666 3112 cockpit_141-2~ubuntu16.04.1.dsc
- 9dbedbeaaa36ea5e41299e46c58cadc86d5ca349ba748c4a476c639a7b11c8ab 13089320 cockpit_141.orig.tar.xz
- c0c51c78f62eb5c8873e2b424a0dda9bb722d0660f986d89f946747600b6d31d 10000 cockpit_141-2~ubuntu16.04.1.debian.tar.xz
+ bbe76012e6f30efbd03a7dff47ee7a9a658b31e2a1bfde76b2e88062ee5f917c 3109 cockpit_142-1~ubuntu16.04.1.dsc
+ 34728ce97836854de0c51c8244e95a4db695454a6326b72b0f1a033406399659 10038268 cockpit_142.orig.tar.xz
+ 5491cfbf024a0d3dd26a7d0fa75a5e4b53e41e303ba84ed073a23aab83af9d22 9904 cockpit_142-1~ubuntu16.04.1.debian.tar.xz
 
 Package: ldc
 Binary: ldc, libphobos2-ldc-dev, libphobos2-ldc71

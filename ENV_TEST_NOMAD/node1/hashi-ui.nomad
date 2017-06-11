@@ -1,37 +1,14 @@
 job "hashi-ui" {
-  # The "region" parameter specifies the region in which to execute the job. If
-  # omitted, this inherits the default region name of "global".
-  # region = "global"
-
-  # The "datacenters" parameter specifies the list of datacenters which should
-  # be considered when placing this task. This must be provided.
   datacenters = ["dc1"]
-
   type = "service"
 
-  # constraint {
-  #   attribute = "${attr.kernel.name}"
-  #   value     = "linux"
-  # }
-
-  constraint {
-    operator  = "distinct_hosts"
-    value     = "true"
-  }
-
   update {
-    # The "stagger" parameter specifies to do rolling updates of this job every
-    # 10 seconds.
     stagger = "10s"
-
-    # The "max_parallel" parameter specifies the maximum number of updates to
-    # perform in parallel. In this case, this specifies to update a single task
-    # at a time.
     max_parallel = 1
   }
 
   group "hashi-ui" {
-    count = 3
+    count = 1
 
     restart {
       attempts = 10
@@ -52,7 +29,10 @@ job "hashi-ui" {
 
       config {
         image = "jippi/hashi-ui:latest"
-        network_mode = "host"
+        #network_mode = "host"
+        port_map {
+         http = 3000
+       }
         interactive = true
       }
 
@@ -66,20 +46,13 @@ job "hashi-ui" {
 
       }
 
-      # artifact {
-      #   source = "http://foo.com/artifact.tar.gz"
-      #   options {
-      #     checksum = "md5:c4aa853ad2215426eb7d70a21922e794"
-      #   }
-      # }
-
       resources {
         cpu    = 500 # 500 MHz
         memory = 256 # 256MB
         network {
           mbits = 10
           port "http" {
-            static = 3000
+            # static = 3000
           }
         }
       }
