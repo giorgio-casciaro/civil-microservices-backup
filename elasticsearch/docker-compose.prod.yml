@@ -5,7 +5,7 @@ services:
      image: giorgiocasciaro/alpine-es5-cluster:v1
      command: bash -c "echo \"$$ELASTICSEARCH_CONF\" > /opt/elasticsearch/config/elasticsearch.yml ; /opt/elasticsearch/bin/elasticsearch "
      networks:
-       - elasticsearch
+       - aerospike
      environment:
        ELASTICSEARCH_CONF: |-
           cluster.name: elasticsearch
@@ -33,5 +33,5 @@ services:
 
 
 networks:
-  elasticsearch:
+  aerospike:
     driver: bridge

@@ -46,7 +46,7 @@ services:
           	}
           }
 
-          namespace test {
+          namespace civilconnect {
           	replication-factor 1
           	memory-size 500M
           	storage-engine device {
@@ -66,4 +66,4 @@ services:
 
 networks:
   aerospike:
-    driver: bridge
+    driver: overlay

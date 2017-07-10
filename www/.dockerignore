@@ -1,6 +1,5 @@
 # comment
-    */temp*
-    */*/temp*
-    temp?
-    node_modules/*
-    kubernetes*
+*/temp*
+*/*/temp*
+temp?
+/webpack

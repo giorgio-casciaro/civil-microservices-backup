@@ -16,6 +16,11 @@ sudo add-apt-repository \
    stable"
 sudo apt-get update
 sudo apt-get install -y docker-ce
+sudo cat <<EOF >  /etc/docker/daemon.json
+{"experimental":true}
+EOF
+#sudo systemctl restart docker
+
 sudo systemctl enable docker
 sudo systemctl start docker
 # $IP=$(/sbin/ifconfig enp2s0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')

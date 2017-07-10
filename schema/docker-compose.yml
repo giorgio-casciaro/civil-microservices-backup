@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  schema:
+    image: giorgiocasciaro/civil-microservices-schema:version-1
+   #  entrypoint: sh -c "cd /service/ && npm run watch_test_remote"
+    entrypoint: sh -c "cd /service/ && npm run watch_start"
+    # ports:
+    #   - "10000:10000"
+    environment:
+      netHost: 0.0.0.0
+      netHostPort: 10000
+      aerospikeHosts: aerospike:3000
+      NODE_ENV: development
+    volumes:
+       - ./service:/service/service
+       - ./node_modules_compiled:/service/node_modules
+       - ./package.json:/service/package.json
+       - ../NPM/jesus/:/service/node_modules/sint-bit-jesus/
+       - ../NPM/cqrs/:/service/node_modules/sint-bit-cqrs/
+    networks:
+      - microservicesNet
+      - aerospike
+
+
+
+networks:
+  microservicesNet:
+    driver: bridge
+  aerospike:
+    driver: bridge
