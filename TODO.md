@@ -1,13 +1,7 @@
 # civil-microservices
 
 ## TODO
-- test loc
-- test TEST deploy
-  - schema
-  - www
 
-da testare su kubernetes
-check envvariable in kubernetes (se solo UPPERCASE)
 smtp email server
 logger
   - test settaggio attuale su kubernetes (settings in elasticsearch)
@@ -46,8 +40,6 @@ logger
 
 ## DOCKERS
 - command al post di entrypoint
-
-## KUBERNETES
 
 ## ADMIN AREA
 
